@@ -1,8 +1,10 @@
 "use client";
 
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
 import { Facility, Court, TimeSlot, Booking, User, FacilityStatus } from '@/types';
 import { mockFacilities } from '@/data/mock';
+
+const STORAGE_KEY = 'quickcourt_shared_state_v1';
 
 const extendedFacilities: Facility[] = [
   ...mockFacilities,
@@ -147,6 +149,70 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     cartSlots: [],
     selectedCity: 'Ahmedabad'
   });
+
+  const isHydrated = useRef(false);
+
+  // Hydrate from localStorage on client mount
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        setState(prev => ({
+          ...prev,
+          facilities: parsed.facilities || prev.facilities,
+          courts: parsed.courts || prev.courts,
+          slots: parsed.slots || prev.slots,
+          bookings: parsed.bookings || prev.bookings,
+          users: parsed.users || prev.users,
+          selectedCity: parsed.selectedCity || prev.selectedCity,
+        }));
+      }
+    } catch {
+      // ignore JSON parse or storage access errors
+    } finally {
+      isHydrated.current = true;
+    }
+
+    // Cross-tab / cross-window synchronization listener
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === STORAGE_KEY && e.newValue) {
+        try {
+          const parsed = JSON.parse(e.newValue);
+          setState(prev => ({
+            ...prev,
+            facilities: parsed.facilities || prev.facilities,
+            courts: parsed.courts || prev.courts,
+            slots: parsed.slots || prev.slots,
+            bookings: parsed.bookings || prev.bookings,
+            users: parsed.users || prev.users,
+          }));
+        } catch {
+          // ignore
+        }
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
+
+  // Persist state to localStorage on changes after hydration
+  useEffect(() => {
+    if (!isHydrated.current) return;
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        facilities: state.facilities,
+        courts: state.courts,
+        slots: state.slots,
+        bookings: state.bookings,
+        users: state.users,
+        selectedCity: state.selectedCity
+      }));
+    } catch {
+      // ignore quota exceeded or privacy mode errors
+    }
+  }, [state.facilities, state.courts, state.slots, state.bookings, state.users, state.selectedCity]);
 
   const setCurrentUser = (user: User | null) => {
     setState(prev => ({ ...prev, currentUser: user }));
