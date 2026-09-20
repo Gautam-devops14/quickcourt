@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Apex Badminton &amp; Multi-Sport Arena - QuickCourt Austin</title>
+<!-- Plus Jakarta Sans Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-fixed": "#dae2fd",
+            "primary-fixed-dim": "#8dd6a6",
+            "inverse-surface": "#213145",
+            "error-container": "#ffdad6",
+            "outline-variant": "#bfc9bf",
+            "on-tertiary-container": "#bbc2dc",
+            "on-error-container": "#93000a",
+            "on-secondary": "#ffffff",
+            "on-surface-variant": "#404941",
+            "surface-tint": "#216b43",
+            "background": "#f8f9ff",
+            "secondary-fixed": "#6ffbbe",
+            "on-secondary-container": "#00714d",
+            "surface": "#f8f9ff",
+            "inverse-primary": "#8dd6a6",
+            "secondary-container": "#6cf8bb",
+            "primary-container": "#0a5c36",
+            "surface-container": "#e5eeff",
+            "surface-bright": "#f8f9ff",
+            "on-tertiary": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-high": "#dce9ff",
+            "surface-container-low": "#eff4ff",
+            "secondary": "#006c49",
+            "on-tertiary-fixed-variant": "#3f465c",
+            "on-secondary-fixed": "#002113",
+            "tertiary-fixed-dim": "#bec6e0",
+            "on-primary-container": "#89d2a2",
+            "outline": "#707a71",
+            "on-surface": "#0b1c30",
+            "on-tertiary-fixed": "#131b2e",
+            "on-error": "#ffffff",
+            "secondary-fixed-dim": "#4edea3",
+            "error": "#ba1a1a",
+            "surface-variant": "#d3e4fe",
+            "inverse-on-surface": "#eaf1ff",
+            "on-primary-fixed-variant": "#00522e",
+            "tertiary-container": "#485066",
+            "surface-container-highest": "#d3e4fe",
+            "primary-fixed": "#a8f3c1",
+            "tertiary": "#31394e",
+            "on-secondary-fixed-variant": "#005236",
+            "on-primary": "#ffffff",
+            "surface-dim": "#cbdbf5",
+            "on-background": "#0b1c30",
+            "on-primary-fixed": "#002110",
+            "primary": "#004225"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "gutter-md": "1.5rem",
+            "space-md": "1rem",
+            "margin-lg": "3rem",
+            "margin-md": "2rem",
+            "space-xl": "2rem",
+            "space-lg": "1.5rem",
+            "gutter-lg": "2rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "display-lg": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-xl-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1;
+    }
+  </style>
+</head>
+<body class="bg-[#F8FAFC] text-on-surface antialiased font-body-md selection:bg-primary-container selection:text-white min-h-screen flex flex-col">
+<!-- ================= TOP NAVIGATION BAR (Shared Component JSON Blueprint) ================= -->
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant sticky top-0 z-50">
+<div class="w-full border-b border-outline-variant px-6 lg:px-12 flex justify-between items-center h-16 max-w-7xl mx-auto">
+<!-- Brand & Location Pill -->
+<div class="flex items-center gap-6">
+<a class="flex items-center gap-2 group" href="#">
+<div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl" data-icon="sports_tennis">sports_tennis</span>
+</div>
+<span class="text-headline-md font-headline-md font-bold tracking-tight text-primary">QuickCourt</span>
+</a>
+<!-- Location Badge Anchor -->
+<div class="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-low border border-outline-variant text-on-surface-variant font-label-md text-label-md">
+<span class="material-symbols-outlined text-sm text-secondary" data-icon="location_on">location_on</span>
+<span>Ahmedabad, GJ</span>
+<span class="material-symbols-outlined text-xs opacity-60" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Navigation Links (Active item mapped to 'Venues') -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-primary font-semibold border-b-2 border-primary pb-1 font-label-lg text-label-lg transition-colors duration-150" href="#">Venues</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-150 pb-1 font-label-lg text-label-lg" href="#">Schedule</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-150 pb-1 font-label-lg text-label-lg" href="#">Tournaments</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-150 pb-1 font-label-lg text-label-lg" href="#">Support</a>
+</nav>
+<!-- Trailing Action Hub -->
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-150 p-1.5 rounded-lg flex items-center" title="Help &amp; Rules">
+<span class="material-symbols-outlined text-xl" data-icon="help_outline">help_outline</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-150 p-1.5 rounded-lg flex items-center" title="Language &amp; Currency">
+<span class="material-symbols-outlined text-xl" data-icon="language">language</span>
+</button>
+<a class="hidden lg:flex items-center gap-2 text-on-surface font-label-lg text-label-lg px-3 py-1.5 rounded-lg hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-base" data-icon="confirmation_number">confirmation_number</span>
+<span>My Bookings</span>
+</a>
+<!-- User Profile Avatar Pill -->
+<div class="flex items-center gap-2 pl-2 border-l border-outline-variant">
+<div class="w-8 h-8 rounded-full bg-primary-container text-white flex items-center justify-center font-label-md text-label-md shadow-sm">
+            TX
+          </div>
+</div>
+</div>
+</div>
+</header>
+<!-- ================= BREADCRUMB STRIP ================= -->
+<div class="w-full bg-surface-container-lowest border-b border-outline-variant py-2.5 px-6 lg:px-12">
+<div class="max-w-7xl mx-auto flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant">
+<div class="flex items-center gap-2 overflow-x-auto whitespace-nowrap py-0.5"><a class="hover:text-primary transition-colors duration-150" href="#">Explore Venues</a><span class="material-symbols-outlined text-xs opacity-50" data-icon="chevron_right">chevron_right</span><a class="hover:text-primary transition-colors duration-150" href="#">Ahmedabad</a><span class="material-symbols-outlined text-xs opacity-50" data-icon="chevron_right">chevron_right</span><span class="text-on-surface font-medium">Apex Badminton Academy</span></div>
+<!-- Quick Actions -->
+<div class="hidden sm:flex items-center gap-3">
+<button class="flex items-center gap-1.5 px-3 py-1 rounded-lg border border-outline-variant text-on-surface hover:bg-surface-container-low font-label-md text-label-md transition-all">
+<span class="material-symbols-outlined text-base" data-icon="share">share</span>
+<span>Share</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1 rounded-lg border border-outline-variant text-on-surface hover:bg-surface-container-low font-label-md text-label-md transition-all">
+<span class="material-symbols-outlined text-base" data-icon="favorite_border">favorite_border</span>
+<span>Save</span>
+</button>
+</div>
+</div>
+</div>
+<!-- ================= MAIN CONTAINER ================= -->
+<main class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-12 py-6 flex-1">
+<!-- HERO PHOTO GALLERY BENTO GRID -->
+<section class="mb-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-3 md:h-[430px] rounded-xl overflow-hidden border border-outline-variant bg-white p-2">
+<!-- Main Large Court Hero View -->
+<div class="md:col-span-2 md:h-full relative rounded-lg overflow-hidden group">
+<img class="w-full h-72 md:h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" data-alt="A brightly lit modern indoor badminton arena with 8 tournament-grade green synthetic vinyl courts separated by clean white dividing lines and pristine net dividers. High architectural ceiling with linear 800-lux anti-glare sports floodlights illuminating the pristine playing surfaces. The atmosphere is professional, energetic, and immaculately maintained with a clean modern aesthetic in deep green and bright whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYYaakWy73XmWxjeCpA-0yYRt4YpFPQj_7maHb69Tppv3W59G5aSyTlrFlgrq8F8ycF9DCbxhC1G-iO5sjMBLpRSZViHclhqq7CJY99eF7xz8A5F_byBIErzu-kYEHh2TE6vQhLdctLjMAGiCGt5NibfJzj3UiNlfj_Jy0kZemRo-gHPTAlaPhjoINR-aoyYSb_exFyldPxOuR2qWepKt-TymFbcTlKW0DZjdVEfnUJohLCyQq63LeB9isp3Ijbd4lS_5YHrsfLOo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
+<!-- Floating Status Badges -->
+<div class="absolute top-4 left-4 flex flex-wrap gap-2">
+<span class="px-2.5 py-1 rounded-lg bg-primary-container text-white font-label-sm text-label-sm tracking-wide flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-xs" data-icon="verified">verified</span>
+              BWF Grade 1 Certified
+            </span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-lowest/90 backdrop-blur-sm text-on-surface border border-outline-variant font-label-sm text-label-sm">
+              Turnstile Access Enabled
+            </span>
+</div>
+<div class="absolute bottom-4 left-4 text-white">
+<p class="font-label-md text-label-md uppercase tracking-wider text-primary-fixed opacity-90">Center Championship Court</p>
+<p class="font-headline-sm text-headline-sm text-white font-semibold">Competition Taraflex Court System 1</p>
+</div>
+</div>
+<!-- Thumbnail Column 1 -->
+<div class="hidden md:flex flex-col gap-3 h-full">
+<!-- Thumbnail: Player in Action -->
+<div class="h-1/2 relative rounded-lg overflow-hidden group">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Two competitive athletes playing a fast-paced mixed doubles badminton match on a bright synthetic court. Crisp dynamic motion with high-speed racquet swing and a feathered shuttlecock suspended in air under soft diffuse arena lighting. Clean athletic environment with deep green floor court mats and high visual contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBekxRLrd7ufemGQW9LXyIJhWYpxoAvXz-AXAxDTpe5Q_znnRy65BfKdgXDS85MSIXvDQzktHs2cOq-lSFE5UXCMjfHQRe1tAqlwNr_8aGcelO0LGRYif64uyHgBXNxfpojIzDeUKY0tohCPNgxH-cvvyfUH77GHMjnG4dMmzGuyi51lVFKv-Nm2Ee-OIS4l4ELYn6H1XAD0Rqmc3hLN6SbbciWsazGu9DKaOhpx9qZ7XGYKWhtwopSwTlcsodgx8s3IOnr9Al9MU4"/>
+<span class="absolute bottom-2 left-2 text-white text-label-sm font-label-sm bg-black/50 backdrop-blur-xs px-2 py-0.5 rounded">Active Match Play</span>
+</div>
+<!-- Thumbnail: Locker Rooms -->
+<div class="h-1/2 relative rounded-lg overflow-hidden group">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Interior of a luxury sports facility locker room featuring digital keyless lockers, sleek stainless steel shower stalls, and polished concrete benches. Crisp minimalist architectural lighting with slate grey and pure white accents reflecting a pristine, hygienic, high-end athletic club." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZaDPxkmlOLkRIGhnj3BkwtyQt1-EOeqmjTGEb1WpTcFypc2xPWclnfXAVnoNAQjG9Flf0_46bfs6nqAnFJ8gDZj5Xjn75K_IDEmOW9aGh8Bg9SFUoUPo2FklSbH7Ej7BZbPi0Ncc5yV7km_U6qktYzRJXAOIarJcg-u7o-4Xkb6NNG0_gGl7JRDmZ3uxYHCWPyNq3Tg8TMsAUZmGmuWDN8ufa0mbUnMJSO-9fRIC18vWcvLphzAWDk__FSrVwaQ5CRJaq6ME4T5c"/>
+<span class="absolute bottom-2 left-2 text-white text-label-sm font-label-sm bg-black/50 backdrop-blur-xs px-2 py-0.5 rounded">Locker Suites &amp; Showers</span>
+</div>
+</div>
+<!-- Thumbnail Column 2 with 'View All' Pill -->
+<div class="hidden md:flex flex-col gap-3 h-full">
+<!-- Thumbnail: Pro Shop -->
+<div class="h-1/2 relative rounded-lg overflow-hidden group">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="A precision badminton pro shop showcase displaying tournament racquets mounted on matte black display racks, electronic stringing machines in operation, and Yonex shuttlecock tubes neatly organized on illuminated shelves. Modern clean sports retail ambiance with clear natural lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnSoTmYqWHSpSPfq24DwqI9D6NuAvJyH14GDcyUHHhYHtTMfXzAZmXQQ0VqYnbTtp6wCVeyJrXBRqFpgXzm_3p7YPGrCbz33MHcr-mB238LmnmqB573qDeGGMqBbKEE2rYKoEkLYFvk3jH1J231zuwOY4qcKUX_voRaawhCnYALFSqq_tM_O5gxIBH83I60yYheGX1j4zewWr1a9PXARxLc3e3UdyzK10ZsEDehizmun9UvqUA7rYBoOH8dH60lL0Atcevj3MxJ3Y"/>
+<span class="absolute bottom-2 left-2 text-white text-label-sm font-label-sm bg-black/50 backdrop-blur-xs px-2 py-0.5 rounded">Pro Stringing &amp; Shop</span>
+</div>
+<!-- Thumbnail: Player Lounge + Button Overlay -->
+<div class="h-1/2 relative rounded-lg overflow-hidden group cursor-pointer">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 brightness-90" data-alt="A vibrant modern air-conditioned athlete lounge overlooking indoor courts through tall acoustic glass partitions. Comfortable ergonomic seating, hydration station with electrolyte taps, and digital tournament match schedule displays on the walls." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_7NeZkTTegwf9a8a8YFZ1mHFRpu7J0Ij49AQrR_C1CVIhywlRr5bdKhNSeqJKbu9W_hZsMT-ZQkZ_kNjf8yeeZNVkPwlG0lKoRAqsCH1-Zf_eS6alVKRe2l-FJzMvVx-w2aLmy2VtWEDdTqeeBOx-_yHENvC8j-Nbn4u-aprBx7Yzslq8uJa_8yorGg9tc1pZCMHUXc3X-aZxniibF6Vxp7QD0pNVioXLGOoTWD3obrqqf1beBm86Hb2zjebKiTxcsI5IJlvoCs0"/>
+<div class="absolute inset-0 bg-black/35 group-hover:bg-black/20 transition-all flex items-center justify-center">
+<button class="px-3.5 py-2 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md flex items-center gap-1.5 shadow-md hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-base" data-icon="photo_library">photo_library</span>
+<span>View All 18 Photos</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- VENUE HEADER & OVERVIEW BAR -->
+<section class="mb-8 bg-surface-container-lowest rounded-xl border border-outline-variant p-6">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+<!-- Left: Title, Badges, Address -->
+<div class="space-y-3">
+<div class="flex flex-wrap items-center gap-2.5">
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs fill" data-icon="star">star</span>
+              4.9 (248 reviews)
+            </span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container text-primary font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="check_circle">check_circle</span>
+              Verified Facility Host
+            </span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-secondary" data-icon="schedule">schedule</span>
+              Open until 11:30 PM
+            </span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="ac_unit">ac_unit</span>
+              Indoor Climate-Controlled
+            </span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface font-bold tracking-tight">Apex Badminton Academy</h1>
+<div class="flex flex-wrap items-center gap-4 text-body-md font-body-md text-on-surface-variant">
+<div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-lg text-primary" data-icon="place">place</span><span>SG Highway • Near Iskcon Cross Road, Ahmedabad, GJ 380054</span><span class="text-xs opacity-50">•</span><span class="font-medium text-on-surface">1.8 miles away</span></div>
+<a class="text-primary hover:underline font-label-md text-label-md flex items-center gap-1" href="#map">
+<span>Get Directions / View Map</span>
+<span class="material-symbols-outlined text-sm" data-icon="open_in_new">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Right: Desk Rate Snapshot -->
+<div class="flex lg:flex-col items-baseline lg:items-end justify-between border-t lg:border-t-0 pt-4 lg:pt-0 border-outline-variant">
+<div class="text-right">
+<span class="text-body-sm font-body-sm text-on-surface-variant">Live Direct Pricing</span>
+<div class="flex items-baseline gap-1"><span class="font-headline-xl text-headline-xl font-bold text-primary">₹600</span><span class="text-body-sm font-body-sm text-on-surface-variant">/ court / hr</span></div>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-secondary/10 text-secondary font-label-sm text-label-sm font-semibold mt-1">
+<span class="material-symbols-outlined text-xs" data-icon="price_check">price_check</span>
+            Zero Booking Markup
+          </span>
+</div>
+</div>
+</section>
+<!-- ================= 2-COLUMN MAIN CONTENT GRID ================= -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- ================= LEFT COLUMN: DETAILS & SCHEDULING (8 Cols) ================= -->
+<div class="lg:col-span-8 space-y-8">
+<!-- 1. ABOUT THE VENUE -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant p-6">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="info">info</span>
+            About Apex Arena
+          </h2>
+<p class="text-body-md font-body-md text-on-surface-variant leading-relaxed mb-4">Apex Badminton Academy is Ahmedabad's premier indoor racquet destination, equipped with 8 Olympic-grade badminton courts configured on shock-absorbing Taraflex multi-layer synthetic flooring. Designed for serious club competitors, recreational leagues, and casual match play alike, the complex features uniform 800-lux vertical anti-glare LED illumination, high clearance 32-foot ceilings, and full acoustic baffle suppression.</p>
+<p class="text-body-md font-body-md text-on-surface-variant leading-relaxed">
+            QuickCourt players enjoy automated zero-wait turnstile check-in via PIN code, frictionless digital lighting triggers synced to your reservation block, and a fully appointed pro shop with on-site high-tension electronic stringing technicians.
+          </p>
+</section>
+<!-- 2. FACILITY AMENITIES & SPECS (Bento Grid) -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant p-6">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="sports_gymnastics">sports_gymnastics</span>
+            Venue Amenities &amp; Court Specs
+          </h2>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-3.5">
+<div class="p-3.5 rounded-lg border border-outline-variant bg-surface-container-low/40 flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl mt-0.5" data-icon="layers">layers</span>
+<div>
+<div class="font-label-lg text-label-lg font-semibold text-on-surface">Taraflex Mats</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">BWF Grade 1 certified shock absorption</div>
+</div>
+</div>
+<div class="p-3.5 rounded-lg border border-outline-variant bg-surface-container-low/40 flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl mt-0.5" data-icon="light_mode">light_mode</span>
+<div>
+<div class="font-label-lg text-label-lg font-semibold text-on-surface">800-Lux LED</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">Anti-glare diffuse beam angle</div>
+</div>
+</div>
+<div class="p-3.5 rounded-lg border border-outline-variant bg-surface-container-low/40 flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl mt-0.5" data-icon="lock">lock</span>
+<div>
+<div class="font-label-lg text-label-lg font-semibold text-on-surface">Turnstile Access</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">Instant entry PIN code on phone</div>
+</div>
+</div>
+<div class="p-3.5 rounded-lg border border-outline-variant bg-surface-container-low/40 flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl mt-0.5" data-icon="shower">shower</span>
+<div>
+<div class="font-label-lg text-label-lg font-semibold text-on-surface">Showers &amp; Lockers</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">Full private changing suites</div>
+</div>
+</div>
+<div class="p-3.5 rounded-lg border border-outline-variant bg-surface-container-low/40 flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl mt-0.5" data-icon="build">build</span>
+<div>
+<div class="font-label-lg text-label-lg font-semibold text-on-surface">Pro Stringing Desk</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">Yonex/Victor demo racquets</div>
+</div>
+</div>
+<div class="p-3.5 rounded-lg border border-outline-variant bg-surface-container-low/40 flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl mt-0.5" data-icon="ev_station">ev_station</span>
+<div>
+<div class="font-label-lg text-label-lg font-semibold text-on-surface">Free EV Charging</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">6 Level-2 guest chargers</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. AVAILABLE COURTS & REAL-TIME TIME SLOT SELECTOR -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant p-6">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="event_available">event_available</span>
+                Select Court &amp; Time Slot
+              </h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Real-time availability synced directly with front desk gate</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
+<span class="text-label-md font-label-md text-secondary">Live Synced</span>
+</div>
+</div>
+<!-- Date Selector Strip (Horizontal snap buttons) -->
+<div class="mb-6">
+<div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+<!-- Active Date -->
+<button class="flex flex-col items-center justify-center min-w-[100px] py-2.5 px-3 rounded-lg bg-primary-container text-white border border-primary-container shadow-sm">
+<span class="text-label-sm font-label-sm uppercase tracking-wider opacity-80">Today</span>
+<span class="text-headline-sm font-headline-sm font-bold">Oct 24</span>
+<span class="text-label-sm font-label-sm opacity-90">14 slots</span>
+</button>
+<button class="flex flex-col items-center justify-center min-w-[100px] py-2.5 px-3 rounded-lg bg-surface-container-lowest text-on-surface border border-outline-variant hover:border-primary transition-all">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant">Fri</span>
+<span class="text-headline-sm font-headline-sm font-bold">Oct 25</span>
+<span class="text-label-sm font-label-sm text-secondary">22 slots</span>
+</button>
+<button class="flex flex-col items-center justify-center min-w-[100px] py-2.5 px-3 rounded-lg bg-surface-container-lowest text-on-surface border border-outline-variant hover:border-primary transition-all">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant">Sat</span>
+<span class="text-headline-sm font-headline-sm font-bold">Oct 26</span>
+<span class="text-label-sm font-label-sm text-secondary">8 slots</span>
+</button>
+<button class="flex flex-col items-center justify-center min-w-[100px] py-2.5 px-3 rounded-lg bg-surface-container-lowest text-on-surface border border-outline-variant hover:border-primary transition-all">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant">Sun</span>
+<span class="text-headline-sm font-headline-sm font-bold">Oct 27</span>
+<span class="text-label-sm font-label-sm text-secondary">11 slots</span>
+</button>
+<button class="flex flex-col items-center justify-center min-w-[100px] py-2.5 px-3 rounded-lg bg-surface-container-lowest text-on-surface border border-outline-variant hover:border-primary transition-all">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant">Mon</span>
+<span class="text-headline-sm font-headline-sm font-bold">Oct 28</span>
+<span class="text-label-sm font-label-sm text-secondary">26 slots</span>
+</button>
+<button class="flex items-center justify-center px-3 py-2.5 rounded-lg border border-outline-variant text-on-surface-variant hover:text-primary hover:border-primary">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+</button>
+</div>
+</div>
+<!-- Court Switcher Tabs -->
+<div class="flex items-center gap-2 border-b border-outline-variant pb-3 mb-5 overflow-x-auto">
+<button class="px-3.5 py-1.5 rounded-lg bg-primary-container text-white font-label-md text-label-md font-medium whitespace-nowrap">
+              Court 1 (Center Arena)
+            </button>
+<button class="px-3.5 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:text-on-surface font-label-md text-label-md whitespace-nowrap border border-outline-variant">
+              Court 2 (Blue Pro)
+            </button>
+<button class="px-3.5 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:text-on-surface font-label-md text-label-md whitespace-nowrap border border-outline-variant">
+              Court 3 (Synthetic Green)
+            </button>
+<button class="px-3.5 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:text-on-surface font-label-md text-label-md whitespace-nowrap border border-outline-variant">
+              Court 4 (Training Bay)
+            </button>
+</div>
+<!-- Legend Bar -->
+<div class="flex flex-wrap items-center gap-4 text-label-sm font-label-sm mb-4 text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded bg-white border border-outline-variant"></span>
+<span>Available (₹600)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded bg-primary-container"></span>
+<span>Selected</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded bg-amber-100 border border-amber-300"></span>
+<span>In Cart (Held 4m)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded bg-slate-200 line-through"></span>
+<span>Booked</span>
+</div>
+</div>
+<!-- Time Slots Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2.5 mb-6"><button class="p-2.5 rounded-lg border border-outline-variant bg-[#F1F5F9] text-slate-400 font-label-md text-label-md flex flex-col items-center justify-center cursor-not-allowed line-through opacity-70" disabled=""><span>04:00 PM – 05:00 PM</span><span class="text-label-sm font-label-sm">Booked</span></button><button class="p-2.5 rounded-lg border border-outline-variant bg-[#F1F5F9] text-slate-400 font-label-md text-label-md flex flex-col items-center justify-center cursor-not-allowed line-through opacity-70" disabled=""><span>05:00 PM – 06:00 PM</span><span class="text-label-sm font-label-sm">Booked</span></button><div class="p-2.5 rounded-lg border border-amber-300 bg-amber-50 text-amber-900 font-label-md text-label-md flex flex-col items-center justify-center cursor-not-allowed"><div class="flex items-center gap-1"><span class="material-symbols-outlined text-xs text-amber-700" data-icon="lock_clock">lock_clock</span><span>06:00 PM – 07:00 PM</span></div><span class="text-label-sm font-label-sm text-amber-700">Reserved 3m ago</span></div><button class="p-2.5 rounded-lg bg-primary-container text-white border border-primary-container font-label-md text-label-md flex flex-col items-center justify-center shadow-sm ring-2 ring-primary-container ring-offset-2"><div class="flex items-center gap-1 font-bold"><span class="material-symbols-outlined text-xs fill" data-icon="check_circle">check_circle</span><span>07:00 PM – 08:00 PM</span></div><span class="text-label-sm font-label-sm text-primary-fixed">₹600.00 (Selected)</span></button><button class="p-2.5 rounded-lg border border-outline-variant bg-white hover:border-secondary hover:bg-surface-container-low transition-all font-label-md text-label-md flex flex-col items-center justify-center"><span class="font-medium text-on-surface">08:00 PM – 09:00 PM</span><span class="text-label-sm font-label-sm text-secondary font-semibold">₹600.00</span></button><button class="p-2.5 rounded-lg border border-outline-variant bg-white hover:border-secondary hover:bg-surface-container-low transition-all font-label-md text-label-md flex flex-col items-center justify-center"><span class="font-medium text-on-surface">09:00 PM – 10:00 PM</span><span class="text-label-sm font-label-sm text-secondary font-semibold">₹600.00</span></button><button class="p-2.5 rounded-lg border border-outline-variant bg-white hover:border-secondary hover:bg-surface-container-low transition-all font-label-md text-label-md flex flex-col items-center justify-center"><span class="font-medium text-on-surface">10:00 PM – 11:00 PM</span><span class="text-label-sm font-label-sm text-secondary font-semibold">₹600.00</span></button><button class="p-2.5 rounded-lg border border-outline-variant bg-white hover:border-secondary hover:bg-surface-container-low transition-all font-label-md text-label-md flex flex-col items-center justify-center"><span class="font-medium text-on-surface">11:00 PM – 11:30 PM</span><span class="text-label-sm font-label-sm text-secondary font-semibold">₹350.00 (30m)</span></button></div>
+<!-- Equipment Add-ons Toggle Strip -->
+<div class="p-4 rounded-lg bg-surface-container-low border border-outline-variant">
+<h3 class="font-label-lg text-label-lg font-bold text-on-surface mb-3 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-base" data-icon="add_circle">add_circle</span>
+              Court Equipment Add-ons (Optional)
+            </h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3"><label class="flex items-center justify-between p-3 rounded-lg bg-white border border-outline-variant cursor-pointer hover:border-primary transition-colors"><div class="flex items-center gap-3"><input checked="" class="w-4 h-4 rounded text-primary-container focus:ring-primary-container" type="checkbox"/><div><div class="font-label-md text-label-md font-semibold text-on-surface">Yonex Astrox Racquet</div><div class="text-body-sm font-body-sm text-on-surface-variant">Clean grip • 24 lbs tension</div></div></div><span class="font-label-md text-label-md font-bold text-on-surface">+₹150.00</span></label><label class="flex items-center justify-between p-3 rounded-lg bg-white border border-outline-variant cursor-pointer hover:border-primary transition-colors"><div class="flex items-center gap-3"><input class="w-4 h-4 rounded text-primary-container focus:ring-primary-container" type="checkbox"/><div><div class="font-label-md text-label-md font-semibold text-on-surface">Aerosensa 30 Shuttles</div><div class="text-body-sm font-body-sm text-on-surface-variant">Tube of 3 feather shuttles</div></div></div><span class="font-label-md text-label-md font-bold text-on-surface">+₹250.00</span></label></div>
+</div>
+</section>
+<!-- 4. ATHLETE REVIEWS & RATING BREAKDOWN -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant p-6">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="rate_review">rate_review</span>
+                Athlete Reviews &amp; Ratings
+              </h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">From 248 verified reservation check-ins</p>
+</div>
+<button class="px-3.5 py-1.5 rounded-lg border border-outline-variant text-on-surface font-label-md text-label-md hover:bg-surface-container-low transition-colors">
+              Write Review
+            </button>
+</div>
+<!-- Aggregate Breakdown Row -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-4 rounded-xl bg-surface-container-low border border-outline-variant mb-6 items-center">
+<!-- Left Big Score -->
+<div class="text-center md:border-r border-outline-variant md:pr-4">
+<div class="font-display-lg text-display-lg font-bold text-primary leading-none mb-1">4.9</div>
+<div class="flex justify-center text-amber-500 mb-1">
+<span class="material-symbols-outlined fill text-lg" data-icon="star">star</span>
+<span class="material-symbols-outlined fill text-lg" data-icon="star">star</span>
+<span class="material-symbols-outlined fill text-lg" data-icon="star">star</span>
+<span class="material-symbols-outlined fill text-lg" data-icon="star">star</span>
+<span class="material-symbols-outlined fill text-lg" data-icon="star">star</span>
+</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">Recommended by 99% of players</div>
+</div>
+<!-- Specific Criteria Bars -->
+<div class="md:col-span-2 space-y-2.5">
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface">Court Surface &amp; Traction</span>
+<div class="flex items-center gap-2 w-1/2">
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 100%"></div>
+</div>
+<span class="font-bold text-on-surface">5.0</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface">Lighting &amp; Anti-Glare</span>
+<div class="flex items-center gap-2 w-1/2">
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 98%"></div>
+</div>
+<span class="font-bold text-on-surface">4.9</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface">Cleanliness &amp; Facilities</span>
+<div class="flex items-center gap-2 w-1/2">
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 96%"></div>
+</div>
+<span class="font-bold text-on-surface">4.8</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface">Easy Digital Entry / Parking</span>
+<div class="flex items-center gap-2 w-1/2">
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 94%"></div>
+</div>
+<span class="font-bold text-on-surface">4.7</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Individual Review Cards -->
+<div class="space-y-4">
+<!-- Review 1 -->
+<div class="p-4 rounded-lg border border-outline-variant bg-white space-y-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-surface-container-high font-bold text-on-surface flex items-center justify-center text-label-md">
+                    MC
+                  </div>
+<div>
+<div class="font-label-lg text-label-lg font-bold text-on-surface flex items-center gap-1.5">
+                      Marcus Chen
+                      <span class="text-xs bg-secondary-container text-on-secondary-container px-2 py-0.2 rounded font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[11px]" data-icon="check">check</span>
+                        Verified Play
+                      </span>
+</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">Played on Court 1 • Oct 21, 2024</div>
+</div>
+</div>
+<div class="flex text-amber-500">
+<span class="material-symbols-outlined fill text-base" data-icon="star">star</span>
+<span class="material-symbols-outlined fill text-base" data-icon="star">star</span>
+<span class="material-symbols-outlined fill text-base" data-icon="star">star</span>
+<span class="material-symbols-outlined fill text-base" data-icon="star">star</span>
+<span class="material-symbols-outlined fill text-base" data-icon="star">star</span>
+</div>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant leading-relaxed">Hands down the best badminton facility in SG Highway, Ahmedabad. The Taraflex mats have incredible knee absorption and zero slip even during extended smash drills. The turnstile PIN system sent directly to my QuickCourt pass let us walk in right at 7 PM with the court lights firing up instantly.</p>
+<div class="flex items-center gap-4 pt-1 text-label-sm font-label-sm text-on-surface-variant">
+<button class="flex items-center gap-1 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="thumb_up">thumb_up</span>
+<span>Helpful (19)</span>
+</button>
+</div>
+</div>
+<!-- Review 2 -->
+<div class="p-4 rounded-lg border border-outline-variant bg-white space-y-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-surface-container-high font-bold text-on-surface flex items-center justify-center text-label-md">
+                    SR
+                  </div>
+<div>
+<div class="font-label-lg text-label-lg font-bold text-on-surface flex items-center gap-1.5">
+                      Sarah Reynolds
+                      <span class="text-xs bg-secondary-container text-on-secondary-container px-2 py-0.2 rounded font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[11px]" data-icon="check">check</span>
+                        Verified Play
+                      </span>
+</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">Played on Court 3 • Oct 18, 2024</div>
+</div>
+</div>
+<div class="flex text-amber-500">
+<span class="material-symbols-outlined fill text-base" data-icon="star">star</span>
+<span class="material-symbols-outlined fill text-base" data-icon="star">star</span>
+<span class="material-symbols-outlined fill text-base" data-icon="star">star</span>
+<span class="material-symbols-outlined fill text-base" data-icon="star">star</span>
+<span class="material-symbols-outlined fill text-base" data-icon="star">star</span>
+</div>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant leading-relaxed">
+                The lighting here is so thoughtful. No direct overhead glare when looking up for high defensive lobs. Rented two Yonex demo racquets at the front kiosk and they were freshly strung. 10/10 recommend.
+              </p>
+<div class="flex items-center gap-4 pt-1 text-label-sm font-label-sm text-on-surface-variant">
+<button class="flex items-center gap-1 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="thumb_up">thumb_up</span>
+<span>Helpful (8)</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. RULES & CANCELLATION POLICY -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant p-6">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="policy">policy</span>
+            Venue Guidelines &amp; Cancellation Guarantee
+          </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-body-md font-body-md text-on-surface-variant">
+<div class="flex items-start gap-3 p-3 rounded-lg border border-outline-variant bg-surface-container-low/30">
+<span class="material-symbols-outlined text-secondary text-lg mt-0.5" data-icon="check_circle">check_circle</span>
+<div>
+<span class="font-semibold text-on-surface">Flexible Free Cancellation:</span>
+                Cancel up to 2 hours prior to start time for an instant 100% refund directly to your original payment method.
+              </div>
+</div>
+<div class="flex items-start gap-3 p-3 rounded-lg border border-outline-variant bg-surface-container-low/30">
+<span class="material-symbols-outlined text-primary text-lg mt-0.5" data-icon="do_not_step">do_not_step</span>
+<div>
+<span class="font-semibold text-on-surface">Non-Marking Shoes Required:</span>
+                Strictly non-marking gum-rubber badminton or indoor athletic shoes. Outdoor running shoes strictly prohibited on court mats.
+              </div>
+</div>
+</div>
+</section>
+</div>
+<!-- ================= RIGHT COLUMN: STICKY BOOKING DESK CARD (4 Cols) ================= -->
+<div class="lg:col-span-4 sticky top-24 space-y-4">
+<!-- Main Booking Action Panel -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm p-6 space-y-6">
+<!-- Header Price & Guarantee -->
+<div class="flex items-center justify-between border-b border-outline-variant pb-4">
+<div>
+<span class="text-body-sm font-body-sm text-on-surface-variant block">Court Desk Rate</span>
+<div class="flex items-baseline gap-1"><span class="font-headline-xl text-headline-xl font-bold text-primary">₹600.00</span><span class="text-body-md font-body-md text-on-surface-variant">/ hour</span></div>
+</div>
+<div class="text-right">
+<span class="px-2 py-0.5 rounded bg-primary-container/10 text-primary font-label-sm text-label-sm font-bold">
+                Instant Turnstile PIN
+              </span>
+</div>
+</div>
+<!-- Reservation Preview Box -->
+<div class="p-3.5 rounded-lg bg-surface-container-low border border-outline-variant space-y-2.5">
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base text-primary" data-icon="calendar_today">calendar_today</span>
+                Selected Date:
+              </span>
+<span class="font-bold text-on-surface">Today, Oct 24, 2024</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base text-primary" data-icon="sports_score">sports_score</span>
+                Assigned Court:
+              </span>
+<span class="font-bold text-on-surface">Court 1 (Center Arena)</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base text-primary" data-icon="schedule">schedule</span>
+                Reserved Slot:
+              </span>
+<span class="font-bold text-primary">07:00 PM – 08:00 PM</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm pt-1 border-t border-outline-variant">
+<span class="text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base text-primary" data-icon="sports_tennis">sports_tennis</span>
+                Add-on:
+              </span>
+<span class="text-on-surface">Yonex Astrox Racquet (+₹150)</span>
+</div>
+</div>
+<!-- Price Calculation Breakdown -->
+<div class="space-y-2 text-body-sm font-body-sm border-b border-outline-variant pb-4"><div class="flex justify-between text-on-surface-variant"><span>Court 1 (1 Hour Session)</span><span class="font-medium text-on-surface">₹600.00</span></div><div class="flex justify-between text-on-surface-variant"><span>Selected Rental (Yonex Astrox)</span><span class="font-medium text-on-surface">₹150.00</span></div><div class="flex justify-between text-secondary font-medium"><span class="flex items-center gap-1"><span>QuickCourt Booking Guarantee</span><span class="material-symbols-outlined text-xs" data-icon="verified">verified</span></span><span>FREE</span></div><div class="flex justify-between text-on-surface-variant"><span>City Sports Facility Tax</span><span class="font-medium text-on-surface">₹0.00</span></div><div class="flex justify-between items-baseline pt-2 text-headline-sm font-headline-sm font-bold text-on-surface"><span>Total Amount</span><span class="text-headline-lg font-headline-lg text-primary">₹750.00</span></div></div>
+<!-- Primary CTA Button -->
+<button class="w-full py-3.5 px-4 rounded-lg bg-primary-container hover:bg-[#084C2C] active:bg-[#063D23] text-white font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow transition-all duration-150 active:scale-[0.99]">
+<span>Confirm &amp; Get Access Pass</span>
+<span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- Security & Guarantee Footnotes -->
+<div class="space-y-2 pt-1">
+<div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-base" data-icon="lock">lock</span>
+<span>Direct encrypted check-in via PIN barcode</span>
+</div>
+<div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-base" data-icon="restart_alt">restart_alt</span>
+<span>100% refund if cancelled 2 hrs before start</span>
+</div>
+</div>
+</div>
+<!-- Venue Contact Desk Widget -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-4 text-body-sm font-body-sm space-y-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl" data-icon="support_agent">support_agent</span>
+</div>
+<div>
+<div class="font-label-md text-label-md font-bold text-on-surface">Apex Front Desk Staff</div>
+<div class="text-on-surface-variant">On-site daily 6:00 AM – 11:30 PM • +91 98250 12345</div>
+</div>
+</div>
+<div class="flex gap-2 pt-1">
+<button class="w-1/2 py-2 rounded-lg border border-outline-variant text-on-surface font-label-md text-label-md hover:bg-surface-container-low transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="call">call</span>
+<span>Call Desk</span>
+</button>
+<button class="w-1/2 py-2 rounded-lg border border-outline-variant text-on-surface font-label-md text-label-md hover:bg-surface-container-low transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="chat">chat</span>
+<span>Message</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- ================= FOOTER (Shared Component JSON Blueprint) ================= -->
+<footer class="w-full bg-surface-container-lowest border-t border-outline-variant mt-16">
+<div class="w-full border-t border-outline-variant px-6 lg:px-12 py-8 flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto gap-4">
+<!-- Brand Logo & Copyright from JSON -->
+<div class="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
+<span class="text-headline-sm font-headline-sm font-bold text-primary">QuickCourt</span>
+<span class="text-on-surface-variant text-body-sm font-body-sm">
+          © 2025 QuickCourt Operations Inc. All rights reserved. Precision court scheduling &amp; sports facility engine.
+        </span>
+</div>
+<!-- Links from JSON -->
+<div class="flex flex-wrap items-center justify-center gap-6">
+<a class="text-on-surface-variant hover:text-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">Venue Standards</a>
+<a class="text-on-surface-variant hover:text-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">API Docs</a>
+<a class="text-on-surface-variant hover:text-on-surface text-body-sm font-body-sm transition-colors duration-150 flex items-center gap-1.5" href="#">
+<span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span>
+<span>System Status</span>
+</a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>QuickCourt Facility OS — Court Management</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with configuration plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "primary-fixed-dim": "#8dd6a6",
+          "on-secondary-fixed-variant": "#005236",
+          "surface-container-highest": "#d3e4fe",
+          "on-tertiary-fixed": "#131b2e",
+          "on-tertiary-container": "#bbc2dc",
+          "inverse-primary": "#8dd6a6",
+          "on-surface": "#0b1c30",
+          "primary": "#004225",
+          "tertiary-fixed": "#dae2fd",
+          "secondary-container": "#6cf8bb",
+          "tertiary-fixed-dim": "#bec6e0",
+          "surface-tint": "#216b43",
+          "on-tertiary-fixed-variant": "#3f465c",
+          "on-error-container": "#93000a",
+          "on-error": "#ffffff",
+          "primary-fixed": "#a8f3c1",
+          "on-tertiary": "#ffffff",
+          "on-primary-container": "#89d2a2",
+          "background": "#f8f9ff",
+          "surface-container-lowest": "#ffffff",
+          "outline-variant": "#bfc9bf",
+          "on-background": "#0b1c30",
+          "on-primary-fixed-variant": "#00522e",
+          "on-surface-variant": "#404941",
+          "surface-container-high": "#dce9ff",
+          "on-primary": "#ffffff",
+          "surface-dim": "#cbdbf5",
+          "on-secondary-fixed": "#002113",
+          "secondary-fixed": "#6ffbbe",
+          "on-secondary": "#ffffff",
+          "on-primary-fixed": "#002110",
+          "error-container": "#ffdad6",
+          "on-secondary-container": "#00714d",
+          "tertiary-container": "#485066",
+          "secondary-fixed-dim": "#4edea3",
+          "surface-container-low": "#eff4ff",
+          "secondary": "#006c49",
+          "surface-container": "#e5eeff",
+          "outline": "#707a71",
+          "surface-bright": "#f8f9ff",
+          "primary-container": "#0a5c36",
+          "surface-variant": "#d3e4fe",
+          "error": "#ba1a1a",
+          "inverse-surface": "#213145",
+          "surface": "#f8f9ff",
+          "tertiary": "#31394e",
+          "inverse-on-surface": "#eaf1ff"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "space-xs": "0.25rem",
+          "margin-md": "2rem",
+          "space-sm": "0.5rem",
+          "margin": "1rem",
+          "margin-lg": "3rem",
+          "space-lg": "1.5rem",
+          "gutter-lg": "2rem",
+          "gutter-md": "1.5rem",
+          "space-md": "1rem",
+          "space-xl": "2rem",
+          "gutter": "1rem"
+        },
+        "fontFamily": {
+          "label-sm": ["Plus Jakarta Sans"],
+          "headline-sm": ["Plus Jakarta Sans"],
+          "display-lg": ["Plus Jakarta Sans"],
+          "body-sm": ["Plus Jakarta Sans"],
+          "headline-xl-mobile": ["Plus Jakarta Sans"],
+          "display-lg-mobile": ["Plus Jakarta Sans"],
+          "body-lg": ["Plus Jakarta Sans"],
+          "body-md": ["Plus Jakarta Sans"],
+          "headline-md": ["Plus Jakarta Sans"],
+          "label-lg": ["Plus Jakarta Sans"],
+          "label-md": ["Plus Jakarta Sans"],
+          "headline-xl": ["Plus Jakarta Sans"],
+          "headline-lg": ["Plus Jakarta Sans"]
+        },
+        "fontSize": {
+          "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+          "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600" }],
+          "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+          "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }],
+          "headline-xl-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+          "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+          "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+          "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+          "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+          "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+          "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+          "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+          "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }]
+        }
+      }
+    }
+  }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #f8f9ff;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col">
+<!-- ==================== SIDE NAVIGATION BAR ==================== -->
+<!-- Conforms strictly to Shared Components JSON (SideNavBar) -->
+<aside class="fixed left-0 top-0 h-screen w-64 flex flex-col justify-between p-4 border-r border-outline-variant bg-surface-container-lowest z-40">
+<!-- Brand / Header Section -->
+<div class="flex flex-col gap-5">
+<div class="flex items-center gap-3 px-2 py-1">
+<div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-on-primary" data-icon="sports_tennis">sports_tennis</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm font-bold text-primary tracking-tight">Apex Badminton</span>
+<span class="font-body-sm text-body-sm text-outline">SG Highway, Ahmedabad</span>
+</div>
+</div>
+<!-- Quick Slot Hold CTA Button -->
+<button class="w-full bg-primary-container text-on-primary font-label-lg text-label-lg py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 hover:bg-secondary transition-colors duration-150 active:scale-[0.98]">
+<span class="material-symbols-outlined text-lg" data-icon="lock_clock">lock_clock</span>
+<span>Quick Slot Hold</span>
+</button>
+<!-- Navigation Links (6 tabs from JSON; Court Matrix active for Court & Pitch Management) -->
+<nav class="flex flex-col gap-1 mt-1">
+<a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg flex items-center gap-3 px-3 py-2.5 font-label-lg text-label-lg transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="bg-primary-container text-on-primary font-semibold rounded-lg flex items-center gap-3 px-3 py-2.5 font-label-lg text-label-lg shadow-sm" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view" data-weight="fill" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span>Court Matrix</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg flex items-center gap-3 px-3 py-2.5 font-label-lg text-label-lg transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span>Calendar &amp; Bookings</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg flex items-center gap-3 px-3 py-2.5 font-label-lg text-label-lg transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span>Revenue &amp; Settlement</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg flex items-center gap-3 px-3 py-2.5 font-label-lg text-label-lg transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+<span>Pricing &amp; Slots</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg flex items-center gap-3 px-3 py-2.5 font-label-lg text-label-lg transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Venue Settings</span>
+</a>
+</nav>
+</div>
+<!-- Footer Tabs & Turnstile Sync Micro-Widget -->
+<div class="flex flex-col gap-2 pt-4 border-t border-outline-variant">
+<!-- Turnstile hardware live status small pill -->
+<div class="px-3 py-2 bg-surface-container-low rounded-lg flex items-center justify-between border border-outline-variant">
+<div class="flex items-center gap-2">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+</span>
+<span class="font-label-sm text-label-sm text-on-surface">Turnstiles: Online</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-bold">100%</span>
+</div>
+<a class="text-on-surface-variant hover:text-on-surface rounded-lg flex items-center gap-3 px-3 py-2 font-label-md text-label-md transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="headset_mic">headset_mic</span>
+<span>Support Desk</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface rounded-lg flex items-center gap-3 px-3 py-2 font-label-md text-label-md transition-colors" href="#">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+<span>System Status</span>
+</a>
+</div>
+</aside>
+<!-- ==================== MAIN SHELL WRAPPER ==================== -->
+<div class="pl-64 flex flex-col min-h-screen">
+<!-- ==================== TOP NAVIGATION BAR ==================== -->
+<!-- Strictly conforms to Shared Components JSON (TopNavBar) -->
+<header class="w-full h-16 px-6 flex items-center justify-between border-b border-outline-variant bg-surface-container-lowest z-30 sticky top-0">
+<!-- Left: Search & Facility Switcher (search_bar: on_left) -->
+<div class="flex items-center gap-5">
+<!-- Brand text anchor -->
+<span class="font-headline-sm text-headline-sm font-bold text-primary tracking-tight">QuickCourt Facility OS</span>
+<!-- Divider -->
+<span class="h-5 w-px bg-outline-variant"></span>
+<!-- Search Bar -->
+<div class="relative w-72">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg" data-icon="search">search</span>
+<input class="w-full h-9 pl-9 pr-3 rounded-lg border border-outline-variant bg-background font-body-sm text-body-sm text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" placeholder="Search courts, surface, turnstile ID..." type="text"/>
+</div>
+</div>
+<!-- Right: Trailing Secondary Action (Facility context), Block Court CTA, Icons, Avatar -->
+<div class="flex items-center gap-3">
+<!-- Facility Switcher Capsule (trailing_secondary_action) -->
+<div class="hidden lg:flex items-center gap-2 bg-surface-container-low px-3 py-1.5 rounded-lg border border-outline-variant hover:bg-surface-container transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-primary text-base" data-icon="storefront">storefront</span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Apex Badminton Academy, SG Highway</span>
+<span class="text-xs bg-secondary-container text-on-secondary-container px-1.5 py-0.5 rounded font-label-sm text-label-sm">Active Sync</span>
+<span class="material-symbols-outlined text-outline text-sm" data-icon="expand_more">expand_more</span>
+</div>
+<!-- Trailing Primary Action: Block Court -->
+<button class="bg-surface-container-lowest border border-outline-variant text-on-surface hover:border-outline font-label-md text-label-md px-3.5 py-2 rounded-lg flex items-center gap-1.5 transition-all shadow-sm active:scale-[0.98]">
+<span class="material-symbols-outlined text-base text-error" data-icon="block">block</span>
+<span>Block Court</span>
+</button>
+<!-- Notification & Help Icons -->
+<div class="flex items-center gap-1 border-l border-outline-variant pl-2">
+<button class="relative p-2 text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors" title="Notifications">
+<span class="material-symbols-outlined text-xl" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full ring-2 ring-surface-container-lowest"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors" title="Help &amp; Guides">
+<span class="material-symbols-outlined text-xl" data-icon="help">help</span>
+</button>
+</div>
+<!-- Arena Host Profile Avatar -->
+<div class="flex items-center gap-2.5 pl-2 border-l border-outline-variant">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-label-md text-label-md font-bold">
+            AH
+          </div>
+<div class="hidden xl:flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface leading-tight font-semibold">Tirth Patel</span>
+<span class="text-[10px] text-outline font-medium">Head Arena Host</span>
+</div>
+</div>
+</div>
+</header>
+<!-- ==================== MAIN WORKSPACE ==================== -->
+<main class="flex-1 p-6 lg:p-8 max-w-[1440px] w-full mx-auto flex flex-col gap-6">
+<!-- Breadcrumb Navigation -->
+<nav class="flex items-center gap-2 font-label-sm text-label-sm text-outline">
+<span>Owner Portal</span>
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+<span>Facilities</span>
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+<span>Apex Badminton Academy</span>
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary font-bold">Court Management</span>
+</nav>
+<!-- Workspace Page Title & Primary Actions Header -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-2 border-b border-outline-variant">
+<div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">Court &amp; Pitch Management</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">
+            Manage courts, multi-turf pitches, operating time-slots, and real-time turnstile sync for Apex Badminton Academy, Ahmedabad.
+          </p>
+</div>
+<!-- Action Cluster -->
+<div class="flex items-center gap-3 self-start lg:self-auto">
+<!-- Bulk Slot Adjustments Outline Button -->
+<button class="h-11 px-4 bg-surface-container-lowest border border-outline-variant text-on-surface hover:bg-surface-container-low hover:border-outline font-label-lg text-label-lg rounded-xl flex items-center gap-2 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-lg" data-icon="tune">tune</span>
+<span>Bulk Slot Adjustments</span>
+</button>
+<!-- + Add New Court Primary Green Button -->
+<button class="h-11 px-5 bg-primary-container text-on-primary hover:bg-secondary font-label-lg text-label-lg rounded-xl flex items-center gap-2 shadow-sm transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-xl" data-icon="add">add</span>
+<span>+ Add New Court</span>
+</button>
+</div>
+</div>
+<!-- ==================== METRICS ROW (4 SUMMARY CARDS) ==================== -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Metric 1: Total Configured Courts -->
+<div class="bg-surface-container-lowest border border-outline-variant p-4 rounded-xl flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-outline">Total Configured Courts</span>
+<div class="flex items-baseline gap-2 mt-1.5">
+<span class="font-headline-xl text-headline-xl text-on-surface font-bold">8 Courts</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Across 2 specialized zones</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-low text-primary flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+</div>
+</div>
+<!-- Metric 2: Active Bookable Now -->
+<div class="bg-surface-container-lowest border border-outline-variant p-4 rounded-xl flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-outline">Active Bookable Now</span>
+<div class="flex items-baseline gap-2 mt-1.5">
+<span class="font-headline-xl text-headline-xl text-primary font-bold">6 Courts</span>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-container px-1.5 py-0.5 rounded font-bold">88% Utilized</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Peak hour slot contention high</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-secondary-container/30 text-secondary flex items-center justify-center border border-secondary-container">
+<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+</div>
+</div>
+<!-- Metric 3: Avg Hourly Realized Rate -->
+<div class="bg-surface-container-lowest border border-outline-variant p-4 rounded-xl flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-outline">Avg Hourly Realized Rate</span>
+<div class="flex items-baseline gap-2 mt-1.5">
+<span class="font-headline-xl text-headline-xl text-on-surface font-bold">₹625<span class="font-body-md text-body-md text-outline font-normal">/hr</span></span>
+</div>
+<span class="font-body-sm text-body-sm text-secondary flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-xs" data-icon="trending_up">trending_up</span>
+              +14% vs last week average
+            </span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-low text-on-surface flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined" data-icon="currency_rupee">currency_rupee</span>
+</div>
+</div>
+<!-- Metric 4: Turnstile IoT Sync -->
+<div class="bg-surface-container-lowest border border-outline-variant p-4 rounded-xl flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-outline">Turnstile IoT Sync</span>
+<div class="flex items-baseline gap-2 mt-1.5">
+<span class="font-headline-xl text-headline-xl text-on-surface font-bold">100%</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Live
+              </span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Gate North, South &amp; East Synced</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-low text-secondary flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined" data-icon="sensors">sensors</span>
+</div>
+</div>
+</div>
+<!-- ==================== FILTER BARS & TABS ==================== -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-surface-container-lowest p-3 rounded-xl border border-outline-variant">
+<!-- Status Filter Tabs -->
+<div class="flex items-center gap-1 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+<button class="bg-primary-container text-on-primary font-label-md text-label-md px-3.5 py-1.5 rounded-lg font-semibold flex items-center gap-1.5 shadow-sm">
+<span>All Courts</span>
+<span class="bg-on-primary/20 px-1.5 py-0.2 rounded-full text-xs">8</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md px-3.5 py-1.5 rounded-lg flex items-center gap-1.5 transition-colors">
+<span>Active &amp; Bookable</span>
+<span class="bg-surface-container-high px-1.5 py-0.2 rounded-full text-xs text-on-surface">6</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md px-3.5 py-1.5 rounded-lg flex items-center gap-1.5 transition-colors">
+<span>Maintenance / Cleaning</span>
+<span class="bg-amber-100 text-amber-800 px-1.5 py-0.2 rounded-full text-xs font-semibold">1</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md px-3.5 py-1.5 rounded-lg flex items-center gap-1.5 transition-colors">
+<span>Under Review / Inactive</span>
+<span class="bg-surface-variant text-outline px-1.5 py-0.2 rounded-full text-xs">1</span>
+</button>
+</div>
+<!-- Sport Filter Chips -->
+<div class="flex items-center gap-2 border-t sm:border-t-0 pt-2 sm:pt-0 border-outline-variant">
+<span class="font-label-sm text-label-sm text-outline hidden md:inline">Sport:</span>
+<div class="flex items-center gap-1.5">
+<button class="bg-primary text-on-primary font-label-sm text-label-sm px-2.5 py-1 rounded-md">All Sports</button>
+<button class="bg-surface-container-low border border-outline-variant text-on-surface font-label-sm text-label-sm px-2.5 py-1 rounded-md hover:bg-surface-container transition-colors">Badminton (5)</button>
+<button class="bg-surface-container-low border border-outline-variant text-on-surface font-label-sm text-label-sm px-2.5 py-1 rounded-md hover:bg-surface-container transition-colors">Pickleball (2)</button>
+<button class="bg-surface-container-low border border-outline-variant text-on-surface font-label-sm text-label-sm px-2.5 py-1 rounded-md hover:bg-surface-container transition-colors">Box Cricket (1)</button>
+</div>
+</div>
+</div>
+<!-- ==================== COURT MANAGEMENT INVENTORY LIST ==================== -->
+<div class="flex flex-col gap-3">
+<!-- Court Entry 1: Championship Pro Arena -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 lg:p-5 flex flex-col xl:flex-row xl:items-center justify-between gap-4 hover:border-outline transition-all duration-150 shadow-sm">
+<!-- Column A: Identity, Sport & Surface -->
+<div class="flex items-start gap-4 min-w-[340px]">
+<div class="w-12 h-12 rounded-xl bg-primary-container/10 border border-primary-container/20 flex flex-col items-center justify-center text-primary shrink-0">
+<span class="font-headline-sm text-headline-sm font-bold leading-none">01</span>
+<span class="font-label-sm text-[9px] uppercase tracking-wider text-outline font-bold">Court</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Court 1 — Championship Pro Arena</h2>
+<!-- Sport Badge -->
+<span class="inline-flex items-center gap-1 bg-surface-container px-2 py-0.5 rounded text-xs font-label-md text-label-md text-primary font-semibold">
+<span class="material-symbols-outlined text-sm" data-icon="sports_tennis">sports_tennis</span>
+                  Badminton
+                </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-sm text-outline" data-icon="layers">layers</span>
+<span>7.0mm BWF Certified Taraflex Matting</span>
+<span class="text-outline-variant">•</span>
+<span class="text-outline">Main Indoor Hall A</span>
+</p>
+</div>
+</div>
+<!-- Column B: Pricing & Peak Indicator -->
+<div class="flex flex-col min-w-[150px]">
+<span class="font-label-sm text-label-sm text-outline">Hourly Rate</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold">₹600</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ hr</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-1 font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Peak: ₹750/hr (Post 5PM)
+            </span>
+</div>
+<!-- Column C: Operating Hours & Turnstile Mapping -->
+<div class="flex flex-col min-w-[190px]">
+<span class="font-label-sm text-label-sm text-outline">Operating Schedule</span>
+<div class="font-body-sm text-body-sm text-on-surface font-medium mt-0.5 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-outline" data-icon="schedule">schedule</span>
+              06:00 AM – 11:00 PM (Mon–Sun)
+            </div>
+<div class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-sm text-secondary" data-icon="door_front">door_front</span>
+<span>Hardware Sync: <span class="font-semibold text-on-surface">Gate North #1</span></span>
+</div>
+</div>
+<!-- Column D: Live Status & Toggle -->
+<div class="flex items-center gap-4 min-w-[180px]">
+<!-- Status Pill: Active & Bookable -->
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline mb-1">Live State</span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-label-md text-label-md font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                Active &amp; Bookable
+              </span>
+</div>
+<!-- Instant Online Booking Toggle -->
+<div class="flex flex-col items-center pl-2">
+<span class="font-label-sm text-[10px] text-outline mb-1">Web Book</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+<!-- Column E: Actions -->
+<div class="flex items-center gap-2 border-t xl:border-t-0 pt-3 xl:pt-0 border-outline-variant justify-end">
+<button class="h-9 px-3 bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md rounded-lg flex items-center gap-1.5 border border-outline-variant transition-colors" title="View Real-Time Matrix">
+<span class="material-symbols-outlined text-base" data-icon="calendar_month">calendar_month</span>
+<span>Schedule</span>
+</button>
+<button class="h-9 px-3 bg-surface-container-lowest hover:bg-surface-container-low text-primary font-label-md text-label-md rounded-lg flex items-center gap-1 border border-outline-variant transition-colors" title="Edit Court Specs">
+<span class="material-symbols-outlined text-base" data-icon="edit">edit</span>
+<span>Edit</span>
+</button>
+<button class="h-9 w-9 bg-surface-container-lowest hover:bg-error-container text-outline hover:text-error rounded-lg flex items-center justify-center border border-outline-variant transition-colors" title="Decommission / Delete Court">
+<span class="material-symbols-outlined text-base" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<!-- Court Entry 2: Synthetic BWF Club Court (Occupied) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 lg:p-5 flex flex-col xl:flex-row xl:items-center justify-between gap-4 hover:border-outline transition-all duration-150 shadow-sm">
+<div class="flex items-start gap-4 min-w-[340px]">
+<div class="w-12 h-12 rounded-xl bg-primary-container/10 border border-primary-container/20 flex flex-col items-center justify-center text-primary shrink-0">
+<span class="font-headline-sm text-headline-sm font-bold leading-none">02</span>
+<span class="font-label-sm text-[9px] uppercase tracking-wider text-outline font-bold">Court</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Court 2 — Synthetic BWF Club Court</h2>
+<span class="inline-flex items-center gap-1 bg-surface-container px-2 py-0.5 rounded text-xs font-label-md text-label-md text-primary font-semibold">
+<span class="material-symbols-outlined text-sm" data-icon="sports_tennis">sports_tennis</span>
+                  Badminton
+                </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-sm text-outline" data-icon="layers">layers</span>
+<span>5.5mm Multi-Layered Vinyl Cushioned Mat</span>
+<span class="text-outline-variant">•</span>
+<span class="text-outline">Main Indoor Hall A</span>
+</p>
+</div>
+</div>
+<div class="flex flex-col min-w-[150px]">
+<span class="font-label-sm text-label-sm text-outline">Hourly Rate</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold">₹550</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ hr</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1 font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span> Standard Tariff
+            </span>
+</div>
+<div class="flex flex-col min-w-[190px]">
+<span class="font-label-sm text-label-sm text-outline">Operating Schedule</span>
+<div class="font-body-sm text-body-sm text-on-surface font-medium mt-0.5 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-outline" data-icon="schedule">schedule</span>
+              06:00 AM – 11:00 PM (Mon–Sun)
+            </div>
+<div class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-sm text-secondary" data-icon="door_front">door_front</span>
+<span>Hardware Sync: <span class="font-semibold text-on-surface">Gate North #2</span></span>
+</div>
+</div>
+<div class="flex items-center gap-4 min-w-[180px]">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline mb-1">Live State</span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-label-md text-label-md font-semibold bg-blue-50 text-blue-800 border border-blue-200">
+<span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+                Occupied / In Play
+              </span>
+</div>
+<div class="flex flex-col items-center pl-2">
+<span class="font-label-sm text-[10px] text-outline mb-1">Web Book</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+<div class="flex items-center gap-2 border-t xl:border-t-0 pt-3 xl:pt-0 border-outline-variant justify-end">
+<button class="h-9 px-3 bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md rounded-lg flex items-center gap-1.5 border border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="calendar_month">calendar_month</span>
+<span>Schedule</span>
+</button>
+<button class="h-9 px-3 bg-surface-container-lowest hover:bg-surface-container-low text-primary font-label-md text-label-md rounded-lg flex items-center gap-1 border border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="edit">edit</span>
+<span>Edit</span>
+</button>
+<button class="h-9 w-9 bg-surface-container-lowest hover:bg-error-container text-outline hover:text-error rounded-lg flex items-center justify-center border border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<!-- Court Entry 3: Cushioned Canadian Maple Wood -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 lg:p-5 flex flex-col xl:flex-row xl:items-center justify-between gap-4 hover:border-outline transition-all duration-150 shadow-sm">
+<div class="flex items-start gap-4 min-w-[340px]">
+<div class="w-12 h-12 rounded-xl bg-primary-container/10 border border-primary-container/20 flex flex-col items-center justify-center text-primary shrink-0">
+<span class="font-headline-sm text-headline-sm font-bold leading-none">03</span>
+<span class="font-label-sm text-[9px] uppercase tracking-wider text-outline font-bold">Court</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Court 3 — Cushioned Canadian Maple Wood</h2>
+<span class="inline-flex items-center gap-1 bg-surface-container px-2 py-0.5 rounded text-xs font-label-md text-label-md text-primary font-semibold">
+<span class="material-symbols-outlined text-sm" data-icon="sports_tennis">sports_tennis</span>
+                  Badminton
+                </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-sm text-outline" data-icon="layers">layers</span>
+<span>Sprung Canadian Hard Maple Floor</span>
+<span class="text-outline-variant">•</span>
+<span class="text-outline">Main Indoor Hall B</span>
+</p>
+</div>
+</div>
+<div class="flex flex-col min-w-[150px]">
+<span class="font-label-sm text-label-sm text-outline">Hourly Rate</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold">₹650</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ hr</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-1 font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Peak: ₹800/hr
+            </span>
+</div>
+<div class="flex flex-col min-w-[190px]">
+<span class="font-label-sm text-label-sm text-outline">Operating Schedule</span>
+<div class="font-body-sm text-body-sm text-on-surface font-medium mt-0.5 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-outline" data-icon="schedule">schedule</span>
+              06:00 AM – 11:00 PM (Mon–Sun)
+            </div>
+<div class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-sm text-secondary" data-icon="door_front">door_front</span>
+<span>Hardware Sync: <span class="font-semibold text-on-surface">Gate North #3</span></span>
+</div>
+</div>
+<div class="flex items-center gap-4 min-w-[180px]">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline mb-1">Live State</span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-label-md text-label-md font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                Active &amp; Bookable
+              </span>
+</div>
+<div class="flex flex-col items-center pl-2">
+<span class="font-label-sm text-[10px] text-outline mb-1">Web Book</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+<div class="flex items-center gap-2 border-t xl:border-t-0 pt-3 xl:pt-0 border-outline-variant justify-end">
+<button class="h-9 px-3 bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md rounded-lg flex items-center gap-1.5 border border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="calendar_month">calendar_month</span>
+<span>Schedule</span>
+</button>
+<button class="h-9 px-3 bg-surface-container-lowest hover:bg-surface-container-low text-primary font-label-md text-label-md rounded-lg flex items-center gap-1 border border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="edit">edit</span>
+<span>Edit</span>
+</button>
+<button class="h-9 w-9 bg-surface-container-lowest hover:bg-error-container text-outline hover:text-error rounded-lg flex items-center justify-center border border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<!-- Court Entry 4: Half-Court Solo & Drill Station (Scheduled Maintenance) -->
+<div class="bg-surface-container-lowest border border-amber-200 rounded-xl p-4 lg:p-5 flex flex-col xl:flex-row xl:items-center justify-between gap-4 hover:border-outline transition-all duration-150 shadow-sm">
+<div class="flex items-start gap-4 min-w-[340px]">
+<div class="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200 flex flex-col items-center justify-center text-amber-700 shrink-0">
+<span class="font-headline-sm text-headline-sm font-bold leading-none">04</span>
+<span class="font-label-sm text-[9px] uppercase tracking-wider text-amber-600 font-bold">Court</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Court 4 — Half-Court Solo &amp; Drill Station</h2>
+<span class="inline-flex items-center gap-1 bg-surface-container px-2 py-0.5 rounded text-xs font-label-md text-label-md text-primary font-semibold">
+<span class="material-symbols-outlined text-sm" data-icon="sports_tennis">sports_tennis</span>
+                  Badminton Solo
+                </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-sm text-outline" data-icon="layers">layers</span>
+<span>Automated Feeder + Matting</span>
+<span class="text-outline-variant">•</span>
+<span class="text-outline">Academy Training Bay</span>
+</p>
+</div>
+</div>
+<div class="flex flex-col min-w-[150px]">
+<span class="font-label-sm text-label-sm text-outline">Hourly Rate</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold">₹450</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ hr</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline flex items-center gap-1 font-semibold">
+              Fixed Machine Rate
+            </span>
+</div>
+<div class="flex flex-col min-w-[190px]">
+<span class="font-label-sm text-label-sm text-outline">Operating Schedule</span>
+<div class="font-body-sm text-body-sm text-on-surface font-medium mt-0.5 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-outline" data-icon="schedule">schedule</span>
+              07:00 AM – 10:00 PM (Mon–Sun)
+            </div>
+<div class="font-label-sm text-label-sm text-amber-700 flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-sm text-amber-600" data-icon="engineering">engineering</span>
+<span>Machine Calibration In-Progress</span>
+</div>
+</div>
+<div class="flex items-center gap-4 min-w-[180px]">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline mb-1">Live State</span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-label-md text-label-md font-semibold bg-amber-50 text-amber-800 border border-amber-200">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                Scheduled Maintenance
+              </span>
+</div>
+<div class="flex flex-col items-center pl-2">
+<span class="font-label-sm text-[10px] text-outline mb-1">Web Book</span>
+<label class="relative inline-flex items-center cursor-not-allowed opacity-60">
+<input class="sr-only peer" disabled="" type="checkbox"/>
+<div class="w-9 h-5 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+<div class="flex items-center gap-2 border-t xl:border-t-0 pt-3 xl:pt-0 border-outline-variant justify-end">
+<button class="h-9 px-3 bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md rounded-lg flex items-center gap-1.5 border border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="calendar_month">calendar_month</span>
+<span>Schedule</span>
+</button>
+<button class="h-9 px-3 bg-surface-container-lowest hover:bg-surface-container-low text-primary font-label-md text-label-md rounded-lg flex items-center gap-1 border border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="edit">edit</span>
+<span>Edit</span>
+</button>
+<button class="h-9 w-9 bg-surface-container-lowest hover:bg-error-container text-outline hover:text-error rounded-lg flex items-center justify-center border border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<!-- Court Entry 5: Regulation Pickleball Dual-Line Box -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 lg:p-5 flex flex-col xl:flex-row xl:items-center justify-between gap-4 hover:border-outline transition-all duration-150 shadow-sm">
+<div class="flex items-start gap-4 min-w-[340px]">
+<div class="w-12 h-12 rounded-xl bg-secondary-container/20 border border-secondary/30 flex flex-col items-center justify-center text-secondary shrink-0">
+<span class="font-headline-sm text-headline-sm font-bold leading-none">05</span>
+<span class="font-label-sm text-[9px] uppercase tracking-wider text-secondary font-bold">Pickle</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Court 5 — Regulation Pickleball Dual-Line Box</h2>
+<span class="inline-flex items-center gap-1 bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded text-xs font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-sm" data-icon="sports_tennis">sports_tennis</span>
+                  Pickleball
+                </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-sm text-outline" data-icon="layers">layers</span>
+<span>ProCushion 8-Coat Acrylic Surface</span>
+<span class="text-outline-variant">•</span>
+<span class="text-outline">West Outdoor Pavilion</span>
+</p>
+</div>
+</div>
+<div class="flex flex-col min-w-[150px]">
+<span class="font-label-sm text-label-sm text-outline">Hourly Rate</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold">₹700</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ hr</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-1 font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Peak: ₹850/hr
+            </span>
+</div>
+<div class="flex flex-col min-w-[190px]">
+<span class="font-label-sm text-label-sm text-outline">Operating Schedule</span>
+<div class="font-body-sm text-body-sm text-on-surface font-medium mt-0.5 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-outline" data-icon="schedule">schedule</span>
+              06:00 AM – 11:00 PM (Mon–Sun)
+            </div>
+<div class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-sm text-secondary" data-icon="door_front">door_front</span>
+<span>Hardware Sync: <span class="font-semibold text-on-surface">Gate West #1</span></span>
+</div>
+</div>
+<div class="flex items-center gap-4 min-w-[180px]">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline mb-1">Live State</span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-label-md text-label-md font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                Active &amp; Bookable
+              </span>
+</div>
+<div class="flex flex-col items-center pl-2">
+<span class="font-label-sm text-[10px] text-outline mb-1">Web Book</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+<div class="flex items-center gap-2 border-t xl:border-t-0 pt-3 xl:pt-0 border-outline-variant justify-end">
+<button class="h-9 px-3 bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md rounded-lg flex items-center gap-1.5 border border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="calendar_month">calendar_month</span>
+<span>Schedule</span>
+</button>
+<button class="h-9 px-3 bg-surface-container-lowest hover:bg-surface-container-low text-primary font-label-md text-label-md rounded-lg flex items-center gap-1 border border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="edit">edit</span>
+<span>Edit</span>
+</button>
+<button class="h-9 w-9 bg-surface-container-lowest hover:bg-error-container text-outline hover:text-error rounded-lg flex items-center justify-center border border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<!-- Court Entry 6: Pickleball Box B -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 lg:p-5 flex flex-col xl:flex-row xl:items-center justify-between gap-4 hover:border-outline transition-all duration-150 shadow-sm">
+<div class="flex items-start gap-4 min-w-[340px]">
+<div class="w-12 h-12 rounded-xl bg-secondary-container/20 border border-secondary/30 flex flex-col items-center justify-center text-secondary shrink-0">
+<span class="font-headline-sm text-headline-sm font-bold leading-none">06</span>
+<span class="font-label-sm text-[9px] uppercase tracking-wider text-secondary font-bold">Pickle</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Court 6 — Pickleball Box B</h2>
+<span class="inline-flex items-center gap-1 bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded text-xs font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-sm" data-icon="sports_tennis">sports_tennis</span>
+                  Pickleball
+                </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-sm text-outline" data-icon="layers">layers</span>
+<span>Acrylic Hardcourt with LED Floodlights</span>
+<span class="text-outline-variant">•</span>
+<span class="text-outline">West Outdoor Pavilion</span>
+</p>
+</div>
+</div>
+<div class="flex flex-col min-w-[150px]">
+<span class="font-label-sm text-label-sm text-outline">Hourly Rate</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold">₹700</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ hr</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-1 font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Peak: ₹850/hr
+            </span>
+</div>
+<div class="flex flex-col min-w-[190px]">
+<span class="font-label-sm text-label-sm text-outline">Operating Schedule</span>
+<div class="font-body-sm text-body-sm text-on-surface font-medium mt-0.5 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-outline" data-icon="schedule">schedule</span>
+              06:00 AM – 11:00 PM (Mon–Sun)
+            </div>
+<div class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-sm text-secondary" data-icon="door_front">door_front</span>
+<span>Hardware Sync: <span class="font-semibold text-on-surface">Gate West #2</span></span>
+</div>
+</div>
+<div class="flex items-center gap-4 min-w-[180px]">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline mb-1">Live State</span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-label-md text-label-md font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                Active &amp; Bookable
+              </span>
+</div>
+<div class="flex flex-col items-center pl-2">
+<span class="font-label-sm text-[10px] text-outline mb-1">Web Book</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+<div class="flex items-center gap-2 border-t xl:border-t-0 pt-3 xl:pt-0 border-outline-variant justify-end">
+<button class="h-9 px-3 bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md rounded-lg flex items-center gap-1.5 border border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="calendar_month">calendar_month</span>
+<span>Schedule</span>
+</button>
+<button class="h-9 px-3 bg-surface-container-lowest hover:bg-surface-container-low text-primary font-label-md text-label-md rounded-lg flex items-center gap-1 border border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="edit">edit</span>
+<span>Edit</span>
+</button>
+<button class="h-9 w-9 bg-surface-container-lowest hover:bg-error-container text-outline hover:text-error rounded-lg flex items-center justify-center border border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<!-- Court Entry 7: Indoor Box Cricket Pitch 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 lg:p-5 flex flex-col xl:flex-row xl:items-center justify-between gap-4 hover:border-outline transition-all duration-150 shadow-sm">
+<div class="flex items-start gap-4 min-w-[340px]">
+<div class="w-12 h-12 rounded-xl bg-tertiary-fixed/40 border border-tertiary/20 flex flex-col items-center justify-center text-tertiary shrink-0">
+<span class="font-headline-sm text-headline-sm font-bold leading-none">07</span>
+<span class="font-label-sm text-[9px] uppercase tracking-wider text-outline font-bold">Turf</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Court 7 — Indoor Box Cricket Pitch 1</h2>
+<span class="inline-flex items-center gap-1 bg-amber-50 text-amber-900 border border-amber-200 px-2 py-0.5 rounded text-xs font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-sm" data-icon="sports_cricket">sports_cricket</span>
+                  Box Cricket
+                </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-sm text-outline" data-icon="layers">layers</span>
+<span>Synthetic Turf 40mm High-Density Monofilament</span>
+<span class="text-outline-variant">•</span>
+<span class="text-outline">Arena Turf Zone</span>
+</p>
+</div>
+</div>
+<div class="flex flex-col min-w-[150px]">
+<span class="font-label-sm text-label-sm text-outline">Hourly Rate</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold">₹1,200</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ hr</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-1 font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Night Turf: ₹1,500/hr
+            </span>
+</div>
+<div class="flex flex-col min-w-[190px]">
+<span class="font-label-sm text-label-sm text-outline">Operating Schedule</span>
+<div class="font-body-sm text-body-sm text-on-surface font-medium mt-0.5 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-outline" data-icon="schedule">schedule</span>
+              06:00 AM – 01:00 AM (Mon–Sun)
+            </div>
+<div class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-sm text-secondary" data-icon="door_front">door_front</span>
+<span>Hardware Sync: <span class="font-semibold text-on-surface">Gate East #1</span></span>
+</div>
+</div>
+<div class="flex items-center gap-4 min-w-[180px]">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline mb-1">Live State</span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-label-md text-label-md font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                Active &amp; Bookable
+              </span>
+</div>
+<div class="flex flex-col items-center pl-2">
+<span class="font-label-sm text-[10px] text-outline mb-1">Web Book</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+<div class="flex items-center gap-2 border-t xl:border-t-0 pt-3 xl:pt-0 border-outline-variant justify-end">
+<button class="h-9 px-3 bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md rounded-lg flex items-center gap-1.5 border border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="calendar_month">calendar_month</span>
+<span>Schedule</span>
+</button>
+<button class="h-9 px-3 bg-surface-container-lowest hover:bg-surface-container-low text-primary font-label-md text-label-md rounded-lg flex items-center gap-1 border border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="edit">edit</span>
+<span>Edit</span>
+</button>
+<button class="h-9 w-9 bg-surface-container-lowest hover:bg-error-container text-outline hover:text-error rounded-lg flex items-center justify-center border border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<!-- Court Entry 8: Training Bay & Practice Net (Offline / Blocked) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 lg:p-5 flex flex-col xl:flex-row xl:items-center justify-between gap-4 hover:border-outline transition-all duration-150 shadow-sm opacity-85">
+<div class="flex items-start gap-4 min-w-[340px]">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex flex-col items-center justify-center text-outline shrink-0">
+<span class="font-headline-sm text-headline-sm font-bold leading-none">08</span>
+<span class="font-label-sm text-[9px] uppercase tracking-wider text-outline font-bold">Bay</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Court 8 — Training Bay &amp; Practice Net</h2>
+<span class="inline-flex items-center gap-1 bg-surface-container px-2 py-0.5 rounded text-xs font-label-md text-label-md text-outline font-semibold">
+<span class="material-symbols-outlined text-sm" data-icon="sports_tennis">sports_tennis</span>
+                  Multi-Drill
+                </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-sm text-outline" data-icon="layers">layers</span>
+<span>Shock-Pad Rubber Underlay</span>
+<span class="text-outline-variant">•</span>
+<span class="text-outline">Annex Area</span>
+</p>
+</div>
+</div>
+<div class="flex flex-col min-w-[150px]">
+<span class="font-label-sm text-label-sm text-outline">Hourly Rate</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold">₹400</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ hr</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline flex items-center gap-1 font-semibold">
+              Internal Academy Reserved
+            </span>
+</div>
+<div class="flex flex-col min-w-[190px]">
+<span class="font-label-sm text-label-sm text-outline">Operating Schedule</span>
+<div class="font-body-sm text-body-sm text-on-surface font-medium mt-0.5 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-outline" data-icon="schedule">schedule</span>
+              06:00 AM – 09:00 PM (Mon–Fri)
+            </div>
+<div class="font-label-sm text-label-sm text-outline flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-sm text-outline" data-icon="door_front">door_front</span>
+<span>Hardware Sync: <span class="font-semibold text-outline">Gate East #2 (Unpaired)</span></span>
+</div>
+</div>
+<div class="flex items-center gap-4 min-w-[180px]">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline mb-1">Live State</span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-label-md text-label-md font-semibold bg-gray-100 text-gray-700 border border-gray-300">
+<span class="w-2 h-2 rounded-full bg-gray-400"></span>
+                Offline / Blocked
+              </span>
+</div>
+<div class="flex flex-col items-center pl-2">
+<span class="font-label-sm text-[10px] text-outline mb-1">Web Book</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+<div class="flex items-center gap-2 border-t xl:border-t-0 pt-3 xl:pt-0 border-outline-variant justify-end">
+<button class="h-9 px-3 bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md rounded-lg flex items-center gap-1.5 border border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="calendar_month">calendar_month</span>
+<span>Schedule</span>
+</button>
+<button class="h-9 px-3 bg-surface-container-lowest hover:bg-surface-container-low text-primary font-label-md text-label-md rounded-lg flex items-center gap-1 border border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="edit">edit</span>
+<span>Edit</span>
+</button>
+<button class="h-9 w-9 bg-surface-container-lowest hover:bg-error-container text-outline hover:text-error rounded-lg flex items-center justify-center border border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Real-Time Hardware & IoT Turnstile Sync Panel -->
+<div class="mt-2 bg-surface-container-low border border-outline-variant rounded-xl p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest border border-outline-variant flex items-center justify-center text-primary shadow-xs">
+<span class="material-symbols-outlined" data-icon="router">router</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Hardware Turnstile Controllers</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-label-sm text-label-sm font-bold bg-secondary-container text-on-secondary-container">TCP/IP Connected</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+              Apex Ahmedabad Gateway ID: <span class="font-mono text-xs font-semibold text-on-surface">APX-AMD-HUB-049</span> • Ping: 12ms • Automatic biometric QR verification enabled for confirmed reservations.
+            </span>
+</div>
+</div>
+<div class="flex items-center gap-2 self-end md:self-auto">
+<button class="h-9 px-3.5 bg-surface-container-lowest hover:bg-surface-container border border-outline-variant rounded-lg font-label-md text-label-md text-on-surface flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="refresh">refresh</span>
+<span>Force Resync</span>
+</button>
+<button class="h-9 px-3.5 bg-primary-container text-on-primary hover:bg-secondary rounded-lg font-label-md text-label-md font-semibold flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="settings_remote">settings_remote</span>
+<span>Configure Gates</span>
+</button>
+</div>
+</div>
+</main>
+</div>
+</body></html>

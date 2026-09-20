@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>QuickCourt Admin — Facility Review &amp; Verification</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed": "#002110",
+            "on-background": "#0b1c30",
+            "inverse-primary": "#8dd6a6",
+            "primary-container": "#0a5c36",
+            "on-secondary": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed-dim": "#8dd6a6",
+            "on-secondary-fixed-variant": "#005236",
+            "primary": "#004225",
+            "surface-bright": "#f8f9ff",
+            "tertiary-container": "#485066",
+            "tertiary-fixed": "#dae2fd",
+            "surface-tint": "#216b43",
+            "on-tertiary-fixed-variant": "#3f465c",
+            "on-error-container": "#93000a",
+            "secondary-fixed": "#6ffbbe",
+            "on-secondary-container": "#00714d",
+            "surface-container-high": "#dce9ff",
+            "on-tertiary-fixed": "#131b2e",
+            "error-container": "#ffdad6",
+            "tertiary": "#31394e",
+            "on-secondary-fixed": "#002113",
+            "secondary-fixed-dim": "#4edea3",
+            "outline": "#707a71",
+            "on-primary": "#ffffff",
+            "surface-container-highest": "#d3e4fe",
+            "on-error": "#ffffff",
+            "on-primary-container": "#89d2a2",
+            "secondary-container": "#6cf8bb",
+            "surface": "#f8f9ff",
+            "on-surface": "#0b1c30",
+            "secondary": "#006c49",
+            "surface-container": "#e5eeff",
+            "on-primary-fixed-variant": "#00522e",
+            "outline-variant": "#bfc9bf",
+            "on-surface-variant": "#404941",
+            "on-tertiary-container": "#bbc2dc",
+            "inverse-surface": "#213145",
+            "tertiary-fixed-dim": "#bec6e0",
+            "on-tertiary": "#ffffff",
+            "surface-container-low": "#eff4ff",
+            "surface-variant": "#d3e4fe",
+            "background": "#f8f9ff",
+            "primary-fixed": "#a8f3c1",
+            "inverse-on-surface": "#eaf1ff",
+            "surface-dim": "#cbdbf5",
+            "error": "#ba1a1a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-xl": "2rem",
+            "margin": "1rem",
+            "margin-md": "2rem",
+            "margin-lg": "3rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "gutter-md": "1.5rem",
+            "gutter-lg": "2rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "display-lg": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-xl-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md antialiased min-h-screen flex flex-col">
+<!-- TopNavBar (Shared Component JSON anchor) -->
+<header class="flex justify-between items-center w-full px-6 h-16 border-b border-outline-variant bg-surface-container-lowest sticky top-0 z-50">
+<!-- Left Brand & Context -->
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[20px]">sports_tennis</span>
+</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="text-headline-sm font-headline-sm font-bold text-primary tracking-tight">QuickCourt Admin</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-low text-primary text-[10px] font-bold tracking-wider uppercase border border-outline-variant">ADMIN PORTAL</span>
+</div>
+</div>
+</div>
+<!-- Zone Switcher Links from JSON -->
+<nav class="hidden lg:flex items-center gap-5 ml-4">
+<a class="text-primary font-semibold border-b-2 border-primary py-1 text-label-md font-label-md" href="#">Ahmedabad Central</a>
+<a class="text-on-surface-variant hover:text-on-surface py-1 text-label-md font-label-md transition-colors duration-150 ease-in-out" href="#">West Zone</a>
+<a class="text-on-surface-variant hover:text-on-surface py-1 text-label-md font-label-md transition-colors duration-150 ease-in-out" href="#">AMC Region</a>
+</nav>
+</div>
+<!-- Right Controls: Search, IoT telemetry, notifications, avatar -->
+<div class="flex items-center gap-4">
+<!-- Search Bar -->
+<div class="relative hidden sm:block w-64">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-[18px] text-outline">search</span>
+<input class="w-full h-9 pl-9 pr-3 text-body-sm font-body-sm bg-surface-container-lowest border border-outline-variant rounded focus:border-primary focus:outline-none transition-colors" placeholder="Search facilities, GSTIN, IDs..." type="text"/>
+</div>
+<!-- GateNet IoT status pill -->
+<div class="hidden md:flex items-center gap-2 px-2.5 py-1 rounded-full bg-surface-container-low border border-outline-variant">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="material-symbols-outlined text-[16px] text-secondary">wifi_tethering</span>
+<span class="text-label-sm font-label-sm text-on-surface">GateNet Live: <strong class="text-primary font-bold">142/144 Synced</strong></span>
+</div>
+<!-- Action Icons from JSON -->
+<button class="relative p-2 rounded hover:bg-surface-container-low text-on-surface-variant hover:text-primary transition-colors duration-150 ease-in-out" title="System Notifications" type="button">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="h-6 w-[1px] bg-outline-variant"></div>
+<!-- Admin Profile Avatar & Role -->
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Close-up professional studio portrait of a South Asian lead city operations administrator wearing a crisp collared executive shirt in a bright athletic tech operations hub with clean neutral architectural lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7jrORgnHxXMgC4kbLIeOq_mVFDpYTX0bqkW85Wqr8Lmj4cxuOVsYV-yQ8o3TzYAry0dUdMc9qNoo8LMUh2UbWNhANSYgMK1rQ66fqtEQfx4aYewEUwmDNWvAp-batxJUMWLauKyyCwpISMO-3BMrJSYqr8nbGGCU50q8IHmvO5ILc3HBVUi5EnVIYuZhJQLZdEDJB10mPBEJZOfdx0Ylr01pxMRuk4yEyRJ22FI93JSM9t3Xd2PXMpNWbFb5iX5YgxIUE0_7A_VU"/>
+</div>
+<div class="hidden xl:flex flex-col text-left">
+<span class="text-label-md font-label-md text-on-surface font-semibold">Chintan Dave</span>
+<span class="text-label-sm font-label-sm text-outline">Lead City Ops • Super Admin</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Shell Container with Side Navigation & Main Canvas -->
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar (Shared Component JSON anchor) -->
+<aside class="flex flex-col h-[calc(100vh-4rem)] w-64 border-r border-outline-variant px-3 py-4 justify-between bg-surface shrink-0 hidden md:flex">
+<div>
+<!-- SideNav Brand Header -->
+<div class="px-3 pb-4 mb-2 border-b border-outline-variant">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</div>
+<div>
+<h2 class="text-label-md font-label-md text-on-surface font-bold leading-tight">QuickCourt Operations</h2>
+<p class="text-[11px] text-outline leading-tight">Gujarat State HQ • AMC Zone</p>
+</div>
+</div>
+</div>
+<!-- Navigation Tabs: Exact JSON labels & icons; Active tab locked to 'Facilities & Verification' -->
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[19px]">dashboard</span>
+<span>Overview</span>
+</a>
+<!-- ACTIVE NAVIGATION STATE -->
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary text-on-primary font-semibold text-label-md font-label-md transition-colors duration-150 ease-in-out shadow-sm" href="#">
+<span class="material-symbols-outlined text-[19px]">verified</span>
+<span class="flex-1">Facilities &amp; Verification</span>
+<span class="px-1.5 py-0.2 rounded text-[10px] bg-secondary text-on-secondary font-bold">1</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[19px]">badge</span>
+<span>Facility Owners</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[19px]">groups</span>
+<span>Athlete Users</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[19px]">payments</span>
+<span>Bookings &amp; Revenue</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[19px]">sensors</span>
+<span>Turnstiles &amp; IoT Hub</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[19px]">tune</span>
+<span>Platform Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[19px]">history</span>
+<span>Audit Logs</span>
+</a>
+</nav>
+</div>
+<!-- SideNav Footer & Operations Status -->
+<div class="pt-3 border-t border-outline-variant space-y-3">
+<!-- Live Incident Log CTA Box -->
+<div class="px-3 py-2.5 rounded bg-surface-container-low border border-outline-variant">
+<div class="flex items-center justify-between text-label-sm font-label-sm mb-1">
+<span class="text-on-surface-variant flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+              Live Incident Log
+            </span>
+<span class="text-primary font-bold">0 Active</span>
+</div>
+<div class="text-[11px] text-outline flex items-center justify-between">
+<span>AMC Liaison: HQ-07</span>
+<span class="text-secondary font-semibold">Online</span>
+</div>
+</div>
+<!-- Footer Navigation from JSON -->
+<div class="space-y-0.5">
+<a class="flex items-center gap-3 px-3 py-1.5 rounded text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface text-label-sm font-label-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[17px]">help</span>
+<span>Help &amp; Manual</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-1.5 rounded text-on-surface-variant hover:bg-surface-container-low hover:text-error text-label-sm font-label-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[17px]">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Viewport -->
+<main class="flex-1 overflow-y-auto bg-background px-4 sm:px-6 lg:px-8 py-6">
+<div class="max-w-7xl mx-auto space-y-6">
+<!-- Breadcrumbs & Status Banner -->
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+<nav class="flex items-center gap-2 text-label-md font-label-md text-outline">
+<span class="hover:text-on-surface cursor-pointer">Admin Portal</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="hover:text-on-surface cursor-pointer">Facilities &amp; Verification</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="hover:text-on-surface cursor-pointer">Submissions Review</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface font-semibold">APP-2024-GJ-8842</span>
+</nav>
+<!-- SLA Countdown Chip -->
+<div class="inline-flex items-center gap-2 self-start px-3 py-1 rounded bg-surface-container border border-outline-variant text-label-md font-label-md text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-error">timer</span>
+<span>SLA Priority Target:</span>
+<span class="text-error font-bold tracking-tight">1h 45m remaining</span>
+</div>
+</div>
+<!-- Top Header & Primary Action Bar -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-[0_4px_12px_-2px_rgba(15,23,42,0.06)] flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+<div class="space-y-1.5">
+<div class="flex flex-wrap items-center gap-3">
+<h1 class="text-headline-lg font-headline-lg text-on-surface tracking-tight">
+                East River Badminton &amp; Box Arena
+              </h1>
+<span class="px-2.5 py-0.5 rounded bg-surface-container-high text-primary font-bold text-label-sm font-label-sm border border-outline-variant">
+                Resubmitted — Action Needed
+              </span>
+<span class="text-label-sm font-label-sm text-outline font-mono">ID: APP-2024-GJ-8842</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary">location_on</span>
+              Navrangpura, Central Zone, Ahmedabad • Resubmitted Today at 08:30 AM (v2.1 Revision for Fire Exit Clearance)
+            </p>
+</div>
+<!-- Primary Actions Cluster -->
+<div class="flex flex-wrap items-center gap-2.5 shrink-0">
+<button class="h-10 px-3.5 rounded bg-surface-container-lowest text-on-surface border border-outline-variant hover:bg-surface-container-low text-label-md font-label-md transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">chat_bubble_outline</span>
+<span>Request Clarification</span>
+</button>
+<button class="h-10 px-3.5 rounded bg-error-container text-error border border-outline-variant hover:bg-red-100 text-label-md font-label-md transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">block</span>
+<span>Reject Application</span>
+</button>
+<button class="h-10 px-4 rounded bg-primary-container hover:bg-primary text-on-primary font-semibold text-label-md font-label-md transition-colors flex items-center gap-2 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span>Approve &amp; Activate Facility</span>
+</button>
+<!-- Dropdown Actions -->
+<div class="relative">
+<button class="h-10 w-10 flex items-center justify-center rounded bg-surface-container-lowest border border-outline-variant text-on-surface-variant hover:bg-surface-container-low transition-colors" title="More Actions" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+<!-- 2-Column Asymmetric Dossier Layout (Left: 8 cols, Right: 4 cols) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- LEFT / MAIN SUBMISSION DOSSIER (Cols 1-8) -->
+<div class="lg:col-span-8 space-y-6">
+<!-- Section 1: Facility Identity & Legal Ownership Bento -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5">
+<div class="flex items-center justify-between pb-3 mb-4 border-b border-outline-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">assured_workload</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface font-semibold">1. Legal Entity &amp; Ownership Dossier</h2>
+</div>
+<span class="inline-flex items-center gap-1 text-[11px] font-bold text-secondary bg-surface-container px-2 py-0.5 rounded border border-outline-variant">
+<span class="material-symbols-outlined text-[14px]">done_all</span> MCA/GST Verified
+                </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="p-3.5 rounded-lg bg-surface border border-outline-variant space-y-1">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Registered Entity</span>
+<p class="text-label-lg font-label-lg text-on-surface font-bold">Patel Sports Ventures LLP</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Authorized Signatory: <strong class="text-on-surface">Rajesh Varma</strong> (Managing Partner)</p>
+<div class="pt-2 flex items-center gap-2 text-label-sm font-label-sm text-primary font-medium">
+<span class="material-symbols-outlined text-[16px]">call</span> +91 98250 12834
+                    <span class="text-outline">•</span>
+<span class="material-symbols-outlined text-[16px]">mail</span> rajesh.varma@apexbadminton.in
+                  </div>
+</div>
+<div class="p-3.5 rounded-lg bg-surface border border-outline-variant space-y-1">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Taxation &amp; Civic Registration</span>
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-on-surface-variant font-mono">GSTIN:</span>
+<span class="font-mono font-bold text-primary bg-surface-container-lowest px-2 py-0.5 rounded border border-outline-variant text-[13px]">24AACCP9122M1ZM</span>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="text-label-sm font-label-sm text-on-surface-variant">AMC Sports Reg:</span>
+<span class="font-mono font-semibold text-on-surface text-[13px]">#QCA-AMD-9821</span>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Sub-Registrar Zone:</span>
+<span class="text-body-sm font-body-sm text-on-surface">Central Riverfront Circle (Zone 04)</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Location & Geo-Fencing Preview -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5">
+<div class="flex items-center justify-between pb-3 mb-4 border-b border-outline-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">pin_drop</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface font-semibold">2. Location &amp; Geo-Boundary Verification</h2>
+</div>
+<span class="text-label-sm font-label-sm text-outline font-mono">GPS: 23.0375° N, 72.5518° E</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+<!-- Location details -->
+<div class="md:col-span-6 space-y-3">
+<div>
+<span class="text-label-sm font-label-sm text-outline uppercase">Physical Campus Address</span>
+<p class="text-body-md font-body-md text-on-surface font-semibold mt-0.5">Plot 18, Near Gujarat University &amp; Commerce Six Roads</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Navrangpura, Central Zone, Ahmedabad, Gujarat 380009</p>
+</div>
+<div class="p-3 rounded bg-surface border border-outline-variant space-y-1 text-body-sm font-body-sm">
+<div class="flex items-center gap-2 text-primary font-semibold">
+<span class="material-symbols-outlined text-[18px]">door_front</span>
+                      Turnstile &amp; Emergency Landmark
+                    </div>
+<p class="text-on-surface-variant text-[13px]">
+                      Gate 1 Turnstile on Riverfront Access Road. Secondary athlete entry via St. Xavier’s College lane with 14m setback road.
+                    </p>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 rounded bg-surface-container text-primary text-label-sm font-label-sm font-semibold border border-outline-variant">
+                      Radius Fence: 180m Validated
+                    </span>
+<span class="px-2 py-1 rounded bg-surface-container text-secondary text-label-sm font-label-sm font-semibold border border-outline-variant">
+                      Speed Ping: 12ms to AMC Node
+                    </span>
+</div>
+</div>
+<!-- Aerial Geo-Boundary Visual Card -->
+<div class="md:col-span-6">
+<div class="relative h-44 rounded-lg overflow-hidden border border-outline-variant bg-surface-container group">
+<img class="w-full h-full object-cover" data-alt="High angle aerial satellite-style view of a modern sports facility complex in Ahmedabad with green synthetic roofs, marked geo-fenced boundary polygon in crisp green line overlays, clean urban roads, and bright sunlight." data-location="Ahmedabad" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIWoc6C_dxXxZdbsyst003L2EYJSmoSaJWNG173uGgJ7awpmoHr48J1nL8WfRwiyJBqMqLx8PcI-GoKF3Jauxkrg-guTfdom9DyppiZ6aXE3vC9exQ4iLvAr8ekWD1oLol_SY1cWFulOrCEezsyGuS7F3poQaNBZvWor1MPi3U98GvNg0rQ_p_HhYIfEz_2X5XwL0hqgl4GRENsKnK3-8IuVaCzcY4pprJUPKz697U-4KlCy4tFyW5Vjbqa67BU62CQ54HigwQ3m0"/>
+<!-- Overlay Coordinates Pill -->
+<div class="absolute bottom-2 left-2 bg-surface-container-lowest/90 backdrop-blur-sm border border-outline-variant px-2.5 py-1 rounded text-[11px] font-mono font-semibold text-primary flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                      Boundary Enclosure: 22,400 sq.ft
+                    </div>
+<div class="absolute top-2 right-2 bg-primary text-on-primary text-[10px] font-bold px-2 py-0.5 rounded">
+                      AMC GIS Fenced
+                    </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Facility Description & Overview -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5">
+<div class="flex items-center gap-2 pb-3 mb-3 border-b border-outline-variant">
+<span class="material-symbols-outlined text-primary text-[20px]">subject</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface font-semibold">3. Facility Overview &amp; Operational Blueprint</h2>
+</div>
+<p class="text-body-md font-body-md text-on-surface leading-relaxed">
+                Premier multi-sport indoor hub in central Ahmedabad featuring 4 BWF-standard synthetic badminton courts and 1 high-rebound box cricket turf with anti-glare floodlighting, climate ventilation, and automated QR turnstiles. Specifically engineered for both competitive tournaments and recreational community bookings with direct AMC civic transit access.
+              </p>
+</section>
+<!-- Section 4: Sports Offered & Court Matrix Breakdown (with ₹ INR Pricing) -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5">
+<div class="flex items-center justify-between pb-3 mb-4 border-b border-outline-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">grid_view</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface font-semibold">4. Court Inventory &amp; Live Dynamic Tariff Matrix</h2>
+</div>
+<span class="text-label-sm font-label-sm text-primary font-bold bg-surface-container px-2 py-0.5 rounded">5 Dedicated Units</span>
+</div>
+<!-- Court Matrix Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left text-body-sm font-body-sm border-collapse">
+<thead>
+<tr class="bg-surface-container border-b border-outline-variant text-on-surface font-semibold text-label-sm font-label-sm">
+<th class="py-2.5 px-3">Unit ID &amp; Surface</th>
+<th class="py-2.5 px-3">Sport</th>
+<th class="py-2.5 px-3">Base Price</th>
+<th class="py-2.5 px-3">Peak Price</th>
+<th class="py-2.5 px-3">Weekend Price</th>
+<th class="py-2.5 px-3">IoT Turnstile</th>
+<th class="py-2.5 px-3 text-right">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Court 1 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-3">
+<div class="font-bold text-on-surface">Court 1</div>
+<div class="text-[12px] text-outline">Championship Synthetic Matting</div>
+</td>
+<td class="py-3 px-3 font-medium text-on-surface">Badminton</td>
+<td class="py-3 px-3 font-semibold text-primary">₹600 / hr</td>
+<td class="py-3 px-3 text-on-surface font-semibold">₹750 / hr</td>
+<td class="py-3 px-3 text-on-surface-variant">₹700 / hr</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 text-[11px] font-mono text-secondary font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Gate 1
+                        </span>
+</td>
+<td class="py-3 px-3 text-right">
+<span class="text-[11px] font-bold text-primary bg-primary-fixed px-2 py-0.5 rounded">Ready</span>
+</td>
+</tr>
+<!-- Court 2 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-3">
+<div class="font-bold text-on-surface">Court 2</div>
+<div class="text-[12px] text-outline">BWF Grade 1 Vinyl Cushion</div>
+</td>
+<td class="py-3 px-3 font-medium text-on-surface">Badminton</td>
+<td class="py-3 px-3 font-semibold text-primary">₹550 / hr</td>
+<td class="py-3 px-3 text-on-surface font-semibold">₹700 / hr</td>
+<td class="py-3 px-3 text-on-surface-variant">₹650 / hr</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 text-[11px] font-mono text-secondary font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Gate 1
+                        </span>
+</td>
+<td class="py-3 px-3 text-right">
+<span class="text-[11px] font-bold text-primary bg-primary-fixed px-2 py-0.5 rounded">Ready</span>
+</td>
+</tr>
+<!-- Court 3 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-3">
+<div class="font-bold text-on-surface">Court 3</div>
+<div class="text-[12px] text-outline">Cushioned Maple Hardwood</div>
+</td>
+<td class="py-3 px-3 font-medium text-on-surface">Badminton</td>
+<td class="py-3 px-3 font-semibold text-primary">₹600 / hr</td>
+<td class="py-3 px-3 text-on-surface font-semibold">₹750 / hr</td>
+<td class="py-3 px-3 text-on-surface-variant">₹700 / hr</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 text-[11px] font-mono text-secondary font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Gate 2
+                        </span>
+</td>
+<td class="py-3 px-3 text-right">
+<span class="text-[11px] font-bold text-primary bg-primary-fixed px-2 py-0.5 rounded">Ready</span>
+</td>
+</tr>
+<!-- Court 4 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-3">
+<div class="font-bold text-on-surface">Court 4</div>
+<div class="text-[12px] text-outline">Multi-layer Taraflex Floor</div>
+</td>
+<td class="py-3 px-3 font-medium text-on-surface">Badminton</td>
+<td class="py-3 px-3 font-semibold text-primary">₹550 / hr</td>
+<td class="py-3 px-3 text-on-surface font-semibold">₹700 / hr</td>
+<td class="py-3 px-3 text-on-surface-variant">₹650 / hr</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 text-[11px] font-mono text-secondary font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Gate 2
+                        </span>
+</td>
+<td class="py-3 px-3 text-right">
+<span class="text-[11px] font-bold text-primary bg-primary-fixed px-2 py-0.5 rounded">Ready</span>
+</td>
+</tr>
+<!-- Pitch 1 (Box Cricket) -->
+<tr class="hover:bg-surface-container-low transition-colors bg-surface/50">
+<td class="py-3 px-3">
+<div class="font-bold text-on-surface">Pitch 1 (Box Cricket)</div>
+<div class="text-[12px] text-outline">40mm High-density synthetic turf</div>
+</td>
+<td class="py-3 px-3 font-medium text-on-surface">Box Cricket</td>
+<td class="py-3 px-3 font-semibold text-primary">₹1,200 / hr</td>
+<td class="py-3 px-3 text-on-surface font-semibold">₹1,500 / hr</td>
+<td class="py-3 px-3 text-on-surface-variant">₹1,500 / hr</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 text-[11px] font-mono text-secondary font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Gate 3
+                        </span>
+</td>
+<td class="py-3 px-3 text-right">
+<span class="text-[11px] font-bold text-primary bg-primary-fixed px-2 py-0.5 rounded">Ready</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Section 5: Operating Hours & Schedule Breakdown -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5"><div class="flex flex-wrap items-center justify-between pb-3 mb-4 border-b border-outline-variant gap-2"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-[20px]">photo_library</span><h2 class="text-headline-sm font-headline-sm text-on-surface font-semibold">7. Evidence Inspection &amp; Document Registry</h2></div><div class="flex items-center gap-2"><span class="text-label-sm font-label-sm text-secondary bg-surface-container px-2 py-0.5 rounded border border-outline-variant font-bold">9 Evidence Items Logged</span><span class="text-label-sm font-label-sm text-outline hidden sm:block">Click any photo to launch Auditor Lightbox</span></div></div><div class="flex flex-wrap gap-2 mb-4"><button class="px-3 py-1.5 rounded-full bg-primary text-on-primary text-label-sm font-label-sm font-bold flex items-center gap-1.5 shadow-sm" type="button"><span class="material-symbols-outlined text-[16px]">sports_tennis</span><span>Courts &amp; Playing Surfaces (3)</span></button><button class="px-3 py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface text-label-sm font-label-sm font-semibold flex items-center gap-1.5 border border-outline-variant transition-colors" type="button"><span class="material-symbols-outlined text-[16px] text-error">emergency</span><span>Turnstiles, Safety &amp; Egress (3)</span><span class="w-2 h-2 rounded-full bg-error animate-pulse"></span></button><button class="px-3 py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface text-label-sm font-label-sm font-semibold flex items-center gap-1.5 border border-outline-variant transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">spa</span><span>Amenities &amp; Player Facilities (3)</span></button></div><div class="space-y-6"><div class="space-y-3"><div class="flex items-center justify-between"><h3 class="text-label-md font-label-md font-bold text-on-surface flex items-center gap-2"><span class="material-symbols-outlined text-primary text-[18px]">sports_and_outdoors</span><span>Group A: Courts &amp; Playing Surfaces</span></h3><span class="text-[11px] font-semibold text-secondary">All 3 Certified</span></div><div class="grid grid-cols-1 md:grid-cols-3 gap-3.5"><div class="border border-outline-variant rounded-lg overflow-hidden bg-surface flex flex-col group hover:border-primary transition-colors"><div class="relative h-44 bg-surface-container overflow-hidden"><img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-150" data-alt="Main court hall badminton courts photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3eTnvDw34qw_1akFd_zhIaM5WMrDiVeANToaaATfUktYoJw-NyuBjVY5Hz-HfC_q_XPQ-xzWk8z1G-tUTND73BDWmIZenuD9gzgqcL5CRHwQGFOp-lPE1540svcTE9-czU6oGZXGHNtC_z7ZMnQjwsRag-lhMh769HOpbXtaeUlakq4yodiieFJgyzDkD4MVRU-4BihLF1r9JarCfzsr_008Cl0jXIoigrjGf5h0dcOyJsClUDf8-xs7thWlsnnSCDIgzk7jJAus"/><span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-primary text-on-primary text-[10px] font-bold flex items-center gap-1 shadow"><span class="material-symbols-outlined text-[12px]">check</span> Passed Review</span><button class="absolute bottom-2 right-2 p-1.5 rounded bg-surface-container-lowest/90 backdrop-blur-sm text-primary hover:bg-surface-container border border-outline-variant shadow transition-colors flex items-center justify-center" title="Zoom into photo" type="button"><span class="material-symbols-outlined text-[16px]">zoom_in</span></button></div><div class="p-2.5 flex-1 flex flex-col justify-between"><div class="font-bold text-label-sm font-label-sm text-on-surface">Main Court Hall — BWF Matting</div><div class="text-[11px] text-outline mt-0.5">Field Officer Patel • 4.5mm Thickness</div></div></div><div class="border border-outline-variant rounded-lg overflow-hidden bg-surface flex flex-col group hover:border-primary transition-colors"><div class="relative h-44 bg-surface-container overflow-hidden"><img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-150" data-alt="Court 2 and 3 maple hardwood sprung flooring" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIWoc6C_dxXxZdbsyst003L2EYJSmoSaJWNG173uGgJ7awpmoHr48J1nL8WfRwiyJBqMqLx8PcI-GoKF3Jauxkrg-guTfdom9DyppiZ6aXE3vC9exQ4iLvAr8ekWD1oLol_SY1cWFulOrCEezsyGuS7F3poQaNBZvWor1MPi3U98GvNg0rQ_p_HhYIfEz_2X5XwL0hqgl4GRENsKnK3-8IuVaCzcY4pprJUPKz697U-4KlCy4tFyW5Vjbqa67BU62CQ54HigwQ3m0"/><span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-primary text-on-primary text-[10px] font-bold flex items-center gap-1 shadow"><span class="material-symbols-outlined text-[12px]">check</span> Verified Spec</span><button class="absolute bottom-2 right-2 p-1.5 rounded bg-surface-container-lowest/90 backdrop-blur-sm text-primary hover:bg-surface-container border border-outline-variant shadow transition-colors flex items-center justify-center" title="Zoom into photo" type="button"><span class="material-symbols-outlined text-[16px]">zoom_in</span></button></div><div class="p-2.5 flex-1 flex flex-col justify-between"><div class="font-bold text-label-sm font-label-sm text-on-surface">Courts 3 &amp; 4 — Cushion Wood</div><div class="text-[11px] text-outline mt-0.5">Anti-shock sprung subfloor test passed</div></div></div><div class="border border-outline-variant rounded-lg overflow-hidden bg-surface flex flex-col group hover:border-primary transition-colors"><div class="relative h-44 bg-surface-container overflow-hidden"><img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-150" data-alt="Box Cricket Turf pitch floodlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFdi6gWT3Ldp4JvliB1fDOwVzSIzeuQPi00DxjEOzKvbukkK7-ZeFVTvQRxdM6G1a_xJc6fcmpvk2bpwEBir-lxiAc-vfDC1k7M_1J2jIzvX0pS2c52Dekm55rSfPDBISJyH2G7Y6240wj5vy4IIsGQxaLXmuzdLfTMU2QYIz1MccoftQw9fqmEZu85gpMZc9LVtmB2HjAUrH7xVLFuo-JI230DvsY2bjnoA3n3NLUkM6xSc0Q9huJUUbg-mv8miurvPGDpKdDtqM"/><span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-primary text-on-primary text-[10px] font-bold flex items-center gap-1 shadow"><span class="material-symbols-outlined text-[12px]">check</span> Passed Review</span><button class="absolute bottom-2 right-2 p-1.5 rounded bg-surface-container-lowest/90 backdrop-blur-sm text-primary hover:bg-surface-container border border-outline-variant shadow transition-colors flex items-center justify-center" title="Zoom into photo" type="button"><span class="material-symbols-outlined text-[16px]">zoom_in</span></button></div><div class="p-2.5 flex-1 flex flex-col justify-between"><div class="font-bold text-label-sm font-label-sm text-on-surface">Box Cricket Pitch — Floodlight Test</div><div class="text-[11px] text-outline mt-0.5">540 Lux verified at crease center</div></div></div></div></div><div class="space-y-3 pt-2"><div class="flex items-center justify-between"><h3 class="text-label-md font-label-md font-bold text-on-surface flex items-center gap-2"><span class="material-symbols-outlined text-primary text-[18px]">sensor_door</span><span>Group B: Turnstiles, Safety &amp; Egress</span></h3><span class="text-[11px] font-bold text-primary bg-surface-container px-2 py-0.5 rounded border border-outline-variant">1 Item Resubmitted For Approval</span></div><div class="grid grid-cols-1 md:grid-cols-3 gap-3.5"><div class="border-2 border-primary-container rounded-lg overflow-hidden bg-surface flex flex-col relative group"><div class="relative h-44 bg-surface-container overflow-hidden"><img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-150" data-alt="Turnstiles and fire exit measurement" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3O5--U726napfU5IgE_vIkmvS1pl1MagF_BuyMpuj4cGBbjvi5AckmUwEN-LwW5CQWjZ2NAKUYox4BzHshQRZtRqqwhBHU_22D8FiqQOz1CZ2mo9zvij3RW_LQUWDrZdfrpmn8ABobYFyxPIIu0T7iiB4kG_ytsfWhcXmR1frfY5xS_2JgfwmavQXiQXATd30EE6Z9ypQE7ZQQxhc6HPqgRInReg6JjqluSpKZX-60ojX_ZgpYEiIQoTDcWIjxFE4xYpFLfr9i7k"/><span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-surface-container-high text-primary font-bold text-[10px] flex items-center gap-1 shadow border border-outline-variant"><span class="material-symbols-outlined text-[12px] text-primary">priority_high</span> Resubmitted — Needs Approval</span><span class="absolute bottom-2 left-2 bg-inverse-surface text-inverse-on-surface text-[10px] px-1.5 py-0.5 rounded font-mono">v2.1 Upload (Today)</span><button class="absolute bottom-2 right-2 p-1.5 rounded bg-primary text-on-primary hover:bg-primary-container shadow transition-colors flex items-center justify-center" title="Inspect Full Res Photo in Lightbox" type="button"><span class="material-symbols-outlined text-[16px]">open_in_full</span></button></div><div class="p-2.5 bg-surface-container-low/40 flex-1 flex flex-col justify-between"><div class="font-bold text-label-sm font-label-sm text-on-surface flex items-center justify-between"><span>Gate 1 Turnstile &amp; Egress</span><span class="text-primary font-bold text-[11px]">1.4m</span></div><div class="text-[11px] text-on-surface-variant mt-0.5">Widened clearance compliant with AMC Fire Code Sec 12</div></div></div><div class="border border-outline-variant rounded-lg overflow-hidden bg-surface flex flex-col group hover:border-primary transition-colors"><div class="relative h-44 bg-surface-container overflow-hidden"><img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-150" data-alt="Emergency fire exit signage and push panic bars" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3O5--U726napfU5IgE_vIkmvS1pl1MagF_BuyMpuj4cGBbjvi5AckmUwEN-LwW5CQWjZ2NAKUYox4BzHshQRZtRqqwhBHU_22D8FiqQOz1CZ2mo9zvij3RW_LQUWDrZdfrpmn8ABobYFyxPIIu0T7iiB4kG_ytsfWhcXmR1frfY5xS_2JgfwmavQXiQXATd30EE6Z9ypQE7ZQQxhc6HPqgRInReg6JjqluSpKZX-60ojX_ZgpYEiIQoTDcWIjxFE4xYpFLfr9i7k"/><span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-primary text-on-primary text-[10px] font-bold flex items-center gap-1 shadow"><span class="material-symbols-outlined text-[12px]">check</span> Passed Review</span><button class="absolute bottom-2 right-2 p-1.5 rounded bg-surface-container-lowest/90 backdrop-blur-sm text-primary hover:bg-surface-container border border-outline-variant shadow transition-colors flex items-center justify-center" title="Zoom into photo" type="button"><span class="material-symbols-outlined text-[16px]">zoom_in</span></button></div><div class="p-2.5 flex-1 flex flex-col justify-between"><div class="font-bold text-label-sm font-label-sm text-on-surface">Secondary Egress Corridor</div><div class="text-[11px] text-outline mt-0.5">Panic bar tested • 14m setback road access</div></div></div><div class="border border-outline-variant rounded-lg overflow-hidden bg-surface flex flex-col group hover:border-primary transition-colors"><div class="relative h-44 bg-surface-container overflow-hidden"><img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-150" data-alt="IoT GateNet hub turnstile controller enclosure" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIWoc6C_dxXxZdbsyst003L2EYJSmoSaJWNG173uGgJ7awpmoHr48J1nL8WfRwiyJBqMqLx8PcI-GoKF3Jauxkrg-guTfdom9DyppiZ6aXE3vC9exQ4iLvAr8ekWD1oLol_SY1cWFulOrCEezsyGuS7F3poQaNBZvWor1MPi3U98GvNg0rQ_p_HhYIfEz_2X5XwL0hqgl4GRENsKnK3-8IuVaCzcY4pprJUPKz697U-4KlCy4tFyW5Vjbqa67BU62CQ54HigwQ3m0"/><span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-primary text-on-primary text-[10px] font-bold flex items-center gap-1 shadow"><span class="material-symbols-outlined text-[12px]">check</span> Passed Review</span><button class="absolute bottom-2 right-2 p-1.5 rounded bg-surface-container-lowest/90 backdrop-blur-sm text-primary hover:bg-surface-container border border-outline-variant shadow transition-colors flex items-center justify-center" title="Zoom into photo" type="button"><span class="material-symbols-outlined text-[16px]">zoom_in</span></button></div><div class="p-2.5 flex-1 flex flex-col justify-between"><div class="font-bold text-label-sm font-label-sm text-on-surface">GateNet Breaker &amp; Surge Board</div><div class="text-[11px] text-outline mt-0.5">Dual UPS backup • 14ms latency verified</div></div></div></div></div><div class="space-y-3 pt-2"><div class="flex items-center justify-between"><h3 class="text-label-md font-label-md font-bold text-on-surface flex items-center gap-2"><span class="material-symbols-outlined text-primary text-[18px]">meeting_room</span><span>Group C: Amenities &amp; Player Facilities</span></h3><span class="text-[11px] font-semibold text-secondary">All 3 Certified</span></div><div class="grid grid-cols-1 md:grid-cols-3 gap-3.5"><div class="border border-outline-variant rounded-lg overflow-hidden bg-surface flex flex-col group hover:border-primary transition-colors"><div class="relative h-44 bg-surface-container overflow-hidden"><img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-150" data-alt="Locker suites and clean shower bays" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3eTnvDw34qw_1akFd_zhIaM5WMrDiVeANToaaATfUktYoJw-NyuBjVY5Hz-HfC_q_XPQ-xzWk8z1G-tUTND73BDWmIZenuD9gzgqcL5CRHwQGFOp-lPE1540svcTE9-czU6oGZXGHNtC_z7ZMnQjwsRag-lhMh769HOpbXtaeUlakq4yodiieFJgyzDkD4MVRU-4BihLF1r9JarCfzsr_008Cl0jXIoigrjGf5h0dcOyJsClUDf8-xs7thWlsnnSCDIgzk7jJAus"/><span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-primary text-on-primary text-[10px] font-bold flex items-center gap-1 shadow"><span class="material-symbols-outlined text-[12px]">check</span> Passed Review</span><button class="absolute bottom-2 right-2 p-1.5 rounded bg-surface-container-lowest/90 backdrop-blur-sm text-primary hover:bg-surface-container border border-outline-variant shadow transition-colors flex items-center justify-center" title="Zoom into photo" type="button"><span class="material-symbols-outlined text-[16px]">zoom_in</span></button></div><div class="p-2.5 flex-1 flex flex-col justify-between"><div class="font-bold text-label-sm font-label-sm text-on-surface">Lockers &amp; Shower Suites</div><div class="text-[11px] text-outline mt-0.5">Sanitized ventilation bays inspected</div></div></div><div class="border border-outline-variant rounded-lg overflow-hidden bg-surface flex flex-col group hover:border-primary transition-colors"><div class="relative h-44 bg-surface-container overflow-hidden"><img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-150" data-alt="Pro badminton stringing desk and check-in lobby" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIWoc6C_dxXxZdbsyst003L2EYJSmoSaJWNG173uGgJ7awpmoHr48J1nL8WfRwiyJBqMqLx8PcI-GoKF3Jauxkrg-guTfdom9DyppiZ6aXE3vC9exQ4iLvAr8ekWD1oLol_SY1cWFulOrCEezsyGuS7F3poQaNBZvWor1MPi3U98GvNg0rQ_p_HhYIfEz_2X5XwL0hqgl4GRENsKnK3-8IuVaCzcY4pprJUPKz697U-4KlCy4tFyW5Vjbqa67BU62CQ54HigwQ3m0"/><span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-primary text-on-primary text-[10px] font-bold flex items-center gap-1 shadow"><span class="material-symbols-outlined text-[12px]">check</span> Verified Spec</span><button class="absolute bottom-2 right-2 p-1.5 rounded bg-surface-container-lowest/90 backdrop-blur-sm text-primary hover:bg-surface-container border border-outline-variant shadow transition-colors flex items-center justify-center" title="Zoom into photo" type="button"><span class="material-symbols-outlined text-[16px]">zoom_in</span></button></div><div class="p-2.5 flex-1 flex flex-col justify-between"><div class="font-bold text-label-sm font-label-sm text-on-surface">Pro Shop &amp; Stringing Desk</div><div class="text-[11px] text-outline mt-0.5">Electronic tension calibrator verified</div></div></div><div class="border border-outline-variant rounded-lg p-3.5 bg-surface flex flex-col justify-between"><div class="space-y-2"><div class="flex items-center justify-between"><span class="p-2 rounded bg-error-container text-error flex items-center justify-center"><span class="material-symbols-outlined text-[20px]">picture_as_pdf</span></span><span class="px-2 py-0.5 rounded bg-surface-container text-secondary text-[11px] font-bold border border-outline-variant">Verified Doc</span></div><h4 class="text-label-sm font-label-sm text-on-surface font-bold">Commercial Lease &amp; AMC Sports NOC</h4><p class="text-[11px] text-on-surface-variant leading-relaxed">Gujarat Fire Safety Compliance Certificate (FSCC #2024-811) attached.</p></div><div class="pt-2.5 border-t border-outline-variant flex items-center justify-between"><span class="text-[10px] font-mono text-outline">4.2 MB • Dig. Signature</span><button class="text-[11px] text-primary font-bold hover:underline flex items-center gap-1" type="button"><span>View PDF</span><span class="material-symbols-outlined text-[12px]">open_in_new</span></button></div></div></div></div></div></section>
+<!-- Section 6: Verified Amenities & Certifications Checklist -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5">
+<div class="flex items-center justify-between pb-3 mb-4 border-b border-outline-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">hotel_class</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface font-semibold">6. Amenities &amp; Venue Infrastructure Audit</h2>
+</div>
+<span class="text-label-sm font-label-sm text-secondary font-bold">6 Validated Criteria</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+<!-- Amenity 1 -->
+<div class="p-2.5 rounded bg-surface border border-outline-variant flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">lightbulb</span>
+<div>
+<h4 class="text-label-md font-label-md text-on-surface font-bold">800-Lux Anti-Glare LED</h4>
+<p class="text-[11px] text-outline">520 Lux Measured Avg</p>
+</div>
+</div>
+<!-- Amenity 2 -->
+<div class="p-2.5 rounded bg-surface border border-outline-variant flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">lock_open</span>
+<div>
+<h4 class="text-label-md font-label-md text-on-surface font-bold">Turnstile IoT Access</h4>
+<p class="text-[11px] text-secondary font-semibold">Online Ping: 14ms</p>
+</div>
+</div>
+<!-- Amenity 3 -->
+<div class="p-2.5 rounded bg-surface border border-outline-variant flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">shower</span>
+<div>
+<h4 class="text-label-md font-label-md text-on-surface font-bold">Showers &amp; Changing</h4>
+<p class="text-[11px] text-outline">Sanitized Locker Bays</p>
+</div>
+</div>
+<!-- Amenity 4 -->
+<div class="p-2.5 rounded bg-surface border border-outline-variant flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">sports_score</span>
+<div>
+<h4 class="text-label-md font-label-md text-on-surface font-bold">Pro Gear Rental</h4>
+<p class="text-[11px] text-outline">Stringing Desk Onsite</p>
+</div>
+</div>
+<!-- Amenity 5 -->
+<div class="p-2.5 rounded bg-surface border border-outline-variant flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">medical_services</span>
+<div>
+<h4 class="text-label-md font-label-md text-on-surface font-bold">First Aid &amp; Physio Kit</h4>
+<p class="text-[11px] text-outline">Certified Sports Kit</p>
+</div>
+</div>
+<!-- Amenity 6 -->
+<div class="p-2.5 rounded bg-surface border border-outline-variant flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">ev_station</span>
+<div>
+<h4 class="text-label-md font-label-md text-on-surface font-bold">2-Wheeler &amp; EV Parking</h4>
+<p class="text-[11px] text-outline">40 Dedicated Bays</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 7: High-Resolution Documentation & Photos Grid -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5">
+<div class="flex items-center justify-between pb-3 mb-4 border-b border-outline-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">photo_library</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface font-semibold">7. Evidence Inspection &amp; Document Registry</h2>
+</div>
+<span class="text-label-sm font-label-sm text-outline">Click image to inspect audit stamp</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Photo 1 -->
+<div class="border border-outline-variant rounded-lg overflow-hidden bg-surface flex flex-col">
+<div class="relative h-44 bg-surface-container group">
+<img class="w-full h-full object-cover" data-alt="High quality wide perspective photograph of an indoor professional badminton hall with four green BWF synthetic courts, clear white court boundary lines, high ceiling metal girders, and uniform bright non-glare LED illumination." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3eTnvDw34qw_1akFd_zhIaM5WMrDiVeANToaaATfUktYoJw-NyuBjVY5Hz-HfC_q_XPQ-xzWk8z1G-tUTND73BDWmIZenuD9gzgqcL5CRHwQGFOp-lPE1540svcTE9-czU6oGZXGHNtC_z7ZMnQjwsRag-lhMh769HOpbXtaeUlakq4yodiieFJgyzDkD4MVRU-4BihLF1r9JarCfzsr_008Cl0jXIoigrjGf5h0dcOyJsClUDf8-xs7thWlsnnSCDIgzk7jJAus"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-primary text-on-primary text-[11px] font-bold flex items-center gap-1 shadow">
+<span class="material-symbols-outlined text-[13px]">check</span> Passed Review
+                    </span>
+</div>
+<div class="p-3">
+<div class="font-bold text-label-md font-label-md text-on-surface">Main Court Hall — BWF Matting</div>
+<p class="text-[12px] text-on-surface-variant">Shot by Field Officer Patel • Verified Mat Thickness 4.5mm</p>
+</div>
+</div>
+<!-- Photo 2 -->
+<div class="border border-outline-variant rounded-lg overflow-hidden bg-surface flex flex-col">
+<div class="relative h-44 bg-surface-container group">
+<img class="w-full h-full object-cover" data-alt="Vibrant night-time photo of an enclosed synthetic box cricket turf arena with green artificial grass carpet, high protective safety netting, and crisp white overhead floodlights illuminating the pitch." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFdi6gWT3Ldp4JvliB1fDOwVzSIzeuQPi00DxjEOzKvbukkK7-ZeFVTvQRxdM6G1a_xJc6fcmpvk2bpwEBir-lxiAc-vfDC1k7M_1J2jIzvX0pS2c52Dekm55rSfPDBISJyH2G7Y6240wj5vy4IIsGQxaLXmuzdLfTMU2QYIz1MccoftQw9fqmEZu85gpMZc9LVtmB2HjAUrH7xVLFuo-JI230DvsY2bjnoA3n3NLUkM6xSc0Q9huJUUbg-mv8miurvPGDpKdDtqM"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-primary text-on-primary text-[11px] font-bold flex items-center gap-1 shadow">
+<span class="material-symbols-outlined text-[13px]">check</span> Passed Review
+                    </span>
+</div>
+<div class="p-3">
+<div class="font-bold text-label-md font-label-md text-on-surface">Box Cricket Pitch — Floodlight Test</div>
+<p class="text-[12px] text-on-surface-variant">Night Lux verified at 540 Lux at pitch crease centers</p>
+</div>
+</div>
+<!-- Photo 3: Resubmitted Item Flagged -->
+<div class="border-2 border-primary-container rounded-lg overflow-hidden bg-surface flex flex-col relative">
+<div class="relative h-44 bg-surface-container group">
+<img class="w-full h-full object-cover" data-alt="Clear architectural shot of modern commercial stainless steel turnstiles and an adjacent wide emergency fire exit doorway with green exit signs and an official yellow measurement tape showing 1.4-meter passage clearance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3O5--U726napfU5IgE_vIkmvS1pl1MagF_BuyMpuj4cGBbjvi5AckmUwEN-LwW5CQWjZ2NAKUYox4BzHshQRZtRqqwhBHU_22D8FiqQOz1CZ2mo9zvij3RW_LQUWDrZdfrpmn8ABobYFyxPIIu0T7iiB4kG_ytsfWhcXmR1frfY5xS_2JgfwmavQXiQXATd30EE6Z9ypQE7ZQQxhc6HPqgRInReg6JjqluSpKZX-60ojX_ZgpYEiIQoTDcWIjxFE4xYpFLfr9i7k"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-surface-container-high text-primary font-bold text-[11px] flex items-center gap-1 shadow border border-outline-variant">
+<span class="material-symbols-outlined text-[13px] text-primary">priority_high</span> Resubmitted — Needs Approval
+                    </span>
+<span class="absolute bottom-2 right-2 bg-inverse-surface text-inverse-on-surface text-[10px] px-1.5 py-0.5 rounded font-mono">
+                      v2.1 Upload (Today)
+                    </span>
+</div>
+<div class="p-3 bg-surface-container-low/40">
+<div class="font-bold text-label-md font-label-md text-on-surface flex items-center justify-between">
+<span>Turnstile &amp; Emergency Fire Exit</span>
+<span class="text-primary font-bold text-[11px]">Clearance: 1.4m</span>
+</div>
+<p class="text-[12px] text-on-surface-variant">Egress widened from 1.05m to 1.4m compliant with AMC Fire Code Sec 12.</p>
+</div>
+</div>
+<!-- Doc 4: PDF Card -->
+<div class="border border-outline-variant rounded-lg p-4 bg-surface flex flex-col justify-between">
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<span class="p-2 rounded bg-error-container text-error flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">picture_as_pdf</span>
+</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-secondary text-[11px] font-bold border border-outline-variant">
+                        Verified Doc
+                      </span>
+</div>
+<h4 class="text-label-md font-label-md text-on-surface font-bold">Commercial Lease &amp; AMC Sports NOC</h4>
+<p class="text-[12px] text-on-surface-variant leading-relaxed">
+                      Signed 9-year lease registered at Ahmedabad Sub-Registrar Office, including Gujarat Fire Safety Compliance Certificate (FSCC #2024-811).
+                    </p>
+</div>
+<div class="pt-3 border-t border-outline-variant flex items-center justify-between">
+<span class="text-[11px] font-mono text-outline">4.2 MB • Digital Signature Valid</span>
+<button class="text-label-sm font-label-sm text-primary font-bold hover:underline flex items-center gap-1" type="button">
+<span>View PDF</span>
+<span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- RIGHT COLUMN: VERIFICATION SCORECARD & ACTION CONSOLE (Cols 9-12) -->
+<div class="lg:col-span-4 space-y-6 lg:sticky lg:top-20">
+<!-- Verification Progress Scorecard -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-[0_4px_12px_-2px_rgba(15,23,42,0.06)]">
+<div class="flex items-center justify-between pb-3 mb-4 border-b border-outline-variant">
+<h3 class="text-headline-sm font-headline-sm text-on-surface font-semibold">Audit Scorecard</h3>
+<span class="text-label-md font-label-md font-bold text-primary bg-surface-container px-2 py-0.5 rounded">4 of 5 Passed</span>
+</div>
+<!-- Visual Progress Bar -->
+<div class="space-y-1.5 mb-5">
+<div class="flex justify-between text-label-sm font-label-sm text-outline">
+<span>Activation Readiness</span>
+<span class="font-bold text-on-surface">92%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 92%"></div>
+</div>
+</div>
+<!-- Mandatory Compliance Checklist with Status Indicators -->
+<div class="space-y-3">
+<!-- Item 1 -->
+<div class="p-3 rounded-lg bg-surface border border-outline-variant flex items-start justify-between gap-3">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">check_circle</span>
+<div>
+<h4 class="text-label-md font-label-md text-on-surface font-bold">GSTIN &amp; Title Verification</h4>
+<p class="text-[12px] text-outline">Patel Sports Ventures LLP verified</p>
+</div>
+</div>
+<span class="text-[10px] font-bold text-secondary uppercase bg-surface-container px-1.5 py-0.5 rounded">VALID</span>
+</div>
+<!-- Item 2 -->
+<div class="p-3 rounded-lg bg-surface border border-outline-variant flex items-start justify-between gap-3">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">check_circle</span>
+<div>
+<h4 class="text-label-md font-label-md text-on-surface font-bold">Court Surface &amp; Dimensions</h4>
+<p class="text-[12px] text-outline">13.4m x 6.1m standard certified</p>
+</div>
+</div>
+<span class="text-[10px] font-bold text-secondary uppercase bg-surface-container px-1.5 py-0.5 rounded">VALID</span>
+</div>
+<!-- Item 3: Pending Re-approval (The Key Action Item) -->
+<div class="p-3 rounded-lg bg-surface-container-low border border-primary-container flex items-start justify-between gap-3">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">pending_actions</span>
+<div>
+<h4 class="text-label-md font-label-md text-on-surface font-bold">Fire Safety &amp; Emergency Egress</h4>
+<p class="text-[12px] text-on-surface-variant font-medium">1.4m clearance photo resubmitted</p>
+</div>
+</div>
+<span class="text-[10px] font-bold text-primary uppercase bg-surface-container px-1.5 py-0.5 rounded">REVIEW</span>
+</div>
+<!-- Item 4 -->
+<div class="p-3 rounded-lg bg-surface border border-outline-variant flex items-start justify-between gap-3">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">check_circle</span>
+<div>
+<h4 class="text-label-md font-label-md text-on-surface font-bold">Lux Level &amp; Floodlights</h4>
+<p class="text-[12px] text-outline">520 Lux average photometric</p>
+</div>
+</div>
+<span class="text-[10px] font-bold text-secondary uppercase bg-surface-container px-1.5 py-0.5 rounded">VALID</span>
+</div>
+<!-- Item 5 -->
+<div class="p-3 rounded-lg bg-surface border border-outline-variant flex items-start justify-between gap-3">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">check_circle</span>
+<div>
+<h4 class="text-label-md font-label-md text-on-surface font-bold">IoT Turnstile &amp; Payout Escrow</h4>
+<p class="text-[12px] text-outline">HDFC Escrow A/C #...8192 linked</p>
+</div>
+</div>
+<span class="text-[10px] font-bold text-secondary uppercase bg-surface-container px-1.5 py-0.5 rounded">VALID</span>
+</div>
+</div>
+<!-- Admin Internal Notes & Feedback box -->
+<div class="mt-5 pt-4 border-t border-outline-variant space-y-2">
+<label class="block text-label-md font-label-md text-on-surface font-bold" for="admin-notes">
+                  Internal Verification Log &amp; Remarks
+                </label>
+<textarea class="w-full text-body-sm font-body-sm p-2.5 bg-surface-container-lowest border border-outline-variant rounded focus:border-primary focus:outline-none transition-colors placeholder:text-outline text-on-surface" id="admin-notes" placeholder="Enter notes visible to Operations Team &amp; Audit Inspectors..." rows="3">Emergency egress measurement checked against AMC Regulation 14-B. The 1.4m clearance photo confirms unhindered egress. All 5 turnstile gates communicating over GateNet mesh network.</textarea>
+<div class="flex items-center justify-between text-[11px] text-outline">
+<span>Inspector: C. Dave (Super Admin)</span>
+<span class="text-primary font-medium hover:underline cursor-pointer">Append Timestamp</span>
+</div>
+</div>
+<!-- Decision Action Panel -->
+<div class="mt-5 pt-4 border-t border-outline-variant space-y-2.5">
+<button class="w-full h-11 rounded bg-primary-container hover:bg-primary text-on-primary font-bold text-label-lg font-label-lg transition-colors flex items-center justify-center gap-2 shadow" type="button">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+<span>Approve &amp; Issue Certificate</span>
+</button>
+<div class="grid grid-cols-2 gap-2">
+<button class="h-9 px-2 rounded bg-surface border border-outline-variant hover:bg-surface-container-low text-on-surface text-label-sm font-label-sm transition-colors flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+<span>Schedule Spot Audit</span>
+</button>
+<button class="h-9 px-2 rounded bg-surface-container-lowest border border-error text-error hover:bg-error-container text-label-sm font-label-sm transition-colors flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">close</span>
+<span>Reject with Notes</span>
+</button>
+</div>
+<div class="text-center pt-2">
+<a class="text-[12px] text-outline hover:text-primary transition-colors inline-flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[14px]">download</span>
+                    Download AMC Sports Dossier PDF (APP-8842)
+                  </a>
+</div>
+</div>
+</div>
+<!-- Escalation & Emergency Liaison Info -->
+<div class="p-3.5 rounded-lg bg-surface border border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<div>
+<div class="text-label-sm font-label-sm text-on-surface font-bold">AMC Ward Officer (Navrangpura)</div>
+<div class="text-[11px] text-outline">Desk: +91 79 2630 4410 • HQ Liaison</div>
+</div>
+</div>
+<button class="p-1.5 rounded hover:bg-surface-container text-outline hover:text-primary transition-colors" title="Contact Liaison" type="button">
+<span class="material-symbols-outlined text-[18px]">call</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-inverse-surface/60 backdrop-blur-sm"><div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-xl w-full max-w-4xl max-h-[92vh] flex flex-col overflow-hidden animate-in fade-in zoom-in duration-150"><div class="px-5 py-3.5 border-b border-outline-variant bg-surface-container-lowest flex items-center justify-between gap-3"><div class="flex items-center gap-2.5 min-w-0"><span class="px-2 py-0.5 rounded bg-surface-container-high text-primary font-bold text-label-sm font-label-sm border border-outline-variant shrink-0"><span class="material-symbols-outlined text-[13px] text-primary inline mr-0.5">priority_high</span> Resubmitted v2.1</span><div class="min-w-0"><h3 class="text-label-lg font-label-lg font-bold text-on-surface truncate">Turnstile &amp; Emergency Egress Clearance — Gate 1 Resubmission</h3><p class="text-[11px] text-outline font-mono truncate">EVIDENCE-IMG-04 • Resubmitted Today 08:30 AM • 4032 x 3024px RAW</p></div></div><div class="flex items-center gap-2 shrink-0"><div class="hidden sm:flex items-center border border-outline-variant rounded overflow-hidden bg-surface-container-low"><button class="p-1.5 hover:bg-surface-container text-on-surface text-[12px] font-bold border-r border-outline-variant flex items-center gap-1" title="Zoom Out" type="button"><span class="material-symbols-outlined text-[16px]">zoom_out</span></button><span class="px-2 text-[11px] font-mono text-outline">100%</span><button class="p-1.5 hover:bg-surface-container text-on-surface text-[12px] font-bold flex items-center gap-1" title="Zoom In" type="button"><span class="material-symbols-outlined text-[16px]">zoom_in</span></button></div><button class="px-3 py-1.5 rounded bg-surface-container hover:bg-surface-container-high border border-outline-variant text-label-sm font-label-sm text-on-surface font-semibold flex items-center gap-1 transition-colors" title="Close Preview" type="button"><span class="material-symbols-outlined text-[16px]">close</span><span>Close Preview [Esc]</span></button></div></div><div class="relative flex-1 bg-surface-dim/30 flex items-center justify-center overflow-hidden min-h-[360px] sm:min-h-[440px]"><img class="w-full h-full max-h-[55vh] object-contain" data-alt="Enlarged high resolution inspection photo of stainless steel turnstiles and emergency fire exit measuring tape indicating 1.4 meter width" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3O5--U726napfU5IgE_vIkmvS1pl1MagF_BuyMpuj4cGBbjvi5AckmUwEN-LwW5CQWjZ2NAKUYox4BzHshQRZtRqqwhBHU_22D8FiqQOz1CZ2mo9zvij3RW_LQUWDrZdfrpmn8ABobYFyxPIIu0T7iiB4kG_ytsfWhcXmR1frfY5xS_2JgfwmavQXiQXATd30EE6Z9ypQE7ZQQxhc6HPqgRInReg6JjqluSpKZX-60ojX_ZgpYEiIQoTDcWIjxFE4xYpFLfr9i7k"/><button class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-surface-container-lowest/90 backdrop-blur-sm border border-outline-variant text-on-surface hover:bg-surface-container shadow flex items-center justify-center transition-colors" title="Previous Photo" type="button"><span class="material-symbols-outlined text-[20px]">chevron_left</span></button><button class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-surface-container-lowest/90 backdrop-blur-sm border border-outline-variant text-on-surface hover:bg-surface-container shadow flex items-center justify-center transition-colors" title="Next Photo" type="button"><span class="material-symbols-outlined text-[20px]">chevron_right</span></button><div class="absolute bottom-3 left-3 bg-surface-container-lowest/95 backdrop-blur-sm border border-outline-variant px-3 py-1.5 rounded-lg shadow-sm max-w-md hidden sm:block"><div class="flex items-center gap-1.5 text-label-sm font-label-sm font-bold text-primary"><span class="material-symbols-outlined text-[16px]">straighten</span><span>Clearance Measurement: 1.40 Meters (+35cm Widening)</span></div><p class="text-[11px] text-on-surface-variant mt-0.5">Field Officer note: Yellow measurement tape calibrated and validated against AMC Fire Code Sec 12 standards.</p></div><div class="absolute bottom-3 right-3 bg-surface-container-lowest/90 backdrop-blur-sm border border-outline-variant px-2.5 py-1 rounded text-[11px] font-mono text-outline font-semibold">Photo 4 of 9</div></div><div class="px-5 py-3 border-t border-outline-variant bg-surface-container-lowest flex flex-col sm:flex-row items-center justify-between gap-3"><div class="flex items-center gap-2 text-body-sm font-body-sm text-on-surface-variant"><span class="w-2 h-2 rounded-full bg-secondary"></span><span>Compliance Status: <strong class="text-primary font-bold">Audit Review In Progress</strong></span><span class="text-outline hidden md:inline">•</span><span class="text-outline hidden md:inline text-[11px]">Inspector: Chintan Dave (Super Admin)</span></div><div class="flex items-center gap-2.5 w-full sm:w-auto justify-end"><button class="h-9 px-3 rounded bg-surface border border-outline-variant text-error hover:bg-error-container text-label-sm font-label-sm font-semibold transition-colors flex items-center gap-1" type="button"><span class="material-symbols-outlined text-[16px]">flag</span><span>Flag Defect</span></button><button class="h-9 px-4 rounded bg-primary-container hover:bg-primary text-on-primary font-bold text-label-sm font-label-sm transition-colors flex items-center gap-1.5 shadow-sm" type="button"><span class="material-symbols-outlined text-[16px]">task_alt</span><span>Mark as Verified (1.4m Compliant)</span></button></div></div></div></div></main>
+</div>
+</body></html>

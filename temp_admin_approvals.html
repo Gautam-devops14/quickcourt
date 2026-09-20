@@ -1,0 +1,556 @@
+
+<!-- Breadcrumbs and Action Header -->
+<div class="mb-6">
+<div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface-variant mb-1">
+<span>Admin Portal</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span>Verification &amp; Compliance</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-semibold">Facility Approvals</span>
+</div>
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<div>
+<h1 class="text-headline-xl font-headline-xl text-on-surface">Facility Approvals &amp; Verification Hub</h1>
+<p class="text-body-md font-body-md text-on-surface-variant mt-1 max-w-4xl">
+              Review sports arena compliance, AMC sports zoning verification, IoT turnstile inspection, and live marketplace onboarding across Ahmedabad, Gujarat.
+            </p>
+</div>
+<!-- Header Action Buttons -->
+<div class="flex items-center gap-3 shrink-0">
+<button class="h-11 px-4 bg-surface-container-lowest text-on-surface border border-outline-variant hover:border-outline hover:bg-surface-container-low rounded-xl text-label-lg font-label-lg flex items-center gap-2 shadow-sm transition-all">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Export AMC Dossier (CSV/PDF)</span>
+</button>
+<button class="h-11 px-5 bg-primary-container text-on-primary hover:bg-primary rounded-xl text-label-lg font-label-lg font-semibold flex items-center gap-2 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[18px]">person_check</span>
+<span>Assign Bulk Inspection</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Stat Metric Cards Row (4 Bento-Style Cards) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
+<!-- Card 1: Pending Verification -->
+<div class="bg-surface-container-lowest border border-amber-300 rounded-xl p-4 shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="absolute top-0 right-0 w-24 h-24 -mr-6 -mt-6 bg-amber-50 rounded-full pointer-events-none"></div>
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-amber-900">Pending Verification</span>
+<span class="bg-amber-100 text-amber-900 text-label-sm font-label-sm px-2 py-0.5 rounded-full font-bold">Action Req</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-headline-xl font-headline-xl text-amber-950 font-bold">3</span>
+<span class="text-label-md font-label-md font-semibold text-amber-800">Urgent</span>
+</div>
+</div>
+<div class="pt-3 border-t border-amber-100 text-body-sm font-body-sm text-on-surface-variant flex items-center justify-between mt-2">
+<span>SLA &lt; 4h turnaround</span>
+<span class="font-medium text-on-surface">2 New, 1 Resubmission</span>
+</div>
+</div>
+<!-- Card 2: Under Active Inspection -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant">Under Active Inspection</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">precision_manufacturing</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-headline-xl font-headline-xl text-on-surface font-bold">5</span>
+<span class="text-label-md font-label-md font-semibold text-secondary">Venues</span>
+</div>
+</div>
+<div class="pt-3 border-t border-outline-variant/60 text-body-sm font-body-sm text-on-surface-variant mt-2">
+<span>Physical lux and court surface audit in progress</span>
+</div>
+</div>
+<!-- Card 3: Approved This Month -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant">Approved This Month</span>
+<span class="material-symbols-outlined text-emerald-600 text-[20px]">verified</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-headline-xl font-headline-xl text-on-surface font-bold">18</span>
+<span class="text-label-md font-label-md font-semibold text-emerald-700">Venues</span>
+</div>
+</div>
+<div class="pt-3 border-t border-outline-variant/60 text-body-sm font-body-sm text-on-surface-variant mt-2">
+<span class="text-emerald-800 font-medium">100% compliant</span> with ASVSS 2024 regulations
+          </div>
+</div>
+<!-- Card 4: Rejected / Action Needed -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant">Rejected / Action Needed</span>
+<span class="material-symbols-outlined text-error text-[20px]">warning</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-headline-xl font-headline-xl text-error font-bold">2</span>
+<span class="text-label-md font-label-md font-semibold text-error">Venues</span>
+</div>
+</div>
+<div class="pt-3 border-t border-outline-variant/60 text-body-sm font-body-sm text-on-surface-variant mt-2">
+<span>Awaiting structural/fire safety resubmission</span>
+</div>
+</div>
+</div>
+<!-- Filter and Control Toolbar -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-3 mb-4 shadow-sm flex flex-col gap-3">
+<!-- Top Toolbar Row: Search and Tabs -->
+<div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
+<!-- Filter Tabs -->
+<div class="flex items-center gap-1 overflow-x-auto pb-1 lg:pb-0 scrollbar-none">
+<button class="px-3.5 py-1.5 rounded-lg text-label-md font-label-md bg-primary-container text-on-primary font-semibold shrink-0">
+              All Submissions (28)
+            </button>
+<button class="px-3.5 py-1.5 rounded-lg text-label-md font-label-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface shrink-0 font-medium transition-colors">
+              Pending Review (3)
+            </button>
+<button class="px-3.5 py-1.5 rounded-lg text-label-md font-label-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface shrink-0 font-medium transition-colors">
+              Approved (21)
+            </button>
+<button class="px-3.5 py-1.5 rounded-lg text-label-md font-label-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface shrink-0 font-medium transition-colors">
+              Rejected / Clarification (4)
+            </button>
+</div>
+<!-- Secondary Search Bar -->
+<div class="relative w-full lg:w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl pl-9 pr-3 py-1.5 text-body-sm font-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" placeholder="Filter by venue name, owner, locality (e.g. SG Highway, Thaltej)..." type="text"/>
+</div>
+</div>
+<!-- Bottom Toolbar Row: Specific Dropdown Filters & Actions -->
+<div class="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-outline-variant/60 text-body-sm font-body-sm">
+<div class="flex flex-wrap items-center gap-2">
+<!-- Filter: Sports -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-lowest border border-outline-variant rounded-xl pl-3 pr-8 py-1.5 text-label-md font-label-md text-on-surface focus:outline-none focus:border-primary-container cursor-pointer">
+<option>All Sports (Badminton, Pickleball, Turf, Tennis)</option>
+<option>Badminton BWF Standard</option>
+<option>Pickleball &amp; Padel</option>
+<option>Cricket Box Turf</option>
+<option>Clay Tennis Courts</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline text-[16px] pointer-events-none">expand_more</span>
+</div>
+<!-- Filter: Zone -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-lowest border border-outline-variant rounded-xl pl-3 pr-8 py-1.5 text-label-md font-label-md text-on-surface focus:outline-none focus:border-primary-container cursor-pointer">
+<option>Zone (West, North, Central)</option>
+<option>Ahmedabad Central Zone</option>
+<option>West Zone (SG Hwy / Thaltej)</option>
+<option>North Zone (Sabarmati / Ranip)</option>
+<option>South-West Zone (Prahlad Nagar)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline text-[16px] pointer-events-none">expand_more</span>
+</div>
+<!-- Sort By -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-lowest border border-outline-variant rounded-xl pl-3 pr-8 py-1.5 text-label-md font-label-md text-on-surface focus:outline-none focus:border-primary-container cursor-pointer">
+<option>Sort by: SLA Urgency</option>
+<option>Sort by: Submission Date (Newest)</option>
+<option>Sort by: Court Capacity</option>
+<option>Sort by: Verification Tier</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline text-[16px] pointer-events-none">expand_more</span>
+</div>
+</div>
+<button class="h-9 px-3 text-label-md font-label-md text-on-surface border border-outline-variant hover:bg-surface-container-low rounded-xl flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+<span>Download Compliance Summaries</span>
+</button>
+</div>
+</div>
+<!-- Comprehensive Facility Approvals Table -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden mb-4">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant bg-surface-container-low/60 text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">
+<th class="py-3 px-4">Facility</th>
+<th class="py-3 px-4">Facility Owner</th>
+<th class="py-3 px-4">Location</th>
+<th class="py-3 px-4">Sports &amp; Courts</th>
+<th class="py-3 px-4">Submitted / SLA</th>
+<th class="py-3 px-4">Status</th>
+<th class="py-3 px-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/60 text-body-sm font-body-sm">
+<!-- Row 1: East River Badminton & Box Arena (Pending Resubmission) -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-lg object-cover border border-outline-variant shrink-0" data-alt="Modern indoor badminton and box cricket arena in Ahmedabad, illuminated by anti-glare overhead high bay LED sports lights, crisp synthetic court markings, architectural steel girder roof, realistic clean athletics facility." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCeZH9eGc1qkIm21AdFVAK1sKQBxO22zrQ1rxy6zSGCgyOCQfhGWarzVO736czVPTY0uS5HMGN8lHZO9CxGbhkfJE7DJ0bA7TJ0u5ZxcF2sq4SZvT9y9uZbRStIZ7xu85s3vAgXcE4mMhfgPBPcwnCTuIZkcgstW1lv41dIIVvIF-VmkdxD2Ei1vPhLimkkuEH2eCFEq7Bq3P32O6O8I9NCpx_i77FyWBxffPYOSoHKbfnZxA-n7rcrrG1AIkAyaHhaXS0Wuv_N1k"/>
+<div>
+<div class="font-semibold text-on-surface flex items-center gap-1.5">
+<span>East River Badminton &amp; Box Arena</span>
+<span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-1.5 py-0.2 rounded">Tier-2</span>
+</div>
+<div class="text-[11px] text-on-surface-variant font-mono">APP-2024-GJ-8842</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Rajesh Varma</div>
+<div class="text-[11px] text-on-surface-variant">Patel Sports Ventures LLP</div>
+<div class="text-[11px] font-mono text-emerald-800 flex items-center gap-1">
+<span>24AAGCP9122M1ZM</span>
+<span class="material-symbols-outlined text-[12px]">check_circle</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Navrangpura, GJ</div>
+<div class="text-[11px] text-on-surface-variant font-mono">380009 • Central Zone</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-wrap gap-1 max-w-xs">
+<span class="bg-surface-container-low border border-outline-variant px-1.5 py-0.5 rounded text-[11px] font-medium text-on-surface">4 Badminton</span>
+<span class="bg-surface-container-low border border-outline-variant px-1.5 py-0.5 rounded text-[11px] font-medium text-on-surface">1 Box Cricket</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="text-[12px] text-on-surface">Today, 08:30 AM</div>
+<div class="inline-flex items-center gap-1 text-[11px] font-bold text-amber-800 bg-amber-50 px-1.5 py-0.5 rounded mt-0.5">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+<span>1h 45m left</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-amber-50 text-amber-900 border border-amber-300">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+                    Resubmitted - Action Needed
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="px-3 py-1.5 bg-primary-container text-on-primary hover:bg-primary rounded-lg text-label-md font-label-md font-semibold transition-colors">
+                      Review Corrections
+                    </button>
+<button class="p-1 text-on-surface-variant hover:text-on-surface rounded hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Karnavati Padel & Pickleball Club (Pending Initial Review) -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-lg object-cover border border-outline-variant shrink-0" data-alt="Outdoor championship pickleball and padel court complex with high-contrast acrylic blue and mint green surfacing, perimeter safety netting, pristine floodlit architectural sports complex under daylight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzuvqGYQU6CNs7-xCqy_Ci0RWtlhnttElzYTFeAQvn_NUNA-XJ5Hpxrl80X-egTQkO78FGyWCSOBqb4TxVcy6uZBDncpXGvfwNyZWyC7vlySkpKBR363Y6CZktlbj5v1G1qJyaNgHhh4DzSbsba1eXtIYTHqMmTWyWnzyj7LRLW17fG4wr79TakGPxVCY6u21-jZO3zMB1lSH6XrM4HZQ0XTmGyNzy325z_RyVMmNZHS45wEZxKJknp_xMGiIlQMQx6WehncvEnIc"/>
+<div>
+<div class="font-semibold text-on-surface flex items-center gap-1.5">
+<span>Karnavati Padel &amp; Pickleball Club</span>
+<span class="bg-blue-100 text-blue-800 text-[10px] font-bold px-1.5 py-0.2 rounded">Tier-1</span>
+</div>
+<div class="text-[11px] text-on-surface-variant font-mono">APP-2024-GJ-8843</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Dr. Mehul Trivedi</div>
+<div class="text-[11px] text-on-surface-variant">Karnavati Sports Pvt Ltd</div>
+<div class="text-[11px] font-mono text-emerald-800 flex items-center gap-1">
+<span>24AAACK7719L1Z8</span>
+<span class="material-symbols-outlined text-[12px]">check_circle</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Sindhu Bhavan Road, GJ</div>
+<div class="text-[11px] text-on-surface-variant font-mono">380054 • West Zone</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-wrap gap-1 max-w-xs">
+<span class="bg-surface-container-low border border-outline-variant px-1.5 py-0.5 rounded text-[11px] font-medium text-on-surface">6 Courts (Padel &amp; Pickleball)</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="text-[12px] text-on-surface">Today, 09:15 AM</div>
+<div class="inline-flex items-center gap-1 text-[11px] font-bold text-amber-800 bg-amber-50 px-1.5 py-0.5 rounded mt-0.5">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+<span>3h 10m left</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-amber-50 text-amber-900 border border-amber-300">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+                    Pending Initial Review
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="px-3 py-1.5 bg-primary-container text-on-primary hover:bg-primary rounded-lg text-label-md font-label-md font-semibold transition-colors">
+                      Review Application
+                    </button>
+<button class="p-1 text-on-surface-variant hover:text-on-surface rounded hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Sabarmati Multi-Turf & Clay Enclave (Field Audit Stage) -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-lg object-cover border border-outline-variant shrink-0" data-alt="Riverfront sports arena featuring red clay tennis courts beside lush green FIFA standard synthetic turf pitches, neat concrete pathways, Gujarat Sabarmati waterfront backdrop, bright afternoon sun." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3bLeHdD0Y8qz4IoE6FkMu9W9mzoC2AuNNX_w-bG3hvmHj1GWnmLVdzTDcLS2_aVdUNdxPXbs2B-g5edY3Pw_u257rpwxhpBJlScGaY2eCeVprIfzezdt28cSxZxuBTwtyBupuspVC0S6JlSuzzSYTdoDaUGYOpjSxCHh4fkjI9Rqrj1TbyUoPd80tssiGeWP6VRm-k3KDCID1VdMhYCsDtxWWxszNgPY2u87w0xBBSQLfb8dXrWpZxYcXha6Wv3SPkGl2Sgelbv8"/>
+<div>
+<div class="font-semibold text-on-surface flex items-center gap-1.5">
+<span>Sabarmati Multi-Turf &amp; Clay Enclave</span>
+<span class="bg-surface-container text-on-surface-variant text-[10px] font-bold px-1.5 py-0.2 rounded">Trust</span>
+</div>
+<div class="text-[11px] text-on-surface-variant font-mono">APP-2024-GJ-8790</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Hardik Shah</div>
+<div class="text-[11px] text-on-surface-variant">Riverfront Recreation Trust</div>
+<div class="text-[11px] font-mono text-emerald-800 flex items-center gap-1">
+<span>24AAATR4421P1ZT</span>
+<span class="material-symbols-outlined text-[12px]">check_circle</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Ranip Riverfront, GJ</div>
+<div class="text-[11px] text-on-surface-variant font-mono">382480 • North Zone</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-wrap gap-1 max-w-xs">
+<span class="bg-surface-container-low border border-outline-variant px-1.5 py-0.5 rounded text-[11px] font-medium text-on-surface">4 Tennis (Clay)</span>
+<span class="bg-surface-container-low border border-outline-variant px-1.5 py-0.5 rounded text-[11px] font-medium text-on-surface">2 Turfs (5v5)</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="text-[12px] text-on-surface">Yesterday, 04:40 PM</div>
+<div class="text-[11px] text-on-surface-variant mt-0.5">Auditor: N. Patel</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-sky-50 text-sky-800 border border-sky-200">
+<span class="w-1.5 h-1.5 rounded-full bg-sky-600 animate-pulse"></span>
+                    Under Field Audit
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="px-3 py-1.5 bg-surface-container-lowest text-on-surface border border-outline-variant hover:bg-surface-container-low rounded-lg text-label-md font-label-md font-semibold transition-colors">
+                      Review Field Notes
+                    </button>
+<button class="p-1 text-on-surface-variant hover:text-on-surface rounded hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Apex Badminton Academy (Approved & Live) -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-lg object-cover border border-outline-variant shrink-0" data-alt="Professional Olympic grade badminton academy in Ahmedabad with green synthetic PVC mats, clear white sideline markings, sleek digital scoreboards, modern spectator seating, warm architectural stadium lights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8RxsbRId5WiEWLBuexozKHOo9MPDBb1MaCLtrHPdHRu3v7szgz6OWp5csqTWL5hHVX0qT__uoswMtYLVO_uvYXgBy7X-KfkND2HiKUNGas_HwySVB386agy844-KCyJ6V5XKACs96YniPfntpr8Tv38KkVtKcAwhulpD_84xy3PAjuFIxp8WlW3M7xdBvm0FyFKcslHrPFezhAoKj76UwXQ5P4T8K_mFyPu1MQhZ92si1tDSMVAxMJ6lDmxV7SB9LoOKGRKhs2vI"/>
+<div>
+<div class="font-semibold text-on-surface flex items-center gap-1.5">
+<span>Apex Badminton Academy</span>
+<span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-1.5 py-0.2 rounded">BWF Grade</span>
+</div>
+<div class="text-[11px] text-on-surface-variant font-mono">APP-2024-GJ-8711</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Rajesh Varma</div>
+<div class="text-[11px] text-on-surface-variant">Patel Sports Ventures LLP</div>
+<div class="text-[11px] font-mono text-emerald-800 flex items-center gap-1">
+<span>24AAGCP9122M1ZM</span>
+<span class="material-symbols-outlined text-[12px]">check_circle</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">SG Highway, GJ</div>
+<div class="text-[11px] text-on-surface-variant font-mono">380054 • West Zone</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-wrap gap-1 max-w-xs">
+<span class="bg-surface-container-low border border-outline-variant px-1.5 py-0.5 rounded text-[11px] font-medium text-on-surface">8 BWF Courts</span>
+<span class="bg-surface-container-low border border-outline-variant px-1.5 py-0.5 rounded text-[11px] font-medium text-on-surface">2 Pickleball</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="text-[12px] text-on-surface">Oct 24, 2024</div>
+<div class="text-[11px] text-emerald-800 mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">sensors</span>
+<span>Turnstile Synced</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-emerald-50 text-emerald-800 border border-emerald-300">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                    Approved &amp; Active
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="px-3 py-1.5 bg-surface-container-lowest text-on-surface border border-outline-variant hover:bg-surface-container-low rounded-lg text-label-md font-label-md font-semibold transition-colors">
+                      View Dossier
+                    </button>
+<button class="p-1 text-on-surface-variant hover:text-on-surface rounded hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Vanguard Multi-Sport Arena & Turf (Approved & Live) -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-lg object-cover border border-outline-variant shrink-0" data-alt="Commercial sports facility at night with vivid bright halogen lights, lush artificial turf for 7-a-side football, blue hard-surface tennis courts, enclosed perimeter netting, Ahmedabad cityscape." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAr4SotXkdBj9wFvXjzZ7D4630pPQh4qxXpBtJi8vBVqAa3O4Jdiqb_xqd1xKPKTkkv-H2j7o31fD4Zsp3AC7JuoJmP_MlkACamKnuYpcM4uRb48eE96cDPjBmBxuWbuc064AyqiU510MYBpG69LBYweEBU9sX9iGIAOja4CJB8KpoL4ywwAKwaznhzBAEEG5wO55lwqL0KbW5EtYoGiZ09suIDgUaQMIwQW2uOwfkdsrpbvOWf8IecQ1DfMaaczkRg1q1yDhGdQqg"/>
+<div>
+<div class="font-semibold text-on-surface flex items-center gap-1.5">
+<span>Vanguard Multi-Sport Arena &amp; Turf</span>
+<span class="bg-blue-100 text-blue-800 text-[10px] font-bold px-1.5 py-0.2 rounded">Tier-1</span>
+</div>
+<div class="text-[11px] text-on-surface-variant font-mono">APP-2024-GJ-8699</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Ankit Mehta</div>
+<div class="text-[11px] text-on-surface-variant">Vanguard Sports Corp</div>
+<div class="text-[11px] font-mono text-emerald-800 flex items-center gap-1">
+<span>24AABCV3921K1ZZ</span>
+<span class="material-symbols-outlined text-[12px]">check_circle</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Bodakdev, GJ</div>
+<div class="text-[11px] text-on-surface-variant font-mono">380059 • West Zone</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-wrap gap-1 max-w-xs">
+<span class="bg-surface-container-low border border-outline-variant px-1.5 py-0.5 rounded text-[11px] font-medium text-on-surface">2 Pitches (Turf)</span>
+<span class="bg-surface-container-low border border-outline-variant px-1.5 py-0.5 rounded text-[11px] font-medium text-on-surface">2 Tennis</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="text-[12px] text-on-surface">Oct 21, 2024</div>
+<div class="text-[11px] text-emerald-800 mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">sensors</span>
+<span>Turnstile Synced</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-emerald-50 text-emerald-800 border border-emerald-300">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                    Approved &amp; Active
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="px-3 py-1.5 bg-surface-container-lowest text-on-surface border border-outline-variant hover:bg-surface-container-low rounded-lg text-label-md font-label-md font-semibold transition-colors">
+                      View Dossier
+                    </button>
+<button class="p-1 text-on-surface-variant hover:text-on-surface rounded hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6: Prahlad Nagar Box Cricket & Turf (Rejected) -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-lg object-cover border border-outline-variant shrink-0" data-alt="Compact urban rooftop box cricket cage with black boundary netting, green synthetic turf, industrial flood lights, clean minimalist framing, daytime sports venue view." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3Qzxgip6FhDl0BWRq04MZJme-9y1pHjGTKJY-o8J2YGcXM6BnrKPhMhuXmO833toKVJPqblmtA-UTRkp32A3IXPHaS7CBIDm83N9TnFsELKpfbzN8p8ZDCzB4zjvX0A9pMS9Enl-Ac1JBWvyQGqGpDbonLYKR2X5IMMprQO8OzK9797n8HOmvDoBV8gU1lv1vH8FWYYImiYz7NaBl09VSB3u2McjtvseHl70v9cnGv8X8GxashR9V_NxJKpBZGlCq2JBXegis34g"/>
+<div>
+<div class="font-semibold text-on-surface flex items-center gap-1.5">
+<span>Prahlad Nagar Box Cricket &amp; Turf</span>
+<span class="bg-rose-100 text-rose-800 text-[10px] font-bold px-1.5 py-0.2 rounded">Tier-3</span>
+</div>
+<div class="text-[11px] text-on-surface-variant font-mono">APP-2024-GJ-8650</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Vikram Joshi</div>
+<div class="text-[11px] text-on-surface-variant">City Playgrounds LLP</div>
+<div class="text-[11px] font-mono text-outline flex items-center gap-1">
+<span>24AAFCY1984J1ZG</span>
+<span class="material-symbols-outlined text-[12px] text-error">error</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Prahlad Nagar Ext, GJ</div>
+<div class="text-[11px] text-on-surface-variant font-mono">380015 • South-West</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-wrap gap-1 max-w-xs">
+<span class="bg-surface-container-low border border-outline-variant px-1.5 py-0.5 rounded text-[11px] font-medium text-on-surface">2 Turfs (Box Cricket)</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="text-[12px] text-on-surface">Oct 19, 2024</div>
+<div class="text-[11px] text-error font-medium mt-0.5">NOC Fire Expired</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-rose-50 text-rose-800 border border-rose-300">
+<span class="w-1.5 h-1.5 rounded-full bg-rose-600"></span>
+                    Rejected (Fire Safety NOC Missing)
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="px-3 py-1.5 bg-rose-50 text-rose-800 border border-rose-200 hover:bg-rose-100 rounded-lg text-label-md font-label-md font-semibold transition-colors">
+                      View Rejection
+                    </button>
+<button class="p-1 text-on-surface-variant hover:text-on-surface rounded hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer Pagination Bar -->
+<div class="px-4 py-3 border-t border-outline-variant/60 flex flex-col sm:flex-row items-center justify-between gap-3 text-body-sm font-body-sm text-on-surface-variant bg-surface-container-lowest">
+<div>
+            Showing <strong class="text-on-surface font-semibold">1 to 6</strong> of <strong class="text-on-surface font-semibold">28</strong> facilities
+          </div>
+<!-- Pagination Buttons -->
+<div class="flex items-center gap-1">
+<button class="w-8 h-8 rounded-lg border border-outline-variant flex items-center justify-center hover:bg-surface-container-low disabled:opacity-40" disabled="">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary text-on-primary font-semibold text-label-sm font-label-sm flex items-center justify-center">1</button>
+<button class="w-8 h-8 rounded-lg border border-outline-variant hover:bg-surface-container-low text-label-sm font-label-sm flex items-center justify-center">2</button>
+<button class="w-8 h-8 rounded-lg border border-outline-variant hover:bg-surface-container-low text-label-sm font-label-sm flex items-center justify-center">3</button>
+<button class="w-8 h-8 rounded-lg border border-outline-variant hover:bg-surface-container-low text-label-sm font-label-sm flex items-center justify-center">4</button>
+<button class="w-8 h-8 rounded-lg border border-outline-variant hover:bg-surface-container-low text-label-sm font-label-sm flex items-center justify-center">5</button>
+<button class="w-8 h-8 rounded-lg border border-outline-variant flex items-center justify-center hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- AMC Municipal Compliance Guideline Banner -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[24px] shrink-0 mt-0.5">policy</span>
+<div>
+<h2 class="text-headline-sm font-headline-sm text-on-surface font-semibold">AMC Sports Facility &amp; Safety Compliance Standard (ASVSS-2024)</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">
+              All public-access sports complexes within AMC limits must uphold emergency ingress clearance, fire brigade NOC certificates, and automated IoT turnstile access for municipal athletic tracking.
+            </p>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<div class="text-right hidden sm:block">
+<div class="text-[11px] text-on-surface-variant uppercase tracking-wider font-semibold">City Ops Desk</div>
+<div class="text-label-md font-label-md font-mono text-primary font-bold">+91 (079) 2555-SPORTS</div>
+</div>
+<button class="px-3.5 py-2 bg-surface-container-lowest border border-outline-variant hover:bg-surface-container text-on-surface rounded-xl text-label-md font-label-md font-semibold transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">support_agent</span>
+<span>Contact City Ops</span>
+</button>
+</div>
+</div>

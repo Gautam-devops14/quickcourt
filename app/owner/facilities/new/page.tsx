@@ -1,0 +1,903 @@
+"use client";
+import { useState } from 'react';
+import { useStore } from '@/contexts/StoreContext';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+
+interface NewCourtForm {
+  id: string;
+  name: string;
+  sport: string;
+  surface: string;
+  status: 'ACTIVE' | 'MAINTENANCE';
+}
+
+const STEPS = [
+  { step: 1, title: 'Facility Details', desc: 'Identity & Address' },
+  { step: 2, title: 'Courts', desc: 'Court Inventory' },
+  { step: 3, title: 'Pricing', desc: 'Day & Night Tariffs' },
+  { step: 4, title: 'Operating Hours', desc: 'Hours & Constraints' },
+  { step: 5, title: 'Documents', desc: 'AMC & Fire NOC' },
+  { step: 6, title: 'Review & Submit', desc: 'Verification' },
+];
+
+export default function AddFacilityPage() {
+  const { addFacility, addCourt, currentUser } = useStore();
+  const router = useRouter();
+
+  const [currentStep, setCurrentStep] = useState<number>(1);
+  const [error, setError] = useState('');
+
+  // Step 1: Facility Details
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [location, setLocation] = useState('');
+  const [contactPhone, setContactPhone] = useState('');
+  const [contactEmail, setContactEmail] = useState('');
+  const [sports, setSports] = useState<string[]>([]);
+
+  // Step 2: Courts (Starts with NO courts)
+  const [courtsList, setCourtsList] = useState<NewCourtForm[]>([]);
+  const [newCourtName, setNewCourtName] = useState('');
+  const [newCourtSport, setNewCourtSport] = useState('');
+  const [newCourtSurface, setNewCourtSurface] = useState('');
+
+  // Step 3: Pricing (Starts unconfigured - must be explicitly entered)
+  const [weekdayDayPrice, setWeekdayDayPrice] = useState<number | ''>('');
+  const [weekdayNightPrice, setWeekdayNightPrice] = useState<number | ''>('');
+  const [weekendDayPrice, setWeekendDayPrice] = useState<number | ''>('');
+  const [weekendNightPrice, setWeekendNightPrice] = useState<number | ''>('');
+
+  // Step 4: Operating Hours & Duration Constraints
+  const [is24Hours, setIs24Hours] = useState<boolean>(false);
+  const [openTime, setOpenTime] = useState<string>('06:00');
+  const [closeTime, setCloseTime] = useState<string>('23:00');
+  const [slotDuration, setSlotDuration] = useState<number>(60);
+  const [maxBookingDuration, setMaxBookingDuration] = useState<number>(2);
+
+  // Step 5: Documents (Starts with NO documents)
+  const [documents, setDocuments] = useState<{ name: string; type: string; uploadedAt: string }[]>([]);
+  const [newDocType, setNewDocType] = useState('AMC Sports License');
+
+  const sportOptions = [
+    { id: 'Badminton', icon: 'sports_tennis' },
+    { id: 'Box Cricket', icon: 'sports_cricket' },
+    { id: 'Football 5v5', icon: 'sports_soccer' },
+    { id: 'Pickleball', icon: 'sports_tennis' },
+    { id: 'Tennis', icon: 'sports_tennis' },
+    { id: 'Table Tennis', icon: 'sports_esports' },
+  ];
+
+  const handleToggleSport = (sport: string) => {
+    setSports(prev => {
+      if (prev.includes(sport)) {
+        if (prev.length === 1) return prev; // Keep at least one
+        return prev.filter(s => s !== sport);
+      }
+      return [...prev, sport];
+    });
+  };
+
+  const handleAddCourt = () => {
+    if (!newCourtName.trim()) return;
+    setCourtsList(prev => [
+      ...prev,
+      {
+        id: String(Date.now()),
+        name: newCourtName.trim(),
+        sport: newCourtSport,
+        surface: newCourtSurface,
+        status: 'ACTIVE'
+      }
+    ]);
+    setNewCourtName('');
+  };
+
+  const handleRemoveCourt = (id: string) => {
+    if (courtsList.length <= 1) {
+      alert('At least one court is required for your facility.');
+      return;
+    }
+    setCourtsList(prev => prev.filter(c => c.id !== id));
+  };
+
+  const handleToggleCourtStatus = (id: string) => {
+    setCourtsList(prev => prev.map(c => c.id === id ? { ...c, status: c.status === 'ACTIVE' ? 'MAINTENANCE' : 'ACTIVE' } : c));
+  };
+
+  const handleAddDoc = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      setDocuments(prev => [
+        ...prev,
+        {
+          name: file.name,
+          type: newDocType,
+          uploadedAt: 'Just now'
+        }
+      ]);
+    }
+  };
+
+  const handleRemoveDoc = (index: number) => {
+    setDocuments(prev => prev.filter((_, i) => i !== index));
+  };
+
+  // Navigation validations
+  const validateStep = (step: number) => {
+    setError('');
+    if (step === 1) {
+      if (!name.trim()) {
+        setError('Please enter a registered facility name.');
+        return false;
+      }
+      if (!location.trim()) {
+        setError('Please specify the full facility address in Ahmedabad.');
+        return false;
+      }
+      if (sports.length === 0) {
+        setError('Select at least one sport discipline.');
+        return false;
+      }
+    }
+    if (step === 2) {
+      if (courtsList.length === 0) {
+        setError('Please add at least one court.');
+        return false;
+      }
+    }
+    if (step === 3) {
+      if (!weekdayDayPrice || !weekdayNightPrice || !weekendDayPrice || !weekendNightPrice ||
+          Number(weekdayDayPrice) <= 0 || Number(weekdayNightPrice) <= 0 || 
+          Number(weekendDayPrice) <= 0 || Number(weekendNightPrice) <= 0) {
+        setError('Please specify valid pricing (> ₹0) for all day/night segments.');
+        return false;
+      }
+    }
+    return true;
+  };
+
+  const handleNext = () => {
+    if (validateStep(currentStep)) {
+      setCurrentStep(prev => Math.min(prev + 1, 6));
+    }
+  };
+
+  const handleBack = () => {
+    setError('');
+    setCurrentStep(prev => Math.max(prev - 1, 1));
+  };
+
+  const handleSaveDraft = () => {
+    if (!name.trim()) {
+      setError('Facility name is required to save a draft.');
+      return;
+    }
+    const createdFac = addFacility({
+      ownerId: currentUser?.id ?? 'o1',
+      name: name.trim(),
+      location: location.trim(),
+      sports,
+      description,
+      status: 'DRAFT',
+      openTime: is24Hours ? '00:00' : openTime,
+      closeTime: is24Hours ? '23:59' : closeTime,
+      is24Hours,
+      slotDuration,
+      maxBookingDuration,
+      documents: documents.map(d => ({ name: d.name, url: '#', uploadedAt: d.uploadedAt, type: d.type, status: 'ATTACHED' }))
+    });
+
+    courtsList.forEach(c => {
+      addCourt({
+        facilityId: createdFac.id,
+        name: c.name,
+        sport: c.sport,
+        pricePerHour: Number(weekdayDayPrice || 500),
+        weekdayDayPrice: Number(weekdayDayPrice || 500),
+        weekdayNightPrice: Number(weekdayNightPrice || 650),
+        weekendDayPrice: Number(weekendDayPrice || 600),
+        weekendNightPrice: Number(weekendNightPrice || 750),
+        status: c.status,
+        openTime: is24Hours ? '00:00' : openTime,
+        closeTime: is24Hours ? '23:59' : closeTime,
+        is24Hours
+      });
+    });
+
+    router.push('/owner/facilities');
+  };
+
+  const handleSubmitForVerification = () => {
+    if (!validateStep(1) || !validateStep(2) || !validateStep(3)) {
+      return;
+    }
+
+    const createdFac = addFacility({
+      ownerId: currentUser?.id ?? 'o1',
+      name: name.trim(),
+      location: location.trim(),
+      sports,
+      description,
+      status: 'PENDING',
+      openTime: is24Hours ? '00:00' : openTime,
+      closeTime: is24Hours ? '23:59' : closeTime,
+      is24Hours,
+      slotDuration,
+      maxBookingDuration,
+      documents: documents.map(d => ({ name: d.name, url: '#', uploadedAt: d.uploadedAt, type: d.type, status: 'ATTACHED' }))
+    });
+
+    courtsList.forEach(c => {
+      addCourt({
+        facilityId: createdFac.id,
+        name: c.name,
+        sport: c.sport,
+        pricePerHour: Number(weekdayDayPrice),
+        weekdayDayPrice: Number(weekdayDayPrice),
+        weekdayNightPrice: Number(weekdayNightPrice),
+        weekendDayPrice: Number(weekendDayPrice),
+        weekendNightPrice: Number(weekendNightPrice),
+        status: c.status,
+        openTime: is24Hours ? '00:00' : openTime,
+        closeTime: is24Hours ? '23:59' : closeTime,
+        is24Hours
+      });
+    });
+
+    router.push(`/owner/facilities/${createdFac.id}/approval`);
+  };
+
+  return (
+    <div className="max-w-5xl mx-auto space-y-6 pb-16">
+      {/* Top Header */}
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-outline-variant/60">
+        <div>
+          <div className="flex items-center gap-3">
+            <h1 className="font-headline-xl text-headline-xl text-on-surface font-bold tracking-tight">Onboard New Sports Facility</h1>
+            <span className="bg-primary/10 text-primary font-label-sm text-label-sm px-3 py-1 rounded-full border border-primary/20 font-bold">
+              Step {currentStep} of 6
+            </span>
+          </div>
+          <p className="text-on-surface-variant font-body-md text-body-md mt-1">
+            Complete the 6-step verification workflow to list your courts on QuickCourt Ahmedabad.
+          </p>
+        </div>
+        <div className="flex items-center gap-3 shrink-0">
+          <button 
+            type="button"
+            onClick={handleSaveDraft} 
+            className="h-11 px-4 rounded-xl border border-outline-variant text-on-surface font-label-lg text-label-lg bg-surface-container-lowest hover:bg-surface-container-low transition-colors flex items-center gap-2"
+          >
+            <span className="material-symbols-outlined text-lg">save</span>
+            Save as Draft
+          </button>
+          <Link 
+            href="/owner/facilities" 
+            className="h-11 px-4 rounded-xl border border-outline-variant text-on-surface-variant hover:text-on-surface font-label-lg text-label-lg bg-surface-container-lowest hover:bg-surface-container-low transition-colors flex items-center gap-1.5"
+          >
+            <span className="material-symbols-outlined text-lg">close</span>
+            Exit
+          </Link>
+        </div>
+      </div>
+
+      {/* Step Tracker Indicator */}
+      <div className="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-sm overflow-x-auto">
+        <div className="flex items-center justify-between min-w-[620px] gap-2">
+          {STEPS.map((s) => {
+            const isCurrent = currentStep === s.step;
+            const isCompleted = currentStep > s.step;
+            return (
+              <button
+                key={s.step}
+                type="button"
+                onClick={() => {
+                  if (s.step < currentStep || validateStep(currentStep)) {
+                    setCurrentStep(s.step);
+                  }
+                }}
+                className={`flex items-center gap-2.5 p-2 rounded-lg transition-all text-left ${
+                  isCurrent 
+                    ? 'bg-primary/10 border border-primary/30 text-primary' 
+                    : isCompleted 
+                    ? 'text-on-surface hover:bg-surface-container-low' 
+                    : 'text-on-surface-variant/60 cursor-not-allowed'
+                }`}
+              >
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shrink-0 ${
+                  isCurrent 
+                    ? 'bg-primary text-on-primary' 
+                    : isCompleted 
+                    ? 'bg-secondary-container text-secondary' 
+                    : 'bg-surface-container-high text-on-surface-variant'
+                }`}>
+                  {isCompleted ? <span className="material-symbols-outlined text-base">check</span> : s.step}
+                </div>
+                <div className="hidden sm:block">
+                  <span className="text-xs font-bold block leading-tight">{s.title}</span>
+                  <span className="text-[10px] text-on-surface-variant block">{s.desc}</span>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {error && (
+        <div className="p-4 bg-error-container text-on-error-container rounded-xl flex items-center gap-2.5 border border-error/30 text-sm">
+          <span className="material-symbols-outlined text-error">warning</span>
+          <span>{error}</span>
+        </div>
+      )}
+
+      {/* STEP 1: FACILITY DETAILS */}
+      {currentStep === 1 && (
+        <div className="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 sm:p-8 space-y-6 shadow-sm">
+          <div className="border-b border-outline-variant pb-4">
+            <h3 className="text-headline-md font-bold text-on-surface flex items-center gap-2">
+              <span className="material-symbols-outlined text-primary">domain</span>
+              Step 1: Facility Identity & Location
+            </h3>
+            <p className="text-body-sm text-on-surface-variant mt-0.5">Define your arena title, street address in Ahmedabad, and supported sports verticals.</p>
+          </div>
+
+          <div className="space-y-4">
+            <div>
+              <label className="text-label-md font-bold text-on-surface block mb-1.5">
+                Registered Arena / Facility Name <span className="text-error">*</span>
+              </label>
+              <input
+                value={name}
+                onChange={e => setName(e.target.value)}
+                placeholder="e.g. Apex Badminton & MultiSport Hub"
+                className="w-full bg-surface-container-low border border-outline-variant rounded-xl px-4 py-3 text-body-md text-on-surface focus:outline-none focus:border-primary"
+              />
+            </div>
+
+            <div>
+              <label className="text-label-md font-bold text-on-surface block mb-1.5">
+                Street Address / Landmark (Ahmedabad) <span className="text-error">*</span>
+              </label>
+              <input
+                value={location}
+                onChange={e => setLocation(e.target.value)}
+                placeholder="e.g. Behind Iscon Mega Mall, SG Highway, Ahmedabad, Gujarat"
+                className="w-full bg-surface-container-low border border-outline-variant rounded-xl px-4 py-3 text-body-md text-on-surface focus:outline-none focus:border-primary"
+              />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="text-label-md font-bold text-on-surface block mb-1.5">Desk Phone / WhatsApp</label>
+                <input
+                  value={contactPhone}
+                  onChange={e => setContactPhone(e.target.value)}
+                  className="w-full bg-surface-container-low border border-outline-variant rounded-xl px-4 py-2.5 text-body-md text-on-surface focus:outline-none focus:border-primary"
+                />
+              </div>
+              <div>
+                <label className="text-label-md font-bold text-on-surface block mb-1.5">Official Operations Email</label>
+                <input
+                  value={contactEmail}
+                  onChange={e => setContactEmail(e.target.value)}
+                  className="w-full bg-surface-container-low border border-outline-variant rounded-xl px-4 py-2.5 text-body-md text-on-surface focus:outline-none focus:border-primary"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="text-label-md font-bold text-on-surface block mb-1.5">Facility Description & Highlights</label>
+              <textarea
+                value={description}
+                onChange={e => setDescription(e.target.value)}
+                rows={3}
+                placeholder="State-of-the-art sports arena featuring BWF-approved synthetic mats, LED competition lighting, player locker rooms, and ample parking."
+                className="w-full bg-surface-container-low border border-outline-variant rounded-xl p-3.5 text-body-md text-on-surface focus:outline-none focus:border-primary resize-none"
+              />
+            </div>
+
+            <div>
+              <label className="text-label-md font-bold text-on-surface block mb-2">
+                Available Sports Disciplines <span className="text-error">*</span>
+              </label>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+                {sportOptions.map(sport => {
+                  const isSelected = sports.includes(sport.id);
+                  return (
+                    <button
+                      key={sport.id}
+                      type="button"
+                      onClick={() => handleToggleSport(sport.id)}
+                      className={`p-3 rounded-xl border-2 text-center transition-all flex flex-col items-center justify-center gap-1.5 ${
+                        isSelected 
+                          ? 'border-primary bg-primary/10 text-primary font-bold shadow-sm' 
+                          : 'border-outline-variant bg-surface-container-low hover:border-outline text-on-surface-variant'
+                      }`}
+                    >
+                      <span className="material-symbols-outlined text-2xl">{sport.icon}</span>
+                      <span className="text-xs">{sport.id}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* STEP 2: COURTS INVENTORY */}
+      {currentStep === 2 && (
+        <div className="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 sm:p-8 space-y-6 shadow-sm">
+          <div className="border-b border-outline-variant pb-4">
+            <h3 className="text-headline-md font-bold text-on-surface flex items-center gap-2">
+              <span className="material-symbols-outlined text-primary">stadium</span>
+              Step 2: Courts & Play Areas
+            </h3>
+            <p className="text-body-sm text-on-surface-variant mt-0.5">List each court or turf unit. You can toggle courts Active or Offline for Maintenance.</p>
+          </div>
+
+          {/* Add Court Subform */}
+          <div className="p-4 bg-surface-container-low rounded-xl border border-outline-variant space-y-3">
+            <span className="text-xs font-bold uppercase tracking-wider text-outline block">Add Court / Turf Unit</span>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <input
+                value={newCourtName}
+                onChange={e => setNewCourtName(e.target.value)}
+                placeholder="e.g. Court 3 (Glass Enclosed)"
+                className="bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2 text-sm text-on-surface"
+              />
+              <select
+                value={newCourtSport}
+                onChange={e => setNewCourtSport(e.target.value)}
+                className="bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2 text-sm text-on-surface"
+              >
+                {sports.map(s => <option key={s} value={s}>{s}</option>)}
+              </select>
+              <div className="flex gap-2">
+                <input
+                  value={newCourtSurface}
+                  onChange={e => setNewCourtSurface(e.target.value)}
+                  placeholder="Surface (Synthetic/Wood/Turf)"
+                  className="bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2 text-sm text-on-surface flex-1"
+                />
+                <button
+                  type="button"
+                  onClick={handleAddCourt}
+                  className="bg-primary text-on-primary px-4 py-2 rounded-lg font-bold text-xs flex items-center gap-1 hover:bg-primary-hover shrink-0"
+                >
+                  <span className="material-symbols-outlined text-sm">add</span> Add
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Current Courts List */}
+          <div className="space-y-3">
+            <h4 className="text-sm font-bold text-on-surface">Configured Courts ({courtsList.length})</h4>
+            {courtsList.length === 0 ? (
+              <div className="p-8 text-center bg-surface-container-low/40 rounded-xl border border-dashed border-outline-variant text-on-surface-variant space-y-2">
+                <span className="material-symbols-outlined text-4xl text-outline">sports_tennis</span>
+                <p className="text-sm font-semibold text-on-surface">No courts added yet</p>
+                <p className="text-xs text-on-surface-variant max-w-sm mx-auto">
+                  Use the subform above to configure your facility courts or turf zones. At least one court is required before submission.
+                </p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {courtsList.map(court => (
+                  <div key={court.id} className="p-4 rounded-xl border border-outline-variant bg-surface flex items-center justify-between gap-3">
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <h5 className="font-bold text-on-surface text-sm">{court.name}</h5>
+                        <span className="text-[10px] px-2 py-0.5 rounded bg-primary/10 text-primary font-bold">{court.sport}</span>
+                      </div>
+                      <p className="text-xs text-on-surface-variant mt-0.5">{court.surface}</p>
+                      <div className="mt-2 flex items-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() => handleToggleCourtStatus(court.id)}
+                          className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full border flex items-center gap-1 transition-colors ${
+                            court.status === 'ACTIVE'
+                              ? 'bg-emerald-50 text-emerald-800 border-emerald-300 hover:bg-emerald-100'
+                              : 'bg-amber-50 text-amber-800 border-amber-300 hover:bg-amber-100'
+                          }`}
+                        >
+                          <span className={`w-1.5 h-1.5 rounded-full ${court.status === 'ACTIVE' ? 'bg-emerald-500' : 'bg-amber-500'}`}></span>
+                          {court.status === 'ACTIVE' ? 'Live / Available for Booking' : 'Under Maintenance (Offline)'}
+                        </button>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveCourt(court.id)}
+                      className="p-1.5 text-on-surface-variant hover:text-error rounded-lg hover:bg-error-container/20 transition-colors"
+                      title="Remove Court"
+                    >
+                      <span className="material-symbols-outlined text-lg">delete</span>
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* STEP 3: DIFFERENTIAL PRICING */}
+      {currentStep === 3 && (
+        <div className="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 sm:p-8 space-y-6 shadow-sm">
+          <div className="border-b border-outline-variant pb-4">
+            <h3 className="text-headline-md font-bold text-on-surface flex items-center gap-2">
+              <span className="material-symbols-outlined text-primary">payments</span>
+              Step 3: Differential Tariff Matrix
+            </h3>
+            <p className="text-body-sm text-on-surface-variant mt-0.5">Configure transparent Day vs Night (Lighted) and Weekday vs Weekend pricing for all courts.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Weekdays */}
+            <div className="p-5 rounded-xl border border-outline-variant bg-surface-container-low space-y-4">
+              <div className="flex items-center justify-between border-b border-outline-variant pb-2">
+                <span className="font-bold text-sm text-on-surface flex items-center gap-1.5">
+                  <span className="material-symbols-outlined text-primary text-base">calendar_view_week</span>
+                  Weekdays (Monday – Friday)
+                </span>
+                <span className="text-[11px] font-semibold text-on-surface-variant">Base Tariff</span>
+              </div>
+              <div>
+                <label className="text-xs font-bold text-on-surface block mb-1">Daytime Rate (06:00 – 18:00)</label>
+                <div className="relative">
+                  <span className="absolute left-3 top-2.5 text-on-surface-variant font-bold text-sm">₹</span>
+                  <input
+                    type="number"
+                    value={weekdayDayPrice}
+                    onChange={e => setWeekdayDayPrice(Number(e.target.value))}
+                    className="w-full bg-surface-container-lowest border border-outline-variant rounded-lg pl-8 pr-12 py-2 text-sm font-bold text-on-surface"
+                  />
+                  <span className="absolute right-3 top-2.5 text-xs text-on-surface-variant font-semibold">/ hour</span>
+                </div>
+              </div>
+              <div>
+                <label className="text-xs font-bold text-on-surface block mb-1">Night Floodlight Rate (18:00 – 23:00)</label>
+                <div className="relative">
+                  <span className="absolute left-3 top-2.5 text-on-surface-variant font-bold text-sm">₹</span>
+                  <input
+                    type="number"
+                    value={weekdayNightPrice}
+                    onChange={e => setWeekdayNightPrice(Number(e.target.value))}
+                    className="w-full bg-surface-container-lowest border border-outline-variant rounded-lg pl-8 pr-12 py-2 text-sm font-bold text-on-surface"
+                  />
+                  <span className="absolute right-3 top-2.5 text-xs text-on-surface-variant font-semibold">/ hour</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Weekends */}
+            <div className="p-5 rounded-xl border border-outline-variant bg-surface-container-low space-y-4">
+              <div className="flex items-center justify-between border-b border-outline-variant pb-2">
+                <span className="font-bold text-sm text-on-surface flex items-center gap-1.5">
+                  <span className="material-symbols-outlined text-primary text-base">event_available</span>
+                  Weekends (Saturday – Sunday)
+                </span>
+                <span className="text-[11px] font-bold text-secondary">Peak Hours</span>
+              </div>
+              <div>
+                <label className="text-xs font-bold text-on-surface block mb-1">Weekend Daytime Rate (06:00 – 18:00)</label>
+                <div className="relative">
+                  <span className="absolute left-3 top-2.5 text-on-surface-variant font-bold text-sm">₹</span>
+                  <input
+                    type="number"
+                    value={weekendDayPrice}
+                    onChange={e => setWeekendDayPrice(Number(e.target.value))}
+                    className="w-full bg-surface-container-lowest border border-outline-variant rounded-lg pl-8 pr-12 py-2 text-sm font-bold text-on-surface"
+                  />
+                  <span className="absolute right-3 top-2.5 text-xs text-on-surface-variant font-semibold">/ hour</span>
+                </div>
+              </div>
+              <div>
+                <label className="text-xs font-bold text-on-surface block mb-1">Weekend Prime Night (18:00 – 23:00)</label>
+                <div className="relative">
+                  <span className="absolute left-3 top-2.5 text-on-surface-variant font-bold text-sm">₹</span>
+                  <input
+                    type="number"
+                    value={weekendNightPrice}
+                    onChange={e => setWeekendNightPrice(Number(e.target.value))}
+                    className="w-full bg-surface-container-lowest border border-outline-variant rounded-lg pl-8 pr-12 py-2 text-sm font-bold text-on-surface"
+                  />
+                  <span className="absolute right-3 top-2.5 text-xs text-on-surface-variant font-semibold">/ hour</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* STEP 4: OPERATING HOURS & DURATION CONSTRAINTS */}
+      {currentStep === 4 && (
+        <div className="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 sm:p-8 space-y-6 shadow-sm">
+          <div className="border-b border-outline-variant pb-4">
+            <h3 className="text-headline-md font-bold text-on-surface flex items-center gap-2">
+              <span className="material-symbols-outlined text-primary">schedule</span>
+              Step 4: Operating Hours & Duration Rules
+            </h3>
+            <p className="text-body-sm text-on-surface-variant mt-0.5">Control facility availability, slot interval sizes, and maximum booking durations.</p>
+          </div>
+
+          {/* 24 Hours Toggle */}
+          <div className="p-4 rounded-xl border border-outline-variant bg-surface flex items-center justify-between">
+            <div>
+              <h4 className="font-bold text-sm text-on-surface">24-Hour Continuous Operation</h4>
+              <p className="text-xs text-on-surface-variant">Keep courts bookable across all 24 hours (box cricket / midnight turfs).</p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setIs24Hours(!is24Hours)}
+              className={`w-12 h-7 rounded-full p-1 transition-colors ${is24Hours ? 'bg-primary' : 'bg-surface-container-high'}`}
+            >
+              <div className={`w-5 h-5 rounded-full bg-white transition-transform ${is24Hours ? 'translate-x-5' : 'translate-x-0'}`} />
+            </button>
+          </div>
+
+          {/* Operating Hours Windows */}
+          {!is24Hours && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="text-xs font-bold text-on-surface block mb-1">Morning Facility Opening Time</label>
+                <input
+                  type="time"
+                  value={openTime}
+                  onChange={e => setOpenTime(e.target.value)}
+                  className="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-2.5 text-sm font-semibold text-on-surface"
+                />
+              </div>
+              <div>
+                <label className="text-xs font-bold text-on-surface block mb-1">Night Facility Closing Time</label>
+                <input
+                  type="time"
+                  value={closeTime}
+                  onChange={e => setCloseTime(e.target.value)}
+                  className="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-2.5 text-sm font-semibold text-on-surface"
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Duration Rules */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div>
+              <label className="text-xs font-bold text-on-surface block mb-1.5">Slot Allocation Interval</label>
+              <select
+                value={slotDuration}
+                onChange={e => setSlotDuration(Number(e.target.value))}
+                className="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-2.5 text-sm font-semibold text-on-surface"
+              >
+                <option value={30}>30 Minutes</option>
+                <option value={60}>60 Minutes (Standard)</option>
+                <option value={90}>90 Minutes</option>
+                <option value={120}>120 Minutes (2 Hours)</option>
+              </select>
+              <p className="text-[11px] text-on-surface-variant mt-1">Grid units displayed to users on the booking calendar.</p>
+            </div>
+
+            <div>
+              <label className="text-xs font-bold text-on-surface block mb-1.5">Maximum Booking Duration per Session</label>
+              <select
+                value={maxBookingDuration}
+                onChange={e => setMaxBookingDuration(Number(e.target.value))}
+                className="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-2.5 text-sm font-semibold text-on-surface"
+              >
+                <option value={1}>1 Hour Maximum</option>
+                <option value={2}>2 Hours Maximum (Recommended)</option>
+                <option value={3}>3 Hours Maximum</option>
+                <option value={4}>4 Hours Maximum</option>
+              </select>
+              <p className="text-[11px] text-on-surface-variant mt-1">Prevents single users from monopolizing consecutive court blocks.</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* STEP 5: DOCUMENTS & LICENSES */}
+      {currentStep === 5 && (
+        <div className="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 sm:p-8 space-y-6 shadow-sm">
+          <div className="border-b border-outline-variant pb-4">
+            <h3 className="text-headline-md font-bold text-on-surface flex items-center gap-2">
+              <span className="material-symbols-outlined text-primary">verified_user</span>
+              Step 5: Compliance Documents & Verification
+            </h3>
+            <p className="text-body-sm text-on-surface-variant mt-0.5">Upload regulatory documents required by Ahmedabad Municipal Corporation (AMC).</p>
+          </div>
+
+          {/* Upload Area */}
+          <div className="p-5 border-2 border-dashed border-outline-variant rounded-xl bg-surface-container-low/50 text-center space-y-3">
+            <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto">
+              <span className="material-symbols-outlined text-2xl">upload_file</span>
+            </div>
+            <div>
+              <h4 className="font-bold text-sm text-on-surface">Attach Regulatory Compliance Documents</h4>
+              <p className="text-xs text-on-surface-variant mt-0.5">PDF, PNG, JPG accepted (AMC Sports Zoning, Fire Safety NOC, Electricity Bill)</p>
+            </div>
+            <div className="flex items-center justify-center gap-3 pt-2">
+              <select
+                value={newDocType}
+                onChange={e => setNewDocType(e.target.value)}
+                className="bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-1.5 text-xs text-on-surface"
+              >
+                <option value="AMC Sports License">AMC Sports License</option>
+                <option value="Fire Safety NOC">Fire Safety NOC</option>
+                <option value="Electricity / Utility Proof">Electricity / Utility Proof</option>
+                <option value="GST Certificate">GST Certificate</option>
+              </select>
+              <label className="cursor-pointer bg-primary hover:bg-primary-hover text-on-primary px-4 py-1.5 rounded-lg text-xs font-bold transition-colors inline-flex items-center gap-1">
+                <span className="material-symbols-outlined text-sm">attach_file</span>
+                Select File
+                <input type="file" className="hidden" onChange={handleAddDoc} />
+              </label>
+            </div>
+          </div>
+
+          {/* Document list */}
+          <div className="space-y-2">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-outline">Attached Documents ({documents.length})</h4>
+            {documents.length === 0 ? (
+              <div className="p-6 text-center bg-surface-container-low/40 rounded-xl border border-dashed border-outline-variant text-on-surface-variant space-y-1">
+                <span className="material-symbols-outlined text-3xl text-outline">folder_open</span>
+                <p className="text-xs font-semibold text-on-surface">No documents uploaded yet</p>
+                <p className="text-[11px] text-on-surface-variant">
+                  Select a document category and attach proof above for AMC zoning and safety compliance review.
+                </p>
+              </div>
+            ) : (
+              documents.map((doc, idx) => (
+                <div key={idx} className="p-3 bg-surface rounded-lg border border-outline-variant flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <span className="material-symbols-outlined text-primary text-xl">description</span>
+                    <div>
+                      <span className="text-sm font-bold text-on-surface block">{doc.name}</span>
+                      <span className="text-[11px] text-on-surface-variant">{doc.type} • {doc.uploadedAt}</span>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveDoc(idx)}
+                    className="p-1 text-on-surface-variant hover:text-error"
+                  >
+                    <span className="material-symbols-outlined text-base">close</span>
+                  </button>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* STEP 6: REVIEW & SUBMIT */}
+      {currentStep === 6 && (
+        <div className="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 sm:p-8 space-y-6 shadow-sm">
+          <div className="border-b border-outline-variant pb-4">
+            <h3 className="text-headline-md font-bold text-on-surface flex items-center gap-2">
+              <span className="material-symbols-outlined text-primary">fact_check</span>
+              Step 6: Review & Submit for Verification
+            </h3>
+            <p className="text-body-sm text-on-surface-variant mt-0.5">Audit your complete facility registration before sending to Admin Operations for verification.</p>
+          </div>
+
+          <div className="space-y-4">
+            {/* Facility Card */}
+            <div className="p-4 rounded-xl border border-outline-variant bg-surface space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-bold uppercase text-outline">Facility Details</span>
+                <button type="button" onClick={() => setCurrentStep(1)} className="text-xs font-bold text-primary hover:underline">Edit</button>
+              </div>
+              <h4 className="font-bold text-base text-on-surface">{name || 'Unnamed Venue'}</h4>
+              <p className="text-xs text-on-surface-variant">{location}</p>
+              <div className="flex flex-wrap gap-1.5 pt-1">
+                {sports.map(s => (
+                  <span key={s} className="px-2 py-0.5 rounded bg-primary/10 text-primary text-xs font-bold">{s}</span>
+                ))}
+              </div>
+            </div>
+
+            {/* Courts Card */}
+            <div className="p-4 rounded-xl border border-outline-variant bg-surface space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-bold uppercase text-outline">Courts Inventory ({courtsList.length})</span>
+                <button type="button" onClick={() => setCurrentStep(2)} className="text-xs font-bold text-primary hover:underline">Edit</button>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {courtsList.map(c => (
+                  <div key={c.id} className="text-xs p-2 bg-surface-container-low rounded border border-outline-variant/60 flex items-center justify-between">
+                    <span className="font-semibold text-on-surface">{c.name} ({c.sport})</span>
+                    <span className={`px-1.5 py-0.25 rounded text-[10px] font-bold ${c.status === 'ACTIVE' ? 'text-emerald-700 bg-emerald-50' : 'text-amber-700 bg-amber-50'}`}>
+                      {c.status}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Pricing & Hours Card */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="p-4 rounded-xl border border-outline-variant bg-surface space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold uppercase text-outline">Tariff Matrix</span>
+                  <button type="button" onClick={() => setCurrentStep(3)} className="text-xs font-bold text-primary hover:underline">Edit</button>
+                </div>
+                <div className="text-xs space-y-1 text-on-surface">
+                  <div>Weekday: <strong>₹{weekdayDayPrice}</strong> (Day) / <strong>₹{weekdayNightPrice}</strong> (Night)</div>
+                  <div>Weekend: <strong>₹{weekendDayPrice}</strong> (Day) / <strong>₹{weekendNightPrice}</strong> (Night)</div>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-xl border border-outline-variant bg-surface space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold uppercase text-outline">Hours & Constraints</span>
+                  <button type="button" onClick={() => setCurrentStep(4)} className="text-xs font-bold text-primary hover:underline">Edit</button>
+                </div>
+                <div className="text-xs space-y-1 text-on-surface">
+                  <div>Operating: <strong>{is24Hours ? '24 Hours Open' : `${openTime} – ${closeTime}`}</strong></div>
+                  <div>Slot Duration: <strong>{slotDuration} mins</strong> • Max: <strong>{maxBookingDuration} hrs</strong></div>
+                </div>
+              </div>
+            </div>
+
+            {/* Documents */}
+            <div className="p-4 rounded-xl border border-outline-variant bg-surface space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-bold uppercase text-outline">Compliance Documents ({documents.length})</span>
+                <button type="button" onClick={() => setCurrentStep(5)} className="text-xs font-bold text-primary hover:underline">Edit</button>
+              </div>
+              <div className="text-xs text-on-surface-variant flex flex-wrap gap-2">
+                {documents.map((d, i) => (
+                  <span key={i} className="px-2 py-1 rounded bg-surface-container-low border border-outline-variant/60 flex items-center gap-1">
+                    <span className="material-symbols-outlined text-[14px] text-primary">verified</span>
+                    {d.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Navigation Controls */}
+      <div className="flex items-center justify-between pt-4 border-t border-outline-variant">
+        <div>
+          {currentStep > 1 && (
+            <button
+              type="button"
+              onClick={handleBack}
+              className="h-11 px-6 rounded-xl border border-outline-variant text-on-surface font-label-lg hover:bg-surface-container-low transition-colors flex items-center gap-1.5"
+            >
+              <span className="material-symbols-outlined text-lg">arrow_back</span>
+              Back
+            </button>
+          )}
+        </div>
+
+        <div className="flex items-center gap-3">
+          {currentStep < 6 ? (
+            <button
+              type="button"
+              onClick={handleNext}
+              className="h-11 px-8 rounded-xl bg-primary hover:bg-primary-hover text-on-primary font-label-lg font-bold transition-all shadow-sm flex items-center gap-2"
+            >
+              <span>Continue to {STEPS[currentStep].title}</span>
+              <span className="material-symbols-outlined text-lg">arrow_forward</span>
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={handleSubmitForVerification}
+              className="h-11 px-8 rounded-xl bg-primary hover:bg-primary-hover text-on-primary font-label-lg font-bold transition-all shadow-md flex items-center gap-2"
+            >
+              <span className="material-symbols-outlined text-lg">verified</span>
+              <span>Submit for Verification</span>
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}

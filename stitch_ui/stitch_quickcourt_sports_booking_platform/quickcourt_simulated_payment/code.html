@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>QuickCourt — Secure Payment (Sandbox)</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Plus Jakarta Sans Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-dim": "#cbdbf5",
+            "on-primary-container": "#89d2a2",
+            "surface": "#f8f9ff",
+            "surface-bright": "#f8f9ff",
+            "on-error": "#ffffff",
+            "on-tertiary-fixed-variant": "#3f465c",
+            "on-secondary-container": "#00714d",
+            "on-tertiary-container": "#bbc2dc",
+            "tertiary": "#31394e",
+            "surface-container-high": "#dce9ff",
+            "surface-tint": "#216b43",
+            "primary-fixed-dim": "#8dd6a6",
+            "outline": "#707a71",
+            "tertiary-fixed-dim": "#bec6e0",
+            "on-primary-fixed": "#002110",
+            "primary": "#004225",
+            "on-secondary-fixed-variant": "#005236",
+            "on-background": "#0b1c30",
+            "inverse-primary": "#8dd6a6",
+            "tertiary-container": "#485066",
+            "surface-container": "#e5eeff",
+            "on-primary-fixed-variant": "#00522e",
+            "on-surface-variant": "#404941",
+            "primary-fixed": "#a8f3c1",
+            "on-tertiary": "#ffffff",
+            "surface-container-highest": "#d3e4fe",
+            "secondary-fixed": "#6ffbbe",
+            "on-secondary-fixed": "#002113",
+            "on-primary": "#ffffff",
+            "inverse-surface": "#213145",
+            "surface-variant": "#d3e4fe",
+            "primary-container": "#0a5c36",
+            "on-tertiary-fixed": "#131b2e",
+            "surface-container-low": "#eff4ff",
+            "secondary-container": "#6cf8bb",
+            "secondary-fixed-dim": "#4edea3",
+            "tertiary-fixed": "#dae2fd",
+            "outline-variant": "#bfc9bf",
+            "secondary": "#006c49",
+            "inverse-on-surface": "#eaf1ff",
+            "surface-container-lowest": "#ffffff",
+            "on-surface": "#0b1c30",
+            "background": "#f8f9ff",
+            "error-container": "#ffdad6",
+            "on-secondary": "#ffffff",
+            "error": "#ba1a1a",
+            "on-error-container": "#93000a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "margin-lg": "3rem",
+            "gutter-lg": "2rem",
+            "gutter": "1rem",
+            "space-lg": "1.5rem",
+            "margin": "1rem",
+            "space-md": "1rem",
+            "space-xl": "2rem",
+            "space-sm": "0.5rem",
+            "gutter-md": "1.5rem",
+            "margin-md": "2rem"
+          },
+          "fontFamily": {
+            "display-lg": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-xl-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+<!-- TOP HEADER (Transactional Custom Top Bar mapped with Shared Components Token Identity) -->
+<header class="w-full bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline sticky top-0 z-50">
+<div class="w-full px-6 lg:px-12 flex justify-between items-center h-16 max-w-7xl mx-auto">
+<!-- Left: Logo & Security context -->
+<div class="flex items-center gap-6">
+<a class="text-headline-md font-headline-md font-bold tracking-tight text-primary dark:text-primary-fixed flex items-center gap-1.5" href="#">
+<span class="material-symbols-outlined text-primary-container dark:text-primary-fixed text-2xl" data-icon="sports_tennis">sports_tennis</span>
+<span>QuickCourt</span>
+</a>
+<div class="hidden sm:flex items-center gap-2 px-2.5 py-1 bg-surface-container-low rounded border border-outline-variant">
+<span class="material-symbols-outlined text-primary-container text-sm" data-icon="lock">lock</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant font-semibold">256-Bit SSL Encrypted Mock Gateway</span>
+</div>
+</div>
+<!-- Right: Sandbox notice & Back navigation -->
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5 px-2.5 py-1 bg-secondary-container/30 text-on-secondary-container rounded border border-secondary/20">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="text-label-sm font-label-sm uppercase tracking-wider font-bold">Sandbox Mode</span>
+</div>
+<a class="inline-flex items-center gap-1 text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors" href="#summary">
+<span class="material-symbols-outlined text-base" data-icon="arrow_back">arrow_back</span>
+<span class="hidden sm:inline">Back to Booking</span>
+</a>
+</div>
+</div>
+</header>
+<!-- STEP INDICATOR PROGRESS BAR -->
+<section class="w-full bg-surface-container-lowest border-b border-outline-variant">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 py-3.5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="px-2 py-0.5 rounded bg-primary-container text-on-primary text-label-sm font-label-sm">Step 4 of 4</span>
+<span class="text-label-lg font-label-lg text-on-surface">Secure Payment &amp; Turnstile Access</span>
+</div>
+<!-- Stepper Steps -->
+<nav class="hidden md:flex items-center gap-6 text-label-sm font-label-sm">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-base text-secondary" data-icon="check_circle">check_circle</span>
+<span>1. Court Selection</span>
+</div>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-base text-secondary" data-icon="check_circle">check_circle</span>
+<span>2. Add-ons</span>
+</div>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-base text-secondary" data-icon="check_circle">check_circle</span>
+<span>3. Booking Summary</span>
+</div>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center gap-1.5 text-primary-container font-bold">
+<span class="w-4 h-4 rounded-full bg-primary-container text-on-primary flex items-center justify-center text-[10px]">4</span>
+<span>4. Payment</span>
+</div>
+</nav>
+</div>
+</section>
+<!-- MAIN VIEWPORT CANVAS -->
+<main class="flex-grow max-w-7xl w-full mx-auto px-6 lg:px-12 py-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- LEFT COLUMN: Payment Methods & Simulation Form (7 Cols) -->
+<div class="lg:col-span-7 flex flex-col gap-6">
+<!-- Simulation Notice Banner -->
+<div class="bg-surface-container-low border border-primary-container/20 rounded-xl p-4 flex items-start gap-3">
+<span class="material-symbols-outlined text-primary-container text-xl mt-0.5" data-icon="info">info</span>
+<div>
+<h1 class="text-label-lg font-label-lg text-primary-container font-bold">Simulated Payment Gateway — For Demonstration &amp; Testing Only</h1>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">
+              No real funds will be charged. Choose any test method below to generate a valid automated turnstile entry barcode and confirmation voucher.
+            </p>
+</div>
+</div>
+<!-- Payment Mode Selector Container -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm">
+<div class="flex items-center justify-between pb-4 border-b border-outline-variant mb-6">
+<h2 class="text-headline-sm font-headline-sm text-on-surface font-bold">Select Payment Method</h2>
+<span class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="verified_user">verified_user</span>
+              End-to-End Encrypted
+            </span>
+</div>
+<!-- Method Selector Tabs / Options -->
+<div class="grid grid-cols-3 gap-3 mb-6" id="method-tab-group">
+<!-- UPI Tab (Active) -->
+<button class="p-3.5 text-left rounded-xl border-2 border-primary-container bg-surface-container-low transition-all relative flex flex-col justify-between h-24" id="tab-upi" onclick="selectPaymentMethod('upi')" type="button">
+<div class="flex items-center justify-between w-full">
+<span class="material-symbols-outlined text-primary-container" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span class="w-4 h-4 rounded-full bg-primary-container text-on-primary flex items-center justify-center text-[10px]">
+<span class="material-symbols-outlined text-xs" data-icon="check">check</span>
+</span>
+</div>
+<div>
+<span class="block text-label-md font-label-md text-on-surface font-bold">UPI / Instant QR</span>
+<span class="block text-[11px] text-on-surface-variant">GPay, PhonePe, Paytm</span>
+</div>
+</button>
+<!-- Card Tab -->
+<button class="p-3.5 text-left rounded-xl border border-outline-variant bg-surface-container-lowest hover:border-outline transition-all relative flex flex-col justify-between h-24" id="tab-card" onclick="selectPaymentMethod('card')" type="button">
+<div class="flex items-center justify-between w-full">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="credit_card">credit_card</span>
+<span class="w-3.5 h-3.5 rounded-full border border-outline"></span>
+</div>
+<div>
+<span class="block text-label-md font-label-md text-on-surface font-bold">Credit / Debit Card</span>
+<span class="block text-[11px] text-on-surface-variant">Visa, MC, Amex</span>
+</div>
+</button>
+<!-- Net Banking / Wallet Tab -->
+<button class="p-3.5 text-left rounded-xl border border-outline-variant bg-surface-container-lowest hover:border-outline transition-all relative flex flex-col justify-between h-24" id="tab-wallet" onclick="selectPaymentMethod('wallet')" type="button">
+<div class="flex items-center justify-between w-full">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="account_balance">account_balance</span>
+<span class="w-3.5 h-3.5 rounded-full border border-outline"></span>
+</div>
+<div>
+<span class="block text-label-md font-label-md text-on-surface font-bold">Net Banking</span>
+<span class="block text-[11px] text-on-surface-variant">Wallets &amp; Direct Bank</span>
+</div>
+</button>
+</div>
+<!-- DYNAMIC FORM SECTIONS -->
+<!-- 1. UPI SECTION (Default View) -->
+<div class="space-y-5" id="content-upi">
+<div class="flex items-center gap-2 p-3 bg-surface-container-low rounded-lg border border-outline-variant">
+<span class="text-label-sm font-label-sm font-semibold text-on-surface-variant">Supported apps:</span>
+<span class="px-2 py-0.5 bg-surface-container-lowest border border-outline-variant rounded text-label-sm font-label-sm text-on-surface font-semibold">Google Pay</span>
+<span class="px-2 py-0.5 bg-surface-container-lowest border border-outline-variant rounded text-label-sm font-label-sm text-on-surface font-semibold">PhonePe</span>
+<span class="px-2 py-0.5 bg-surface-container-lowest border border-outline-variant rounded text-label-sm font-label-sm text-on-surface font-semibold">Paytm UPI</span>
+</div>
+<div class="space-y-2">
+<label class="block text-label-sm font-label-sm text-on-surface font-semibold" for="upi-id">Enter Virtual Payment Address (VPA / UPI ID)</label>
+<div class="relative">
+<input class="w-full h-[42px] px-3 pr-24 rounded border border-outline-variant bg-surface-container-lowest text-body-md font-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none" id="upi-id" placeholder="username@bank" type="text" value="alexmorgan@okaxis"/>
+<div class="absolute right-2.5 top-2.5 flex items-center gap-1 text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-base" data-icon="check_circle">check_circle</span>
+<span>Verified</span>
+</div>
+</div>
+<p class="text-[12px] text-on-surface-variant">A payment notification will be pushed to your test UPI application.</p>
+</div>
+<div class="relative flex py-2 items-center">
+<div class="flex-grow border-t border-outline-variant"></div>
+<span class="flex-shrink mx-4 text-label-sm font-label-sm text-outline uppercase font-semibold">or scan and pay</span>
+<div class="flex-grow border-t border-outline-variant"></div>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-5 p-4 border border-dashed border-outline rounded-xl bg-surface-container-low/50">
+<div class="w-28 h-28 bg-surface-container-lowest border border-outline-variant rounded-lg p-2 flex items-center justify-center shadow-xs">
+<!-- High-fidelity simulated QR Matrix -->
+<div class="w-full h-full border-4 border-on-surface p-1 relative flex flex-col justify-between">
+<div class="flex justify-between">
+<div class="w-5 h-5 bg-on-surface"></div>
+<div class="w-5 h-5 bg-on-surface"></div>
+</div>
+<div class="flex justify-center items-center">
+<span class="material-symbols-outlined text-primary-container text-lg" data-icon="sports_tennis">sports_tennis</span>
+</div>
+<div class="flex justify-between">
+<div class="w-5 h-5 bg-on-surface"></div>
+<div class="w-2 h-2 bg-on-surface self-end"></div>
+</div>
+</div>
+</div>
+<div class="text-center sm:text-left space-y-1.5">
+<div class="text-label-md font-label-md text-on-surface font-bold">Scan Court Booking QR with any UPI App</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Instant confirmation: QR remains dynamic and auto-refreshes with the 8-minute slot hold window.</p>
+<div class="inline-flex items-center gap-1.5 text-label-sm font-label-sm text-secondary font-semibold">
+<span class="material-symbols-outlined text-sm" data-icon="bolt">bolt</span>
+                  Zero processing fees applies on QuickCourt UPI
+                </div>
+</div>
+</div>
+</div>
+<!-- 2. CARD SECTION (Hidden initially) -->
+<div class="space-y-4 hidden" id="content-card">
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-lg border border-outline-variant">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Accepted Networks:</span>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 bg-surface-container-lowest border border-outline-variant rounded text-label-sm font-label-sm font-bold text-tertiary">VISA</span>
+<span class="px-2 py-0.5 bg-surface-container-lowest border border-outline-variant rounded text-label-sm font-label-sm font-bold text-tertiary">Mastercard</span>
+<span class="px-2 py-0.5 bg-surface-container-lowest border border-outline-variant rounded text-label-sm font-label-sm font-bold text-tertiary">AMEX</span>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="block text-label-sm font-label-sm text-on-surface font-semibold" for="card-holder">Cardholder Name</label>
+<input class="w-full h-[42px] px-3 rounded border border-outline-variant bg-surface-container-lowest text-body-md font-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none" id="card-holder" type="text" value="ALEX MORGAN"/>
+</div>
+<div class="space-y-1.5">
+<label class="block text-label-sm font-label-sm text-on-surface font-semibold" for="card-num">Card Number</label>
+<div class="relative">
+<input class="w-full h-[42px] px-3 rounded border border-outline-variant bg-surface-container-lowest text-body-md font-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none font-mono" id="card-num" type="text" value="4532 •••• •••• 4920"/>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-on-surface-variant text-xl" data-icon="credit_card">credit_card</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="block text-label-sm font-label-sm text-on-surface font-semibold" for="card-exp">Expiry Date</label>
+<input class="w-full h-[42px] px-3 rounded border border-outline-variant bg-surface-container-lowest text-body-md font-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none font-mono" id="card-exp" placeholder="MM/YY" type="text" value="08/28"/>
+</div>
+<div class="space-y-1.5">
+<label class="block text-label-sm font-label-sm text-on-surface font-semibold" for="card-cvv">CVV / CVC</label>
+<div class="relative">
+<input class="w-full h-[42px] px-3 rounded border border-outline-variant bg-surface-container-lowest text-body-md font-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none font-mono" id="card-cvv" maxlength="4" placeholder="123" type="password" value="882"/>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-outline text-lg" data-icon="help">help</span>
+</div>
+</div>
+</div>
+<div class="pt-2">
+<label class="flex items-center gap-2 cursor-pointer select-none">
+<input checked="" class="w-[18px] h-[18px] rounded text-primary-container focus:ring-primary-container border-outline" type="checkbox"/>
+<span class="text-body-sm font-body-sm text-on-surface">Remember this simulated card for 1-click booking checkout</span>
+</label>
+</div>
+</div>
+<!-- 3. NET BANKING SECTION (Hidden initially) -->
+<div class="space-y-4 hidden" id="content-wallet">
+<label class="block text-label-sm font-label-sm text-on-surface font-semibold">Select Mock Bank or Institutional Account</label>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+<button class="p-3 border border-primary-container bg-surface-container-low rounded-lg text-left text-label-sm font-label-sm font-semibold text-primary" type="button">
+                Chase Sports Pay
+              </button>
+<button class="p-3 border border-outline-variant bg-surface-container-lowest rounded-lg text-left text-label-sm font-label-sm font-semibold text-on-surface-variant hover:border-outline" type="button">
+                Bank of America
+              </button>
+<button class="p-3 border border-outline-variant bg-surface-container-lowest rounded-lg text-left text-label-sm font-label-sm font-semibold text-on-surface-variant hover:border-outline" type="button">
+                Wells Fargo
+              </button>
+<button class="p-3 border border-outline-variant bg-surface-container-lowest rounded-lg text-left text-label-sm font-label-sm font-semibold text-on-surface-variant hover:border-outline" type="button">
+                Barclays Sport
+              </button>
+<button class="p-3 border border-outline-variant bg-surface-container-lowest rounded-lg text-left text-label-sm font-label-sm font-semibold text-on-surface-variant hover:border-outline" type="button">
+                HSBC Premier
+              </button>
+<button class="p-3 border border-outline-variant bg-surface-container-lowest rounded-lg text-left text-label-sm font-label-sm font-semibold text-on-surface-variant hover:border-outline" type="button">
+                Other Banks...
+              </button>
+</div>
+</div>
+<!-- PRIMARY ACTION & RETURN -->
+<div class="pt-6 mt-6 border-t border-outline-variant space-y-3">
+<button class="w-full h-[44px] bg-primary-container hover:bg-[#084c2c] active:scale-[0.99] text-on-primary font-label-lg text-label-lg rounded-lg flex items-center justify-center gap-2 transition-all font-semibold shadow-xs" id="pay-button" onclick="handleSimulatedPayment()" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="lock">lock</span>
+<span>Pay $31.39 Now</span>
+</button>
+<a class="w-full h-[44px] bg-surface-container-lowest hover:bg-surface-container-low border border-outline-variant text-on-surface font-label-lg text-label-lg rounded-lg flex items-center justify-center gap-2 transition-all font-semibold" href="#">
+              Cancel &amp; Return to Summary
+            </a>
+<p class="text-center text-[12px] text-on-surface-variant pt-1">
+              Immediate gate turnstile PIN and NFC access pass will be generated upon confirmation.
+            </p>
+</div>
+</div>
+<!-- Security & Guarantee Badges Strip -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+<div class="p-3 bg-surface-container-lowest border border-outline-variant rounded-lg flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary-container text-xl" data-icon="shield">shield</span>
+<div>
+<div class="text-label-sm font-label-sm font-bold text-on-surface">PCI-DSS Compliant</div>
+<div class="text-[11px] text-on-surface-variant">Simulated token vault</div>
+</div>
+</div>
+<div class="p-3 bg-surface-container-lowest border border-outline-variant rounded-lg flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary-container text-xl" data-icon="pin">pin</span>
+<div>
+<div class="text-label-sm font-label-sm font-bold text-on-surface">Instant Turnstile PIN</div>
+<div class="text-[11px] text-on-surface-variant">Automated court doors</div>
+</div>
+</div>
+<div class="p-3 bg-surface-container-lowest border border-outline-variant rounded-lg flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary-container text-xl" data-icon="currency_exchange">currency_exchange</span>
+<div>
+<div class="text-label-sm font-label-sm font-bold text-on-surface">100% Refundable</div>
+<div class="text-[11px] text-on-surface-variant">Up to 2 hrs prior</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: Order Summary Card with Countdown (5 Cols) -->
+<div class="lg:col-span-5 flex flex-col gap-5 sticky top-24">
+<!-- Slot Hold Countdown Card -->
+<div class="bg-surface-container-lowest border-2 border-secondary/40 rounded-xl p-3.5 flex items-center justify-between shadow-xs">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary animate-spin text-xl" data-icon="timer" style="animation-duration: 3s;">timer</span>
+<div>
+<span class="block text-label-xs text-on-surface-variant uppercase tracking-wider font-bold text-[11px]">Slot Hold Expiration</span>
+<span class="text-label-md font-label-md text-on-surface font-semibold">Court reserved temporarily</span>
+</div>
+</div>
+<div class="bg-secondary-container/30 px-3 py-1.5 rounded-lg border border-secondary/20">
+<span class="font-mono text-headline-sm font-headline-sm font-bold text-on-secondary-container" id="countdown-timer">07:42</span>
+</div>
+</div>
+<!-- Venue Details & Match Specification Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-xs space-y-4">
+<div class="flex items-start justify-between pb-3 border-b border-outline-variant">
+<div>
+<span class="text-[11px] font-bold text-primary-container uppercase tracking-wider bg-surface-container-low px-2 py-0.5 rounded border border-outline-variant">Confirmed Slot Hold</span>
+<h3 class="text-headline-sm font-headline-sm font-bold text-on-surface mt-1.5">Apex Badminton &amp; Multi-Sport Arena</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+                Olympic Park Sector 4, Building B
+              </p>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-low border border-outline-variant flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-xl" data-icon="sports_tennis">sports_tennis</span>
+</div>
+</div>
+<!-- Court Surface & Session Tags -->
+<div class="grid grid-cols-2 gap-3 py-1">
+<div class="p-2.5 bg-surface-container-low rounded border border-outline-variant">
+<span class="block text-[11px] text-on-surface-variant font-medium">Court Assignment</span>
+<span class="block text-label-md font-label-md text-on-surface font-bold">Court 1 — Championship</span>
+<span class="block text-[11px] text-secondary font-semibold">7.0mm BWF Taraflex</span>
+</div>
+<div class="p-2.5 bg-surface-container-low rounded border border-outline-variant">
+<span class="block text-[11px] text-on-surface-variant font-medium">Schedule Window</span>
+<span class="block text-label-md font-label-md text-on-surface font-bold">Today, 07:00 PM – 08:00 PM</span>
+<span class="block text-[11px] text-on-surface-variant">60 Minutes Session</span>
+</div>
+</div>
+<!-- Price Matrix Breakdown -->
+<div class="pt-2 border-t border-outline-variant space-y-2.5">
+<div class="text-label-sm font-label-sm font-bold text-on-surface">Cost Breakdown</div>
+<div class="flex justify-between items-center text-body-sm font-body-sm text-on-surface-variant">
+<span>Court Desk Rate (1 hr @ $24.00/hr)</span>
+<span class="font-medium text-on-surface">$24.00</span>
+</div>
+<div class="flex justify-between items-center text-body-sm font-body-sm text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span>Yonex Astrox 88D Pro Rental</span>
+<span class="text-[10px] bg-surface-container px-1 py-0.2 rounded font-mono">1x</span>
+</div>
+<span class="font-medium text-on-surface">$5.00</span>
+</div>
+<div class="flex justify-between items-center text-body-sm font-body-sm text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span>QuickCourt Platform Fee</span>
+<span class="text-[10px] font-bold bg-secondary-container text-on-secondary-container px-1.5 py-0.5 rounded">ZERO FEE</span>
+</div>
+<span class="font-medium text-secondary font-semibold">$0.00</span>
+</div>
+<div class="flex justify-between items-center text-body-sm font-body-sm text-on-surface-variant">
+<span>Sales &amp; Sports Facility Tax</span>
+<span class="font-medium text-on-surface">$2.39</span>
+</div>
+<!-- Total Bar -->
+<div class="pt-3 border-t border-outline-variant flex justify-between items-baseline">
+<div>
+<span class="block text-label-lg font-label-lg font-bold text-on-surface">Total Payable</span>
+<span class="text-[11px] text-on-surface-variant">Includes all facility permits &amp; lighting</span>
+</div>
+<div class="text-right">
+<span class="text-headline-lg font-headline-lg font-bold text-primary-container">$31.39</span>
+<span class="block text-[11px] text-on-surface-variant uppercase font-medium">USD</span>
+</div>
+</div>
+</div>
+<!-- Bottom Notice -->
+<div class="p-3 bg-surface-container-low rounded-lg border border-outline-variant flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-base mt-0.5" data-icon="flash_on">flash_on</span>
+<p class="text-[12px] text-on-surface-variant leading-relaxed">
+              Upon successful simulated payment, turnstile PIN &amp; digital pass will be issued immediately to your registered phone.
+            </p>
+</div>
+</div>
+<!-- Venue Access Info Widget -->
+<div class="p-4 bg-surface-container-lowest border border-outline-variant rounded-xl flex items-center gap-3">
+<span class="material-symbols-outlined text-outline text-2xl" data-icon="sports_score">sports_score</span>
+<div class="text-[12px] text-on-surface-variant leading-snug">
+<span class="font-bold text-on-surface">Player Guidance:</span> Locker room access opens 15 minutes before slot start. Non-marking court shoes strictly required.
+          </div>
+</div>
+</div>
+</div>
+</main>
+<!-- SUCCESS MODAL (SIMULATED COMPLETION OVERLAY) -->
+<div class="fixed inset-0 bg-[#0F172A]/50 z-50 flex items-center justify-center p-4 hidden" id="payment-modal">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-5 animate-in fade-in zoom-in-95 duration-200">
+<div class="w-14 h-14 rounded-full bg-secondary-container/40 border border-secondary text-secondary flex items-center justify-center mx-auto">
+<span class="material-symbols-outlined text-3xl" data-icon="task_alt">task_alt</span>
+</div>
+<div class="text-center space-y-1">
+<span class="text-label-sm font-label-sm text-secondary font-bold uppercase tracking-wider">Simulated Payment Succeeded</span>
+<h2 class="text-headline-lg font-headline-lg font-bold text-on-surface">Booking Confirmed!</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+          Transaction ID: <span class="font-mono font-semibold text-on-surface">QC-SIM-894021</span>
+</p>
+</div>
+<!-- Turnstile PIN Pass Card -->
+<div class="bg-surface-container-low border-2 border-dashed border-outline-variant rounded-xl p-4 text-center space-y-2">
+<div class="text-label-sm font-label-sm text-on-surface-variant uppercase font-semibold">Your Turnstile Gate Access Code</div>
+<div class="font-mono text-display-lg-mobile font-display-lg-mobile font-bold tracking-widest text-primary-container">
+          4 9 0 2 #
+        </div>
+<p class="text-[12px] text-on-surface-variant">
+          Key this code into Turnstile Door B at Apex Arena. Code activates at 06:45 PM.
+        </p>
+</div>
+<div class="space-y-2">
+<button class="w-full h-[44px] bg-primary-container text-on-primary font-label-lg text-label-lg rounded-lg font-semibold hover:bg-[#084c2c] transition-colors" onclick="closeModal()" type="button">
+          View Active Digital Pass
+        </button>
+<button class="w-full h-[40px] bg-transparent text-on-surface-variant hover:text-on-surface font-label-md text-label-md" onclick="closeModal()" type="button">
+          Close Sandbox Preview
+        </button>
+</div>
+</div>
+</div>
+<!-- FOOTER (Exact Match to Shared Components JSON) -->
+<footer class="w-full bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline mt-12">
+<div class="w-full px-6 lg:px-12 py-8 flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto gap-4">
+<div class="flex flex-col sm:flex-row items-center gap-3">
+<span class="text-headline-sm font-headline-sm font-bold text-primary dark:text-primary-fixed">QuickCourt</span>
+<span class="hidden sm:inline text-outline-variant">|</span>
+<p class="text-on-surface-variant dark:text-surface-variant text-body-sm font-body-sm text-center sm:text-left">
+          © 2025 QuickCourt Operations Inc. All rights reserved. Precision court scheduling &amp; sports facility engine.
+        </p>
+</div>
+<!-- Links from Shared Components JSON -->
+<div class="flex flex-wrap items-center justify-center gap-6">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">Terms of Service</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">Venue Standards</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">API Docs</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">System Status</a>
+</div>
+</div>
+</footer>
+<!-- Interactive JavaScript for Simulation & Countdown -->
+<script>
+    // Tab Switcher for payment methods
+    function selectPaymentMethod(type) {
+      const upiTab = document.getElementById('tab-upi');
+      const cardTab = document.getElementById('tab-card');
+      const walletTab = document.getElementById('tab-wallet');
+      
+      const upiContent = document.getElementById('content-upi');
+      const cardContent = document.getElementById('content-card');
+      const walletContent = document.getElementById('content-wallet');
+
+      // Reset styles
+      [upiTab, cardTab, walletTab].forEach(tab => {
+        tab.className = "p-3.5 text-left rounded-xl border border-outline-variant bg-surface-container-lowest hover:border-outline transition-all relative flex flex-col justify-between h-24";
+      });
+
+      // Hide all contents
+      upiContent.classList.add('hidden');
+      cardContent.classList.add('hidden');
+      walletContent.classList.add('hidden');
+
+      if (type === 'upi') {
+        upiTab.className = "p-3.5 text-left rounded-xl border-2 border-primary-container bg-surface-container-low transition-all relative flex flex-col justify-between h-24";
+        upiContent.classList.remove('hidden');
+      } else if (type === 'card') {
+        cardTab.className = "p-3.5 text-left rounded-xl border-2 border-primary-container bg-surface-container-low transition-all relative flex flex-col justify-between h-24";
+        cardContent.classList.remove('hidden');
+      } else if (type === 'wallet') {
+        walletTab.className = "p-3.5 text-left rounded-xl border-2 border-primary-container bg-surface-container-low transition-all relative flex flex-col justify-between h-24";
+        walletContent.classList.remove('hidden');
+      }
+    }
+
+    // Countdown Timer logic for hold expiration (07:42 start)
+    let totalSeconds = 7 * 60 + 42;
+    const timerElem = document.getElementById('countdown-timer');
+
+    function updateTimer() {
+      if (totalSeconds <= 0) {
+        timerElem.textContent = "00:00";
+        return;
+      }
+      totalSeconds--;
+      const minutes = Math.floor(totalSeconds / 60);
+      const seconds = totalSeconds % 60;
+      timerElem.textContent = 
+        String(minutes).padStart(2, '0') + ':' + 
+        String(seconds).padStart(2, '0');
+    }
+    setInterval(updateTimer, 1000);
+
+    // Simulated Gateway Trigger
+    function handleSimulatedPayment() {
+      const btn = document.getElementById('pay-button');
+      const originalHTML = btn.innerHTML;
+      btn.innerHTML = '<span class="material-symbols-outlined text-lg animate-spin" style="animation-duration: 0.8s;">sync</span><span>Simulating Gateway Response...</span>';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.innerHTML = originalHTML;
+        btn.disabled = false;
+        document.getElementById('payment-modal').classList.remove('hidden');
+      }, 1100);
+    }
+
+    function closeModal() {
+      document.getElementById('payment-modal').classList.add('hidden');
+    }
+  </script>
+</body></html>

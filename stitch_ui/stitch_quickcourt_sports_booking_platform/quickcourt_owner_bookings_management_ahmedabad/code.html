@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>QuickCourt Facility Portal - Reservations &amp; Bookings</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-error": "#ffffff",
+            "surface-bright": "#f8f9ff",
+            "error-container": "#ffdad6",
+            "on-secondary": "#ffffff",
+            "on-background": "#0b1c30",
+            "on-tertiary-container": "#bbc2dc",
+            "inverse-surface": "#213145",
+            "on-error-container": "#93000a",
+            "surface-container": "#e5eeff",
+            "secondary": "#006c49",
+            "secondary-container": "#6cf8bb",
+            "on-surface": "#0b1c30",
+            "background": "#f8f9ff",
+            "secondary-fixed": "#6ffbbe",
+            "surface-tint": "#216b43",
+            "surface-container-highest": "#d3e4fe",
+            "outline": "#707a71",
+            "surface-variant": "#d3e4fe",
+            "on-secondary-fixed": "#002113",
+            "on-primary-container": "#89d2a2",
+            "on-tertiary-fixed": "#131b2e",
+            "on-surface-variant": "#404941",
+            "surface": "#f8f9ff",
+            "tertiary-fixed-dim": "#bec6e0",
+            "on-tertiary-fixed-variant": "#3f465c",
+            "outline-variant": "#bfc9bf",
+            "error": "#ba1a1a",
+            "surface-container-high": "#dce9ff",
+            "on-primary-fixed-variant": "#00522e",
+            "surface-dim": "#cbdbf5",
+            "primary": "#004225",
+            "secondary-fixed-dim": "#4edea3",
+            "inverse-on-surface": "#eaf1ff",
+            "tertiary-fixed": "#dae2fd",
+            "primary-fixed-dim": "#8dd6a6",
+            "on-secondary-fixed-variant": "#005236",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "inverse-primary": "#8dd6a6",
+            "on-primary-fixed": "#002110",
+            "tertiary-container": "#485066",
+            "surface-container-low": "#eff4ff",
+            "tertiary": "#31394e",
+            "primary-fixed": "#a8f3c1",
+            "primary-container": "#0a5c36",
+            "on-primary": "#ffffff",
+            "on-secondary-container": "#00714d"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "gutter-md": "1.5rem",
+            "margin-md": "2rem",
+            "space-xl": "2rem",
+            "space-md": "1rem",
+            "gutter-lg": "2rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "gutter": "1rem",
+            "margin-lg": "3rem",
+            "margin": "1rem"
+          },
+          "fontFamily": {
+            "display-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md antialiased min-h-screen flex flex-col">
+<!-- TOP APP BAR -->
+<header class="docked full-width top-0 sticky z-40 bg-surface dark:bg-surface-container-lowest border-b border-outline-variant/30 dark:border-outline/20">
+<div class="flex justify-between items-center w-full px-space-lg h-16">
+<!-- Left: Logo & Search -->
+<div class="flex items-center gap-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-headline-sm" data-icon="sports_tennis">sports_tennis</span>
+</div>
+<span class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed tracking-tight">QuickCourt Facility Portal</span>
+</div>
+<div class="relative w-80 hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-headline-sm" data-icon="search">search</span>
+<input class="w-full pl-9 pr-4 py-1.5 text-body-sm font-body-sm bg-surface-container-lowest border border-outline-variant/40 rounded-lg text-on-surface placeholder:text-outline focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary" placeholder="Search booking #QC, player, or turnstile PIN..." type="text"/>
+</div>
+</div>
+<!-- Right: Action Buttons & Utilities & Avatar -->
+<div class="flex items-center gap-space-md">
+<!-- Live IoT Status Pill -->
+<div class="hidden xl:flex items-center gap-2 px-space-sm py-1 bg-surface-container-low border border-outline-variant/30 rounded-full">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">IoT Gate Engine: Online</span>
+</div>
+<!-- Secondary Action -->
+<button class="px-space-md py-2 border border-outline-variant/50 rounded-lg font-label-lg text-label-lg text-on-surface hover:bg-surface-container-low dark:hover:bg-surface-container transition-colors duration-150 active:scale-[0.98]">
+          Block Slot
+        </button>
+<!-- Primary Action -->
+<button class="px-space-md py-2 bg-primary-container text-on-primary rounded-lg font-label-lg text-label-lg flex items-center gap-1.5 hover:bg-primary transition-colors duration-150 active:scale-[0.98]">
+<span class="material-symbols-outlined text-headline-sm" data-icon="add">add</span>
+          Add Booking
+        </button>
+<!-- Trailing Icons -->
+<div class="flex items-center border-l border-outline-variant/40 pl-space-md gap-1">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container rounded-lg transition-colors" title="Sync IoT State">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container rounded-lg transition-colors relative" title="Notifications">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container rounded-lg transition-colors" title="Preferences">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+</button>
+</div>
+<!-- Profile Avatar -->
+<div class="flex items-center gap-2 pl-2 cursor-pointer">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-md text-label-md">
+            AP
+          </div>
+<div class="hidden sm:block text-left">
+<div class="font-label-md text-label-md leading-none text-on-surface">Rajiv Varma</div>
+<div class="font-label-sm text-label-sm text-outline">Lead Superintendent</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- MAIN WRAPPER WITH SIDEBAR -->
+<div class="flex flex-1 w-full overflow-hidden">
+<!-- SIDEBAR NAVIGATION -->
+<aside class="w-64 shrink-0 bg-surface-container-lowest dark:bg-surface-container-lowest border-r border-outline-variant/30 dark:border-outline/20 flex flex-col justify-between p-space-md min-h-[calc(100vh-4rem)]">
+<!-- Top Group: Facility Identity & Tabs -->
+<div class="flex flex-col gap-space-md">
+<!-- Facility Identity Header -->
+<div class="p-space-sm bg-surface-container-low rounded-lg border border-outline-variant/30 flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-bold">
+<span class="material-symbols-outlined" data-icon="stadium">stadium</span>
+</div>
+<div class="overflow-hidden">
+<h2 class="font-headline-sm text-headline-sm font-bold text-primary dark:text-primary-fixed truncate">Apex Badminton Academy</h2>
+<p class="font-body-sm text-body-sm text-outline truncate">SG Highway, Ahmedabad</p>
+</div>
+</div>
+<!-- Quick Book CTA in Sidebar -->
+<button class="w-full py-2 bg-secondary text-on-secondary rounded-lg font-label-md text-label-md flex items-center justify-center gap-1.5 hover:bg-primary transition-colors active:scale-[0.99]">
+<span class="material-symbols-outlined text-body-md" data-icon="bolt">bolt</span>
+          Quick Book
+        </button>
+<!-- Navigation Tabs -->
+<nav class="flex flex-col gap-1 mt-1">
+<a class="flex items-center gap-space-sm text-on-surface-variant dark:text-outline px-space-md py-space-sm rounded-lg hover:text-on-surface dark:hover:text-surface-bright hover:bg-surface-container-low dark:hover:bg-surface-container transition-colors duration-150 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+            Dashboard
+          </a>
+<a class="flex items-center gap-space-sm text-on-surface-variant dark:text-outline px-space-md py-space-sm rounded-lg hover:text-on-surface dark:hover:text-surface-bright hover:bg-surface-container-low dark:hover:bg-surface-container transition-colors duration-150 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="stadium">stadium</span>
+            Facilities
+          </a>
+<a class="flex items-center gap-space-sm text-on-surface-variant dark:text-outline px-space-md py-space-sm rounded-lg hover:text-on-surface dark:hover:text-surface-bright hover:bg-surface-container-low dark:hover:bg-surface-container transition-colors duration-150 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+            Court Matrix
+          </a>
+<a class="flex items-center gap-space-sm text-on-surface-variant dark:text-outline px-space-md py-space-sm rounded-lg hover:text-on-surface dark:hover:text-surface-bright hover:bg-surface-container-low dark:hover:bg-surface-container transition-colors duration-150 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+            Time Slots &amp; Pricing
+          </a>
+<!-- Active Tab: Calendar & Bookings -->
+<a class="flex items-center gap-space-sm bg-surface-container-low dark:bg-surface-container text-primary dark:text-primary-fixed border-l-4 border-primary dark:border-primary-fixed font-semibold px-space-md py-space-sm rounded-r-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month" data-weight="fill" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+            Calendar &amp; Bookings
+          </a>
+<a class="flex items-center gap-space-sm text-on-surface-variant dark:text-outline px-space-md py-space-sm rounded-lg hover:text-on-surface dark:hover:text-surface-bright hover:bg-surface-container-low dark:hover:bg-surface-container transition-colors duration-150 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+            Revenue &amp; Settlement
+          </a>
+<a class="flex items-center gap-space-sm text-on-surface-variant dark:text-outline px-space-md py-space-sm rounded-lg hover:text-on-surface dark:hover:text-surface-bright hover:bg-surface-container-low dark:hover:bg-surface-container transition-colors duration-150 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+            Venue Settings
+          </a>
+</nav>
+</div>
+<!-- Bottom Group: System & Support -->
+<div class="flex flex-col gap-1 border-t border-outline-variant/30 pt-space-sm">
+<a class="flex items-center gap-space-sm text-secondary px-space-md py-space-sm rounded-lg hover:bg-surface-container-low transition-colors duration-150 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-secondary" data-icon="sensors">sensors</span>
+          Turnstile IoT Online
+        </a>
+<a class="flex items-center gap-space-sm text-on-surface-variant dark:text-outline px-space-md py-space-sm rounded-lg hover:text-on-surface hover:bg-surface-container-low transition-colors duration-150 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+          Support Desk
+        </a>
+</div>
+</aside>
+<!-- CONTENT WORKSPACE -->
+<main class="flex-1 overflow-y-auto px-space-xl py-space-lg bg-background flex flex-col gap-space-lg">
+<!-- BREADCRUMBS & HEADER -->
+<div class="flex flex-col gap-1">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 text-outline font-label-md text-label-md">
+<span>Owner Portal</span>
+<span class="material-symbols-outlined text-xs" data-icon="chevron_right">chevron_right</span>
+<span>Apex Badminton Academy</span>
+<span class="material-symbols-outlined text-xs" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary font-semibold">Bookings Management</span>
+</div>
+<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-space-md mt-1">
+<div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface font-bold">Reservations &amp; Bookings</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Monitor real-time court reservations, player check-in status, IoT turnstile access codes, and fee settlements across Ahmedabad arenas.</p>
+</div>
+<!-- Top Toolbar Actions -->
+<div class="flex items-center gap-space-sm self-start md:self-auto">
+<button class="px-space-md py-2 border border-outline-variant/60 rounded-lg bg-surface-container-lowest font-label-lg text-label-lg text-on-surface flex items-center gap-1.5 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-body-lg" data-icon="file_download">file_download</span>
+              Export CSV / Tally
+            </button>
+<button class="px-space-md py-2 bg-primary-container text-on-primary rounded-lg font-label-lg text-label-lg flex items-center gap-1.5 hover:bg-primary transition-colors active:scale-[0.98]">
+<span class="material-symbols-outlined text-body-lg" data-icon="person_add">person_add</span>
+              Manual Walk-in Booking
+            </button>
+</div>
+</div>
+</div>
+<!-- STAT / METRIC KPI CARDS -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Total Bookings -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Total Bookings Today</span>
+<span class="p-1.5 rounded-lg bg-surface-container-low text-primary">
+<span class="material-symbols-outlined text-body-lg" data-icon="calendar_month">calendar_month</span>
+</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl font-bold text-on-surface">46</span>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-fixed/40 px-1.5 py-0.5 rounded flex items-center gap-0.5">
+<span class="material-symbols-outlined text-xs" data-icon="trending_up">trending_up</span> +12%
+            </span>
+</div>
+<div class="mt-1 font-body-sm text-body-sm text-outline">Across 6 operational courts</div>
+</div>
+<!-- Gross Revenue -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Gross Booking Revenue</span>
+<span class="p-1.5 rounded-lg bg-surface-container-low text-primary">
+<span class="material-symbols-outlined text-body-lg" data-icon="currency_rupee">currency_rupee</span>
+</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl font-bold text-on-surface">₹32,450</span>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-fixed/40 px-1.5 py-0.5 rounded flex items-center gap-0.5">
+<span class="material-symbols-outlined text-xs" data-icon="trending_up">trending_up</span> +8.4%
+            </span>
+</div>
+<div class="mt-1 font-body-sm text-body-sm text-outline">Net settled to HDFC Current A/C</div>
+</div>
+<!-- Turnstile Check-in Rate -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Turnstile Check-in Rate</span>
+<span class="p-1.5 rounded-lg bg-surface-container-low text-secondary">
+<span class="material-symbols-outlined text-body-lg" data-icon="sensors">sensors</span>
+</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl font-bold text-on-surface">88%</span>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-fixed/40 px-1.5 py-0.5 rounded">38 Checked in</span>
+</div>
+<div class="mt-1 font-body-sm text-body-sm text-outline">Optical NFC &amp; PIN scanner verified</div>
+</div>
+<!-- Active Pending / Cancelled -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Pending &amp; Cancellations</span>
+<span class="p-1.5 rounded-lg bg-surface-container-low text-error">
+<span class="material-symbols-outlined text-body-lg" data-icon="cancel">cancel</span>
+</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl font-bold text-on-surface">3</span>
+<span class="font-label-sm text-label-sm text-error bg-error-container/60 px-1.5 py-0.5 rounded">2 Refunded</span>
+</div>
+<div class="mt-1 font-body-sm text-body-sm text-outline">1 under review for rain postponement</div>
+</div>
+</section>
+<!-- SEARCH & FILTER BAR -->
+<section class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-space-md flex flex-col gap-space-md shadow-sm">
+<div class="flex flex-col lg:flex-row items-center justify-between gap-space-md">
+<!-- Search Bar -->
+<div class="relative w-full lg:w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-headline-sm" data-icon="search">search</span>
+<input class="w-full pl-9 pr-4 py-2 text-body-sm font-body-sm bg-surface-container-lowest border border-outline-variant/50 rounded-lg text-on-surface placeholder:text-outline focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary" placeholder="Search by booking ID, player name, phone, or turnstile PIN..." type="text"/>
+</div>
+<!-- Dropdowns & Date Selector -->
+<div class="flex flex-wrap items-center gap-space-sm w-full lg:w-auto">
+<!-- Facility / Locality Selector -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-lowest border border-outline-variant/50 rounded-lg pl-3 pr-8 py-2 font-label-md text-label-md text-on-surface focus:outline-none focus:border-primary">
+<option selected="">Apex Badminton Academy (SG Highway)</option>
+<option>Vanguard Sports Hub (Sindhu Bhavan)</option>
+<option>Apex Courts (Bodakdev)</option>
+<option>Metro Padel Hub (Prahlad Nagar)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-body-md" data-icon="expand_more">expand_more</span>
+</div>
+<!-- Sport Selector -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-lowest border border-outline-variant/50 rounded-lg pl-3 pr-8 py-2 font-label-md text-label-md text-on-surface focus:outline-none focus:border-primary">
+<option selected="">All Sports (Badminton, Cricket, Padel)</option>
+<option>Badminton</option>
+<option>Box Cricket</option>
+<option>Pickleball</option>
+<option>Tennis</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-body-md" data-icon="expand_more">expand_more</span>
+</div>
+<!-- Date Picker Button -->
+<button class="flex items-center gap-2 px-space-md py-2 bg-surface-container-lowest border border-outline-variant/50 rounded-lg font-label-md text-label-md text-on-surface hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="today">today</span>
+<span>Today, Oct 24, 2025</span>
+<span class="material-symbols-outlined text-outline text-body-sm" data-icon="calendar_today">calendar_today</span>
+</button>
+</div>
+</div>
+<!-- Filter Status Tabs -->
+<div class="flex items-center justify-between border-t border-outline-variant/20 pt-3">
+<div class="flex items-center gap-2">
+<button class="px-space-md py-1.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold">
+              All Bookings (46)
+            </button>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-md text-label-md font-medium transition-colors">
+              Confirmed (37)
+            </button>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-md text-label-md font-medium transition-colors">
+              Completed (7)
+            </button>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-md text-label-md font-medium transition-colors">
+              Cancelled (2)
+            </button>
+</div>
+<div class="flex items-center gap-2 text-outline font-label-sm text-label-sm">
+<span>Sorted by: Slot Time (Upcoming First)</span>
+</div>
+</div>
+</section>
+<!-- BOOKINGS TABLE -->
+<section class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant/40 text-on-surface-variant font-label-md text-label-md">
+<th class="py-3.5 px-space-md">Booking ID &amp; Player</th>
+<th class="py-3.5 px-space-md">Facility &amp; Arena</th>
+<th class="py-3.5 px-space-md">Court &amp; Surface</th>
+<th class="py-3.5 px-space-md">Sport</th>
+<th class="py-3.5 px-space-md">Schedule &amp; Slot</th>
+<th class="py-3.5 px-space-md">Amount (₹ INR)</th>
+<th class="py-3.5 px-space-md">Turnstile / PIN</th>
+<th class="py-3.5 px-space-md">Status</th>
+<th class="py-3.5 px-space-md text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20 font-body-sm text-body-sm">
+<!-- ROW 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold text-label-sm">
+                      AM
+                    </div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold">Alex Morgan</div>
+<div class="text-outline text-label-sm">#QC-9204 • +91 98250 14820</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="text-on-surface font-medium">Apex Badminton Academy</div>
+<div class="text-outline text-label-sm">Hall A • SG Highway</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="font-medium text-on-surface">Court 1</div>
+<div class="text-outline text-label-sm">Championship Taraflex</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-label-sm font-semibold bg-surface-container-high text-primary">
+<span class="material-symbols-outlined text-xs" data-icon="sports_tennis">sports_tennis</span>
+                    Badminton
+                  </span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="font-medium text-on-surface">Today, Oct 24</div>
+<div class="text-secondary font-semibold text-label-sm">07:00 PM – 08:00 PM</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">₹810.00</div>
+<div class="text-label-sm text-outline flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> UPI / GPay
+                  </div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-low border border-outline-variant/40 font-mono text-label-sm font-semibold text-on-surface">
+<span class="material-symbols-outlined text-xs text-secondary" data-icon="pin">pin</span>
+                    PIN: 4920
+                  </div>
+<div class="text-outline text-label-sm mt-0.5">Gate North #1 Synced</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-label-sm font-semibold bg-secondary/15 text-secondary border border-secondary/30">
+<span class="material-symbols-outlined text-xs" data-icon="check_circle">check_circle</span>
+                    Confirmed
+                  </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 hover:bg-surface-container rounded text-outline hover:text-on-surface" title="View Pass">
+<span class="material-symbols-outlined text-headline-sm" data-icon="badge">badge</span>
+</button>
+<button class="p-1 hover:bg-surface-container rounded text-outline hover:text-on-surface" title="More Options">
+<span class="material-symbols-outlined text-headline-sm" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 2 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold text-label-sm">
+                      VP
+                    </div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold">Vikram Patel</div>
+<div class="text-outline text-label-sm">#QC-9188 • +91 97240 88210</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="text-on-surface font-medium">Vanguard Sports Hub</div>
+<div class="text-outline text-label-sm">Bodakdev Arena</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="font-medium text-on-surface">Court 7</div>
+<div class="text-outline text-label-sm">40mm Turf Pitch</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-label-sm font-semibold bg-surface-container-high text-on-surface-variant">
+<span class="material-symbols-outlined text-xs" data-icon="sports_cricket">sports_cricket</span>
+                    Box Cricket
+                  </span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="font-medium text-on-surface">Today, Oct 24</div>
+<div class="text-secondary font-semibold text-label-sm">07:00 PM – 08:30 PM</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">₹1,400.00</div>
+<div class="text-label-sm text-outline flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> NetBanking
+                  </div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-low border border-outline-variant/40 font-mono text-label-sm font-semibold text-on-surface">
+<span class="material-symbols-outlined text-xs text-secondary" data-icon="pin">pin</span>
+                    PIN: 9021
+                  </div>
+<div class="text-outline text-label-sm mt-0.5">Turnstile West #3</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-label-sm font-semibold bg-secondary/15 text-secondary border border-secondary/30">
+<span class="material-symbols-outlined text-xs" data-icon="check_circle">check_circle</span>
+                    Confirmed
+                  </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 hover:bg-surface-container rounded text-outline hover:text-on-surface" title="View Pass">
+<span class="material-symbols-outlined text-headline-sm" data-icon="badge">badge</span>
+</button>
+<button class="p-1 hover:bg-surface-container rounded text-outline hover:text-on-surface" title="More Options">
+<span class="material-symbols-outlined text-headline-sm" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 3 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface flex items-center justify-center font-bold text-label-sm">
+                      NS
+                    </div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold">Dr. N. Shah</div>
+<div class="text-outline text-label-sm">#QC-9175 • +91 98980 33412</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="text-on-surface font-medium">Apex Badminton Academy</div>
+<div class="text-outline text-label-sm">Hall B • SG Highway</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="font-medium text-on-surface">Court 2</div>
+<div class="text-outline text-label-sm">Synthetic BWF Approved</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-label-sm font-semibold bg-surface-container-high text-primary">
+<span class="material-symbols-outlined text-xs" data-icon="sports_tennis">sports_tennis</span>
+                    Badminton
+                  </span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="font-medium text-on-surface">Today, Oct 24</div>
+<div class="text-on-surface-variant text-label-sm">05:00 PM – 06:00 PM</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">₹600.00</div>
+<div class="text-label-sm text-outline flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> UPI / Paytm
+                  </div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-low border border-outline-variant/40 font-mono text-label-sm font-semibold text-outline line-through">
+<span class="material-symbols-outlined text-xs text-outline" data-icon="lock">lock</span>
+                    PIN: 1844
+                  </div>
+<div class="text-outline text-label-sm mt-0.5">Access Logged at 05:02 PM</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-label-sm font-semibold bg-surface-container text-tertiary border border-outline-variant/40">
+<span class="material-symbols-outlined text-xs" data-icon="task_alt">task_alt</span>
+                    Completed
+                  </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 hover:bg-surface-container rounded text-outline hover:text-on-surface" title="View Pass">
+<span class="material-symbols-outlined text-headline-sm" data-icon="badge">badge</span>
+</button>
+<button class="p-1 hover:bg-surface-container rounded text-outline hover:text-on-surface" title="More Options">
+<span class="material-symbols-outlined text-headline-sm" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 4 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center font-bold text-label-sm">
+                      HS
+                    </div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold">Hardik Shah</div>
+<div class="text-outline text-label-sm">#QC-9160 • +91 99099 54101</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="text-on-surface font-medium">Metro Padel Hub</div>
+<div class="text-outline text-label-sm">Prahlad Nagar Ext.</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="font-medium text-on-surface">Court 5</div>
+<div class="text-outline text-label-sm">Pickleball Glass Box</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-label-sm font-semibold bg-surface-container-high text-on-surface">
+<span class="material-symbols-outlined text-xs" data-icon="sports_tennis">sports_tennis</span>
+                    Pickleball
+                  </span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="font-medium text-on-surface">Today, Oct 24</div>
+<div class="text-secondary font-semibold text-label-sm">08:00 PM – 09:00 PM</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">₹700.00</div>
+<div class="text-label-sm text-outline flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span> Desk Cash
+                  </div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-low border border-outline-variant/40 font-mono text-label-sm font-semibold text-on-surface">
+<span class="material-symbols-outlined text-xs text-secondary" data-icon="pin">pin</span>
+                    PIN: 3319
+                  </div>
+<div class="text-outline text-label-sm mt-0.5">Turnstile South #2</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-label-sm font-semibold bg-secondary/15 text-secondary border border-secondary/30">
+<span class="material-symbols-outlined text-xs" data-icon="check_circle">check_circle</span>
+                    Confirmed
+                  </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 hover:bg-surface-container rounded text-outline hover:text-on-surface" title="View Pass">
+<span class="material-symbols-outlined text-headline-sm" data-icon="badge">badge</span>
+</button>
+<button class="p-1 hover:bg-surface-container rounded text-outline hover:text-on-surface" title="More Options">
+<span class="material-symbols-outlined text-headline-sm" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 5 (Cancelled) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors opacity-80">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-error-container text-on-error-container flex items-center justify-center font-bold text-label-sm">
+                      AS
+                    </div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold">Ananya Sharma</div>
+<div class="text-outline text-label-sm">#QC-9142 • +91 94260 77192</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="text-on-surface font-medium">Apex Badminton Academy</div>
+<div class="text-outline text-label-sm">Hall A • SG Highway</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="font-medium text-on-surface">Court 3</div>
+<div class="text-outline text-label-sm">Wooden Sprung Floor</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-label-sm font-semibold bg-surface-container-high text-primary">
+<span class="material-symbols-outlined text-xs" data-icon="sports_tennis">sports_tennis</span>
+                    Badminton
+                  </span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="font-medium text-on-surface line-through">Today, Oct 24</div>
+<div class="text-outline text-label-sm">06:00 PM – 07:00 PM</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="font-headline-sm text-headline-sm text-outline font-bold line-through">₹750.00</div>
+<div class="text-label-sm text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="replay">replay</span> Refunded UPI
+                  </div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="text-outline text-label-sm font-mono italic">Access Revoked</span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-label-sm font-semibold bg-error-container text-error border border-error/20">
+<span class="material-symbols-outlined text-xs" data-icon="cancel">cancel</span>
+                    Cancelled / Refunded
+                  </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 hover:bg-surface-container rounded text-outline hover:text-on-surface" title="View Audit">
+<span class="material-symbols-outlined text-headline-sm" data-icon="history">history</span>
+</button>
+<button class="p-1 hover:bg-surface-container rounded text-outline hover:text-on-surface" title="More Options">
+<span class="material-symbols-outlined text-headline-sm" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 6 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold text-label-sm">
+                      RM
+                    </div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold">Ronit Mehta</div>
+<div class="text-outline text-label-sm">#QC-9138 • +91 98240 66014</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="text-on-surface font-medium">Vanguard Sports Hub</div>
+<div class="text-outline text-label-sm">Sindhu Bhavan Road</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="font-medium text-on-surface">Court 4</div>
+<div class="text-outline text-label-sm">Hardcourt Acrylic</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-label-sm font-semibold bg-surface-container-high text-tertiary">
+<span class="material-symbols-outlined text-xs" data-icon="sports_tennis">sports_tennis</span>
+                    Tennis
+                  </span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="font-medium text-on-surface">Today, Oct 24</div>
+<div class="text-secondary font-semibold text-label-sm">08:30 PM – 09:30 PM</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">₹1,200.00</div>
+<div class="text-label-sm text-outline flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Visa Card
+                  </div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-low border border-outline-variant/40 font-mono text-label-sm font-semibold text-on-surface">
+<span class="material-symbols-outlined text-xs text-secondary" data-icon="pin">pin</span>
+                    PIN: 5578
+                  </div>
+<div class="text-outline text-label-sm mt-0.5">Gate Main East</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-label-sm font-semibold bg-secondary/15 text-secondary border border-secondary/30">
+<span class="material-symbols-outlined text-xs" data-icon="check_circle">check_circle</span>
+                    Confirmed
+                  </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 hover:bg-surface-container rounded text-outline hover:text-on-surface" title="View Pass">
+<span class="material-symbols-outlined text-headline-sm" data-icon="badge">badge</span>
+</button>
+<button class="p-1 hover:bg-surface-container rounded text-outline hover:text-on-surface" title="More Options">
+<span class="material-symbols-outlined text-headline-sm" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- PAGINATION & FOOTER STATUS -->
+<div class="px-space-md py-3 bg-surface-container-lowest border-t border-outline-variant/30 flex flex-col sm:flex-row items-center justify-between gap-space-sm font-body-sm text-body-sm text-outline">
+<div class="flex items-center gap-2">
+<span>Showing <strong class="text-on-surface font-semibold">1 to 6</strong> of <strong class="text-on-surface font-semibold">46</strong> reservations today</span>
+<span class="hidden md:inline text-outline-variant">•</span>
+<span class="hidden md:flex items-center gap-1 text-secondary text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Auto-refreshing via WebSockets (5s)
+            </span>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-2.5 py-1 border border-outline-variant/40 rounded bg-surface-container-lowest text-outline hover:bg-surface-container-low transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-body-md" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="px-3 py-1 rounded bg-primary text-on-primary font-semibold text-label-sm">1</button>
+<button class="px-3 py-1 rounded hover:bg-surface-container-low text-on-surface text-label-sm transition-colors">2</button>
+<button class="px-3 py-1 rounded hover:bg-surface-container-low text-on-surface text-label-sm transition-colors">3</button>
+<button class="px-3 py-1 rounded hover:bg-surface-container-low text-on-surface text-label-sm transition-colors">4</button>
+<button class="px-2.5 py-1 border border-outline-variant/40 rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-body-md" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

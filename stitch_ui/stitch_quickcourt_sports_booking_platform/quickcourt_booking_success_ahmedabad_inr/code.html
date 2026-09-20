@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Booking Confirmed | QuickCourt Precision Facility Engine</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary": "#ffffff",
+            "on-secondary-fixed-variant": "#005236",
+            "secondary-container": "#6cf8bb",
+            "on-secondary": "#ffffff",
+            "inverse-primary": "#8dd6a6",
+            "surface-container": "#e5eeff",
+            "on-surface": "#0b1c30",
+            "primary": "#004225",
+            "error": "#ba1a1a",
+            "surface-tint": "#216b43",
+            "on-secondary-fixed": "#002113",
+            "primary-fixed-dim": "#8dd6a6",
+            "on-error": "#ffffff",
+            "inverse-on-surface": "#eaf1ff",
+            "surface-container-lowest": "#ffffff",
+            "surface-bright": "#f8f9ff",
+            "error-container": "#ffdad6",
+            "inverse-surface": "#213145",
+            "surface-container-high": "#dce9ff",
+            "on-tertiary-fixed": "#131b2e",
+            "on-secondary-container": "#00714d",
+            "on-surface-variant": "#404941",
+            "on-error-container": "#93000a",
+            "surface-variant": "#d3e4fe",
+            "surface": "#f8f9ff",
+            "background": "#f8f9ff",
+            "secondary": "#006c49",
+            "primary-container": "#0a5c36",
+            "on-tertiary-fixed-variant": "#3f465c",
+            "surface-container-low": "#eff4ff",
+            "on-primary-fixed": "#002110",
+            "on-tertiary-container": "#bbc2dc",
+            "tertiary-container": "#485066",
+            "surface-container-highest": "#d3e4fe",
+            "outline": "#707a71",
+            "on-primary": "#ffffff",
+            "tertiary-fixed": "#dae2fd",
+            "outline-variant": "#bfc9bf",
+            "secondary-fixed-dim": "#4edea3",
+            "on-primary-container": "#89d2a2",
+            "surface-dim": "#cbdbf5",
+            "secondary-fixed": "#6ffbbe",
+            "on-background": "#0b1c30",
+            "tertiary-fixed-dim": "#bec6e0",
+            "primary-fixed": "#a8f3c1",
+            "tertiary": "#31394e",
+            "on-primary-fixed-variant": "#00522e"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-lg": "1.5rem",
+            "gutter-lg": "2rem",
+            "gutter": "1rem",
+            "margin-lg": "3rem",
+            "space-xs": "0.25rem",
+            "gutter-md": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "margin": "1rem",
+            "space-xl": "2rem",
+            "margin-md": "2rem"
+          },
+          "fontFamily": {
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "display-lg": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-xl-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600" }],
+            "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .barcode-stripe {
+      background: repeating-linear-gradient(
+        90deg,
+        #0b1c30 0px,
+        #0b1c30 2px,
+        transparent 2px,
+        transparent 5px,
+        #0b1c30 5px,
+        #0b1c30 8px,
+        transparent 8px,
+        transparent 9px,
+        #0b1c30 9px,
+        #0b1c30 14px,
+        transparent 14px,
+        transparent 17px,
+        #0b1c30 17px,
+        #0b1c30 18px
+      );
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col font-body-md">
+<!-- Shared Component: TopNavBar -->
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant">
+<div class="w-full border-b border-outline-variant px-6 lg:px-12 flex justify-between items-center h-16 max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<a class="text-headline-md font-headline-md font-bold tracking-tight text-primary flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="sports_tennis">sports_tennis</span>
+          QuickCourt
+        </a>
+<nav class="hidden md:flex items-center space-x-6">
+<a class="text-on-surface-variant hover:text-on-surface text-body-sm font-body-sm transition-colors duration-150 pb-1" href="#">Venues</a>
+<a class="text-primary font-semibold border-b-2 border-primary pb-1 text-label-lg font-label-lg" href="#">Schedule</a>
+<a class="text-on-surface-variant hover:text-on-surface text-body-sm font-body-sm transition-colors duration-150 pb-1" href="#">Tournaments</a>
+<a class="text-on-surface-variant hover:text-on-surface text-body-sm font-body-sm transition-colors duration-150 pb-1" href="#">Support</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button aria-label="Help" class="text-on-surface-variant hover:text-primary transition-colors duration-150 p-1 flex items-center">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<button aria-label="Language Selector" class="text-on-surface-variant hover:text-primary transition-colors duration-150 p-1 flex items-center">
+<span class="material-symbols-outlined" data-icon="language">language</span>
+</button>
+<div class="h-5 w-[1px] bg-outline-variant hidden sm:block"></div>
+<div class="flex items-center gap-2 pl-1">
+<div class="w-9 h-9 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center font-label-md text-primary font-semibold">GJ</div>
+<span class="hidden sm:inline font-label-md text-on-surface font-medium">Ahmedabad, GJ</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Flow Status Strip -->
+<section class="w-full bg-surface-container-lowest border-b border-outline-variant">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 py-3 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded text-label-sm font-label-sm bg-primary-container text-on-primary font-bold">
+          Step 4 of 4
+        </span>
+<span class="text-headline-sm font-headline-sm text-on-surface font-semibold">Booking Confirmed</span>
+</div>
+<!-- Stepper Pills -->
+<div class="flex items-center space-x-2 text-label-sm font-label-sm overflow-x-auto w-full md:w-auto pb-1 md:pb-0">
+<div class="flex items-center text-primary-container gap-1 font-semibold">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Court</span>
+</div>
+<span class="text-outline-variant">/</span>
+<div class="flex items-center text-primary-container gap-1 font-semibold">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Add-ons</span>
+</div>
+<span class="text-outline-variant">/</span>
+<div class="flex items-center text-primary-container gap-1 font-semibold">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Review</span>
+</div>
+<span class="text-outline-variant">/</span>
+<div class="flex items-center text-primary-container gap-1 font-bold bg-secondary-container/20 px-2 py-0.5 rounded text-on-secondary-container">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Turnstile Sync</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Content Canvas -->
+<main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-12 py-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left 8-Column Zone: Master Confirmation & Breakdown -->
+<div class="lg:col-span-8 space-y-6">
+<!-- Core Success Headline Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 sm:p-8">
+<div class="flex flex-col sm:flex-row items-start gap-5">
+<div class="w-14 h-14 rounded-full bg-secondary-container/30 border border-primary-container/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary-container text-3xl" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div class="flex-1">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-1">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-label-sm font-label-sm font-semibold bg-secondary-container/30 text-on-secondary-container border border-primary/10">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span>
+                  TURNSTILE AUTHORIZED
+                </span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Confirmed at 06:14 PM CST</span>
+</div>
+<h1 class="text-headline-xl-mobile sm:text-headline-xl font-headline-xl text-on-surface mb-2 tracking-tight">
+                Reservation Confirmed &amp; Turnstile Synced!
+              </h1>
+<p class="text-body-md font-body-md text-on-surface-variant">Your court access PIN and digital pass have been activated. A confirmation SMS and receipt have been dispatched to your mobile number (+91 ••••• 12834).</p>
+<!-- Booking Reference Identifier Bar -->
+<div class="mt-5 p-3.5 bg-surface border border-outline-variant rounded-lg flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-lg" data-icon="confirmation_number">confirmation_number</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant font-medium">Booking Reference:</span>
+<span class="font-mono text-label-lg font-label-lg text-primary font-bold" id="bookingRef">#QC-89420-TX</span>
+</div>
+<button class="inline-flex items-center gap-1 text-label-sm font-label-sm text-primary-container hover:text-primary font-semibold transition-colors duration-150" onclick="navigator.clipboard.writeText('QC-89420-TX'); this.innerText='Copied!';">
+<span class="material-symbols-outlined text-sm" data-icon="content_copy">content_copy</span>
+<span>Copy Reference</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Venue & Court Specifications Breakdown Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 sm:p-8">
+<div class="border-b border-outline-variant pb-4 mb-6 flex items-center justify-between">
+<h2 class="text-headline-sm font-headline-sm text-on-surface font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" data-icon="stadium">stadium</span>
+              Facility &amp; Match Schedule Details
+            </h2>
+<span class="text-label-sm font-label-sm text-primary-container font-semibold bg-secondary-container/20 px-2 py-1 rounded">BWF Standard Certified</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Facility Item -->
+<div class="space-y-1"><span class="text-label-sm font-label-sm text-on-surface-variant block uppercase">Venue &amp; Location</span>
+<p class="text-label-lg font-label-lg text-on-surface font-semibold">Apex Badminton Academy</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex items-start gap-1">
+<span class="material-symbols-outlined text-xs mt-0.5" data-icon="location_on">location_on</span>
+SG Highway • Near Iskcon Cross Road, Ahmedabad, GJ 380054
+</p></div>
+<!-- Sport & Climate -->
+<div class="space-y-1">
+<span class="text-label-sm font-label-sm text-on-surface-variant block uppercase">Discipline &amp; Environment</span>
+<p class="text-label-lg font-label-lg text-on-surface font-semibold">Badminton (Singles / Doubles)</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="ac_unit">ac_unit</span>
+                Climate Controlled at 68°F (HVAC Direct Inflow)
+              </p>
+</div>
+<!-- Court Spec -->
+<div class="space-y-1 pt-2 border-t border-outline-variant/50">
+<span class="text-label-sm font-label-sm text-on-surface-variant block uppercase">Court Specification</span>
+<p class="text-label-lg font-label-lg text-primary font-bold">Court 1 — Championship Tier</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">7.0mm BWF Taraflex Shock Mat on Hardwood Base</p>
+</div>
+<!-- Date & Time Matrix -->
+<div class="space-y-1 pt-2 border-t border-outline-variant/50">
+<span class="text-label-sm font-label-sm text-on-surface-variant block uppercase">Scheduled Time Block</span>
+<div class="flex items-center gap-2">
+<span class="text-label-lg font-label-lg text-on-surface font-semibold">Today, Friday, Oct 24, 2025</span>
+</div>
+<p class="text-label-md font-label-md text-primary-container font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span>
+                07:00 PM – 08:00 PM (60 Minutes)
+              </p>
+</div>
+</div>
+<!-- Add-ons & Equipment Section -->
+<div class="mt-6 pt-6 border-t border-outline-variant">
+<div class="flex items-center justify-between bg-surface p-3.5 rounded-lg border border-outline-variant">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-lowest border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-base" data-icon="sports_tennis">sports_tennis</span>
+</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface font-semibold">Pre-strung Yonex Astrox 88D Pro Racquet</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Quantity: 1 unit • Pick up at Court Master Locker #04</p>
+</div>
+</div>
+<span class="text-label-md font-label-md text-on-surface font-bold">₹150.00</span>
+</div>
+</div>
+<!-- Financial Statement Line Item -->
+<div class="mt-6 pt-4 border-t border-outline-variant flex flex-wrap items-center justify-between gap-4">
+<div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Paid via Instant UPI / Mock Gateway</p>
+<p class="text-label-sm font-label-sm text-on-secondary-container font-medium">Zero QuickCourt Platform Markup Guarantee</p>
+</div>
+<div class="text-right">
+<span class="text-body-sm font-body-sm text-on-surface-variant block">Total Amount Settled</span>
+<span class="text-headline-md font-headline-md font-bold text-primary">₹810.00 INR</span>
+</div>
+</div>
+</div>
+<!-- Venue Rules & Compliance Advisory -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-5 flex items-start gap-4">
+<span class="material-symbols-outlined text-primary-container text-2xl shrink-0 mt-0.5" data-icon="info">info</span>
+<div class="space-y-1">
+<h3 class="text-label-lg font-label-lg text-on-surface font-semibold">Strict Facility Protocols</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed">
+              Only authentic <strong>non-marking gum rubber court shoes</strong> are permitted past the green turnstiles. Outside shuttlecocks are subject to inspection. Arrive with adequate time for wristband collection.
+            </p>
+<p class="text-body-sm font-body-sm text-on-surface-variant pt-1">Front Desk direct support hotline: <a class="text-primary font-semibold hover:underline" href="tel:+917940012100">+91 79 4001 2100</a> (Ext. 2)</p>
+</div>
+</div>
+</div>
+<!-- Right 4-Column Zone: Digital Turnstile Pass & Quick Actions -->
+<div class="lg:col-span-4 space-y-6">
+<!-- Digital Turnstile Pass / QR Card -->
+<div class="bg-surface-container-lowest border-2 border-primary-container rounded-xl overflow-hidden shadow-sm">
+<!-- Pass Header -->
+<div class="bg-primary-container text-on-primary px-5 py-4 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xl" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span class="text-label-lg font-label-lg font-bold tracking-wide">DIGITAL ACCESS PASS</span>
+</div>
+<span class="text-label-sm font-label-sm bg-on-primary/20 px-2 py-0.5 rounded font-mono">GATE-NORTH</span>
+</div>
+<div class="p-6 space-y-6">
+<!-- Entrance PIN Display -->
+<div class="text-center bg-surface border border-outline-variant rounded-lg p-4">
+<span class="text-label-sm font-label-sm text-on-surface-variant block uppercase font-bold tracking-wider mb-1">Entrance Keypad PIN</span>
+<div class="flex items-center justify-center gap-3">
+<span class="font-mono text-display-lg-mobile font-headline-xl text-primary font-bold tracking-widest">4920 #</span>
+<button class="p-2 rounded hover:bg-surface-container-high transition-colors duration-150 text-on-surface-variant" onclick="navigator.clipboard.writeText('4920#'); this.classList.add('text-primary');" title="Copy PIN">
+<span class="material-symbols-outlined text-lg" data-icon="content_copy">content_copy</span>
+</button>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant block mt-1">Press 4-9-2-0 followed by the Hash (#) key</span>
+</div>
+<!-- Optical Scanner QR & Barcode -->
+<div class="flex flex-col items-center justify-center p-4 bg-surface rounded-lg border border-outline-variant space-y-3">
+<div class="w-44 h-44 bg-surface-container-lowest p-2 border border-outline-variant rounded flex items-center justify-center relative">
+<!-- SVG Vector QR Code representation -->
+<svg class="w-full h-full text-on-surface fill-current" viewbox="0 0 100 100">
+<rect fill="none" height="25" stroke="currentColor" stroke-width="5" width="25" x="5" y="5"></rect>
+<rect fill="currentColor" height="11" width="11" x="12" y="12"></rect>
+<rect fill="none" height="25" stroke="currentColor" stroke-width="5" width="25" x="70" y="5"></rect>
+<rect fill="currentColor" height="11" width="11" x="77" y="12"></rect>
+<rect fill="none" height="25" stroke="currentColor" stroke-width="5" width="25" x="5" y="70"></rect>
+<rect fill="currentColor" height="11" width="11" x="12" y="77"></rect>
+<!-- Data Dots -->
+<rect height="6" width="6" x="36" y="10"></rect>
+<rect height="6" width="6" x="48" y="10"></rect>
+<rect height="6" width="6" x="36" y="22"></rect>
+<rect height="6" width="6" x="48" y="26"></rect>
+<rect height="6" width="6" x="10" y="38"></rect>
+<rect height="6" width="6" x="22" y="44"></rect>
+<rect height="8" width="8" x="38" y="38"></rect>
+<rect height="6" width="8" x="52" y="42"></rect>
+<rect height="6" width="6" x="68" y="38"></rect>
+<rect height="6" width="8" x="80" y="46"></rect>
+<rect height="6" width="6" x="38" y="54"></rect>
+<rect height="10" width="10" x="50" y="54"></rect>
+<rect height="6" width="6" x="68" y="54"></rect>
+<rect height="6" width="6" x="82" y="62"></rect>
+<rect height="8" width="8" x="36" y="72"></rect>
+<rect height="6" width="6" x="52" y="72"></rect>
+<rect height="6" width="12" x="66" y="76"></rect>
+<rect height="12" width="6" x="82" y="76"></rect>
+</svg>
+</div>
+<!-- Barcode Mock Strip -->
+<div class="w-full h-8 barcode-stripe rounded-sm opacity-80"></div>
+<span class="font-mono text-label-sm font-label-sm text-on-surface-variant tracking-wider">QC-AUT-2025-4920</span>
+</div>
+<!-- Gate Unlock Countdown Rule -->
+<div class="p-3 bg-secondary-container/20 rounded border border-primary-container/20 text-center">
+<p class="text-body-sm font-body-sm text-on-secondary-container font-semibold flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-base" data-icon="lock_open">lock_open</span>
+                Unlocks at 06:45 PM (15m before slot)
+              </p>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-0.5">Court entry lights will illuminate green automatically.</p>
+</div>
+<!-- Primary & Secondary Voucher CTAs -->
+<div class="space-y-2.5 pt-2">
+<button class="w-full h-11 bg-primary-container hover:bg-primary text-on-primary font-label-lg font-semibold rounded-md flex items-center justify-center gap-2 transition-all duration-150 active:scale-[0.99] shadow-sm">
+<span class="material-symbols-outlined text-lg" data-icon="badge">badge</span>
+                View Booking Pass
+              </button>
+<button class="w-full h-11 bg-surface-container-lowest hover:bg-surface border border-outline-variant text-on-surface font-label-lg font-semibold rounded-md flex items-center justify-center gap-2 transition-all duration-150">
+<span class="material-symbols-outlined text-lg" data-icon="event_note">event_note</span>
+                Go to My Bookings
+              </button>
+<a class="block text-center text-body-sm font-body-sm text-on-surface-variant hover:text-primary transition-colors py-1" href="#">
+                Back to Home
+              </a>
+</div>
+<!-- Mobile Wallet & Squad Share Utilities -->
+<div class="pt-4 border-t border-outline-variant space-y-2">
+<button class="w-full py-2 px-3 bg-surface hover:bg-surface-container-high border border-outline-variant rounded text-label-md font-label-md text-on-surface flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="account_balance_wallet">account_balance_wallet</span>
+                Add to Apple Wallet / Google Calendar
+              </button>
+<button class="w-full py-2 px-3 bg-surface hover:bg-surface-container-high border border-outline-variant rounded text-label-md font-label-md text-on-surface flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="group_add">group_add</span>
+                Share Court Access with Squad
+              </button>
+</div>
+</div>
+</div>
+<!-- Venue Navigation Quick Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 space-y-3">
+<div class="flex items-center justify-between">
+<span class="text-label-md font-label-md font-bold text-on-surface uppercase">On-Site Navigation</span>
+<span class="material-symbols-outlined text-primary-container" data-icon="directions">directions</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+            Enter through <strong>North Entrance B</strong>. Follow court lines toward Court 1. Gear lockers are located immediately to the right of Turnstile #2.
+          </p>
+<a class="text-label-sm font-label-sm text-primary font-semibold hover:underline inline-flex items-center gap-1" href="https://maps.google.com" target="_blank">
+            Open in Maps
+            <span class="material-symbols-outlined text-xs" data-icon="open_in_new">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+</main>
+<!-- Shared Component: Footer -->
+<footer class="w-full bg-surface-container-lowest border-t border-outline-variant mt-12">
+<div class="w-full border-t border-outline-variant px-6 lg:px-12 py-8 flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto gap-4">
+<div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
+<span class="text-headline-sm font-headline-sm font-bold text-primary">QuickCourt</span>
+<span class="text-on-surface-variant text-body-sm font-body-sm">
+          © 2025 QuickCourt Operations Inc. All rights reserved. Precision court scheduling &amp; sports facility engine.
+        </span>
+</div>
+<div class="flex flex-wrap justify-center items-center gap-6">
+<a class="text-on-surface-variant hover:text-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">Venue Standards</a>
+<a class="text-on-surface-variant hover:text-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">API Docs</a>
+<a class="text-on-surface-variant hover:text-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">System Status</a>
+</div>
+</div>
+</footer>
+</body></html>

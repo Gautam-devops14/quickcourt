@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>QuickCourt Facility Portal — Time Slot Management</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-on-surface": "#eaf1ff",
+            "inverse-surface": "#213145",
+            "tertiary": "#31394e",
+            "on-tertiary-fixed": "#131b2e",
+            "surface-variant": "#d3e4fe",
+            "on-secondary-container": "#00714d",
+            "surface-container-high": "#dce9ff",
+            "on-surface": "#0b1c30",
+            "on-primary-fixed-variant": "#00522e",
+            "surface-tint": "#216b43",
+            "primary": "#004225",
+            "tertiary-fixed-dim": "#bec6e0",
+            "background": "#f8f9ff",
+            "on-surface-variant": "#404941",
+            "on-background": "#0b1c30",
+            "primary-container": "#0a5c36",
+            "secondary-container": "#6cf8bb",
+            "outline": "#707a71",
+            "on-secondary": "#ffffff",
+            "primary-fixed-dim": "#8dd6a6",
+            "outline-variant": "#bfc9bf",
+            "on-secondary-fixed": "#002113",
+            "secondary-fixed-dim": "#4edea3",
+            "surface-container-highest": "#d3e4fe",
+            "surface": "#f8f9ff",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-fixed-variant": "#3f465c",
+            "on-error-container": "#93000a",
+            "surface-container-low": "#eff4ff",
+            "primary-fixed": "#a8f3c1",
+            "secondary-fixed": "#6ffbbe",
+            "tertiary-fixed": "#dae2fd",
+            "secondary": "#006c49",
+            "error": "#ba1a1a",
+            "tertiary-container": "#485066",
+            "surface-bright": "#f8f9ff",
+            "error-container": "#ffdad6",
+            "on-tertiary": "#ffffff",
+            "inverse-primary": "#8dd6a6",
+            "on-primary": "#ffffff",
+            "on-primary-fixed": "#002110",
+            "on-primary-container": "#89d2a2",
+            "on-secondary-fixed-variant": "#005236",
+            "on-error": "#ffffff",
+            "surface-container": "#e5eeff",
+            "surface-dim": "#cbdbf5",
+            "on-tertiary-container": "#bbc2dc"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-xl": "2rem",
+            "margin": "1rem",
+            "space-sm": "0.5rem",
+            "gutter-md": "1.5rem",
+            "gutter-lg": "2rem",
+            "space-xs": "0.25rem",
+            "margin-md": "2rem",
+            "margin-lg": "3rem",
+            "gutter": "1rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Plus Jakarta Sans"],
+            "display-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-xl-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .hatch-pattern {
+      background-image: repeating-linear-gradient(
+        -45deg,
+        rgba(112, 122, 113, 0.08),
+        rgba(112, 122, 113, 0.08) 6px,
+        rgba(255, 255, 255, 0.95) 6px,
+        rgba(255, 255, 255, 0.95) 12px
+      );
+    }
+    .scrollbar-thin::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    .scrollbar-thin::-webkit-scrollbar-track {
+      background: #eff4ff;
+    }
+    .scrollbar-thin::-webkit-scrollbar-thumb {
+      background: #bfc9bf;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased font-body-md text-body-md overflow-x-hidden min-h-screen pb-20">
+<!-- ==================== TOP NAVIGATION BAR ==================== -->
+<header class="docked full-width top-0 sticky z-40 bg-surface border-b border-outline-variant/30 flex justify-between items-center w-full px-space-lg h-16 transition-colors">
+<!-- Left Cluster: Product Logo, Badge & Search -->
+<div class="flex items-center gap-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-on-primary font-bold">
+<span class="material-symbols-outlined text-lg">sports_tennis</span>
+</div>
+<span class="font-headline-md text-headline-md font-bold text-primary tracking-tight">QuickCourt Facility Portal</span>
+<!-- OWNER PORTAL Badge -->
+<span class="bg-emerald-50 text-emerald-800 border border-emerald-300 dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-800 text-xs font-semibold px-2.5 py-1 rounded-full flex items-center gap-1.5 shadow-xs">
+<span class="material-symbols-outlined text-xs">verified_user</span>
+<span>OWNER PORTAL</span>
+</span>
+</div>
+<div class="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-outline-variant/40 bg-surface-container-lowest text-on-surface-variant font-body-sm text-body-sm w-72">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none p-0 focus:ring-0 text-on-surface placeholder:text-outline text-body-sm w-full outline-none" placeholder="Search court, athlete, or booking ID..." type="text"/>
+</div>
+</div>
+<!-- Center Status Anchor: Active Facility & IoT Status -->
+<div class="hidden xl:flex items-center gap-space-md bg-surface-container-low px-space-md py-1.5 rounded-full border border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">stadium</span>
+<span class="font-label-md text-label-md text-on-surface">Apex Badminton Academy, SG Highway, Ahmedabad</span>
+</div>
+<span class="w-1 h-1 rounded-full bg-outline"></span>
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-secondary">
+<span class="inline-block w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span>Turnstile IoT: 8/8 Online • 12ms ping</span>
+</div>
+</div>
+<!-- Right Cluster: Primary Actions & Profile -->
+<div class="flex items-center gap-space-md">
+<button class="flex items-center gap-1.5 bg-primary-container text-on-primary px-space-md py-2 rounded-lg font-label-md text-label-md hover:bg-primary transition-colors duration-150 active:scale-[0.98]" onclick="openBlockModal()">
+<span class="material-symbols-outlined text-base">lock</span>
+<span>Block Slot</span>
+</button>
+<button class="hidden sm:flex items-center gap-1.5 bg-surface-container-lowest border border-outline-variant/40 text-on-surface px-space-md py-2 rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors duration-150">
+<span class="material-symbols-outlined text-base text-primary">add</span>
+<span>Add Booking</span>
+</button>
+<div class="flex items-center gap-1 border-l border-outline-variant/30 pl-space-md">
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" title="Sync IoT State">
+<span class="material-symbols-outlined text-lg">sync</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg relative transition-colors" title="Notifications">
+<span class="material-symbols-outlined text-lg">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" title="Filter Settings">
+<span class="material-symbols-outlined text-lg">tune</span>
+</button>
+</div>
+<!-- Facility Operator Profile Avatar -->
+<div class="flex items-center gap-2 pl-2">
+<div class="w-8 h-8 rounded-full bg-primary-fixed text-primary flex items-center justify-center font-bold text-label-sm border border-outline-variant/30 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up professional headshot of a dynamic Indian sports venue director with modern coaching attire, captured with natural athletic stadium lighting against a sleek glass interior court corridor." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwE4drEzLtLBCvM8mygbXb-_PftKbfWGEcCqiTOEw8Wvzhfq4LqiU_Ww8KpUKiSCJrw2qt7ZX-pYD4mdDY_mII2P8Rwn3oYBcsvm7oj5REc9eTRKs9Z5TpcaVsz4aC1JRa7H0_l_mg7pkkV9XKahS4LfhTIcGnoA6x-kVokFBp7TD-M4ezXUal4ttOvS_y1MQZDBu9zdCjpX0K6AUQ5w1mFTkV4fyqoQTyCbGcX6pZPjUfDkR9dne7xRstTfjoHsJA0uOxuTYnb2U"/>
+</div>
+</div>
+</div>
+</header>
+<!-- ==================== MAIN SHELL (SIDE NAV + CANVAS) ==================== -->
+<div class="flex min-h-[calc(100vh-64px)] w-full">
+<!-- SIDE NAVIGATION BAR -->
+<aside class="w-64 shrink-0 bg-surface-container-lowest border-r border-outline-variant/30 flex flex-col justify-between p-space-md">
+<!-- Venue Header -->
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center gap-space-sm pb-space-sm border-b border-outline-variant/20">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center border border-outline-variant/30 text-primary">
+<span class="material-symbols-outlined text-xl">sports_score</span>
+</div>
+<div class="overflow-hidden">
+<h2 class="font-headline-sm text-headline-sm text-primary truncate leading-snug">Apex Badminton Academy</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">SG Highway, Ahmedabad</p>
+</div>
+</div>
+<!-- Navigation Tabs -->
+<nav class="flex flex-col gap-1">
+<!-- 1: Dashboard (Inactive) -->
+<a class="flex items-center gap-space-sm text-on-surface-variant px-space-md py-space-sm rounded-lg hover:text-on-surface hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<!-- 2: Facilities (Inactive) -->
+<a class="flex items-center gap-space-sm text-on-surface-variant px-space-md py-space-sm rounded-lg hover:text-on-surface hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl">stadium</span>
+<span class="font-label-md text-label-md">Facilities</span>
+</a>
+<!-- 3: Court Matrix (Inactive) -->
+<a class="flex items-center gap-space-sm text-on-surface-variant px-space-md py-space-sm rounded-lg hover:text-on-surface hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl">grid_view</span>
+<span class="font-label-md text-label-md">Court Matrix</span>
+</a>
+<!-- 4: Time Slots & Pricing (ACTIVE) -->
+<a class="flex items-center gap-space-sm bg-primary text-white font-semibold px-space-md py-space-sm rounded-lg shadow-sm" href="#">
+<span class="material-symbols-outlined text-xl">schedule</span>
+<span class="font-label-md text-label-md">Time Slots &amp; Pricing</span>
+</a>
+<!-- 5: Calendar & Bookings (Inactive) -->
+<a class="flex items-center gap-space-sm text-on-surface-variant px-space-md py-space-sm rounded-lg hover:text-on-surface hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl">calendar_month</span>
+<span class="font-label-md text-label-md">Calendar &amp; Bookings</span>
+</a>
+<!-- 6: Revenue & Settlement (Inactive) -->
+<a class="flex items-center gap-space-sm text-on-surface-variant px-space-md py-space-sm rounded-lg hover:text-on-surface hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl">payments</span>
+<span class="font-label-md text-label-md">Revenue &amp; Settlement</span>
+</a>
+<!-- 7: Venue Settings (Inactive) -->
+<a class="flex items-center gap-space-sm text-on-surface-variant px-space-md py-space-sm rounded-lg hover:text-on-surface hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-xl">settings</span>
+<span class="font-label-md text-label-md">Venue Settings</span>
+</a>
+</nav>
+<!-- CTA Sidebar -->
+<div class="pt-2">
+<button class="w-full flex items-center justify-center gap-2 bg-primary text-on-primary py-2.5 px-3 rounded-lg font-label-md text-label-md hover:bg-primary-container transition-colors shadow-sm">
+<span class="material-symbols-outlined text-base">bolt</span>
+<span>Quick Book</span>
+</button>
+</div>
+</div>
+<!-- Footer Cluster -->
+<div class="pt-4 border-t border-outline-variant/30 flex flex-col gap-2">
+<div class="flex items-center justify-between px-space-sm py-1 text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-base text-secondary">sensors</span>
+<span class="font-label-sm text-label-sm">Turnstile IoT Online</span>
+</div>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+<a class="flex items-center gap-2 px-space-sm py-1.5 rounded text-on-surface-variant hover:text-on-surface font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined text-base">help_outline</span>
+<span>Support Desk</span>
+</a>
+<div class="bg-surface-container-low p-2 rounded-lg flex items-center justify-between mt-1 text-on-surface-variant font-label-sm text-label-sm">
+<span>Firmware v2.4.8</span>
+<span class="text-primary font-bold">LIVE</span>
+</div>
+</div>
+</aside>
+<!-- CONTENT CANVAS -->
+<main class="flex-1 overflow-y-auto px-space-lg py-space-md space-y-space-md bg-background">
+<!-- Breadcrumb & Header Title -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm">
+<span class="hover:underline cursor-pointer">Owner Portal</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="hover:underline cursor-pointer">Facilities</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-on-surface font-semibold">Apex Badminton Academy</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-primary font-bold">Time Slot Management</span>
+</div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm pt-1">
+<div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">Time Slot &amp; Capacity Management</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">
+              Schedule court availability, dynamic peak hourly tariffs, and manual slot blocks with instant IoT turnstile synchronization across Apex Badminton Academy, SG Highway, Ahmedabad.
+            </p>
+</div>
+<div class="flex items-center gap-2 shrink-0 self-start md:self-auto">
+<button class="flex items-center gap-1.5 bg-surface-container-lowest border border-outline-variant/40 px-3.5 py-2 rounded-lg text-on-surface font-label-md text-label-md hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-base">price_change</span>
+<span>Bulk Adjust Rates</span>
+</button>
+<button class="flex items-center gap-1.5 bg-primary-container text-on-primary px-4 py-2 rounded-lg font-label-md text-label-md hover:bg-primary transition-colors shadow-sm" onclick="openBlockModal()">
+<span class="material-symbols-outlined text-base">add_circle</span>
+<span>+ Block Slot</span>
+</button>
+</div>
+</div>
+</div>
+<!-- KPI Summary Strip (4 Metric Cards) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- KPI 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-space-md flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">Total Bookable Slots Today</span>
+<span class="material-symbols-outlined text-primary text-xl">event_available</span>
+</div>
+<div class="mt-2">
+<span class="font-headline-xl text-headline-xl text-on-surface">112 Slots</span>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-primary font-bold">84% Booked</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">14 Available • 4 Blocked</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-low h-1.5 rounded-full mt-3 overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 84%"></div>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">Projected Day Revenue</span>
+<span class="material-symbols-outlined text-secondary text-xl">payments</span>
+</div>
+<div class="mt-2">
+<span class="font-headline-xl text-headline-xl text-on-surface">₹68,450</span>
+<div class="flex items-center gap-1 mt-1 text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-sm font-bold">trending_up</span>
+<span>+18% vs last Thursday avg</span>
+</div>
+</div>
+<span class="font-body-sm text-body-sm text-outline mt-3">Target: ₹72,000 (95% to Goal)</span>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">Active Blocked Slots</span>
+<span class="material-symbols-outlined text-outline text-xl">lock_clock</span>
+</div>
+<div class="mt-2">
+<span class="font-headline-xl text-headline-xl text-on-surface">4 Slots</span>
+<div class="flex items-center gap-1.5 mt-1 font-body-sm text-body-sm text-on-surface-variant">
+<span class="inline-block w-2 h-2 rounded-full bg-outline"></span>
+<span>Across 2 courts (Maintenance &amp; Private)</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-label-sm text-label-sm mt-3 pt-2 border-t border-outline-variant/20">
+<span class="text-on-surface-variant">Next unblock: 04:00 PM</span>
+<a class="text-primary hover:underline font-bold" href="#">Review all</a>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">Turnstile &amp; IoT Sync</span>
+<span class="material-symbols-outlined text-secondary text-xl">wifi_tethering</span>
+</div>
+<div class="mt-2">
+<span class="font-headline-xl text-headline-xl text-on-surface">100% Synced</span>
+<div class="flex items-center gap-1 mt-1 font-body-sm text-body-sm text-secondary">
+<span class="material-symbols-outlined text-sm">verified</span>
+<span>Turnstiles &amp; light timers automated</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-label-sm text-label-sm mt-3 pt-2 border-t border-outline-variant/20 text-on-surface-variant">
+<span>Gate North &amp; West: Active</span>
+<span class="font-semibold text-on-surface">0 Queue</span>
+</div>
+</div>
+</div>
+<!-- Controls & Filter Bar -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-space-md flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md">
+<!-- Date Navigator -->
+<div class="flex items-center gap-2">
+<div class="flex items-center bg-surface-container-low border border-outline-variant/40 rounded-lg p-0.5">
+<button class="p-1.5 hover:bg-surface-container rounded text-on-surface transition-colors">
+<span class="material-symbols-outlined text-base">chevron_left</span>
+</button>
+<div class="px-3 py-1 flex items-center gap-2 font-label-md text-label-md text-on-surface">
+<span class="material-symbols-outlined text-base text-primary">calendar_today</span>
+<span>Today, Oct 24, 2025</span>
+</div>
+<button class="p-1.5 hover:bg-surface-container rounded text-on-surface transition-colors">
+<span class="material-symbols-outlined text-base">chevron_right</span>
+</button>
+</div>
+<div class="flex items-center border border-outline-variant/40 rounded-lg p-0.5 bg-surface-container-low">
+<button class="px-3 py-1 bg-surface-container-lowest shadow-sm rounded font-label-sm text-label-sm text-primary font-bold">Day View</button>
+<button class="px-3 py-1 text-on-surface-variant font-label-sm text-label-sm hover:text-on-surface">Week View</button>
+</div>
+</div>
+<!-- Court Discipline Pills -->
+<div class="flex items-center gap-1.5 overflow-x-auto scrollbar-thin py-1">
+<button class="px-3 py-1.5 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm font-semibold whitespace-nowrap shadow-xs">All Courts (8)</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/40 text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm whitespace-nowrap">Badminton (C1-C4)</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/40 text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm whitespace-nowrap">Pickleball (C5-C6)</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/40 text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm whitespace-nowrap">Box Cricket (C7)</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/40 text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm whitespace-nowrap">Training Bay (C8)</button>
+</div>
+<!-- Time Window Filter Segment -->
+<div class="flex items-center gap-2">
+<span class="text-on-surface-variant font-label-sm text-label-sm hidden sm:inline">Window:</span>
+<select class="bg-surface-container-lowest border border-outline-variant/40 text-on-surface text-label-sm font-label-sm rounded-lg py-1.5 px-2.5 focus:ring-1 focus:ring-primary outline-none">
+<option>All Day (06:00 AM – 11:00 PM)</option>
+<option>Morning Rush (06:00 AM – 12:00 PM)</option>
+<option>Afternoon Off-Peak (12:00 PM – 05:00 PM)</option>
+<option>Prime Evening (05:00 PM – 11:00 PM)</option>
+</select>
+</div>
+</div>
+<!-- Multi-Cue Interactive Legend Bar -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-3 flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-base">info</span>
+<span class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider">Slot Visual States:</span>
+</div>
+<div class="flex flex-wrap items-center gap-4 text-label-sm text-label-sm">
+<!-- State 1: Available -->
+<div class="flex items-center gap-2 bg-surface-container-low px-2.5 py-1 rounded border border-outline-variant/40">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-bold text-on-surface">AVAILABLE:</span>
+<span class="text-on-surface-variant">White box, green dot, base/peak ₹ INR rate, click to hold</span>
+</div>
+<!-- State 2: Booked -->
+<div class="flex items-center gap-2 bg-surface-container px-2.5 py-1 rounded border border-outline-variant/40">
+<span class="material-symbols-outlined text-xs text-primary font-bold">check_circle</span>
+<span class="font-bold text-on-surface">BOOKED:</span>
+<span class="text-on-surface-variant">Tonal card, athlete name, booking ID, turnstile PIN ready</span>
+</div>
+<!-- State 3: Blocked -->
+<div class="flex items-center gap-2 bg-surface-container-high hatch-pattern px-2.5 py-1 rounded border border-outline-variant">
+<span class="material-symbols-outlined text-xs text-outline font-bold">lock</span>
+<span class="font-bold text-on-surface">BLOCKED:</span>
+<span class="text-on-surface-variant">Tactile diagonal hatch, lock icon, explicit reason</span>
+</div>
+<!-- State 4: Selected for Bulk Action -->
+<div class="flex items-center gap-2 bg-emerald-50 text-emerald-900 px-2.5 py-1 rounded border border-emerald-500 font-semibold">
+<span class="material-symbols-outlined text-xs text-emerald-700 font-bold">check_box</span>
+<span>SELECTED:</span>
+<span class="text-emerald-800 text-[11px] font-normal">Active ring &amp; checkbox for multi-slot operations</span>
+</div>
+</div>
+<div class="text-outline font-label-sm text-label-sm hidden xl:block">
+          Click checkbox or slot to multi-select for bulk actions
+        </div>
+</div>
+<!-- Time Slot Schedule Matrix Grid (Specialized Table) -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl overflow-hidden shadow-xs">
+<div class="overflow-x-auto scrollbar-thin">
+<table class="w-full border-collapse text-left min-w-[1240px]">
+<!-- Table Header (Time intervals) -->
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant/40">
+<th class="sticky left-0 z-20 bg-surface-container-low p-3 w-64 border-r border-outline-variant/30 font-label-md text-label-md text-on-surface uppercase tracking-wider">
+<div class="flex items-center gap-2">
+<input class="w-3.5 h-3.5 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer" title="Select All Slots in Matrix" type="checkbox"/>
+<span>Court &amp; Specifications</span>
+</div>
+</th>
+<th class="p-3 text-center border-r border-outline-variant/20 font-label-sm text-label-sm text-on-surface-variant min-w-[120px]">06:00 AM</th>
+<th class="p-3 text-center border-r border-outline-variant/20 font-label-sm text-label-sm text-on-surface-variant min-w-[120px]">07:00 AM</th>
+<th class="p-3 text-center border-r border-outline-variant/20 font-label-sm text-label-sm text-on-surface-variant min-w-[120px]">
+<div class="flex items-center justify-center gap-1">
+<span>08:00 AM</span>
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+</div>
+</th>
+<th class="p-3 text-center border-r border-outline-variant/20 font-label-sm text-label-sm text-on-surface-variant min-w-[120px]">
+<div class="flex items-center justify-center gap-1">
+<span>09:00 AM</span>
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+</div>
+</th>
+<th class="p-3 text-center border-r border-outline-variant/20 font-label-sm text-label-sm text-on-surface-variant min-w-[120px]">10:00 AM</th>
+<th class="p-3 text-center border-r border-outline-variant/20 font-label-sm text-label-sm text-on-surface-variant min-w-[120px]">11:00 AM</th>
+<th class="p-3 text-center border-r border-outline-variant/20 font-label-sm text-label-sm text-on-surface-variant min-w-[120px]">05:00 PM</th>
+<th class="p-3 text-center border-r border-outline-variant/20 font-label-sm text-label-sm text-on-surface-variant min-w-[120px]">06:00 PM</th>
+<th class="p-3 text-center border-r border-outline-variant/20 font-label-sm text-label-sm text-on-surface-variant min-w-[120px]">07:00 PM</th>
+<th class="p-3 text-center border-r border-outline-variant/20 font-label-sm text-label-sm text-on-surface-variant min-w-[120px]">08:00 PM</th>
+<th class="p-3 text-center border-r border-outline-variant/20 font-label-sm text-label-sm text-on-surface-variant min-w-[120px]">09:00 PM</th>
+<th class="p-3 text-center font-label-sm text-label-sm text-on-surface-variant min-w-[120px]">10:00 PM</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20">
+<!-- ROW 1: Court 1 Pro Arena -->
+<tr class="hover:bg-surface/50 transition-colors">
+<td class="sticky left-0 z-10 bg-surface-container-lowest p-3 border-r border-outline-variant/30 w-64 shadow-xs">
+<div class="flex items-start gap-2.5">
+<input class="mt-1 w-3.5 h-3.5 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer" title="Select Court 1 Slots" type="checkbox"/>
+<div class="flex flex-col flex-1">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-primary font-bold">Court 1</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-primary font-label-sm text-label-sm">Taraflex</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold truncate">Championship Pro Arena</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Hall A • ₹600 base / ₹750 peak</span>
+</div>
+</div>
+</td>
+<!-- 06 AM Booked -->
+<td class="p-2 border-r border-outline-variant/20">
+<div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 flex flex-col justify-between h-20 relative group">
+<div class="flex items-start justify-between">
+<span class="font-label-sm text-label-sm text-on-surface font-bold truncate">A. Morgan</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-secondary">verified</span>
+<input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-30 group-hover:opacity-100 transition-opacity cursor-pointer" type="checkbox"/>
+</div>
+</div>
+<span class="text-[10px] text-on-surface-variant truncate">#QC-9204 • UPI</span>
+<span class="text-[9px] px-1 bg-surface-container rounded text-primary font-medium w-fit">PIN 4810</span>
+</div>
+</td>
+<!-- 07 AM Booked -->
+<td class="p-2 border-r border-outline-variant/20">
+<div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 flex flex-col justify-between h-20 group">
+<div class="flex items-start justify-between">
+<span class="font-label-sm text-label-sm text-on-surface font-bold truncate">Vikram Patel</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-secondary">verified</span>
+<input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-30 group-hover:opacity-100 transition-opacity cursor-pointer" type="checkbox"/>
+</div>
+</div>
+<span class="text-[10px] text-on-surface-variant truncate">#QC-9188 • Pass</span>
+<span class="text-[9px] px-1 bg-surface-container rounded text-primary font-medium w-fit">PIN 9021</span>
+</div>
+</td>
+<!-- 08 AM Available - [SELECTED 1/3] -->
+<td class="p-2 border-r border-outline-variant/20">
+<div class="bg-emerald-50/90 border-2 border-emerald-600 ring-2 ring-emerald-500/30 rounded-lg p-2 flex flex-col justify-between h-20 shadow-sm relative group cursor-pointer transition-all">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+<span class="text-[10px] font-bold text-emerald-800">₹600</span>
+</div>
+<input checked="" class="w-3.5 h-3.5 rounded border-emerald-600 text-emerald-700 focus:ring-emerald-600 cursor-pointer" type="checkbox"/>
+</div>
+<span class="font-label-sm text-label-sm text-emerald-900 font-semibold text-center">Selected</span>
+<span class="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded text-center">Batch Target</span>
+</div>
+</td>
+<!-- 09 AM Available - [SELECTED 2/3] -->
+<td class="p-2 border-r border-outline-variant/20">
+<div class="bg-emerald-50/90 border-2 border-emerald-600 ring-2 ring-emerald-500/30 rounded-lg p-2 flex flex-col justify-between h-20 shadow-sm relative group cursor-pointer transition-all">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+<span class="text-[10px] font-bold text-emerald-800">₹600</span>
+</div>
+<input checked="" class="w-3.5 h-3.5 rounded border-emerald-600 text-emerald-700 focus:ring-emerald-600 cursor-pointer" type="checkbox"/>
+</div>
+<span class="font-label-sm text-label-sm text-emerald-900 font-semibold text-center">Selected</span>
+<span class="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded text-center">Batch Target</span>
+</div>
+</td>
+<!-- 10 AM BLOCKED (Maintenance) -->
+<td class="p-2 border-r border-outline-variant/20" colspan="2">
+<div class="bg-surface-container-high hatch-pattern border-2 border-dashed border-outline-variant rounded-lg p-2 flex flex-col justify-between h-20 relative group">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1 text-on-surface font-bold text-label-sm">
+<span class="material-symbols-outlined text-sm text-outline">build_circle</span>
+<span>BLOCKED (2 hrs)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<button class="text-[10px] text-primary font-bold hover:underline bg-surface-container-lowest px-1.5 py-0.5 rounded shadow-xs">Unblock</button>
+<input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-40 group-hover:opacity-100 transition-opacity cursor-pointer" type="checkbox"/>
+</div>
+</div>
+<span class="text-[11px] font-semibold text-on-surface">Maintenance: Anti-Slip Buffing</span>
+<div class="flex items-center justify-between text-[10px] text-outline">
+<span>Lights Off</span>
+<span>Turnstile Gate 1 Locked</span>
+</div>
+</div>
+</td>
+<!-- 05 PM Peak Booked -->
+<td class="p-2 border-r border-outline-variant/20">
+<div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 flex flex-col justify-between h-20 group">
+<div class="flex items-start justify-between">
+<span class="font-label-sm text-label-sm text-on-surface font-bold truncate">Hardik Shah</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-secondary">verified</span>
+<input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-30 group-hover:opacity-100 cursor-pointer" type="checkbox"/>
+</div>
+</div>
+<span class="text-[10px] text-on-surface-variant truncate">#QC-8103 • UPI</span>
+<span class="text-[9px] px-1 bg-surface-container rounded text-primary font-medium w-fit">PIN 3341</span>
+</div>
+</td>
+<!-- 06 PM Peak Booked -->
+<td class="p-2 border-r border-outline-variant/20">
+<div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 flex flex-col justify-between h-20 group">
+<div class="flex items-start justify-between">
+<span class="font-label-sm text-label-sm text-on-surface font-bold truncate">Rahul Sharma</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-secondary">verified</span>
+<input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-30 group-hover:opacity-100 cursor-pointer" type="checkbox"/>
+</div>
+</div>
+<span class="text-[10px] text-on-surface-variant truncate">#QC-8119 • Pass</span>
+<span class="text-[9px] px-1 bg-surface-container rounded text-primary font-medium w-fit">PIN 6612</span>
+</div>
+</td>
+<!-- 07 PM Peak Booked -->
+<td class="p-2 border-r border-outline-variant/20">
+<div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 flex flex-col justify-between h-20 group">
+<div class="flex items-start justify-between">
+<span class="font-label-sm text-label-sm text-on-surface font-bold truncate">Devang Joshi</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-secondary">verified</span>
+<input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-30 group-hover:opacity-100 cursor-pointer" type="checkbox"/>
+</div>
+</div>
+<span class="text-[10px] text-on-surface-variant truncate">#QC-8125 • UPI</span>
+<span class="text-[9px] px-1 bg-surface-container rounded text-primary font-medium w-fit">PIN 1944</span>
+</div>
+</td>
+<!-- 08 PM Peak Booked -->
+<td class="p-2 border-r border-outline-variant/20">
+<div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 flex flex-col justify-between h-20 group">
+<div class="flex items-start justify-between">
+<span class="font-label-sm text-label-sm text-on-surface font-bold truncate">Rhea Pillai</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-secondary">verified</span>
+<input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-30 group-hover:opacity-100 cursor-pointer" type="checkbox"/>
+</div>
+</div>
+<span class="text-[10px] text-on-surface-variant truncate">#QC-8140 • UPI</span>
+<span class="text-[9px] px-1 bg-surface-container rounded text-primary font-medium w-fit">PIN 7820</span>
+</div>
+</td>
+<!-- 09 PM Available (Peak ₹750) -->
+<td class="p-2 border-r border-outline-variant/20">
+<div class="bg-surface-container-lowest border border-outline-variant hover:border-secondary rounded-lg p-2 flex flex-col justify-between h-20 transition-all cursor-pointer group">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="text-[10px] font-bold text-secondary">₹750 Peak</span>
+</div>
+<input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-40 group-hover:opacity-100 cursor-pointer" type="checkbox"/>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-center">Available</span>
+<span class="text-[10px] text-primary opacity-0 group-hover:opacity-100 font-semibold text-center transition-opacity">+ Block</span>
+</div>
+</td>
+<!-- 10 PM Available -->
+<td class="p-2">
+<div class="bg-surface-container-lowest border border-outline-variant hover:border-secondary rounded-lg p-2 flex flex-col justify-between h-20 transition-all cursor-pointer group">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="text-[10px] font-bold text-secondary">₹600</span>
+</div>
+<input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-40 group-hover:opacity-100 cursor-pointer" type="checkbox"/>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-center">Available</span>
+<span class="text-[10px] text-primary opacity-0 group-hover:opacity-100 font-semibold text-center transition-opacity">+ Block</span>
+</div>
+</td>
+</tr>
+<!-- ROW 2: Court 2 Synthetic BWF Club -->
+<tr class="hover:bg-surface/50 transition-colors">
+<td class="sticky left-0 z-10 bg-surface-container-lowest p-3 border-r border-outline-variant/30 w-64 shadow-xs">
+<div class="flex items-start gap-2.5">
+<input class="mt-1 w-3.5 h-3.5 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer" title="Select Court 2 Slots" type="checkbox"/>
+<div class="flex flex-col flex-1">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-primary font-bold">Court 2</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Vinyl</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold truncate">Synthetic BWF Club Court</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Hall A • ₹550/hr base</span>
+</div>
+</div>
+</td>
+<!-- 06 AM -->
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between group"><div class="flex justify-between items-start"><span class="font-label-sm text-label-sm font-bold truncate">K. Mehta</span><input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-30 group-hover:opacity-100 cursor-pointer" type="checkbox"/></div><span class="text-[10px] text-outline">#QC-9211</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 1120</span></div></td>
+<!-- 07 AM -->
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between group"><div class="flex justify-between items-start"><span class="font-label-sm text-label-sm font-bold truncate">Sunny Varghese</span><input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-30 group-hover:opacity-100 cursor-pointer" type="checkbox"/></div><span class="text-[10px] text-outline">#QC-9218</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 8830</span></div></td>
+<!-- 08 AM - [SELECTED 3/3] -->
+<td class="p-2 border-r border-outline-variant/20">
+<div class="bg-emerald-50/90 border-2 border-emerald-600 ring-2 ring-emerald-500/30 rounded-lg p-2 flex flex-col justify-between h-20 shadow-sm relative group cursor-pointer transition-all">
+<div class="flex items-start justify-between">
+<span class="font-label-sm text-label-sm font-bold text-emerald-950 truncate">Zain Merchant</span>
+<input checked="" class="w-3.5 h-3.5 rounded border-emerald-600 text-emerald-700 focus:ring-emerald-600 cursor-pointer" type="checkbox"/>
+</div>
+<span class="text-[10px] text-emerald-800 truncate font-medium">#QC-9230 • PIN 4452</span>
+<span class="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded text-center">Selected</span>
+</div>
+</td>
+<!-- 09 AM -->
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-2 h-20 flex flex-col justify-between group"><div class="flex justify-between items-center"><div class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="text-[10px] font-bold text-secondary">₹550</span></div><input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-40 group-hover:opacity-100 cursor-pointer" type="checkbox"/></div><span class="text-label-sm text-center text-outline">Available</span><span class="text-[10px] text-center text-primary font-semibold">+ Block</span></div></td>
+<!-- 10 AM -->
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-2 h-20 flex flex-col justify-between group"><div class="flex justify-between items-center"><div class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="text-[10px] font-bold text-secondary">₹550</span></div><input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-40 group-hover:opacity-100 cursor-pointer" type="checkbox"/></div><span class="text-label-sm text-center text-outline">Available</span><span class="text-[10px] text-center text-primary font-semibold">+ Block</span></div></td>
+<!-- 11 AM -->
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between group"><div class="flex justify-between items-start"><span class="font-label-sm text-label-sm font-bold truncate">Ananya Sengupta</span><input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-30 group-hover:opacity-100 cursor-pointer" type="checkbox"/></div><span class="text-[10px] text-outline">#QC-9255</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 3029</span></div></td>
+<!-- 05 PM -->
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Apex Junior Team</span><span class="text-[10px] text-outline">Academy Batch</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">COACH PASS</span></div></td>
+<!-- 06 PM -->
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Apex Junior Team</span><span class="text-[10px] text-outline">Academy Batch</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">COACH PASS</span></div></td>
+<!-- 07 PM -->
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Tanmay Dave</span><span class="text-[10px] text-outline">#QC-8302</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 7701</span></div></td>
+<!-- 08 PM -->
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Krunal Pandya</span><span class="text-[10px] text-outline">#QC-8315</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 2291</span></div></td>
+<!-- 09 PM -->
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Pooja Trivedi</span><span class="text-[10px] text-outline">#QC-8344</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 6632</span></div></td>
+<!-- 10 PM -->
+<td class="p-2"><div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-2 h-20 flex flex-col justify-between group"><div class="flex justify-between items-center"><div class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="text-[10px] font-bold text-secondary">₹550</span></div><input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-40 group-hover:opacity-100 cursor-pointer" type="checkbox"/></div><span class="text-label-sm text-center text-outline">Available</span><span class="text-[10px] text-center text-primary font-semibold">+ Block</span></div></td>
+</tr>
+<!-- ROW 3: Court 3 Cushioned Canadian Maple -->
+<tr class="hover:bg-surface/50 transition-colors">
+<td class="sticky left-0 z-10 bg-surface-container-lowest p-3 border-r border-outline-variant/30 w-64 shadow-xs">
+<div class="flex items-start gap-2.5">
+<input class="mt-1 w-3.5 h-3.5 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer" title="Select Court 3 Slots" type="checkbox"/>
+<div class="flex flex-col flex-1">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-primary font-bold">Court 3</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-primary font-label-sm text-label-sm">Maple Wood</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold truncate">Cushioned Canadian Maple</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Hall B • ₹650/hr base</span>
+</div>
+</div>
+</td>
+<!-- 06 AM -->
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Dr. N. Shah</span><span class="text-[10px] text-outline">#QC-9201</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 9920</span></div></td>
+<!-- 07 AM -->
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Girish Rao</span><span class="text-[10px] text-outline">#QC-9214</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 5104</span></div></td>
+<!-- 08 AM -->
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Mahesh Bhatt</span><span class="text-[10px] text-outline">#QC-9226</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 2219</span></div></td>
+<!-- 09 AM -->
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-2 h-20 flex flex-col justify-between group"><div class="flex justify-between items-center"><div class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="text-[10px] font-bold text-secondary">₹650</span></div><input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-40 group-hover:opacity-100 cursor-pointer" type="checkbox"/></div><span class="text-label-sm text-center text-outline">Available</span><span class="text-[10px] text-center text-primary font-semibold">+ Block</span></div></td>
+<!-- 10 AM -->
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-2 h-20 flex flex-col justify-between group"><div class="flex justify-between items-center"><div class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="text-[10px] font-bold text-secondary">₹650</span></div><input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-40 group-hover:opacity-100 cursor-pointer" type="checkbox"/></div><span class="text-label-sm text-center text-outline">Available</span><span class="text-[10px] text-center text-primary font-semibold">+ Block</span></div></td>
+<!-- 11 AM -->
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-2 h-20 flex flex-col justify-between group"><div class="flex justify-between items-center"><div class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="text-[10px] font-bold text-secondary">₹650</span></div><input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-40 group-hover:opacity-100 cursor-pointer" type="checkbox"/></div><span class="text-label-sm text-center text-outline">Available</span><span class="text-[10px] text-center text-primary font-semibold">+ Block</span></div></td>
+<!-- 05 PM BLOCKED (Private Event) -->
+<td class="p-2 border-r border-outline-variant/20" colspan="2">
+<div class="bg-surface-container-high hatch-pattern border-2 border-dashed border-outline-variant rounded-lg p-2 flex flex-col justify-between h-20">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1 text-on-surface font-bold text-label-sm">
+<span class="material-symbols-outlined text-sm text-primary">groups</span>
+<span>BLOCKED (2 hrs)</span>
+</div>
+<button class="text-[10px] text-primary font-bold hover:underline bg-surface-container-lowest px-1.5 py-0.5 rounded shadow-xs">Unblock</button>
+</div>
+<span class="text-[11px] font-semibold text-on-surface truncate">Private: SG Highway Corporate League</span>
+<div class="flex items-center justify-between text-[10px] text-outline">
+<span>Gate 2 Access Active</span>
+<span>Special Referees</span>
+</div>
+</div>
+</td>
+<!-- 07 PM -->
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Shubham Gill</span><span class="text-[10px] text-outline">#QC-8411</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 9012</span></div></td>
+<!-- 08 PM -->
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Jigar Chauhan</span><span class="text-[10px] text-outline">#QC-8428</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 3390</span></div></td>
+<!-- 09 PM -->
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Farhan Qureshi</span><span class="text-[10px] text-outline">#QC-8450</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 1198</span></div></td>
+<!-- 10 PM -->
+<td class="p-2"><div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-2 h-20 flex flex-col justify-between group"><div class="flex justify-between items-center"><div class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="text-[10px] font-bold text-secondary">₹650</span></div><input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-40 group-hover:opacity-100 cursor-pointer" type="checkbox"/></div><span class="text-label-sm text-center text-outline">Available</span><span class="text-[10px] text-center text-primary font-semibold">+ Block</span></div></td>
+</tr>
+<!-- ROW 4: Court 4 Half-Court Solo & Feeder -->
+<tr class="hover:bg-surface/50 transition-colors">
+<td class="sticky left-0 z-10 bg-surface-container-lowest p-3 border-r border-outline-variant/30 w-64 shadow-xs">
+<div class="flex items-start gap-2.5">
+<input class="mt-1 w-3.5 h-3.5 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer" title="Select Court 4 Slots" type="checkbox"/>
+<div class="flex flex-col flex-1">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-primary font-bold">Court 4</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Solo / Bay</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold truncate">Half-Court Solo &amp; Feeder Station</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Training Bay • ₹450/hr base</span>
+</div>
+</div>
+</td>
+<!-- 06 to 11 AM mix -->
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Solo Drill #1</span><span class="text-[10px] text-outline">Feeder Auto</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 8801</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Solo Drill #2</span><span class="text-[10px] text-outline">Feeder Auto</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 4402</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-2 h-20 flex flex-col justify-between group"><div class="flex justify-between items-center"><div class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="text-[10px] font-bold text-secondary">₹450</span></div><input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-40 group-hover:opacity-100 cursor-pointer" type="checkbox"/></div><span class="text-label-sm text-center text-outline">Available</span><span class="text-[10px] text-center text-primary font-semibold">+ Block</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-2 h-20 flex flex-col justify-between group"><div class="flex justify-between items-center"><div class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="text-[10px] font-bold text-secondary">₹450</span></div><input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-40 group-hover:opacity-100 cursor-pointer" type="checkbox"/></div><span class="text-label-sm text-center text-outline">Available</span><span class="text-[10px] text-center text-primary font-semibold">+ Block</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-2 h-20 flex flex-col justify-between group"><div class="flex justify-between items-center"><div class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="text-[10px] font-bold text-secondary">₹450</span></div><input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-40 group-hover:opacity-100 cursor-pointer" type="checkbox"/></div><span class="text-label-sm text-center text-outline">Available</span><span class="text-[10px] text-center text-primary font-semibold">+ Block</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-2 h-20 flex flex-col justify-between group"><div class="flex justify-between items-center"><div class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="text-[10px] font-bold text-secondary">₹450</span></div><input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-40 group-hover:opacity-100 cursor-pointer" type="checkbox"/></div><span class="text-label-sm text-center text-outline">Available</span><span class="text-[10px] text-center text-primary font-semibold">+ Block</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Arun K.</span><span class="text-[10px] text-outline">#QC-8902</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 3409</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Manish Goel</span><span class="text-[10px] text-outline">#QC-8911</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 7811</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Anuj Roy</span><span class="text-[10px] text-outline">#QC-8924</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 1902</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Pradeep Nair</span><span class="text-[10px] text-outline">#QC-8933</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 6620</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-2 h-20 flex flex-col justify-between group"><div class="flex justify-between items-center"><div class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="text-[10px] font-bold text-secondary">₹450</span></div><input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-40 group-hover:opacity-100 cursor-pointer" type="checkbox"/></div><span class="text-label-sm text-center text-outline">Available</span><span class="text-[10px] text-center text-primary font-semibold">+ Block</span></div></td>
+<td class="p-2"><div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-2 h-20 flex flex-col justify-between group"><div class="flex justify-between items-center"><div class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="text-[10px] font-bold text-secondary">₹450</span></div><input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-40 group-hover:opacity-100 cursor-pointer" type="checkbox"/></div><span class="text-label-sm text-center text-outline">Available</span><span class="text-[10px] text-center text-primary font-semibold">+ Block</span></div></td>
+</tr>
+<!-- ROW 5: Court 5 Regulation Pickleball Dual-Line -->
+<tr class="hover:bg-surface/50 transition-colors">
+<td class="sticky left-0 z-10 bg-surface-container-lowest p-3 border-r border-outline-variant/30 w-64 shadow-xs">
+<div class="flex items-start gap-2.5">
+<input class="mt-1 w-3.5 h-3.5 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer" title="Select Court 5 Slots" type="checkbox"/>
+<div class="flex flex-col flex-1">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-primary font-bold">Court 5</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Pickleball</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold truncate">Regulation Pickleball Dual-Line</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">West Pavilion • ₹700/hr base</span>
+</div>
+</div>
+</td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Ahmedabad PB Club</span><span class="text-[10px] text-outline">Weekly Open</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 3302</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Ahmedabad PB Club</span><span class="text-[10px] text-outline">Weekly Open</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 3302</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Ronit &amp; 3 others</span><span class="text-[10px] text-outline">#QC-9108</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 5519</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-2 h-20 flex flex-col justify-between group"><div class="flex justify-between items-center"><div class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="text-[10px] font-bold text-secondary">₹700</span></div><input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-40 group-hover:opacity-100 cursor-pointer" type="checkbox"/></div><span class="text-label-sm text-center text-outline">Available</span><span class="text-[10px] text-center text-primary font-semibold">+ Block</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-2 h-20 flex flex-col justify-between group"><div class="flex justify-between items-center"><div class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="text-[10px] font-bold text-secondary">₹700</span></div><input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-40 group-hover:opacity-100 cursor-pointer" type="checkbox"/></div><span class="text-label-sm text-center text-outline">Available</span><span class="text-[10px] text-center text-primary font-semibold">+ Block</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-2 h-20 flex flex-col justify-between group"><div class="flex justify-between items-center"><div class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="text-[10px] font-bold text-secondary">₹700</span></div><input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-40 group-hover:opacity-100 cursor-pointer" type="checkbox"/></div><span class="text-label-sm text-center text-outline">Available</span><span class="text-[10px] text-center text-primary font-semibold">+ Block</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Sonia Singhania</span><span class="text-[10px] text-outline">#QC-8711</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 7810</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Kavita Iyer</span><span class="text-[10px] text-outline">#QC-8720</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 9022</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Pawan Agrawal</span><span class="text-[10px] text-outline">#QC-8735</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 4410</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Dhruv Patel</span><span class="text-[10px] text-outline">#QC-8742</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 6609</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">SGHW Dinking Squad</span><span class="text-[10px] text-outline">#QC-8790</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 2211</span></div></td>
+<td class="p-2"><div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-2 h-20 flex flex-col justify-between group"><div class="flex justify-between items-center"><div class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="text-[10px] font-bold text-secondary">₹700</span></div><input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-40 group-hover:opacity-100 cursor-pointer" type="checkbox"/></div><span class="text-label-sm text-center text-outline">Available</span><span class="text-[10px] text-center text-primary font-semibold">+ Block</span></div></td>
+</tr>
+<!-- ROW 6: Court 7 Box Cricket Pitch 1 -->
+<tr class="hover:bg-surface/50 transition-colors">
+<td class="sticky left-0 z-10 bg-surface-container-lowest p-3 border-r border-outline-variant/30 w-64 shadow-xs">
+<div class="flex items-start gap-2.5">
+<input class="mt-1 w-3.5 h-3.5 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer" title="Select Court 7 Slots" type="checkbox"/>
+<div class="flex flex-col flex-1">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-primary font-bold">Court 7</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-primary font-label-sm text-label-sm">Turf</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold truncate">Indoor Box Cricket Pitch 1</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">40mm Turf • ₹1,200/hr base</span>
+</div>
+</div>
+</td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Titan XI SG</span><span class="text-[10px] text-outline">Morning Net</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 9904</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Titan XI SG</span><span class="text-[10px] text-outline">Morning Net</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 9904</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-2 h-20 flex flex-col justify-between group"><div class="flex justify-between items-center"><div class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="text-[10px] font-bold text-secondary">₹1,200</span></div><input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-40 group-hover:opacity-100 cursor-pointer" type="checkbox"/></div><span class="text-label-sm text-center text-outline">Available</span><span class="text-[10px] text-center text-primary font-semibold">+ Block</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-2 h-20 flex flex-col justify-between group"><div class="flex justify-between items-center"><div class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="text-[10px] font-bold text-secondary">₹1,200</span></div><input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-40 group-hover:opacity-100 cursor-pointer" type="checkbox"/></div><span class="text-label-sm text-center text-outline">Available</span><span class="text-[10px] text-center text-primary font-semibold">+ Block</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-2 h-20 flex flex-col justify-between group"><div class="flex justify-between items-center"><div class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="text-[10px] font-bold text-secondary">₹1,200</span></div><input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-40 group-hover:opacity-100 cursor-pointer" type="checkbox"/></div><span class="text-label-sm text-center text-outline">Available</span><span class="text-[10px] text-center text-primary font-semibold">+ Block</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-2 h-20 flex flex-col justify-between group"><div class="flex justify-between items-center"><div class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="text-[10px] font-bold text-secondary">₹1,200</span></div><input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-40 group-hover:opacity-100 cursor-pointer" type="checkbox"/></div><span class="text-label-sm text-center text-outline">Available</span><span class="text-[10px] text-center text-primary font-semibold">+ Block</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Infy Corporate 12</span><span class="text-[10px] text-outline">League Tie</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 7712</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Infy Corporate 12</span><span class="text-[10px] text-outline">League Tie</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 7712</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Infy Corporate 12</span><span class="text-[10px] text-outline">League Tie</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 7712</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Ahmedabad Strikers</span><span class="text-[10px] text-outline">#QC-8990</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 4409</span></div></td>
+<td class="p-2 border-r border-outline-variant/20"><div class="bg-surface-container-low border border-outline-variant/40 rounded-lg p-2 h-20 flex flex-col justify-between"><span class="font-label-sm text-label-sm font-bold truncate">Ahmedabad Strikers</span><span class="text-[10px] text-outline">#QC-8991</span><span class="text-[9px] bg-surface-container px-1 rounded w-fit">PIN 4410</span></div></td>
+<td class="p-2"><div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-2 h-20 flex flex-col justify-between group"><div class="flex justify-between items-center"><div class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="text-[10px] font-bold text-secondary">₹1,200</span></div><input class="w-3 h-3 rounded border-outline-variant text-primary focus:ring-primary opacity-40 group-hover:opacity-100 cursor-pointer" type="checkbox"/></div><span class="text-label-sm text-center text-outline">Available</span><span class="text-[10px] text-center text-primary font-semibold">+ Block</span></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Matrix Footer Bar -->
+<div class="px-space-md py-3 bg-surface-container-low border-t border-outline-variant/30 flex flex-col sm:flex-row items-center justify-between text-body-sm text-body-sm text-on-surface-variant gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-base">sensors_krx</span>
+<span>Real-time Court Net Sensors &amp; Lux Automation active for Hall A, Hall B &amp; West Pavilion</span>
+</div>
+<div class="flex items-center gap-4">
+<span>Last Matrix Refresh: Just Now</span>
+<button class="font-label-sm text-label-sm text-primary font-bold hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">refresh</span>
+              Sync Now
+            </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- ==================== CONTEXTUAL FLOATING BULK ACTIONS BAR ==================== -->
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl rounded-2xl px-6 py-3.5 flex items-center gap-5 ring-1 ring-black/5 animate-bounce-subtle transition-all">
+<!-- Selection Indicator Chip -->
+<div class="flex items-center gap-3 border-r border-slate-200 dark:border-slate-800 pr-5">
+<div class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 flex items-center justify-center font-bold text-sm">
+      3
+    </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="text-sm font-bold text-slate-900 dark:text-white leading-tight">3 Slots Selected</span>
+<span class="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400">Court 1 &amp; 2 • Morning Window</span>
+</div>
+</div>
+<!-- Direct Actions Cluster -->
+<div class="flex items-center gap-2.5">
+<!-- Block Selected -->
+<button class="bg-amber-600 hover:bg-amber-700 text-white font-medium text-sm px-4 py-2 rounded-lg flex items-center gap-2 shadow-sm transition-colors cursor-pointer" onclick="openBlockModal()">
+<span class="material-symbols-outlined text-base">lock</span>
+<span>Block Selected Slots</span>
+</button>
+<!-- Unblock Selected -->
+<button class="bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-medium text-sm px-4 py-2 rounded-lg flex items-center gap-2 transition-colors cursor-pointer" onclick="alert('3 slots have been unblocked and made bookable.')">
+<span class="material-symbols-outlined text-base">lock_open</span>
+<span>Unblock Slots</span>
+</button>
+<!-- Bulk Adjust Rates -->
+<button class="border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/60 text-slate-700 dark:text-slate-200 font-medium text-sm px-3.5 py-2 rounded-lg flex items-center gap-2 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-base text-primary">payments</span>
+<span>Bulk Adjust Rates</span>
+</button>
+</div>
+<!-- Deselect All Trigger -->
+<div class="border-l border-slate-200 dark:border-slate-800 pl-4">
+<button class="text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 text-xs font-medium cursor-pointer transition-colors flex items-center gap-1" onclick="deselectAll()">
+<span class="material-symbols-outlined text-sm">close</span>
+<span>Deselect All</span>
+</button>
+</div>
+</div>
+<!-- ==================== INTERACTIVE SLIDE-OUT DRAWER / MODAL: BLOCK SLOT ==================== -->
+<div aria-labelledby="slide-over-title" aria-modal="true" class="fixed inset-0 z-50 overflow-hidden hidden" id="blockModal" role="dialog">
+<!-- Backdrop -->
+<div class="fixed inset-0 bg-inverse-surface/40 transition-opacity backdrop-blur-none" onclick="closeBlockModal()"></div>
+<div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+<div class="w-screen max-w-md bg-surface-container-lowest shadow-2xl border-l border-outline-variant/40 flex flex-col justify-between">
+<!-- Drawer Header -->
+<div class="px-6 py-5 border-b border-outline-variant/30 flex items-center justify-between bg-surface-container-low">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-lg bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-xl">lock_clock</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Block Court Time Slot</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Prevent public booking &amp; automate IoT doors</p>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface p-1.5 rounded-lg hover:bg-surface-container transition-colors" onclick="closeBlockModal()">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+<!-- Drawer Form Content -->
+<div class="p-6 space-y-5 overflow-y-auto flex-1">
+<!-- Field 1: Court Selector -->
+<div class="space-y-1.5">
+<label class="font-label-md text-label-md text-on-surface">Facility Court</label>
+<select class="w-full bg-surface-container-lowest border border-outline-variant/50 rounded-lg p-2.5 text-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+<option selected="">Court 1 — Championship Pro Arena (Apex Academy)</option>
+<option>Court 2 — Synthetic BWF Club Court</option>
+<option>Court 3 — Cushioned Canadian Maple</option>
+<option>Court 4 — Half-Court Solo &amp; Feeder Station</option>
+<option>Court 5 — Regulation Pickleball Dual-Line</option>
+<option>Court 6 — Pickleball Box B</option>
+<option>Court 7 — Indoor Box Cricket Pitch 1</option>
+</select>
+<p class="text-[11px] text-outline">Located at Hall A, Ground Level (8 Gates attached)</p>
+</div>
+<!-- Field 2: Date Selector -->
+<div class="space-y-1.5">
+<label class="font-label-md text-label-md text-on-surface">Target Date</label>
+<div class="flex items-center gap-2 border border-outline-variant/50 rounded-lg px-3 py-2 bg-surface-container-low text-body-md text-body-md text-on-surface">
+<span class="material-symbols-outlined text-primary text-base">calendar_month</span>
+<span class="font-semibold">Oct 24, 2025 (Today)</span>
+<span class="ml-auto text-xs text-primary font-bold bg-surface-container px-2 py-0.5 rounded">Schedule Day</span>
+</div>
+</div>
+<!-- Field 3: Time Slot Range Selection -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface">Select Time Slot(s) to Block</label>
+<div class="grid grid-cols-2 gap-2">
+<button class="py-2 px-3 rounded-lg border border-primary bg-surface-container-low text-primary font-label-sm text-label-sm flex items-center justify-between" type="button">
+<span>08:00 AM – 09:00 AM</span>
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</button>
+<button class="py-2 px-3 rounded-lg border border-primary bg-surface-container-low text-primary font-label-sm text-label-sm flex items-center justify-between" type="button">
+<span>09:00 AM – 10:00 AM</span>
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</button>
+<button class="py-2 px-3 rounded-lg border border-outline-variant/40 hover:bg-surface-container-low text-on-surface font-label-sm text-label-sm text-left" type="button">
+                04:00 PM – 05:00 PM
+              </button>
+<button class="py-2 px-3 rounded-lg border border-outline-variant/40 hover:bg-surface-container-low text-on-surface font-label-sm text-label-sm text-left" type="button">
+                05:00 PM – 06:00 PM
+              </button>
+</div>
+<span class="text-[11px] text-on-surface-variant block">Total duration: 2 consecutive hours selected from batch</span>
+</div>
+<!-- Field 4: Block Reason Categories (Visual Radio Cards) -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface">Block Reason Category</label>
+<div class="space-y-2">
+<!-- Option A: Maintenance (Checked) -->
+<label class="flex items-start gap-3 p-3 rounded-xl border-2 border-primary bg-surface-container-low cursor-pointer transition-all">
+<input checked="" class="mt-1 text-primary focus:ring-primary h-4 w-4 border-outline" name="block_reason" type="radio"/>
+<div class="flex-1">
+<div class="flex items-center gap-1.5 text-on-surface font-headline-sm text-headline-sm">
+<span class="material-symbols-outlined text-base text-primary">cleaning_services</span>
+<span>Maintenance &amp; Sanitization</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                    Court floor buffing, lighting replacement, line re-marking, net tension inspection.
+                  </p>
+</div>
+</label>
+<!-- Option B: Private Event -->
+<label class="flex items-start gap-3 p-3 rounded-xl border border-outline-variant/40 hover:bg-surface-container-low cursor-pointer transition-all">
+<input class="mt-1 text-primary focus:ring-primary h-4 w-4 border-outline" name="block_reason" type="radio"/>
+<div class="flex-1">
+<div class="flex items-center gap-1.5 text-on-surface font-headline-sm text-headline-sm">
+<span class="material-symbols-outlined text-base text-tertiary">groups</span>
+<span>Private Event / Academy Clinic</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                    Coaching drills, corporate reservation, or Gujarat State tournament warmups.
+                  </p>
+</div>
+</label>
+<!-- Option C: Administrative / Weather -->
+<label class="flex items-start gap-3 p-3 rounded-xl border border-outline-variant/40 hover:bg-surface-container-low cursor-pointer transition-all">
+<input class="mt-1 text-primary focus:ring-primary h-4 w-4 border-outline" name="block_reason" type="radio"/>
+<div class="flex-1">
+<div class="flex items-center gap-1.5 text-on-surface font-headline-sm text-headline-sm">
+<span class="material-symbols-outlined text-base text-outline">more_horiz</span>
+<span>Administrative Hold</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                    Staff offline hold, humidity sensor recalibration, or emergency pause.
+                  </p>
+</div>
+</label>
+</div>
+</div>
+<!-- Field 5: Internal / Notice Note -->
+<div class="space-y-1.5">
+<label class="font-label-md text-label-md text-on-surface">Internal Note &amp; Player Notice</label>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant/50 rounded-lg p-2.5 text-body-sm text-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="e.g. Scheduled humidity buffing for BWF Taraflex surface before evening league." rows="2">Scheduled batch maintenance for Court 1 &amp; 2 morning slots.</textarea>
+</div>
+<!-- Field 6: IoT Hardware Automation Sync Options -->
+<div class="space-y-2.5 pt-2 border-t border-outline-variant/30">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-base">sensors</span>
+                IoT Turnstile &amp; Automation
+              </span>
+<span class="text-[10px] text-secondary font-bold">Auto-Sync On</span>
+</div>
+<div class="space-y-2">
+<label class="flex items-start gap-2.5 cursor-pointer">
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-primary mt-0.5" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface">Turn off court automated floodlights during blocked window</span>
+</label>
+<label class="flex items-start gap-2.5 cursor-pointer">
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-primary mt-0.5" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface">Lock turnstile Gate North #1 &amp; #2 optical reader for this slot</span>
+</label>
+<label class="flex items-start gap-2.5 cursor-pointer">
+<input class="rounded border-outline-variant text-primary focus:ring-primary mt-0.5" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface">Notify 4 affected waitlisted athletes via SMS</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Drawer Action Footer -->
+<div class="p-6 border-t border-outline-variant/30 bg-surface-container-low flex items-center justify-end gap-3">
+<button class="px-4 py-2.5 border border-outline-variant/50 rounded-lg font-label-md text-label-md text-on-surface hover:bg-surface-container-lowest transition-colors" onclick="closeBlockModal()">
+            Cancel
+          </button>
+<button class="flex items-center gap-2 px-5 py-2.5 bg-primary-container text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary transition-colors shadow-sm" onclick="confirmBlock()">
+<span class="material-symbols-outlined text-base">lock</span>
+<span>Confirm &amp; Block 3 Slots</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Micro Interaction Script -->
+<script>
+    function openBlockModal() {
+      const modal = document.getElementById('blockModal');
+      modal.classList.remove('hidden');
+    }
+
+    function closeBlockModal() {
+      const modal = document.getElementById('blockModal');
+      modal.classList.add('hidden');
+    }
+
+    function confirmBlock() {
+      alert("Selected slots have been blocked from 08:00 AM to 10:00 AM. IoT turnstile Gate #1 & #2 locked and lighting automation triggered.");
+      closeBlockModal();
+    }
+
+    function deselectAll() {
+      document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+      const floatingBar = document.querySelector('.fixed.bottom-8');
+      if (floatingBar) {
+        floatingBar.style.display = 'none';
+      }
+    }
+  </script>
+</body></html>

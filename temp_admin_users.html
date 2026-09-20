@@ -1,0 +1,676 @@
+
+<!-- Breadcrumbs & Screen Header -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface-variant">
+<a class="hover:underline" href="#">Admin Portal</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:underline" href="#">User Governance</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-bold">Users &amp; Owners Directory</span>
+</div>
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 pt-1">
+<div>
+<h1 class="text-headline-xl font-headline-xl text-on-surface tracking-tight">Users &amp; Owners Management</h1>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-4xl mt-0.5">
+              Monitor athlete profiles, verified arena hosts, aggregated booking volume, IoT gate access infractions, and enforce platform security policies across Ahmedabad operations.
+            </p>
+</div>
+<!-- Top Header Actions -->
+<div class="flex items-center gap-3 flex-shrink-0">
+<button class="flex items-center gap-2 bg-surface-container-lowest text-on-surface border border-outline-variant hover:bg-surface-container hover:border-outline px-4 h-11 rounded-lg text-label-lg font-label-lg transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Export Directory (CSV/JSON)</span>
+</button>
+<button class="flex items-center gap-2 bg-primary-container text-on-primary hover:bg-primary px-4 h-11 rounded-lg text-label-lg font-label-lg transition-colors shadow-sm font-semibold">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+<span>Add Manual Registration</span>
+</button>
+</div>
+</div>
+</div>
+<!-- KPI Metric Cards (4 Bento Grid Columns) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Metric 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Total Platform Users</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">group</span>
+</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-headline-xl font-headline-xl font-bold text-on-surface">28,634</span>
+<span class="text-label-sm font-label-sm font-bold text-secondary flex items-center">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span> +14.2% MoM
+            </span>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-2 border-t border-outline-variant pt-2">
+<strong class="text-on-surface font-semibold">26,450</strong> Athletes • <strong class="text-on-surface font-semibold">184</strong> Facility Hosts
+          </p>
+</div>
+<!-- Metric 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Active Today (Ahmedabad)</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-headline-xl font-headline-xl font-bold text-on-surface">3,412</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-secondary-fixed text-on-secondary-fixed">Live</span>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-2 border-t border-outline-variant pt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">sensors</span>
+            Turnstile synced <strong>1,840 check-ins</strong>
+</p>
+</div>
+<!-- Metric 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Suspended / Banned</span>
+<span class="w-8 h-8 rounded-lg bg-error-container text-error flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">gavel</span>
+</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-headline-xl font-headline-xl font-bold text-error">14 Accounts</span>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-2 border-t border-outline-variant pt-2">
+<span class="text-error font-semibold">2 Host Entities</span>, 12 Athletes breach
+          </p>
+</div>
+<!-- Metric 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Account KYC Readiness</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-headline-xl font-headline-xl font-bold text-primary">98.2%</span>
+<span class="text-label-sm font-label-sm text-secondary font-semibold">Healthy</span>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-2 border-t border-outline-variant pt-2">
+            Verified GSTIN / Mobile OTP / Aadhaar
+          </p>
+</div>
+</div>
+<!-- Filter & Search Control Toolbar (Structural Flat Card) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-sm space-y-4">
+<!-- Search Input & Quick Dropdowns Row -->
+<div class="flex flex-col lg:flex-row gap-3 items-stretch lg:items-center">
+<!-- Wide Search Bar -->
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full pl-10 pr-4 h-[42px] bg-surface-container-lowest border border-outline-variant rounded-md text-body-md font-body-md text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" id="userSearchInput" placeholder="Search by user name, phone (+91), email, GSTIN, or Player ID (#QC-...)" type="text"/>
+</div>
+<!-- Zone / Area Filter -->
+<div class="flex items-center gap-2">
+<div class="relative">
+<select class="appearance-none h-[42px] pl-3 pr-9 bg-surface-container-lowest border border-outline-variant rounded-md text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-primary-container cursor-pointer">
+<option selected="">All Ahmedabad Zones</option>
+<option>SG Highway</option>
+<option>Navrangpura</option>
+<option>Bodakdev</option>
+<option>Prahlad Nagar</option>
+<option>Thaltej</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">unfold_more</span>
+</div>
+<!-- Activity Status Filter -->
+<div class="relative">
+<select class="appearance-none h-[42px] pl-3 pr-9 bg-surface-container-lowest border border-outline-variant rounded-md text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-primary-container cursor-pointer">
+<option selected="">All Statuses (Active, Restricted, Suspended)</option>
+<option>Active &amp; In Good Standing</option>
+<option>Restricted / Audit Pending</option>
+<option>Banned / Suspended</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">unfold_more</span>
+</div>
+<!-- Sort Filter -->
+<div class="relative">
+<select class="appearance-none h-[42px] pl-3 pr-9 bg-surface-container-lowest border border-outline-variant rounded-md text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-primary-container cursor-pointer">
+<option selected="">Sort: Most Recent Activity</option>
+<option>Highest Booking Volume</option>
+<option>Risk Score / Infractions</option>
+<option>Lifetime GMV Value</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">sort</span>
+</div>
+</div>
+</div>
+<!-- Role Filter Tabs & Action Strip -->
+<div class="flex flex-wrap items-center justify-between border-t border-outline-variant pt-3 gap-3">
+<div class="flex items-center gap-2">
+<!-- Filter Tab 1: All -->
+<button class="px-3 py-1.5 rounded-md text-label-md font-label-md bg-primary-container text-on-primary font-semibold shadow-sm">
+              All Accounts (28,634)
+            </button>
+<!-- Filter Tab 2: Athletes -->
+<button class="px-3 py-1.5 rounded-md text-label-md font-label-md bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors">
+              Athletes / Players (26,450)
+            </button>
+<!-- Filter Tab 3: Facility Owners -->
+<button class="px-3 py-1.5 rounded-md text-label-md font-label-md bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors">
+              Facility Owners (184)
+            </button>
+<!-- Filter Tab 4: Suspended / Banned -->
+<button class="px-3 py-1.5 rounded-md text-label-md font-label-md bg-surface-container-low text-error hover:bg-error-container hover:text-on-error-container transition-colors">
+              Suspended / Banned (14)
+            </button>
+</div>
+<div class="flex items-center gap-4 text-label-md font-label-md">
+<span class="text-on-surface-variant">Selected: <strong class="text-on-surface">0 rows</strong></span>
+<button class="text-primary font-semibold hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+              Bulk Actions
+            </button>
+</div>
+</div>
+</div>
+<!-- Data Table Card (Level 1 Surface with 1px border) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant text-on-surface-variant text-label-md font-label-md uppercase tracking-wider">
+<th class="py-3.5 px-4 w-10">
+<input class="w-[18px] h-[18px] rounded border-outline-variant text-primary-container focus:ring-primary-container cursor-pointer" type="checkbox"/>
+</th>
+<th class="py-3.5 px-4">Account &amp; Identity</th>
+<th class="py-3.5 px-4">Location &amp; Venues</th>
+<th class="py-3.5 px-4">Booking &amp; Revenue Summary</th>
+<th class="py-3.5 px-4">Gate Trust &amp; KYC</th>
+<th class="py-3.5 px-4">Account Status</th>
+<th class="py-3.5 px-4 text-right">Ban / Unban Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant text-body-md font-body-md">
+<!-- Row 1: Alex Morgan (Athlete, Active) -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="py-4 px-4 align-top">
+<input class="w-[18px] h-[18px] rounded border-outline-variant text-primary-container focus:ring-primary-container cursor-pointer mt-1" type="checkbox"/>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex items-start gap-3">
+<div class="relative">
+<img alt="Alex Morgan Avatar" class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="Square avatar portrait of Alex Morgan, a male badminton athlete in his twenties wearing dark green athletic apparel, photographed with sharp studio lighting against an emerald and neutral grey gradient." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDERoSZU36FayUZ9l9Gp6DhJViTox-GwmqRZU3zIqhd9vmZ-AkZMIXwYqR7O5fWZYNSx1QDzdZJsE3uhXEQGybrSPf91_hH2pqYDp9KE-W913CnNtc9fOdP5s--J1hk_tCszHy8eShA6oDCteS9mjLnPQIjXV0H9YKE5lz5aWU2wxbaZm6ZfkWs2r2QzJtnNSyewMAbG8K7attR2wBqio242Pqg1Niel8zcyV3N-DqgnNcRICfAvIUC0O90X4t_Q8zipROEJkF4E48"/>
+<span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-secondary-fixed-dim rounded-full ring-2 ring-surface-container-lowest" title="Active"></span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-bold text-on-surface text-body-md font-body-md">Alex Morgan</span>
+<span class="px-2 py-0.5 bg-surface-container-low text-primary text-[11px] font-bold rounded">
+                          Athlete / Tier 1 Pro
+                        </span>
+</div>
+<span class="text-label-sm font-label-sm text-outline">#QC-ATH-9204</span>
+<div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface-variant mt-1">
+<span>alex@quickcourt.io</span>
+<span>•</span>
+<span>+91 98250 12834</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5 text-on-surface font-semibold text-body-sm font-body-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">location_on</span>
+<span>SG Highway Hub</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant mt-0.5">Primary: Bodakdev Arena</span>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col text-body-sm font-body-sm">
+<span class="font-bold text-on-surface">38 Completed (₹28,450 Settled)</span>
+<span class="text-label-sm font-label-sm text-secondary font-semibold mt-0.5">0% No-Show rate</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Last active: 2h ago at Apex Court 1</span>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-1 text-secondary font-bold text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>Aadhaar Verified</span>
+</div>
+<div class="w-24 bg-surface-container-low rounded-full h-1.5 overflow-hidden">
+<div class="bg-secondary h-1.5 rounded-full" style="width: 100%"></div>
+</div>
+<span class="text-[11px] text-on-surface-variant">100% Gate Trust Score</span>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-surface-container-low text-secondary font-bold border border-outline-variant">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                    Active &amp; In Good Standing
+                  </span>
+</td>
+<td class="py-4 px-4 align-top text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="ban-btn px-3 py-1.5 rounded-md border border-error text-error hover:bg-error-container text-label-sm font-label-sm font-semibold transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">block</span>
+<span>Ban Account</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-md">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Rajesh Varma (Facility Owner, Active) -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="py-4 px-4 align-top">
+<input class="w-[18px] h-[18px] rounded border-outline-variant text-primary-container focus:ring-primary-container cursor-pointer mt-1" type="checkbox"/>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex items-start gap-3">
+<div class="relative">
+<img alt="Rajesh Varma Avatar" class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="Square portrait of Rajesh Varma, an experienced Indian sports complex operator in his late forties wearing glasses and navy formal collar shirt with bright daylight studio lighting in a modern sports pavilion interior." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbP5wsFL7bg6qYVqx0KMUE5RNQIe98Ua--g8pgZZI7aJtj6lpxJx6gi9E9HEfqve7nIq-4Ye9Gok8JhocYT_lhaF5K6z5ScUP4ELayhiFWgMSrKRQfC8vmGd1LWF_KNZ6R1lQzqe7lXXlWd2A42U7vt2dGBMknhiBzFFhBvzxDL7ZWn3n2xiy80YEsKy4GO7voyJOUsH4SW-Amt3IMWo3xuJD1nnM7kvf9KAQHD_fsUTK1aGWuwi-p23wmfH2dVq_UclyHQspLYd8"/>
+<span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-secondary-fixed-dim rounded-full ring-2 ring-surface-container-lowest" title="Active"></span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-bold text-on-surface text-body-md font-body-md">Rajesh Varma</span>
+<span class="px-2 py-0.5 bg-tertiary-fixed text-on-tertiary-fixed text-[11px] font-bold rounded">
+                          Facility Owner / Host
+                        </span>
+</div>
+<span class="text-label-sm font-label-sm text-outline">#QC-OWN-8841</span>
+<div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface-variant mt-1">
+<span>rajesh.varma@patelsports.in</span>
+<span>•</span>
+<span>+91 98250 12834</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-bold text-on-surface text-body-sm font-body-sm">Patel Sports Ventures LLP</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant mt-0.5">Apex Badminton Academy (8 Courts)</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">East River Box Arena (6 Courts)</span>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col text-body-sm font-body-sm">
+<span class="font-bold text-on-surface">342 MTD (₹1,48,650 Volume)</span>
+<span class="text-label-sm font-label-sm text-secondary font-semibold mt-0.5">88% Arena Utilization</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">14 Turnstiles Integrated</span>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-1 text-primary font-bold text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[16px]">domain_verification</span>
+<span>GSTIN Verified</span>
+</div>
+<div class="w-24 bg-surface-container-low rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-1.5 rounded-full" style="width: 98%"></div>
+</div>
+<span class="text-[11px] text-on-surface-variant">99.4% Gate Sync Uptime</span>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-surface-container-low text-secondary font-bold border border-outline-variant">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                    Active &amp; In Good Standing
+                  </span>
+</td>
+<td class="py-4 px-4 align-top text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="ban-btn px-3 py-1.5 rounded-md border border-error text-error hover:bg-error-container text-label-sm font-label-sm font-semibold transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">block</span>
+<span>Ban Account</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-md">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Krunal Raval (Athlete, Banned) -->
+<tr class="bg-error-container/20 hover:bg-error-container/30 transition-colors group">
+<td class="py-4 px-4 align-top">
+<input class="w-[18px] h-[18px] rounded border-outline-variant text-primary-container focus:ring-primary-container cursor-pointer mt-1" type="checkbox"/>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex items-start gap-3">
+<div class="relative">
+<img alt="Krunal Raval Avatar" class="w-10 h-10 rounded-full object-cover border border-error grayscale" data-alt="Square portrait of Krunal Raval, a young sports enthusiast in his early twenties with neutral expression wearing a plain crew neck shirt against a neutral grey wall with flat light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQIKpLifsvAwrmeN67N9xTx2nM-_CY93O19sGJC2RSBovtKSmMF7GeVYq_q9AQmfAa4GgNHU9h7zfzf_QC5NlriV5kDFnJCJxR-cTLbpVcx4br5IMt8hyWSeo-sTCyLdZPguknrKV9zf11BcwrzcWqcJTk0El8SGIXwftT-Ljy8GjfnvITuTsjBOaLsIU7yQaQDYB-xc015deXVQU9SJun1elrjzRmlxt6ICsD-cKUd8Q4YM1-sFAqdPN1yPX52R_ZPxBxd9dzhzk"/>
+<span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-error rounded-full ring-2 ring-surface-container-lowest" title="Banned"></span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-bold text-on-surface text-body-md font-body-md">Krunal Raval</span>
+<span class="px-2 py-0.5 bg-surface-container-low text-on-surface-variant text-[11px] font-bold rounded">
+                          Athlete
+                        </span>
+</div>
+<span class="text-label-sm font-label-sm text-outline">#QC-ATH-4102</span>
+<div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface-variant mt-1">
+<span>krunal.raval@gmail.com</span>
+<span>•</span>
+<span>+91 98795 33210</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5 text-on-surface font-semibold text-body-sm font-body-sm">
+<span class="material-symbols-outlined text-[16px] text-outline">location_on</span>
+<span>Prahlad Nagar</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant mt-0.5">Flagged: Metro Padel Hub</span>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col text-body-sm font-body-sm">
+<span class="font-bold text-on-surface">14 Bookings (₹8,200)</span>
+<span class="text-label-sm font-label-sm text-error font-bold mt-0.5">3 Tailgating Gate Warnings</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Last attempt: Gate 2 Metro Padel</span>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-1 text-error font-bold text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[16px]">security_update_warning</span>
+<span>Critical Infraction</span>
+</div>
+<div class="w-24 bg-surface-container-low rounded-full h-1.5 overflow-hidden">
+<div class="bg-error h-1.5 rounded-full" style="width: 25%"></div>
+</div>
+<span class="text-[11px] text-error font-semibold">25% Trust (Unauthorised Gate Force)</span>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-error-container text-error font-bold border border-error">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+                      Banned / Access Suspended
+                    </span>
+<span class="text-[10px] text-error leading-tight max-w-[180px]">
+                      Reason: Repeated non-marking shoe violation &amp; turnstile tailgating
+                    </span>
+</div>
+</td>
+<td class="py-4 px-4 align-top text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="unban-btn px-3 py-1.5 rounded-md bg-secondary text-on-secondary hover:bg-primary text-label-sm font-label-sm font-bold transition-colors flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">lock_open</span>
+<span>Unban Account</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-md">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Dr. Mehul Trivedi (Facility Owner, Active) -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="py-4 px-4 align-top">
+<input class="w-[18px] h-[18px] rounded border-outline-variant text-primary-container focus:ring-primary-container cursor-pointer mt-1" type="checkbox"/>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex items-start gap-3">
+<div class="relative">
+<img alt="Dr. Mehul Trivedi Avatar" class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="Square portrait of Dr. Mehul Trivedi, a distinguished sports club director in his fifties wearing a structured blazer with bright, minimalist court clubhouse glass architecture in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDswmM_1B90Uf1umo8rp_qebCsTYTiCw67YHB0gs-itH79j_5jxjnCan7BAGCd2WZnyLbpnlTM1csE4IqpQD79IG39omWyKO90uh5CiBiporENT4-8dS-Hnh39jmxR-i6mpuAP2hVQmJflVeAErJNjcNiVqj1E28cl7zXL_z_mWZGarBlwa0mfY62Q8M-lb_Gq7kppRSahbSXfEy4XA_if10r1NYk2mEKrqjdj2hHugbGeM7d9s__G58WHqg_9MvXLwd4bCqWJyiI"/>
+<span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-secondary-fixed-dim rounded-full ring-2 ring-surface-container-lowest" title="Active"></span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-bold text-on-surface text-body-md font-body-md">Dr. Mehul Trivedi</span>
+<span class="px-2 py-0.5 bg-tertiary-fixed text-on-tertiary-fixed text-[11px] font-bold rounded">
+                          Facility Owner / Host
+                        </span>
+</div>
+<span class="text-label-sm font-label-sm text-outline">#QC-OWN-7719</span>
+<div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface-variant mt-1">
+<span>mehul@karnavatipadel.com</span>
+<span>•</span>
+<span>+91 98980 11442</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-bold text-on-surface text-body-sm font-body-sm">Karnavati Padel &amp; Pickleball</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant mt-0.5">Sindhu Bhavan Rd Hub</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">8 Courts • 2 Semi-Covered</span>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col text-body-sm font-body-sm">
+<span class="font-bold text-on-surface">198 Bookings (₹94,200 Volume)</span>
+<span class="text-label-sm font-label-sm text-secondary font-semibold mt-0.5">91% Utilization</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Active Night Match Host</span>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-1 text-primary font-bold text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[16px]">domain_verification</span>
+<span>GSTIN &amp; Fire NOC</span>
+</div>
+<div class="w-24 bg-surface-container-low rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-1.5 rounded-full" style="width: 100%"></div>
+</div>
+<span class="text-[11px] text-on-surface-variant">100% Verified Arena</span>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-surface-container-low text-secondary font-bold border border-outline-variant">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                    Active &amp; In Good Standing
+                  </span>
+</td>
+<td class="py-4 px-4 align-top text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="ban-btn px-3 py-1.5 rounded-md border border-error text-error hover:bg-error-container text-label-sm font-label-sm font-semibold transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">block</span>
+<span>Ban Account</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-md">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Hardik Shah (Athlete, Active) -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="py-4 px-4 align-top">
+<input class="w-[18px] h-[18px] rounded border-outline-variant text-primary-container focus:ring-primary-container cursor-pointer mt-1" type="checkbox"/>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex items-start gap-3">
+<div class="relative">
+<img alt="Hardik Shah Avatar" class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="Square portrait of Hardik Shah, an amateur tennis athlete in his thirties smiling confidently wearing a white collared tennis shirt with bright natural daylight in an outdoor sports facility setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_1ZWFkr3vdQtMj_zcS1wgM_q9yVMWADJshckil1HNDnGghSLOlRo2-GeEKnxhoG6keczjsS26OHcfU_8vu-OpSMqVdF6ykbhDsqBkMo6wjhr9dlfAEyiYQan8iCNcwjGDRLbx6N6ZYoq9aIjrujPPUcbR_j6Dk71uYWU60YzEmlCZV5nUdn1JnRPBUfkuNYgDXV1hSaYpQNCz1dzQH_E261rHOErgobBcdGk4IV43UPsTkj98iEG1z_SniucP5cc4tqNv-UH-n4M"/>
+<span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-secondary-fixed-dim rounded-full ring-2 ring-surface-container-lowest" title="Active"></span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-bold text-on-surface text-body-md font-body-md">Hardik Shah</span>
+<span class="px-2 py-0.5 bg-surface-container-low text-primary text-[11px] font-bold rounded">
+                          Athlete / Regular
+                        </span>
+</div>
+<span class="text-label-sm font-label-sm text-outline">#QC-ATH-8103</span>
+<div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface-variant mt-1">
+<span>hardik.shah@ahmedabadbadminton.in</span>
+<span>•</span>
+<span>+91 99099 54101</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5 text-on-surface font-semibold text-body-sm font-body-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">location_on</span>
+<span>Navrangpura Hub</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant mt-0.5">Frequent: AMC Sports Complex</span>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col text-body-sm font-body-sm">
+<span class="font-bold text-on-surface">22 Bookings (₹16,400 Settled)</span>
+<span class="text-label-sm font-label-sm text-secondary font-semibold mt-0.5">4.5% Reschedule Rate</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Last active: Yesterday 7 PM</span>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-1 text-secondary font-bold text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>Aadhaar &amp; Phone OTP</span>
+</div>
+<div class="w-24 bg-surface-container-low rounded-full h-1.5 overflow-hidden">
+<div class="bg-secondary h-1.5 rounded-full" style="width: 95%"></div>
+</div>
+<span class="text-[11px] text-on-surface-variant">97% Perfect Access</span>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-surface-container-low text-secondary font-bold border border-outline-variant">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                    Active &amp; In Good Standing
+                  </span>
+</td>
+<td class="py-4 px-4 align-top text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="ban-btn px-3 py-1.5 rounded-md border border-error text-error hover:bg-error-container text-label-sm font-label-sm font-semibold transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">block</span>
+<span>Ban Account</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-md">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6: Vikram Joshi (Facility Owner, Suspended/Restricted) -->
+<tr class="bg-surface-container-low/40 hover:bg-surface-container-low/70 transition-colors group">
+<td class="py-4 px-4 align-top">
+<input class="w-[18px] h-[18px] rounded border-outline-variant text-primary-container focus:ring-primary-container cursor-pointer mt-1" type="checkbox"/>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex items-start gap-3">
+<div class="relative">
+<img alt="Vikram Joshi Avatar" class="w-10 h-10 rounded-full object-cover border border-error" data-alt="Square portrait of Vikram Joshi, a facility manager in his late thirties looking serious in a crisp sports polo, under direct soft interior office lighting with clean architectural elements." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEtdiI-Y8Q8kYPn5K2-qeULW2mAIi4GWlZdetL6-rLqfvkFPXLPnT_SzQiA3Sx9Z4N4PxC4Fj6CdPjGDycG6rmrOC7oE18mApjdD94Hg9NoHZt02vPXYlmrTg5jScatQJCEjwX-_BujFXlgNKiXRlCEPaE8Un8pNI1gOfof6N5yapr8hivVoJZZeURx70dRr2sFYJB7Haq7DaaapuMHreUmWB0wXxOUVwK_GtI0qW_22vBgd2mrySEE0ZBO_Xdfpv5Xq4V5ThlUt4"/>
+<span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-error rounded-full ring-2 ring-surface-container-lowest" title="Suspended"></span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-bold text-on-surface text-body-md font-body-md">Vikram Joshi</span>
+<span class="px-2 py-0.5 bg-tertiary-fixed text-on-tertiary-fixed text-[11px] font-bold rounded">
+                          Facility Owner
+                        </span>
+</div>
+<span class="text-label-sm font-label-sm text-outline">#QC-OWN-4412</span>
+<div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface-variant mt-1">
+<span>info@cityplaygrounds.in</span>
+<span>•</span>
+<span>+91 97240 88210</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-bold text-on-surface text-body-sm font-body-sm">Prahlad Nagar Box Cricket</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant mt-0.5">3 Enclosed Turf Arenas</span>
+<span class="text-label-sm font-label-sm text-error font-medium">Turnstiles Offline (Admin Lock)</span>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col text-body-sm font-body-sm">
+<span class="font-bold text-on-surface">58 Bookings (Payout Paused)</span>
+<span class="text-label-sm font-label-sm text-error font-semibold mt-0.5">Audit Freeze in Effect</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Last Audit: 3 Days ago</span>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-1 text-error font-bold text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+<span>NOC Expired</span>
+</div>
+<div class="w-24 bg-surface-container-low rounded-full h-1.5 overflow-hidden">
+<div class="bg-error h-1.5 rounded-full" style="width: 40%"></div>
+</div>
+<span class="text-[11px] text-error font-semibold">Fire Safety Non-Compliance</span>
+</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-error-container text-error font-bold border border-error">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+                      Suspended / Non-Compliant
+                    </span>
+<span class="text-[10px] text-on-surface-variant">Fire NOC Verification Pending</span>
+</div>
+</td>
+<td class="py-4 px-4 align-top text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="unban-btn px-3 py-1.5 rounded-md bg-secondary text-on-secondary hover:bg-primary text-label-sm font-label-sm font-bold transition-colors flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+<span>Unban Account</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-md">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer & Pagination (Clean, functional) -->
+<div class="flex flex-col sm:flex-row items-center justify-between px-4 py-3.5 bg-surface-container-low border-t border-outline-variant gap-4">
+<div class="flex items-center gap-2 text-body-sm font-body-sm text-on-surface-variant">
+<span>Showing <strong class="text-on-surface">1 to 6</strong> of <strong class="text-on-surface">28,634</strong> accounts</span>
+<span>•</span>
+<span class="flex items-center gap-1 text-secondary font-medium">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+              Real-time GateNet &amp; KYC Sync Active
+            </span>
+</div>
+<!-- Pagination Controls -->
+<div class="flex items-center gap-1.5 text-label-md font-label-md">
+<button class="px-2.5 py-1.5 rounded-md border border-outline-variant bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container hover:text-on-surface disabled:opacity-40 transition-colors" disabled="">
+              Previous
+            </button>
+<button class="w-8 h-8 rounded-md bg-primary-container text-on-primary font-bold">1</button>
+<button class="w-8 h-8 rounded-md border border-outline-variant bg-surface-container-lowest text-on-surface hover:bg-surface-container">2</button>
+<button class="w-8 h-8 rounded-md border border-outline-variant bg-surface-container-lowest text-on-surface hover:bg-surface-container">3</button>
+<span class="px-1 text-outline">...</span>
+<button class="px-2 h-8 rounded-md border border-outline-variant bg-surface-container-lowest text-on-surface hover:bg-surface-container">4,772</button>
+<button class="px-2.5 py-1.5 rounded-md border border-outline-variant bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors">
+              Next
+            </button>
+</div>
+</div>
+</div>
+<!-- Live Operations & Hardware Audit Mini-Banner -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[24px]">gavel</span>
+</div>
+<div>
+<h4 class="text-headline-sm font-headline-sm font-bold text-on-surface">Emergency Platform Lock &amp; Mass Restriction Protocols</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+              Automated gate lockout will instantly invalidate QR entry tokens across all 144 Turnstiles in Ahmedabad Central and West Zones for accounts flagged with 3+ severe infractions.
+            </p>
+</div>
+</div>
+<button class="px-4 py-2 rounded-lg border border-outline text-on-surface hover:bg-surface-container font-label-md text-label-md font-semibold whitespace-nowrap transition-colors">
+          Configure Infraction Thresholds
+        </button>
+</div>

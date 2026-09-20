@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>QuickCourt | Join QuickCourt - Athletic Account Creation</title>
+<!-- Plus Jakarta Sans Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "outline": "#707a71",
+            "surface-container-highest": "#d3e4fe",
+            "error": "#ba1a1a",
+            "primary": "#004225",
+            "tertiary-fixed-dim": "#bec6e0",
+            "on-secondary-container": "#00714d",
+            "on-secondary": "#ffffff",
+            "surface-container-high": "#dce9ff",
+            "on-primary-fixed-variant": "#00522e",
+            "surface": "#f8f9ff",
+            "on-tertiary-container": "#bbc2dc",
+            "on-primary": "#ffffff",
+            "on-primary-fixed": "#002110",
+            "secondary-container": "#6cf8bb",
+            "secondary-fixed-dim": "#4edea3",
+            "on-tertiary-fixed": "#131b2e",
+            "tertiary-fixed": "#dae2fd",
+            "on-surface-variant": "#404941",
+            "inverse-primary": "#8dd6a6",
+            "tertiary": "#31394e",
+            "secondary-fixed": "#6ffbbe",
+            "on-surface": "#0b1c30",
+            "on-error": "#ffffff",
+            "background": "#f8f9ff",
+            "on-tertiary-fixed-variant": "#3f465c",
+            "primary-container": "#0a5c36",
+            "on-primary-container": "#89d2a2",
+            "tertiary-container": "#485066",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed": "#a8f3c1",
+            "on-secondary-fixed-variant": "#005236",
+            "on-tertiary": "#ffffff",
+            "surface-variant": "#d3e4fe",
+            "secondary": "#006c49",
+            "inverse-surface": "#213145",
+            "on-secondary-fixed": "#002113",
+            "outline-variant": "#bfc9bf",
+            "surface-container-low": "#eff4ff",
+            "on-background": "#0b1c30",
+            "surface-container": "#e5eeff",
+            "primary-fixed-dim": "#8dd6a6",
+            "surface-tint": "#216b43",
+            "on-error-container": "#93000a",
+            "inverse-on-surface": "#eaf1ff",
+            "surface-dim": "#cbdbf5",
+            "surface-bright": "#f8f9ff",
+            "error-container": "#ffdad6"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-lg": "1.5rem",
+            "margin-lg": "3rem",
+            "gutter-lg": "2rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem",
+            "margin-md": "2rem",
+            "margin": "1rem",
+            "space-xl": "2rem",
+            "space-sm": "0.5rem",
+            "gutter-md": "1.5rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "label-lg": ["Plus Jakarta Sans"],
+            "display-lg": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "headline-xl-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Court Grid Background Pattern */
+    .court-grid-bg {
+      background-color: #f8f9ff;
+      background-image: 
+        linear-gradient(to right, rgba(0, 66, 37, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 66, 37, 0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    
+    .court-lines-overlay {
+      background-image: 
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(108, 248, 187, 0.18), transparent 70%),
+        radial-gradient(ellipse 60% 40% at 50% 110%, rgba(0, 66, 37, 0.05), transparent 70%);
+    }
+
+    .pulse-dot {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.92); }
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col court-grid-bg court-lines-overlay antialiased selection:bg-secondary-container selection:text-on-primary-fixed">
+<!-- Top Navigation Bar (Clean Minimal Task-Focused Header) -->
+<header class="w-full bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant/50 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
+<!-- Brand & Home Return -->
+<div class="flex items-center gap-6">
+<a class="flex items-center gap-2 group text-on-surface hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[20px]" data-icon="arrow_back">arrow_back</span>
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-primary hidden sm:inline">Back to Venues</span>
+</a>
+<div class="h-4 w-px bg-outline-variant/60 hidden sm:block"></div>
+<!-- QuickCourt Brand Logo -->
+<a class="flex items-center gap-2.5" href="#">
+<div class="w-8 h-8 rounded-xl bg-primary-container flex items-center justify-center text-on-primary shadow-sm shadow-primary/10">
+<span class="material-symbols-outlined text-[19px]" data-icon="sports_tennis">sports_tennis</span>
+</div>
+<span class="text-headline-md font-headline-md font-bold tracking-tight text-primary">QuickCourt</span>
+</a>
+</div>
+<!-- Live Sync Status Pill -->
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface border border-outline-variant/60">
+<span class="w-2 h-2 rounded-full bg-secondary-container pulse-dot"></span>
+<span class="font-label-sm text-label-sm text-on-surface font-medium tracking-tight">Court Net Sync: <span class="text-secondary font-bold">Live</span></span>
+</div>
+<div class="hidden md:flex items-center text-outline-variant">
+<a class="p-1.5 text-on-surface-variant hover:text-primary transition-colors" href="#" title="Support">
+<span class="material-symbols-outlined text-[20px]" data-icon="help_outline">help_outline</span>
+</a>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Container -->
+<main class="flex-1 flex items-center justify-center py-10 px-4 sm:px-6 lg:px-8">
+<div class="w-full max-w-[540px]">
+<!-- Main Sign Up Card -->
+<div class="bg-surface-container-lowest border border-outline-variant/80 rounded-xl shadow-[0_4px_24px_-4px_rgba(15,23,42,0.06),0_2px_6px_-1px_rgba(15,23,42,0.03)] p-6 sm:p-9 relative">
+<!-- Top Status Badge Banner -->
+<div class="flex items-center justify-between gap-2 pb-5 border-b border-outline-variant/40 mb-6">
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded bg-secondary-container/30 border border-secondary/20">
+<span class="material-symbols-outlined text-[15px] text-secondary font-bold" data-icon="bolt">bolt</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wider">Instant Athlete &amp; Host Access</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">v2.4 Ready</span>
+</div>
+</div>
+<!-- Headline & Subtitle -->
+<div class="space-y-2 mb-6 text-left">
+<h1 class="text-headline-xl font-headline-xl text-primary tracking-tight">Join QuickCourt</h1>
+<p class="text-body-md font-body-md text-on-surface-variant leading-relaxed">
+            Create your athlete account to book courts in seconds, unlock instant turnstile access, and split court fees.
+          </p>
+</div>
+<!-- Account Profile Type Selector (Athletic Segments) -->
+<div class="mb-6">
+<label class="block text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant mb-2">Select Account Role</label>
+<div class="grid grid-cols-2 p-1 bg-surface border border-outline-variant/60 rounded-xl gap-1" id="roleSelector">
+<button class="flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg shadow-sm transition-all duration-150 active:scale-[0.99]" id="rolePlayer" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="sports_score">sports_score</span>
+<span>Player / Athlete</span>
+</button>
+<button class="flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-transparent text-on-surface-variant hover:text-on-surface font-label-lg text-label-lg transition-all duration-150" id="roleHost" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="stadium">stadium</span>
+<span>Facility Host</span>
+</button>
+</div>
+</div>
+<!-- Sign Up Form -->
+<form class="space-y-4" onsubmit="event.preventDefault();">
+<!-- Field 1: Full Name -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1.5" for="fullName">Full Name</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[19px]" data-icon="badge">badge</span>
+</div>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl pl-10 pr-3.5 py-2.5 text-body-md font-body-md text-on-surface placeholder:text-outline/70 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" id="fullName" name="fullName" placeholder="e.g. Alex Morgan" required="" type="text"/>
+</div>
+</div>
+<!-- Field 2: Email Address -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1.5" for="email">Email Address</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[19px]" data-icon="mail">mail</span>
+</div>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl pl-10 pr-3.5 py-2.5 text-body-md font-body-md text-on-surface placeholder:text-outline/70 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" id="email" name="email" placeholder="alex@quickcourt.io" required="" type="email"/>
+</div>
+</div>
+<!-- Field 3: Mobile Phone Number -->
+<div>
+<div class="flex items-center justify-between mb-1.5">
+<label class="block font-label-md text-label-md text-on-surface" for="phone">Mobile Phone Number</label>
+<span class="text-label-sm font-label-sm text-secondary font-medium">SMS Verification</span>
+</div>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[19px]" data-icon="phone">phone</span>
+</div>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl pl-10 pr-3.5 py-2.5 text-body-md font-body-md text-on-surface placeholder:text-outline/70 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" id="phone" name="phone" placeholder="+1 (555) 019-2834" required="" type="tel"/>
+</div>
+<p class="mt-1.5 text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-secondary" data-icon="pin">pin</span>
+<span>Used for instant SMS turnstile PIN access at booked facilities</span>
+</p>
+</div>
+<!-- Field 4: Password -->
+<div>
+<div class="flex items-center justify-between mb-1.5">
+<label class="block font-label-md text-label-md text-on-surface" for="password">Password</label>
+<span class="text-body-sm font-body-sm text-outline">Min 8 characters</span>
+</div>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[19px]" data-icon="lock">lock</span>
+</div>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl pl-10 pr-10 py-2.5 text-body-md font-body-md text-on-surface placeholder:text-outline/70 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" id="password" name="password" placeholder="Minimum 8 characters" required="" type="password"/>
+<button class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-outline hover:text-on-surface focus:outline-none" onclick="togglePasswordVisibility()" title="Toggle password visibility" type="button">
+<span class="material-symbols-outlined text-[19px]" data-icon="visibility" id="eyeIcon">visibility</span>
+</button>
+</div>
+</div>
+<!-- Terms & Conditions Checkbox -->
+<div class="pt-1 pb-1">
+<label class="flex items-start gap-3 cursor-pointer group">
+<div class="flex items-center h-5 mt-0.5">
+<input checked="" class="w-4 h-4 rounded border-outline-variant text-primary-container focus:ring-primary-container cursor-pointer transition" id="terms" type="checkbox"/>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant leading-snug">
+                I agree to the QuickCourt 
+                <a class="text-primary font-medium underline hover:text-primary-container" href="#">Terms of Service</a> 
+                and 
+                <a class="text-primary font-medium underline hover:text-primary-container" href="#">Privacy Policy</a>
+</span>
+</label>
+</div>
+<!-- Primary Action CTA Button -->
+<div class="pt-2">
+<button class="w-full h-11 bg-primary-container hover:bg-primary text-on-primary font-label-lg text-label-lg rounded-xl flex items-center justify-center gap-2 shadow-sm transition-all duration-150 active:scale-[0.99]" type="submit">
+<span>Create QuickCourt Account</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</form>
+<!-- Divider with Text -->
+<div class="relative my-6">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-outline-variant/60"></div>
+</div>
+<div class="relative flex justify-center text-xs">
+<span class="bg-surface-container-lowest px-3 font-label-sm text-label-sm text-outline uppercase tracking-wider">Or sign up with</span>
+</div>
+</div>
+<!-- Social Sign Up Buttons -->
+<div class="grid grid-cols-2 gap-3">
+<!-- Google Button -->
+<button class="flex items-center justify-center gap-2.5 py-2.5 px-4 rounded-xl border border-outline-variant bg-surface-container-lowest hover:bg-surface text-on-surface font-label-md text-label-md transition-colors" type="button">
+<svg class="w-4 h-4" viewbox="0 0 24 24">
+<path d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z" fill="#4285F4"></path>
+<path d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z" fill="#34A853"></path>
+<path d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z" fill="#FBBC05"></path>
+<path d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z" fill="#EA4335"></path>
+</svg>
+<span>Google</span>
+</button>
+<!-- Apple Button -->
+<button class="flex items-center justify-center gap-2.5 py-2.5 px-4 rounded-xl border border-outline-variant bg-surface-container-lowest hover:bg-surface text-on-surface font-label-md text-label-md transition-colors" type="button">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.38c.62-.75 1.04-1.8 0.93-2.85-.9.04-2 .6-2.64 1.35-.57.65-1.07 1.72-.94 2.74 1 .08 2.03-.49 2.65-1.24z"></path>
+</svg>
+<span>Apple</span>
+</button>
+</div>
+<!-- Sign In Link -->
+<div class="mt-6 pt-5 border-t border-outline-variant/40 text-center">
+<p class="text-body-md font-body-md text-on-surface-variant">
+            Already have a QuickCourt account? 
+            <a class="text-primary font-semibold hover:text-primary-container underline decoration-primary/40 underline-offset-4 transition-colors" href="#">Sign In</a>
+</p>
+</div>
+</div>
+<!-- Trust Badges & Guarantee Row -->
+<div class="mt-6 grid grid-cols-3 gap-2 px-2">
+<div class="flex items-center justify-center gap-1.5 text-center">
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="verified_user">verified_user</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">256-Bit SSL Encrypted</span>
+</div>
+<div class="flex items-center justify-center gap-1.5 text-center border-x border-outline-variant/60">
+<span class="material-symbols-outlined text-secondary text-[18px]" data-icon="contactless">contactless</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Turnstile Pass Sync</span>
+</div>
+<div class="flex items-center justify-center gap-1.5 text-center">
+<span class="material-symbols-outlined text-primary-container text-[18px]" data-icon="check_circle">check_circle</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Zero Markup Booking</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Minimal Standard Web Footer (Derived from Shared Components JSON) -->
+<footer class="w-full border-t border-outline-variant dark:border-outline bg-surface-container-lowest dark:bg-inverse-surface mt-auto">
+<div class="w-full px-6 lg:px-12 py-8 flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto gap-4">
+<div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
+<span class="text-headline-sm font-headline-sm font-bold text-primary dark:text-primary-fixed">QuickCourt</span>
+<span class="text-on-surface-variant dark:text-surface-variant text-body-sm font-body-sm">
+          © 2025 QuickCourt Operations Inc. All rights reserved. Precision court scheduling &amp; sports facility engine.
+        </span>
+</div>
+<!-- Links adhering precisely to shared components metadata -->
+<div class="flex flex-wrap items-center justify-center gap-6">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">Terms of Service</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">Venue Standards</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">API Docs</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">System Status</a>
+</div>
+</div>
+</footer>
+<!-- Micro-interaction JS -->
+<script>
+    // Password visibility toggle
+    function togglePasswordVisibility() {
+      const pwdInput = document.getElementById('password');
+      const icon = document.getElementById('eyeIcon');
+      if (pwdInput.type === 'password') {
+        pwdInput.type = 'text';
+        icon.textContent = 'visibility_off';
+      } else {
+        pwdInput.type = 'password';
+        icon.textContent = 'visibility';
+      }
+    }
+
+    // Role selector interaction
+    const rolePlayer = document.getElementById('rolePlayer');
+    const roleHost = document.getElementById('roleHost');
+
+    rolePlayer.addEventListener('click', () => {
+      rolePlayer.className = 'flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg shadow-sm transition-all duration-150 active:scale-[0.99]';
+      roleHost.className = 'flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-transparent text-on-surface-variant hover:text-on-surface font-label-lg text-label-lg transition-all duration-150';
+    });
+
+    roleHost.addEventListener('click', () => {
+      roleHost.className = 'flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg shadow-sm transition-all duration-150 active:scale-[0.99]';
+      rolePlayer.className = 'flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-transparent text-on-surface-variant hover:text-on-surface font-label-lg text-label-lg transition-all duration-150';
+    });
+  </script>
+</body></html>

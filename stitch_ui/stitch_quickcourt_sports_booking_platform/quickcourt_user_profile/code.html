@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>QuickCourt | Athlete Profile &amp; Preferences</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-fixed": "#dae2fd",
+            "error": "#ba1a1a",
+            "secondary-fixed-dim": "#4edea3",
+            "on-secondary-fixed-variant": "#005236",
+            "on-secondary-fixed": "#002113",
+            "on-primary": "#ffffff",
+            "on-tertiary-fixed": "#131b2e",
+            "error-container": "#ffdad6",
+            "background": "#f8f9ff",
+            "surface-tint": "#216b43",
+            "on-tertiary-container": "#bbc2dc",
+            "secondary": "#006c49",
+            "surface-bright": "#f8f9ff",
+            "secondary-fixed": "#6ffbbe",
+            "on-surface": "#0b1c30",
+            "on-surface-variant": "#404941",
+            "surface-container-high": "#dce9ff",
+            "on-primary-fixed-variant": "#00522e",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed": "#a8f3c1",
+            "on-primary-fixed": "#002110",
+            "inverse-on-surface": "#eaf1ff",
+            "on-secondary-container": "#00714d",
+            "tertiary": "#31394e",
+            "surface-container": "#e5eeff",
+            "on-tertiary-fixed-variant": "#3f465c",
+            "on-primary-container": "#89d2a2",
+            "on-error-container": "#93000a",
+            "inverse-primary": "#8dd6a6",
+            "surface-variant": "#d3e4fe",
+            "surface-container-low": "#eff4ff",
+            "secondary-container": "#6cf8bb",
+            "on-tertiary": "#ffffff",
+            "inverse-surface": "#213145",
+            "surface-dim": "#cbdbf5",
+            "outline": "#707a71",
+            "tertiary-container": "#485066",
+            "primary-fixed-dim": "#8dd6a6",
+            "surface-container-highest": "#d3e4fe",
+            "surface": "#f8f9ff",
+            "outline-variant": "#bfc9bf",
+            "on-secondary": "#ffffff",
+            "tertiary-fixed-dim": "#bec6e0",
+            "primary-container": "#0a5c36",
+            "on-background": "#0b1c30",
+            "on-error": "#ffffff",
+            "primary": "#004225"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-xl": "2rem",
+            "space-xs": "0.25rem",
+            "margin-md": "2rem",
+            "gutter": "1rem",
+            "gutter-md": "1.5rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "margin-lg": "3rem",
+            "gutter-lg": "2rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "body-sm": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "display-lg": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-xl-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md antialiased min-h-screen flex flex-col selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation Bar (Shared Component: TopNavBar) -->
+<header class="bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-outline sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-6 md:px-12 max-w-7xl mx-auto h-16">
+<div class="flex items-center gap-8">
+<a class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary tracking-tight flex items-center gap-2" href="#">
+<span class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-lg" data-icon="sports_tennis">sports_tennis</span>
+</span>
+          QuickCourt
+        </a>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-on-surface dark:hover:text-inverse-on-surface font-medium transition-colors font-label-lg text-label-lg" href="#">Venues</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-on-surface dark:hover:text-inverse-on-surface font-medium transition-colors font-label-lg text-label-lg" href="#">Schedule</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-on-surface dark:hover:text-inverse-on-surface font-medium transition-colors font-label-lg text-label-lg" href="#">Tournaments</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-on-surface dark:hover:text-inverse-on-surface font-medium transition-colors font-label-lg text-label-lg" href="#">Support</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button aria-label="Search" class="w-10 h-10 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors duration-150">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button aria-label="Notifications" class="w-10 h-10 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors duration-150 relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary"></span>
+</button>
+<button class="hidden lg:inline-flex items-center justify-center px-4 h-10 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg hover:bg-primary transition-colors active:scale-[0.98]">
+          Book Court
+        </button>
+<div class="h-6 w-px bg-outline-variant/60 hidden sm:block"></div>
+<!-- Profile Chip with active ring indicator -->
+<a class="flex items-center gap-3 pl-1 pr-2 py-1 rounded-full border border-outline-variant/50 hover:bg-surface-container-low transition-colors" href="#" title="Alex Morgan Tier 1 Athlete profile portrait">
+<div class="relative">
+<img alt="Alex Morgan Tier 1 Athlete profile portrait" class="w-9 h-9 rounded-full object-cover border-2 border-primary-container" data-alt="Close up athletic portrait of Alex Morgan wearing a dark emerald athletic training top outdoors, high key clean natural daylight, professional sports tournament lighting, sharp focused facial detail with clear confident expression, crisp sports tech aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjfneMekM97QTxkwmnDaHIbZDmoMDoV8RBl96J9UTXAqFpnxyWHQEjx5wYdRslZSPm0RbjeXTjr4HilgHdp2TGmccdDTlrs1dOBrmGO6I1N5nSUHgFV5Vz5OORtmUlw6A63KFUmhmrixtQCCP_5VDrLauJKFKjiZWXQ8tUTGGUPri9xV_XCqi72SkrmlDOLB2nVe5FXJQXQBgi9fMVmen-21AXNYby_FT-5iUx8_vD474JbONp_KAsaKQbhc9eP4uGWijOFkyzLTs"/>
+<span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-secondary border-2 border-surface-container-lowest rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[8px] text-on-primary" data-icon="check" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check</span>
+</span>
+</div>
+<div class="hidden sm:flex flex-col text-left">
+<span class="font-label-md text-label-md text-on-surface leading-tight">Alex Morgan</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">Tier 1 Athlete</span>
+</div>
+</a>
+</div>
+</div>
+</header>
+<!-- Breadcrumbs & System Status strip -->
+<section class="bg-surface-container-lowest border-b border-outline-variant/40">
+<div class="max-w-7xl mx-auto px-6 md:px-12 py-3 flex flex-wrap items-center justify-between gap-3 text-body-sm font-body-sm text-on-surface-variant">
+<nav aria-label="Breadcrumb" class="flex items-center gap-2">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-xs text-outline" data-icon="chevron_right">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Athlete Portal</a>
+<span class="material-symbols-outlined text-xs text-outline" data-icon="chevron_right">chevron_right</span>
+<span class="text-on-surface font-semibold">User Profile</span>
+</nav>
+<div class="flex items-center gap-2 font-label-md text-label-md text-secondary">
+<span class="inline-block w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span>Turnstile Access Network: Online &amp; Synchronized</span>
+</div>
+</div>
+</section>
+<!-- Page Content Container -->
+<main class="flex-1 max-w-7xl mx-auto w-full px-6 md:px-12 py-8 space-y-8">
+<!-- Page Header with Headline & Global Action Group -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-outline-variant/60">
+<div>
+<div class="flex items-center gap-3">
+<h1 class="font-headline-xl text-headline-xl text-on-surface font-bold tracking-tight">Athlete Profile &amp; Preferences</h1>
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm px-2.5 py-0.5 rounded-full border border-secondary-fixed-dim">
+            Verified Pro
+          </span>
+</div>
+<p class="text-on-surface-variant font-body-md text-body-md mt-1 max-w-3xl">
+          Manage your personal information, court contact credentials for turnstile PIN access, and security.
+        </p>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<button class="h-11 px-4 rounded-xl border border-outline-variant text-on-surface font-label-lg text-label-lg bg-surface-container-lowest hover:bg-error-container/30 hover:border-error hover:text-error transition-all duration-150 flex items-center gap-2 active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="logout">logout</span>
+          Logout
+        </button>
+<button class="h-11 px-6 rounded-xl bg-primary-container text-on-primary font-label-lg text-label-lg hover:bg-primary transition-colors shadow-sm flex items-center gap-2 active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="check" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check</span>
+          Save Changes
+        </button>
+</div>
+</div>
+<!-- Main Grid: 2/3 Content Form & 1/3 Summary + Security -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- LEFT COLUMN (8 cols): Personal Details & Notification Cards -->
+<div class="lg:col-span-8 space-y-8">
+<!-- Personal Details Card -->
+<div class="bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-6 md:p-8 space-y-8 shadow-sm">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-4">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Personal &amp; Contact Credentials</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Primary information synchronized across all certified indoor and outdoor venues.</p>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="badge">badge</span>
+</div>
+<!-- Avatar & Identity Strip -->
+<div class="flex flex-col sm:flex-row sm:items-center gap-6 p-4 rounded-xl bg-surface-container-low/50 border border-outline-variant/40">
+<div class="relative group shrink-0">
+<img alt="Alex Morgan Tier 1 Athlete profile portrait" class="w-20 h-20 rounded-xl object-cover border-2 border-primary-container shadow-sm" data-alt="Close up athletic portrait of Alex Morgan wearing a dark emerald athletic training top outdoors, high key clean natural daylight, professional sports tournament lighting, sharp focused facial detail with clear confident expression, crisp sports tech aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDb8ZjSM7xwlZf9MOUMi8mWf4o79YeeRkveS0D1-bNMQM_jkLYufg-0yQW1A_er_ThaVeQB8pnWfe1hf9kGoLSoLOWdalws7sZM8SXQdpdsTT4ve8EvTKVYvz8f1Tm21HPxLKkzN9ifnpCv44Mqlv_V4LuPYNKZ3mHWFT5sTjlzBm_XUVy5Qc8oWOrDRoI2J1T5qQhpOa4GkbfesG6ZKAPGBg3o3sNq-6hqqVrd4QYv3akpNNv04iM0Yk1kAdshong0tUDKn9x0hdk"/>
+<div class="absolute inset-0 bg-inverse-surface/40 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined text-on-primary" data-icon="photo_camera">photo_camera</span>
+</div>
+</div>
+<div class="flex-1 space-y-1">
+<div class="flex items-center gap-3">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Alex Morgan</h3>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed-variant font-semibold">Tier 1 Athlete</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Recommended format: Square JPG or PNG, maximum 5MB. Visible on public match leaderboards.</p>
+<div class="flex items-center gap-3 pt-2">
+<button class="h-9 px-3 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-label-md text-label-md hover:border-primary hover:text-primary transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-sm" data-icon="upload">upload</span>
+                  Upload New Photo
+                </button>
+<button class="h-9 px-3 rounded-lg text-error hover:bg-error-container/30 font-label-md text-label-md transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span>
+                  Remove
+                </button>
+</div>
+</div>
+</div>
+<!-- Form Fields Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Full Name -->
+<div class="space-y-1.5">
+<label class="block font-label-md text-label-md text-on-surface" for="fullName">Full Legal Name</label>
+<div class="relative">
+<input class="w-full h-11 px-3.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition" id="fullName" type="text" value="Alex Morgan"/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-outline-variant text-lg" data-icon="person">person</span>
+</div>
+</div>
+<!-- Email Address with Verified Badge -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between">
+<label class="block font-label-md text-label-md text-on-surface" for="email">Email Address</label>
+<span class="flex items-center gap-1 text-secondary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-xs" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+                  Verified
+                </span>
+</div>
+<div class="relative">
+<input class="w-full h-11 px-3.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition" id="email" type="email" value="alex@quickcourt.io"/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-outline-variant text-lg" data-icon="mail">mail</span>
+</div>
+</div>
+<!-- Mobile Phone with SMS Badge -->
+<div class="space-y-1.5 md:col-span-2">
+<div class="flex items-center justify-between">
+<label class="block font-label-md text-label-md text-on-surface" for="phone">Mobile Phone Number</label>
+<span class="flex items-center gap-1 bg-secondary-fixed/50 text-on-secondary-fixed-variant px-2 py-0.5 rounded text-label-sm font-bold">
+<span class="material-symbols-outlined text-xs" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                  SMS Verified
+                </span>
+</div>
+<div class="relative">
+<input class="w-full h-11 px-3.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition" id="phone" type="tel" value="+1 (555) 019-2834"/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-outline-variant text-lg" data-icon="phone_iphone">phone_iphone</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1.5 mt-1">
+<span class="material-symbols-outlined text-sm text-secondary" data-icon="lock_clock">lock_clock</span>
+                Used for immediate SMS turnstile PIN delivery at booked facilities.
+              </p>
+</div>
+<!-- Discipline / Preferred Sports -->
+<div class="space-y-2 md:col-span-2">
+<label class="block font-label-md text-label-md text-on-surface">Primary Disciplines / Preferred Sports</label>
+<div class="flex flex-wrap gap-2">
+<!-- Tag 1 (Active) -->
+<button class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md border border-primary-container" type="button">
+<span class="material-symbols-outlined text-sm" data-icon="sports_tennis">sports_tennis</span>
+                  Tennis
+                  <span class="material-symbols-outlined text-sm hover:opacity-75" data-icon="check">check</span>
+</button>
+<!-- Tag 2 (Active) -->
+<button class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md border border-primary-container" type="button">
+<span class="material-symbols-outlined text-sm" data-icon="sports">sports</span>
+                  Pickleball
+                  <span class="material-symbols-outlined text-sm hover:opacity-75" data-icon="check">check</span>
+</button>
+<!-- Tag 3 (Active) -->
+<button class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md border border-primary-container" type="button">
+<span class="material-symbols-outlined text-sm" data-icon="sports_handball">sports_handball</span>
+                  Badminton
+                  <span class="material-symbols-outlined text-sm hover:opacity-75" data-icon="check">check</span>
+</button>
+<!-- Tag 4 (Active) -->
+<button class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md border border-primary-container" type="button">
+<span class="material-symbols-outlined text-sm" data-icon="sports_soccer">sports_soccer</span>
+                  5v5 Football Turf
+                  <span class="material-symbols-outlined text-sm hover:opacity-75" data-icon="check">check</span>
+</button>
+<!-- Add More Tag -->
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-dashed border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary font-label-md text-label-md transition-colors" type="button">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                  Add Sport
+                </button>
+</div>
+</div>
+<!-- Skill Rating -->
+<div class="space-y-1.5">
+<label class="block font-label-md text-label-md text-on-surface" for="skillRating">Athlete Skill Level &amp; Official Rating</label>
+<div class="relative">
+<input class="w-full h-11 px-3.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition" id="skillRating" type="text" value="Intermediate / Advanced (DUPR 4.25 / BWF Tier 2)"/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-outline-variant text-lg" data-icon="military_tech">military_tech</span>
+</div>
+</div>
+<!-- Preferred Location -->
+<div class="space-y-1.5">
+<label class="block font-label-md text-label-md text-on-surface" for="location">Preferred Play Location / Hub</label>
+<div class="relative">
+<input class="w-full h-11 px-3.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition" id="location" type="text" value="Austin, TX (Downtown &amp; North Loop)"/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-outline-variant text-lg" data-icon="location_on">location_on</span>
+</div>
+</div>
+<!-- Emergency Contact Grid -->
+<div class="md:col-span-2 pt-2 border-t border-outline-variant/30 space-y-4">
+<span class="block font-label-md text-label-md text-on-surface font-bold">Emergency Venue Contact (Safety Protocol)</span>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="block font-label-sm text-label-sm text-on-surface-variant" for="emName">Contact Name &amp; Relationship</label>
+<input class="w-full h-10 px-3 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none" id="emName" type="text" value="Sarah Morgan (Sister)"/>
+</div>
+<div class="space-y-1.5">
+<label class="block font-label-sm text-label-sm text-on-surface-variant" for="emPhone">Emergency Phone Number</label>
+<input class="w-full h-10 px-3 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none" id="emPhone" type="tel" value="+1 (555) 304-9128"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Court Pass & Notification Preferences Card -->
+<div class="bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-6 md:p-8 space-y-6 shadow-sm">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-4">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Court Pass &amp; Notification Preferences</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Automated delivery systems for gate turnstiles, match alerts, and financial splits.</p>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="notifications_active">notifications_active</span>
+</div>
+<div class="divide-y divide-outline-variant/30">
+<!-- Row 1: Turnstile Gate Sync -->
+<div class="py-4 flex items-start justify-between gap-4">
+<div class="space-y-1 max-w-xl">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Turnstile Gate Sync (4-Digit Instant PIN)</span>
+<span class="bg-secondary-fixed/50 text-on-secondary-fixed-variant px-2 py-0.5 rounded text-label-sm font-bold">Recommended</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+                  Automatically dispatch instant SMS and Apple Wallet / Google Pay pass 15 minutes before court reservation starts. Turnstiles unlock upon code entry.
+                </p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0 mt-1">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant/50 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface-container-lowest after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-container-lowest after:border-outline-variant after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Row 2: Match Reminders -->
+<div class="py-4 flex items-start justify-between gap-4">
+<div class="space-y-1 max-w-xl">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold block">Match Reminder Notifications</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+                  Select how early QuickCourt sends warmup reminders and court surface condition updates.
+                </p>
+<div class="flex flex-wrap gap-3 pt-2">
+<label class="inline-flex items-center gap-2 cursor-pointer">
+<input checked="" class="w-4 h-4 rounded border-outline-variant text-primary-container focus:ring-primary-container" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface">15 mins prior</span>
+</label>
+<label class="inline-flex items-center gap-2 cursor-pointer">
+<input checked="" class="w-4 h-4 rounded border-outline-variant text-primary-container focus:ring-primary-container" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface">1 hour prior</span>
+</label>
+<label class="inline-flex items-center gap-2 cursor-pointer">
+<input class="w-4 h-4 rounded border-outline-variant text-primary-container focus:ring-primary-container" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface">24 hours prior</span>
+</label>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-xl mt-1" data-icon="timer">timer</span>
+</div>
+<!-- Row 3: Auto-split payments -->
+<div class="py-4 flex items-start justify-between gap-4">
+<div class="space-y-1 max-w-xl">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold block">Auto-Split Payment &amp; Guest Alerts</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+                  Instantly request equal court fees from booked teammates and notify them with personal gate barcodes.
+                </p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0 mt-1">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant/50 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface-container-lowest after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-container-lowest after:border-outline-variant after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN (4 cols): Athlete Status, Cred Points & Security Cards -->
+<div class="lg:col-span-4 space-y-6">
+<!-- Athlete Status & Membership Card -->
+<div class="bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-6 space-y-6 shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-bold">Athlete Identity</span>
+<span class="material-symbols-outlined text-secondary" data-icon="sports_score">sports_score</span>
+</div>
+<!-- Membership Badge Box -->
+<div class="bg-primary/5 border border-primary/20 rounded-xl p-4 space-y-3">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">Tier 1 Verified Athlete</span>
+<span class="material-symbols-outlined text-primary text-xl" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span>QuickCourt ID:</span>
+<code class="font-mono font-bold text-on-surface bg-surface-container-lowest px-2 py-0.5 rounded border border-outline-variant/40">#QC-ATH-9204</code>
+</div>
+</div>
+<!-- Court Cred Points & Perks Progress -->
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-bold">Court Cred Points</span>
+<span class="font-label-lg text-label-lg font-bold text-primary">420 <span class="text-on-surface-variant font-normal text-xs">/ 500 pts</span></span>
+</div>
+<!-- Progress bar -->
+<div class="w-full bg-surface-container-high h-2.5 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full transition-all duration-500" style="width: 84%;"></div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1.5 pt-1">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="redeem">redeem</span>
+<span>80 pts to: <strong class="text-on-surface font-medium">Free 60-min racket stringing</strong></span>
+</p>
+</div>
+<!-- Quick Stats Matrix -->
+<div class="grid grid-cols-3 gap-2 pt-2 border-t border-outline-variant/30 text-center">
+<div class="p-2.5 rounded-lg bg-surface-container-low/40 border border-outline-variant/30">
+<span class="block font-headline-md text-headline-md font-bold text-on-surface">38</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant mt-0.5">Matches</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low/40 border border-outline-variant/30">
+<span class="block font-headline-md text-headline-md font-bold text-on-surface">54</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant mt-0.5">Hours</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low/40 border border-outline-variant/30">
+<span class="block font-headline-md text-headline-md font-bold text-secondary">0%</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant mt-0.5">No-Show</span>
+</div>
+</div>
+</div>
+<!-- Security & Account Actions Card -->
+<div class="bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-6 space-y-6 shadow-sm">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-3">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Security &amp; Auth</h3>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="shield">shield</span>
+</div>
+<div class="space-y-4">
+<!-- Password row -->
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<div>
+<span class="font-label-md text-label-md text-on-surface block">Password</span>
+<span class="text-on-surface-variant text-xs">Updated 24 days ago</span>
+</div>
+<button class="text-primary font-label-md text-label-md hover:underline" type="button">
+                Update
+              </button>
+</div>
+<!-- Two-Factor Authentication -->
+<div class="flex items-center justify-between text-body-sm font-body-sm pt-2 border-t border-outline-variant/20">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface font-bold">2-Factor Auth (2FA)</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+</div>
+<span class="text-on-surface-variant text-xs">Active via SMS &amp; App</span>
+</div>
+<span class="font-label-sm text-label-sm bg-secondary-fixed/50 text-on-secondary-fixed-variant px-2 py-0.5 rounded font-bold">
+                Active
+              </span>
+</div>
+<!-- Linked Accounts -->
+<div class="space-y-2.5 pt-2 border-t border-outline-variant/20">
+<span class="font-label-md text-label-md text-on-surface block">Linked Providers</span>
+<div class="flex items-center justify-between p-2 rounded-lg border border-outline-variant/40 bg-surface-container-low/30">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-lg text-on-surface" data-icon="account_circle">account_circle</span>
+<span class="font-body-sm text-body-sm font-medium text-on-surface">Google</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="check_circle">check_circle</span>
+                  Connected
+                </span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg border border-outline-variant/40 bg-surface-container-low/30">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-lg text-on-surface" data-icon="devices">devices</span>
+<span class="font-body-sm text-body-sm font-medium text-on-surface">Apple ID</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="check_circle">check_circle</span>
+                  Connected
+                </span>
+</div>
+</div>
+<!-- Device Management & Log Out of All Devices -->
+<div class="pt-3 border-t border-outline-variant/20">
+<button class="w-full h-10 rounded-lg border border-outline-variant text-on-surface font-label-md text-label-md hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-base" data-icon="devices_other">devices_other</span>
+                Log Out of All Devices
+              </button>
+</div>
+<!-- Danger Zone -->
+<div class="pt-2 text-center">
+<button class="text-error font-body-sm text-body-sm hover:underline inline-flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-xs" data-icon="warning">warning</span>
+                Deactivate Athlete Account
+              </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Web Footer (Shared Component: Footer) -->
+<footer class="bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline mt-16">
+<div class="w-full py-8 px-6 md:px-12 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex flex-col sm:flex-row items-center gap-3">
+<a class="font-headline-sm text-headline-sm font-bold text-primary dark:text-inverse-primary flex items-center gap-1.5" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="sports_tennis">sports_tennis</span>
+          QuickCourt
+        </a>
+<span class="text-outline-variant hidden sm:inline">|</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant dark:text-outline-variant text-center sm:text-left">
+          © 2025 QuickCourt Operations Inc. All venue standards and player safety protocols certified.
+        </p>
+</div>
+<nav class="flex flex-wrap justify-center items-center gap-6 font-label-md text-label-md">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-on-surface dark:hover:text-inverse-on-surface hover:underline transition-all" href="#">Venue Regulations</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-on-surface dark:hover:text-inverse-on-surface hover:underline transition-all" href="#">Player Terms</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-on-surface dark:hover:text-inverse-on-surface hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-on-surface dark:hover:text-inverse-on-surface hover:underline transition-all" href="#">Court Standards</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-on-surface dark:hover:text-inverse-on-surface hover:underline transition-all flex items-center gap-1" href="#">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+          System Status
+        </a>
+</nav>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>QuickCourt — Explore Venues in Ahmedabad</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "background": "#f8f9ff",
+            "on-tertiary-fixed-variant": "#3f465c",
+            "inverse-primary": "#8dd6a6",
+            "on-surface-variant": "#404941",
+            "on-secondary-fixed": "#002113",
+            "surface-dim": "#cbdbf5",
+            "surface-container-highest": "#d3e4fe",
+            "primary-fixed": "#a8f3c1",
+            "surface-container": "#e5eeff",
+            "tertiary-fixed-dim": "#bec6e0",
+            "tertiary-fixed": "#dae2fd",
+            "tertiary-container": "#485066",
+            "surface-variant": "#d3e4fe",
+            "on-primary-container": "#89d2a2",
+            "inverse-on-surface": "#eaf1ff",
+            "primary-container": "#0a5c36",
+            "secondary-fixed": "#6ffbbe",
+            "on-primary": "#ffffff",
+            "secondary": "#006c49",
+            "on-tertiary": "#ffffff",
+            "error": "#ba1a1a",
+            "on-background": "#0b1c30",
+            "on-primary-fixed-variant": "#00522e",
+            "inverse-surface": "#213145",
+            "surface-container-lowest": "#ffffff",
+            "surface": "#f8f9ff",
+            "outline": "#707a71",
+            "on-tertiary-container": "#bbc2dc",
+            "on-secondary-fixed-variant": "#005236",
+            "surface-bright": "#f8f9ff",
+            "on-surface": "#0b1c30",
+            "on-tertiary-fixed": "#131b2e",
+            "primary-fixed-dim": "#8dd6a6",
+            "error-container": "#ffdad6",
+            "on-secondary-container": "#00714d",
+            "on-error": "#ffffff",
+            "on-secondary": "#ffffff",
+            "surface-tint": "#216b43",
+            "surface-container-high": "#dce9ff",
+            "outline-variant": "#bfc9bf",
+            "tertiary": "#31394e",
+            "surface-container-low": "#eff4ff",
+            "on-error-container": "#93000a",
+            "secondary-fixed-dim": "#4edea3",
+            "primary": "#004225",
+            "on-primary-fixed": "#002110",
+            "secondary-container": "#6cf8bb"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-xl": "2rem",
+            "margin-md": "2rem",
+            "gutter-lg": "2rem",
+            "space-sm": "0.5rem",
+            "margin-lg": "3rem",
+            "space-lg": "1.5rem",
+            "margin": "1rem",
+            "space-xs": "0.25rem",
+            "gutter-md": "1.5rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Plus Jakarta Sans"],
+            "display-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "headline-xl-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600" }],
+            "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col antialiased selection:bg-primary-fixed selection:text-on-primary-fixed relative overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline sticky top-0 z-40">
+<div class="w-full px-6 lg:px-12 flex justify-between items-center h-16 max-w-7xl mx-auto">
+<!-- Brand & Left Navigation -->
+<div class="flex items-center space-x-8">
+<a class="flex items-center space-x-2 text-headline-md font-headline-md font-bold tracking-tight text-primary dark:text-primary-fixed" href="#">
+<span class="material-symbols-outlined text-primary-container">sports_tennis</span>
+<span>QuickCourt</span>
+</a>
+<!-- Navigation Links: 'Venues' is Active -->
+<nav class="hidden md:flex items-center space-x-6 text-label-lg font-label-lg">
+<a class="text-primary dark:text-primary-fixed font-semibold border-b-2 border-primary dark:border-primary-fixed pb-1" href="#">Venues</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors duration-150 pb-1" href="#">Schedule</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors duration-150 pb-1" href="#">Tournaments</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors duration-150 pb-1" href="#">Support</a>
+</nav>
+</div>
+<!-- Location & User Actions -->
+<div class="flex items-center space-x-4">
+<!-- City Quick Selector -->
+<div class="hidden sm:flex items-center space-x-1.5 px-3 py-1.5 rounded-xl border border-outline-variant text-body-sm font-body-sm text-on-surface-variant bg-surface cursor-pointer hover:border-outline transition-colors">
+<span class="material-symbols-outlined text-[18px] text-primary">location_on</span>
+<span class="font-medium text-on-surface">Ahmedabad, GJ</span>
+<span class="material-symbols-outlined text-[16px]">arrow_drop_down</span>
+</div>
+<div class="hidden lg:flex items-center space-x-2 border-l border-outline-variant pl-4">
+<a class="text-on-surface-variant hover:text-primary transition-colors p-1" href="#" title="Help">
+<span class="material-symbols-outlined text-[20px]">help_outline</span>
+</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors p-1" href="#" title="Language">
+<span class="material-symbols-outlined text-[20px]">language</span>
+</a>
+</div>
+<button class="hidden sm:inline-flex items-center text-label-lg font-label-lg text-primary hover:text-primary-container px-3 py-2 transition-colors">
+          My Bookings
+        </button>
+<!-- User Athlete Profile -->
+<div class="flex items-center space-x-2.5 pl-2">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-bold text-label-md">
+            AM
+          </div>
+<span class="hidden md:inline-block text-label-lg font-label-lg text-on-surface font-medium">Alex M.</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Container -->
+<main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-6 flex flex-col gap-6">
+<!-- Breadcrumbs -->
+<nav aria-label="Breadcrumb" class="flex items-center gap-1.5 text-body-sm font-body-sm text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Venues</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface font-semibold">Ahmedabad</span>
+</nav>
+<!-- Page Header Section -->
+<div class="flex flex-col gap-1">
+<h1 class="text-headline-xl font-headline-xl text-on-surface">Explore Sports Venues in Ahmedabad</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant">
+      Find and book verified turf pitches, badminton courts, box cricket, and indoor sports complexes in Ahmedabad with zero booking markup.
+    </p>
+</div>
+<!-- Refactored Streamlined Search Console & Filter Bar -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-3 sm:p-4 shadow-sm flex flex-col gap-3">
+<div class="flex flex-col md:flex-row items-stretch md:items-center gap-3">
+<!-- Venue/Amenity Search Input -->
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full h-11 pl-11 pr-4 bg-surface border border-outline-variant rounded-lg text-body-md font-body-md text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container" placeholder="Search venues, sport, or locality like SG Highway, Bopal..." type="text"/>
+</div>
+<!-- Locality Dropdown Selector -->
+<div class="relative min-w-[220px]">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline">distance</span>
+<select class="w-full h-11 pl-10 pr-9 bg-surface border border-outline-variant rounded-lg text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container appearance-none cursor-pointer">
+<option>All Ahmedabad Areas</option>
+<option>SG Highway</option>
+<option>Sindhu Bhavan Road</option>
+<option>Prahlad Nagar</option>
+<option>Navrangpura</option>
+<option>Satellite</option>
+<option>Bopal</option>
+<option>Thaltej</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-[18px]">expand_more</span>
+</div>
+<!-- Filter Trigger Button with Active Badge -->
+<button class="h-11 px-4 bg-surface-container-low hover:bg-surface-container border border-outline-variant rounded-lg text-on-surface font-label-lg text-label-lg transition-colors flex items-center justify-center gap-2 flex-shrink-0 cursor-pointer" id="openFilterBtn">
+<span class="material-symbols-outlined text-[20px] text-primary">tune</span>
+<span>Filters</span>
+<span class="w-5 h-5 rounded-full bg-primary-container text-on-primary text-[11px] font-bold flex items-center justify-center leading-none">3</span>
+</button>
+<!-- Find Courts CTA Button -->
+<button class="h-11 px-6 bg-primary-container hover:bg-primary text-on-primary font-label-lg text-label-lg rounded-lg transition-colors flex items-center justify-center space-x-1.5 flex-shrink-0">
+<span>Find Courts</span>
+<span class="material-symbols-outlined text-[18px]">east</span>
+</button>
+</div>
+<!-- Horizontal Sport Filter Pills -->
+<div class="flex items-center gap-2 overflow-x-auto pt-2 pb-0.5 no-scrollbar border-t border-outline-variant/60">
+<button class="px-3.5 py-1.5 rounded-full bg-primary-container text-on-primary font-label-md text-label-md font-semibold whitespace-nowrap shadow-xs">
+      All Sports
+    </button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface border border-outline-variant hover:border-outline text-on-surface-variant hover:text-on-surface font-label-md text-label-md whitespace-nowrap transition-colors">
+      Badminton
+    </button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface border border-outline-variant hover:border-outline text-on-surface-variant hover:text-on-surface font-label-md text-label-md whitespace-nowrap transition-colors">
+      Football Turf
+    </button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface border border-outline-variant hover:border-outline text-on-surface-variant hover:text-on-surface font-label-md text-label-md whitespace-nowrap transition-colors flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> Box Cricket
+    </button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface border border-outline-variant hover:border-outline text-on-surface-variant hover:text-on-surface font-label-md text-label-md whitespace-nowrap transition-colors">
+      Tennis
+    </button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface border border-outline-variant hover:border-outline text-on-surface-variant hover:text-on-surface font-label-md text-label-md whitespace-nowrap transition-colors">
+      Pickleball &amp; Padel
+    </button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface border border-outline-variant hover:border-outline text-on-surface-variant hover:text-on-surface font-label-md text-label-md whitespace-nowrap transition-colors">
+      Basketball
+    </button>
+</div>
+</div>
+<!-- Controls Bar: View Toggle, Facility Counter & Sort -->
+<div class="flex flex-wrap items-center justify-between gap-3 pt-1">
+<div class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-2">
+<span>Showing <strong class="text-on-surface font-semibold">24 verified facilities</strong> in Ahmedabad</span>
+<span class="hidden sm:inline text-outline-variant">•</span>
+<span class="hidden sm:flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[16px]">verified_user</span> Direct desk pricing, zero booking fee
+    </span>
+</div>
+<div class="flex items-center gap-3 ml-auto">
+<!-- View Switcher -->
+<div class="flex items-center border border-outline-variant rounded-lg bg-surface p-0.5">
+<button class="flex items-center space-x-1 px-3 py-1.5 rounded bg-surface-container-lowest shadow-xs text-primary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px]">grid_view</span>
+<span class="hidden sm:inline">Grid</span>
+</button>
+<button class="flex items-center space-x-1 px-3 py-1.5 rounded hover:text-on-surface text-on-surface-variant font-label-md text-label-md transition-colors">
+<span class="material-symbols-outlined text-[16px]">map</span>
+<span class="hidden sm:inline">Map</span>
+</button>
+</div>
+<!-- Sort Menu -->
+<div class="flex items-center space-x-2">
+<span class="text-body-sm font-body-sm text-on-surface-variant hidden md:inline">Sort:</span>
+<div class="relative">
+<select class="h-9 pl-3 pr-8 bg-surface-container-lowest border border-outline-variant rounded-lg text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-primary-container appearance-none cursor-pointer">
+<option>Recommended</option>
+<option>Distance: Nearest First</option>
+<option>Price: Low to High</option>
+<option>Rating: Highest First</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-[16px]">sort</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Venues Grid (3 Columns on Desktop) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Venue Card 1: Apex Badminton Academy -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col hover:border-outline transition-all group">
+<!-- Media Container -->
+<div class="relative aspect-[16/9] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A brightly lit, tournament-grade indoor badminton arena with 8 emerald green synthetic courts divided by clean white boundary lines. Overhead anti-glare sports floodlights illuminate the venue with high contrast. The architectural aesthetic is modern and industrial with exposed steel beams and deep charcoal walls, embodying professional sports precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW3AYDQhF1yGg9zJiRii45M0dhd5QcF3-ZCvl2MZuuZq_MoMddM3U3dn1njkQCYb0PtgYd935exgRbt7vptI7W-lYGV0hMAUAYlw8uAzW5Aa5_ilauMiu5EqCP8hb22a38X1f2BxFNn3OHJFXXQwah7DeZAxgQk2-jJ9rSW-5qTRUvdkoje14U8xpF7Wi61WfRMgkRQRugEoirID94CoDj79zJT_KlR_FfYrtnGL3I_W3cAbX5fvGSpuYfOQYKrwL0PclLWbueZAg"/>
+<!-- Badge Overlays -->
+<div class="absolute top-3 left-3 flex items-center gap-1.5">
+<span class="bg-surface-container-lowest/90 backdrop-blur-xs text-on-surface px-2 py-0.5 rounded text-label-sm font-label-sm flex items-center gap-1 shadow-xs">
+<span class="text-amber-500 font-bold">★</span> 4.9 <span class="text-on-surface-variant font-normal">(128)</span>
+</span>
+<span class="bg-primary-container text-on-primary px-2 py-0.5 rounded text-label-sm font-label-sm font-medium">
+              BWF Certified
+            </span>
+</div>
+<div class="absolute top-3 right-3">
+<span class="bg-surface-container-lowest/90 backdrop-blur-xs text-on-surface px-2 py-0.5 rounded text-label-sm font-label-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">near_me</span> 1.8 km
+            </span>
+</div>
+<div class="absolute bottom-3 left-3">
+<span class="bg-surface-container-lowest/95 backdrop-blur-xs text-primary-container px-2 py-0.5 rounded text-label-sm font-label-sm font-semibold flex items-center gap-1 border border-primary-container/20">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span> 6 Courts Open Tonight
+            </span>
+</div>
+</div>
+<!-- Content Body -->
+<div class="p-4 flex-1 flex flex-col justify-between gap-4">
+<div>
+<div class="flex items-start justify-between gap-2">
+<h3 class="text-headline-sm font-headline-sm text-on-surface group-hover:text-primary transition-colors">
+                Apex Badminton Academy
+              </h3>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px] text-outline">location_on</span>
+              SG Highway • Near Iskcon Cross Road, Ahmedabad
+            </p>
+<!-- Specs & Amenities Chips -->
+<div class="flex flex-wrap gap-1.5 mt-3">
+<span class="px-2 py-0.5 rounded bg-surface border border-outline-variant text-label-sm font-label-sm text-on-surface-variant">Badminton (8 Courts)</span>
+<span class="px-2 py-0.5 rounded bg-surface border border-outline-variant text-label-sm font-label-sm text-on-surface-variant">Synthetic Mat</span>
+<span class="px-2 py-0.5 rounded bg-surface border border-outline-variant text-label-sm font-label-sm text-on-surface-variant">Stringing Shop</span>
+<span class="px-2 py-0.5 rounded bg-surface border border-outline-variant text-label-sm font-label-sm text-on-surface-variant">Locker Rooms</span>
+</div>
+</div>
+<!-- Card Footer & Pricing -->
+<div class="pt-3 border-t border-outline-variant flex items-center justify-between">
+<div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">From</div>
+<div class="text-headline-sm font-headline-sm font-bold text-on-surface">
+                ₹600 <span class="text-body-sm font-body-sm font-normal text-on-surface-variant">/ hr</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="h-9 px-3 border border-outline-variant hover:bg-surface text-on-surface font-label-md text-label-md rounded-lg transition-colors">
+                Details
+              </button>
+<button class="h-9 px-3.5 bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md rounded-lg transition-colors flex items-center gap-1">
+<span>Book Now</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Venue Card 2: Vanguard Multi-Sport Turf & Box Cricket -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col hover:border-outline transition-all group">
+<div class="relative aspect-[16/9] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="An expansive outdoor soccer pitch facility at dusk with vibrant green artificial turf illuminated by high-powered modern LED stadium floodlights. Sharp white penalty and touch lines create dynamic patterns under the dark evening sky, capturing an energetic and professional athletic training environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5GUfE_dwannfaBFn7ZzEijUs_mAvTSoRc1mxFVypE0frAutsCUgNsYSv7oesMmk3mMggcUg6JbpQAB0qC8j4d4XxxDHE1bcjvWdmTJhBBo8PUI9Y0sH3knQRVuSn5bWLQ_27ZVSfaiMl8KAoQIsorgLneP2OMu5NPo3Y5oOmk_Sptf9NCVWSe3e1dVvAWfoPedMDYhtsvA9qssXWyrzbywGEWSh_1natF-cRc4dpVKqSdVnijE0yOqdKovBEbLp-I43MPRM1NGEY"/>
+<div class="absolute top-3 left-3 flex items-center gap-1.5">
+<span class="bg-surface-container-lowest/90 backdrop-blur-xs text-on-surface px-2 py-0.5 rounded text-label-sm font-label-sm flex items-center gap-1 shadow-xs">
+<span class="text-amber-500 font-bold">★</span> 4.8 <span class="text-on-surface-variant font-normal">(94)</span>
+</span>
+<span class="bg-primary-container text-on-primary px-2 py-0.5 rounded text-label-sm font-label-sm font-medium">
+              FIFA 2-Star Turf
+            </span>
+</div>
+<div class="absolute top-3 right-3">
+<span class="bg-surface-container-lowest/90 backdrop-blur-xs text-on-surface px-2 py-0.5 rounded text-label-sm font-label-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">near_me</span> 3.2 km
+            </span>
+</div>
+<div class="absolute bottom-3 left-3">
+<span class="bg-surface-container-lowest/95 backdrop-blur-xs text-secondary px-2 py-0.5 rounded text-label-sm font-label-sm font-semibold flex items-center gap-1 border border-secondary/20">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span> Available in 30m
+            </span>
+</div>
+</div>
+<div class="p-4 flex-1 flex flex-col justify-between gap-4">
+<div>
+<div class="flex items-start justify-between gap-2">
+<h3 class="text-headline-sm font-headline-sm text-on-surface group-hover:text-primary transition-colors">
+                Vanguard Multi-Sport Turf &amp; Box Cricket
+              </h3>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px] text-outline">location_on</span>
+              Sindhu Bhavan Road, Bodakdev, Ahmedabad
+            </p>
+<div class="flex flex-wrap gap-1.5 mt-3">
+<span class="px-2 py-0.5 rounded bg-surface border border-outline-variant text-label-sm font-label-sm text-on-surface-variant">Box Cricket &amp; Turf</span>
+<span class="px-2 py-0.5 rounded bg-surface border border-outline-variant text-label-sm font-label-sm text-on-surface-variant">500-Lux Lights</span>
+<span class="px-2 py-0.5 rounded bg-surface border border-outline-variant text-label-sm font-label-sm text-on-surface-variant">Cricket Nets</span>
+<span class="px-2 py-0.5 rounded bg-surface border border-outline-variant text-label-sm font-label-sm text-on-surface-variant">Free Parking</span>
+</div>
+</div>
+<div class="pt-3 border-t border-outline-variant flex items-center justify-between">
+<div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">From</div>
+<div class="text-headline-sm font-headline-sm font-bold text-on-surface">
+                ₹1,400 <span class="text-body-sm font-body-sm font-normal text-on-surface-variant">/ hr</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="h-9 px-3 border border-outline-variant hover:bg-surface text-on-surface font-label-md text-label-md rounded-lg transition-colors">
+                Details
+              </button>
+<button class="h-9 px-3.5 bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md rounded-lg transition-colors flex items-center gap-1">
+<span>Book Now</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Venue Card 3: Ahmedabad Tennis Club & Academy -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col hover:border-outline transition-all group">
+<div class="relative aspect-[16/9] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A set of championship outdoor hard tennis courts in deep midnight blue and court green under crisp bright morning sunlight. Crisp white baseline tapes and regulation tournament tennis nets stand ready in a modern Austin sports complex with manicured perimeter landscaping." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDx6YnyDSeH68SWVT0A21Zt-ciaZ46LxW9XgPzpleISZG6XoAcoJlRskRbMqPtCt48oLBAaCWtkwQZBEtJ4EZDwfD9O63jPeI_CGCujsZQ-q-ZwlZNiOBH8kMJUU18aRZkEiI00nr9UW5r6brzeRDZf6Jnwdk-5w-FToIy1LSYcZBePeKeBoU6oWCB2HZTrMuSs9i9xDvjP04uQlsFtLOQbZ6c8QQbzaygC0Ygv9nPMnb21LnngRpiHsv6yW95Tuz1bWxQyDKNk6YM"/>
+<div class="absolute top-3 left-3 flex items-center gap-1.5">
+<span class="bg-surface-container-lowest/90 backdrop-blur-xs text-on-surface px-2 py-0.5 rounded text-label-sm font-label-sm flex items-center gap-1 shadow-xs">
+<span class="text-amber-500 font-bold">★</span> 4.9 <span class="text-on-surface-variant font-normal">(210)</span>
+</span>
+<span class="bg-secondary text-on-secondary px-2 py-0.5 rounded text-label-sm font-label-sm font-medium">
+              AITA Pro
+            </span>
+</div>
+<div class="absolute top-3 right-3">
+<span class="bg-surface-container-lowest/90 backdrop-blur-xs text-on-surface px-2 py-0.5 rounded text-label-sm font-label-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">near_me</span> 2.5 km
+            </span>
+</div>
+<div class="absolute bottom-3 left-3">
+<span class="bg-surface-container-lowest/95 backdrop-blur-xs text-amber-700 px-2 py-0.5 rounded text-label-sm font-label-sm font-semibold flex items-center gap-1 border border-amber-300">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span> 2 Slots Remaining
+            </span>
+</div>
+</div>
+<div class="p-4 flex-1 flex flex-col justify-between gap-4">
+<div>
+<div class="flex items-start justify-between gap-2">
+<h3 class="text-headline-sm font-headline-sm text-on-surface group-hover:text-primary transition-colors">
+                Ahmedabad Tennis Club &amp; Academy
+              </h3>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px] text-outline">location_on</span>
+              Navrangpura • Near Gujarat University
+            </p>
+<div class="flex flex-wrap gap-1.5 mt-3">
+<span class="px-2 py-0.5 rounded bg-surface border border-outline-variant text-label-sm font-label-sm text-on-surface-variant">Tennis (6 Hard Courts)</span>
+<span class="px-2 py-0.5 rounded bg-surface border border-outline-variant text-label-sm font-label-sm text-on-surface-variant">Ball Machine</span>
+<span class="px-2 py-0.5 rounded bg-surface border border-outline-variant text-label-sm font-label-sm text-on-surface-variant">Floodlit Night Play</span>
+<span class="px-2 py-0.5 rounded bg-surface border border-outline-variant text-label-sm font-label-sm text-on-surface-variant">Pro Shop</span>
+</div>
+</div>
+<div class="pt-3 border-t border-outline-variant flex items-center justify-between">
+<div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">From</div>
+<div class="text-headline-sm font-headline-sm font-bold text-on-surface">
+                ₹800 <span class="text-body-sm font-body-sm font-normal text-on-surface-variant">/ hr</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="h-9 px-3 border border-outline-variant hover:bg-surface text-on-surface font-label-md text-label-md rounded-lg transition-colors">
+                Details
+              </button>
+<button class="h-9 px-3.5 bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md rounded-lg transition-colors flex items-center gap-1">
+<span>Book Now</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Venue Card 4: Baseline Indoor Padel & Pickleball -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col hover:border-outline transition-all group">
+<div class="relative aspect-[16/9] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="An upscale indoor padel and pickleball club featuring glass enclosure walls and vivid cobalt blue turf. Modern linear ceiling lighting illuminates the courts evenly, creating a refined European athletic club ambiance with clean concrete floors and contemporary observation seating." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAzR_X30YmbVBrj1hL7drC6_zta-8Q_Yod8GipZH1YLRYECFfMjMRG7OWtspKRxjwcxGRnQGP6n8Zd8Tht3JFIz203mn01U8PGO__aujTaMrIMQtrc1Sypvj4z9GuhDtZTJyn_qKqvL6Zr1XI__ap64eghIr6LdV4AgMIKc0AGFPZcfoRA8AZDb12MWdPAfi2TpRB4ubDNqa3khnad7jKf3HidCwnO9V0LGk-cGBrAHA5B-bAJL0K735WRwEk6Y84JwZQBvjl0ves"/>
+<div class="absolute top-3 left-3 flex items-center gap-1.5">
+<span class="bg-surface-container-lowest/90 backdrop-blur-xs text-on-surface px-2 py-0.5 rounded text-label-sm font-label-sm flex items-center gap-1 shadow-xs">
+<span class="text-amber-500 font-bold">★</span> 4.9 <span class="text-on-surface-variant font-normal">(160)</span>
+</span>
+<span class="bg-primary-container text-on-primary px-2 py-0.5 rounded text-label-sm font-label-sm font-medium">
+              Panoramic Glass
+            </span>
+</div>
+<div class="absolute top-3 right-3">
+<span class="bg-surface-container-lowest/90 backdrop-blur-xs text-on-surface px-2 py-0.5 rounded text-label-sm font-label-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">near_me</span> 4.1 km
+            </span>
+</div>
+<div class="absolute bottom-3 left-3">
+<span class="bg-surface-container-lowest/95 backdrop-blur-xs text-primary-container px-2 py-0.5 rounded text-label-sm font-label-sm font-semibold flex items-center gap-1 border border-primary-container/20">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span> 4 Courts Available
+            </span>
+</div>
+</div>
+<div class="p-4 flex-1 flex flex-col justify-between gap-4">
+<div>
+<div class="flex items-start justify-between gap-2">
+<h3 class="text-headline-sm font-headline-sm text-on-surface group-hover:text-primary transition-colors">
+                Baseline Indoor Padel &amp; Pickleball Hub
+              </h3>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px] text-outline">location_on</span>
+              Prahlad Nagar • Behind Corporate Road
+            </p>
+<div class="flex flex-wrap gap-1.5 mt-3">
+<span class="px-2 py-0.5 rounded bg-surface border border-outline-variant text-label-sm font-label-sm text-on-surface-variant">Padel &amp; Pickleball</span>
+<span class="px-2 py-0.5 rounded bg-surface border border-outline-variant text-label-sm font-label-sm text-on-surface-variant">Climate Controlled</span>
+<span class="px-2 py-0.5 rounded bg-surface border border-outline-variant text-label-sm font-label-sm text-on-surface-variant">Paddle Rental</span>
+<span class="px-2 py-0.5 rounded bg-surface border border-outline-variant text-label-sm font-label-sm text-on-surface-variant">Lounge Cafe</span>
+</div>
+</div>
+<div class="pt-3 border-t border-outline-variant flex items-center justify-between">
+<div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">From</div>
+<div class="text-headline-sm font-headline-sm font-bold text-on-surface">
+                ₹1,100 <span class="text-body-sm font-body-sm font-normal text-on-surface-variant">/ hr</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="h-9 px-3 border border-outline-variant hover:bg-surface text-on-surface font-label-md text-label-md rounded-lg transition-colors">
+                Details
+              </button>
+<button class="h-9 px-3.5 bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md rounded-lg transition-colors flex items-center gap-1">
+<span>Book Now</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Venue Card 5: The Arena Multi-Sport Complex -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col hover:border-outline transition-all group">
+<div class="relative aspect-[16/9] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A multi-sport indoor hardwood sports facility featuring polished maple basketball courts with crisp white, black, and forest green key markings. High-ceiling steel trusses support professional suspended scoreboards and sound damping panels in an energetic, bright light-mode athletic center." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgZIVH1ofwuCmIrDXSTCDHKtu-8HIOxhJQAZOKLN9U6fFaUdpFTuzSPP1QeQnxQO8tc6x47ayJMrocwl5SomyvXy9xKsqqYHAOP890MwXZ_TbghnYHQ-CXLooLUvRQqHNjNgqJ6CXHo-oVlN0zwTEAHB0fnA_rWzYF93ysmrAeHu_uE0RypmGodDTVvpTc5UrA3teK9koah3LVLLcs80H2_HuxJZAZaR7zgW6wwkh5KdUEpaGncf42Yd6XeO29ymO_TbJI0YQs49c"/>
+<div class="absolute top-3 left-3 flex items-center gap-1.5">
+<span class="bg-surface-container-lowest/90 backdrop-blur-xs text-on-surface px-2 py-0.5 rounded text-label-sm font-label-sm flex items-center gap-1 shadow-xs">
+<span class="text-amber-500 font-bold">★</span> 4.7 <span class="text-on-surface-variant font-normal">(88)</span>
+</span>
+<span class="bg-primary text-on-primary px-2 py-0.5 rounded text-label-sm font-label-sm font-medium">
+              Multi-Sport Hub
+            </span>
+</div>
+<div class="absolute top-3 right-3">
+<span class="bg-surface-container-lowest/90 backdrop-blur-xs text-on-surface px-2 py-0.5 rounded text-label-sm font-label-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">near_me</span> 5.0 km
+            </span>
+</div>
+<div class="absolute bottom-3 left-3">
+<span class="bg-surface-container-lowest/95 backdrop-blur-xs text-primary-container px-2 py-0.5 rounded text-label-sm font-label-sm font-semibold flex items-center gap-1 border border-primary-container/20">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> Open 24/7 Access
+            </span>
+</div>
+</div>
+<div class="p-4 flex-1 flex flex-col justify-between gap-4">
+<div>
+<div class="flex items-start justify-between gap-2">
+<h3 class="text-headline-sm font-headline-sm text-on-surface group-hover:text-primary transition-colors">
+                The Arena Multi-Sport Complex
+              </h3>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px] text-outline">location_on</span>
+              Bopal-Ambli Road, Bopal
+            </p>
+<div class="flex flex-wrap gap-1.5 mt-3">
+<span class="px-2 py-0.5 rounded bg-surface border border-outline-variant text-label-sm font-label-sm text-on-surface-variant">Basketball (3 Full)</span>
+<span class="px-2 py-0.5 rounded bg-surface border border-outline-variant text-label-sm font-label-sm text-on-surface-variant">Wooden Flooring</span>
+<span class="px-2 py-0.5 rounded bg-surface border border-outline-variant text-label-sm font-label-sm text-on-surface-variant">Volleyball Court</span>
+<span class="px-2 py-0.5 rounded bg-surface border border-outline-variant text-label-sm font-label-sm text-on-surface-variant">Showers</span>
+</div>
+</div>
+<div class="pt-3 border-t border-outline-variant flex items-center justify-between">
+<div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">From</div>
+<div class="text-headline-sm font-headline-sm font-bold text-on-surface">
+                ₹950 <span class="text-body-sm font-body-sm font-normal text-on-surface-variant">/ hr</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="h-9 px-3 border border-outline-variant hover:bg-surface text-on-surface font-label-md text-label-md rounded-lg transition-colors">
+                Details
+              </button>
+<button class="h-9 px-3.5 bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md rounded-lg transition-colors flex items-center gap-1">
+<span>Book Now</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Venue Card 6: Sabarmati Sports Enclave -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col hover:border-outline transition-all group">
+<div class="relative aspect-[16/9] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A tranquil outdoor tennis center with four clay courts in rich terracotta red, bordered by deep green windscreens and tall Texas oak trees under a bright blue open sky. Precision line markings and freshly rolled court clay present a competition-ready atmosphere for serious players." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9Xnb2jlpVPDggI-sCitz96AV83I0FeqPIvYvn6PaWPdMRXJCVYNl3NynoiVxWZ1V9MTq9cqmbqljCdjDBlEAAS6R4a2ah8di-vnPGGcpTuxlLXet9T_BjVPlnQc0wlWQnK__yok4vfmglVNqtdRbsVeOwIZKWFhIeiGwVRTMJ_O5io58Db6a_AvzoRyhpsUYeaOJlav5ZejYCOndEwyJNLVh2wSH9smOGW6PNDeyAOA56fGmLf-prEQjlnqC1eBJUl1oIDF7_XUo"/>
+<div class="absolute top-3 left-3 flex items-center gap-1.5">
+<span class="bg-surface-container-lowest/90 backdrop-blur-xs text-on-surface px-2 py-0.5 rounded text-label-sm font-label-sm flex items-center gap-1 shadow-xs">
+<span class="text-amber-500 font-bold">★</span> 4.8 <span class="text-on-surface-variant font-normal">(112)</span>
+</span>
+<span class="bg-primary-container text-on-primary px-2 py-0.5 rounded text-label-sm font-label-sm font-medium">
+              Red Clay Pro
+            </span>
+</div>
+<div class="absolute top-3 right-3">
+<span class="bg-surface-container-lowest/90 backdrop-blur-xs text-on-surface px-2 py-0.5 rounded text-label-sm font-label-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">near_me</span> 3.6 km
+            </span>
+</div>
+<div class="absolute bottom-3 left-3">
+<span class="bg-surface-container-lowest/95 backdrop-blur-xs text-primary-container px-2 py-0.5 rounded text-label-sm font-label-sm font-semibold flex items-center gap-1 border border-primary-container/20">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span> 3 Courts Open Tonight
+            </span>
+</div>
+</div>
+<div class="p-4 flex-1 flex flex-col justify-between gap-4">
+<div>
+<div class="flex items-start justify-between gap-2">
+<h3 class="text-headline-sm font-headline-sm text-on-surface group-hover:text-primary transition-colors">
+                Sabarmati Sports Enclave &amp; Clay Courts
+              </h3>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px] text-outline">location_on</span>
+              Thaltej • Near Shilaj Cross Road
+            </p>
+<div class="flex flex-wrap gap-1.5 mt-3">
+<span class="px-2 py-0.5 rounded bg-surface border border-outline-variant text-label-sm font-label-sm text-on-surface-variant">Tennis (Red Clay)</span>
+<span class="px-2 py-0.5 rounded bg-surface border border-outline-variant text-label-sm font-label-sm text-on-surface-variant">HydroGrid Sprinklers</span>
+<span class="px-2 py-0.5 rounded bg-surface border border-outline-variant text-label-sm font-label-sm text-on-surface-variant">Coaching Available</span>
+<span class="px-2 py-0.5 rounded bg-surface border border-outline-variant text-label-sm font-label-sm text-on-surface-variant">Member Lounge</span>
+</div>
+</div>
+<div class="pt-3 border-t border-outline-variant flex items-center justify-between">
+<div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">From</div>
+<div class="text-headline-sm font-headline-sm font-bold text-on-surface">
+                ₹750 <span class="text-body-sm font-body-sm font-normal text-on-surface-variant">/ hr</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="h-9 px-3 border border-outline-variant hover:bg-surface text-on-surface font-label-md text-label-md rounded-lg transition-colors">
+                Details
+              </button>
+<button class="h-9 px-3.5 bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md rounded-lg transition-colors flex items-center gap-1">
+<span>Book Now</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination / Load More Section -->
+<div class="flex flex-col items-center justify-center py-6 gap-3">
+<button class="h-11 px-8 border border-outline-variant hover:border-outline bg-surface-container-lowest text-on-surface hover:bg-surface font-label-lg text-label-lg rounded-lg transition-all shadow-xs flex items-center gap-2">
+<span>Load More Facilities</span>
+<span class="text-on-surface-variant font-normal text-body-sm">(18 remaining)</span>
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+<span class="text-body-sm font-body-sm text-on-surface-variant">
+        Showing 6 of 24 verified courts in Ahmedabad, GJ
+      </span>
+</div>
+<!-- QuickCourt Ahmedabad Desk Rate Guarantee Banner -->
+<div class="bg-surface-container border border-outline-variant rounded-xl p-5 sm:p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[28px]">verified</span>
+</div>
+<div>
+<h4 class="text-headline-sm font-headline-sm text-on-surface font-semibold">
+            QuickCourt Ahmedabad Desk Rate Guarantee
+          </h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant max-w-2xl mt-0.5">
+            Verified court dimensions, automated turnstile pass sync, and free cancellation up to 2 hours before playtime. No booking surcharge, ever.
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-3 flex-shrink-0">
+<a class="text-label-md font-label-md text-primary hover:underline font-semibold flex items-center gap-1" href="#">
+          Read Venue Standards <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</main>
+<!-- Slide-Out Filter Drawer & Backdrop -->
+<div class="fixed inset-0 bg-on-surface/40 backdrop-blur-xs z-50 transition-opacity duration-300 opacity-0 pointer-events-none" id="filterBackdrop"></div>
+<aside class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-surface-container-lowest z-50 shadow-2xl flex flex-col transition-transform duration-300 transform translate-x-full border-l border-outline-variant" id="filterDrawer">
+<!-- Drawer Header -->
+<div class="px-6 py-4 border-b border-outline-variant flex items-center justify-between bg-surface">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">tune</span>
+<h2 class="text-headline-sm font-headline-sm font-bold text-on-surface">Filters</h2>
+</div>
+<div class="flex items-center gap-3">
+<button class="text-body-sm font-body-sm font-medium text-primary hover:underline cursor-pointer" type="button">Reset All</button>
+<button class="w-8 h-8 rounded-full hover:bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" id="closeFilterBtn" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+</div>
+<!-- Drawer Scrollable Filter Sections -->
+<div class="flex-1 overflow-y-auto p-6 space-y-6">
+<!-- Sports Category -->
+<div>
+<label class="text-label-lg font-label-lg text-on-surface font-semibold block mb-3">Sports Category</label>
+<div class="grid grid-cols-2 gap-2 text-body-sm">
+<label class="flex items-center gap-2.5 p-2 rounded-lg border border-outline-variant bg-surface hover:bg-surface-container-low cursor-pointer">
+<input checked="" class="rounded border-outline-variant text-primary-container focus:ring-primary-container" type="checkbox"/>
+<span>Badminton</span>
+</label>
+<label class="flex items-center gap-2.5 p-2 rounded-lg border border-outline-variant bg-surface hover:bg-surface-container-low cursor-pointer">
+<input checked="" class="rounded border-outline-variant text-primary-container focus:ring-primary-container" type="checkbox"/>
+<span>Football Turf</span>
+</label>
+<label class="flex items-center gap-2.5 p-2 rounded-lg border border-outline-variant bg-surface hover:bg-surface-container-low cursor-pointer">
+<input checked="" class="rounded border-outline-variant text-primary-container focus:ring-primary-container" type="checkbox"/>
+<span>Box Cricket</span>
+</label>
+<label class="flex items-center gap-2.5 p-2 rounded-lg border border-outline-variant bg-surface hover:bg-surface-container-low cursor-pointer">
+<input class="rounded border-outline-variant text-primary-container focus:ring-primary-container" type="checkbox"/>
+<span>Tennis</span>
+</label>
+<label class="flex items-center gap-2.5 p-2 rounded-lg border border-outline-variant bg-surface hover:bg-surface-container-low cursor-pointer">
+<input class="rounded border-outline-variant text-primary-container focus:ring-primary-container" type="checkbox"/>
+<span>Padel &amp; Pickleball</span>
+</label>
+<label class="flex items-center gap-2.5 p-2 rounded-lg border border-outline-variant bg-surface hover:bg-surface-container-low cursor-pointer">
+<input class="rounded border-outline-variant text-primary-container focus:ring-primary-container" type="checkbox"/>
+<span>Basketball</span>
+</label>
+</div>
+</div>
+<!-- Price Range (Indian Rupee) -->
+<div class="pt-4 border-t border-outline-variant">
+<label class="text-label-lg font-label-lg text-on-surface font-semibold block mb-3">Hourly Rate Range</label>
+<div class="space-y-2">
+<label class="flex items-center justify-between p-2.5 rounded-lg border border-outline-variant bg-surface hover:bg-surface-container-low cursor-pointer">
+<div class="flex items-center gap-2.5">
+<input class="text-primary-container focus:ring-primary-container" name="price" type="radio"/>
+<span class="text-body-sm font-medium text-on-surface">Under ₹500 / hr</span>
+</div>
+<span class="text-label-sm text-on-surface-variant font-normal">3 venues</span>
+</label>
+<label class="flex items-center justify-between p-2.5 rounded-lg border border-primary-container bg-surface-container-low cursor-pointer">
+<div class="flex items-center gap-2.5">
+<input checked="" class="text-primary-container focus:ring-primary-container" name="price" type="radio"/>
+<span class="text-body-sm font-medium text-on-surface">₹500 - ₹1,000 / hr</span>
+</div>
+<span class="text-label-sm text-primary-container font-semibold">14 venues</span>
+</label>
+<label class="flex items-center justify-between p-2.5 rounded-lg border border-outline-variant bg-surface hover:bg-surface-container-low cursor-pointer">
+<div class="flex items-center gap-2.5">
+<input class="text-primary-container focus:ring-primary-container" name="price" type="radio"/>
+<span class="text-body-sm font-medium text-on-surface">₹1,000 - ₹2,000 / hr</span>
+</div>
+<span class="text-label-sm text-on-surface-variant font-normal">7 venues</span>
+</label>
+<label class="flex items-center justify-between p-2.5 rounded-lg border border-outline-variant bg-surface hover:bg-surface-container-low cursor-pointer">
+<div class="flex items-center gap-2.5">
+<input class="text-primary-container focus:ring-primary-container" name="price" type="radio"/>
+<span class="text-body-sm font-medium text-on-surface">₹2,000+ / hr</span>
+</div>
+<span class="text-label-sm text-on-surface-variant font-normal">2 venues</span>
+</label>
+</div>
+</div>
+<!-- Locality / Ahmedabad Zone Multi-Select -->
+<div class="pt-4 border-t border-outline-variant">
+<label class="text-label-lg font-label-lg text-on-surface font-semibold block mb-2">Locality in Ahmedabad</label>
+<div class="flex flex-wrap gap-1.5">
+<label class="cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<span class="inline-block px-3 py-1.5 rounded-full text-label-md border border-outline-variant bg-surface peer-checked:bg-primary-container peer-checked:text-on-primary peer-checked:border-primary-container transition-all">SG Highway</span>
+</label>
+<label class="cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<span class="inline-block px-3 py-1.5 rounded-full text-label-md border border-outline-variant bg-surface peer-checked:bg-primary-container peer-checked:text-on-primary peer-checked:border-primary-container transition-all">Sindhu Bhavan Road</span>
+</label>
+<label class="cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<span class="inline-block px-3 py-1.5 rounded-full text-label-md border border-outline-variant bg-surface peer-checked:bg-primary-container peer-checked:text-on-primary peer-checked:border-primary-container transition-all">Prahlad Nagar</span>
+</label>
+<label class="cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<span class="inline-block px-3 py-1.5 rounded-full text-label-md border border-outline-variant bg-surface peer-checked:bg-primary-container peer-checked:text-on-primary peer-checked:border-primary-container transition-all">Navrangpura</span>
+</label>
+<label class="cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<span class="inline-block px-3 py-1.5 rounded-full text-label-md border border-outline-variant bg-surface peer-checked:bg-primary-container peer-checked:text-on-primary peer-checked:border-primary-container transition-all">Satellite</span>
+</label>
+<label class="cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<span class="inline-block px-3 py-1.5 rounded-full text-label-md border border-outline-variant bg-surface peer-checked:bg-primary-container peer-checked:text-on-primary peer-checked:border-primary-container transition-all">Bopal</span>
+</label>
+<label class="cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<span class="inline-block px-3 py-1.5 rounded-full text-label-md border border-outline-variant bg-surface peer-checked:bg-primary-container peer-checked:text-on-primary peer-checked:border-primary-container transition-all">Thaltej</span>
+</label>
+</div>
+</div>
+<!-- Venue Amenities & Surface -->
+<div class="pt-4 border-t border-outline-variant">
+<label class="text-label-lg font-label-lg text-on-surface font-semibold block mb-3">Facility Amenities &amp; Surface</label>
+<div class="space-y-2.5 text-body-sm">
+<label class="flex items-center gap-2.5 cursor-pointer">
+<input checked="" class="rounded border-outline-variant text-primary-container focus:ring-primary-container" type="checkbox"/>
+<span class="text-on-surface">Indoor Air-Conditioned</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer">
+<input class="rounded border-outline-variant text-primary-container focus:ring-primary-container" type="checkbox"/>
+<span class="text-on-surface">Floodlit Night Play</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer">
+<input class="rounded border-outline-variant text-primary-container focus:ring-primary-container" type="checkbox"/>
+<span class="text-on-surface">Synthetic Mat (BWF certified)</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer">
+<input class="rounded border-outline-variant text-primary-container focus:ring-primary-container" type="checkbox"/>
+<span class="text-on-surface">Wooden Court Floor</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer">
+<input class="rounded border-outline-variant text-primary-container focus:ring-primary-container" type="checkbox"/>
+<span class="text-on-surface">Equipment &amp; Racket Rental</span>
+</label>
+<label class="flex items-center gap-2.5 cursor-pointer">
+<input class="rounded border-outline-variant text-primary-container focus:ring-primary-container" type="checkbox"/>
+<span class="text-on-surface">Free Dedicated Parking</span>
+</label>
+</div>
+</div>
+<!-- Rating Filter -->
+<div class="pt-4 border-t border-outline-variant">
+<label class="text-label-lg font-label-lg text-on-surface font-semibold block mb-2">Customer Rating</label>
+<div class="flex items-center gap-2">
+<button class="flex-1 py-2 px-3 border border-primary-container bg-surface-container-low text-primary-container font-semibold rounded-lg text-body-sm flex items-center justify-center gap-1" type="button">
+<span class="text-amber-500 font-bold">★</span> 4.5+
+        </button>
+<button class="flex-1 py-2 px-3 border border-outline-variant bg-surface hover:bg-surface-container text-on-surface-variant font-medium rounded-lg text-body-sm flex items-center justify-center gap-1" type="button">
+<span class="text-amber-500 font-bold">★</span> 4.0+
+        </button>
+<button class="flex-1 py-2 px-3 border border-outline-variant bg-surface hover:bg-surface-container text-on-surface-variant font-medium rounded-lg text-body-sm flex items-center justify-center gap-1" type="button">
+          All
+        </button>
+</div>
+</div>
+</div>
+<!-- Drawer Sticky Footer -->
+<div class="p-4 border-t border-outline-variant bg-surface flex items-center gap-3">
+<button class="flex-1 h-11 border border-outline-variant hover:bg-surface-container rounded-lg text-on-surface font-label-lg text-label-lg transition-colors cursor-pointer" id="cancelFilterBtn" type="button">
+      Close
+    </button>
+<button class="flex-1 h-11 bg-primary-container hover:bg-primary text-on-primary font-label-lg text-label-lg rounded-lg transition-colors font-semibold shadow-xs cursor-pointer" id="applyFilterBtn" type="button">
+      Apply Filters (24)
+    </button>
+</div>
+</aside>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline mt-12">
+<div class="w-full px-6 lg:px-12 py-8 flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto gap-4">
+<!-- Brand & Copyright -->
+<div class="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
+<span class="text-headline-sm font-headline-sm font-bold text-primary dark:text-primary-fixed">
+          QuickCourt
+        </span>
+<span class="hidden sm:inline text-outline-variant">•</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant dark:text-surface-variant">
+          © 2025 QuickCourt Operations Inc. Ahmedabad, Gujarat. Precision court scheduling &amp; sports facility engine.
+        </p>
+</div>
+<!-- Footer Navigation Links -->
+<nav class="flex flex-wrap justify-center items-center gap-6">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">Terms of Service</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">Venue Standards</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">API Docs</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface text-body-sm font-body-sm transition-colors duration-150 flex items-center gap-1.5" href="#">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> System Status
+        </a>
+</nav>
+</div>
+</footer>
+<!-- Toggle Filter Drawer Vanilla Script -->
+<script>
+  const openFilterBtn = document.getElementById('openFilterBtn');
+  const closeFilterBtn = document.getElementById('closeFilterBtn');
+  const cancelFilterBtn = document.getElementById('cancelFilterBtn');
+  const applyFilterBtn = document.getElementById('applyFilterBtn');
+  const filterDrawer = document.getElementById('filterDrawer');
+  const filterBackdrop = document.getElementById('filterBackdrop');
+
+  function openDrawer() {
+    filterBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+    filterBackdrop.classList.add('opacity-100', 'pointer-events-auto');
+    filterDrawer.classList.remove('translate-x-full');
+    filterDrawer.classList.add('translate-x-0');
+    document.body.classList.add('overflow-hidden');
+  }
+
+  function closeDrawer() {
+    filterBackdrop.classList.add('opacity-0', 'pointer-events-none');
+    filterBackdrop.classList.remove('opacity-100', 'pointer-events-auto');
+    filterDrawer.classList.add('translate-x-full');
+    filterDrawer.classList.remove('translate-x-0');
+    document.body.classList.remove('overflow-hidden');
+  }
+
+  if (openFilterBtn) openFilterBtn.addEventListener('click', openDrawer);
+  if (closeFilterBtn) closeFilterBtn.addEventListener('click', closeDrawer);
+  if (cancelFilterBtn) cancelFilterBtn.addEventListener('click', closeDrawer);
+  if (applyFilterBtn) applyFilterBtn.addEventListener('click', closeDrawer);
+  if (filterBackdrop) filterBackdrop.addEventListener('click', closeDrawer);
+</script>
+</body></html>

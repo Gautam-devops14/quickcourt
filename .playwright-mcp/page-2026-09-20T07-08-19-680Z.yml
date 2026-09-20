@@ -1,0 +1,143 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e8]: "Live Facility Network Status:"
+      - generic [ref=e9]: 142 Courts Open Tonight in Ahmedabad
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - generic [ref=e12]: verified
+        - text: Guaranteed Desk Rates
+      - generic [ref=e13]:
+        - generic [ref=e14]: bolt
+        - text: Instant Confirmation
+  - main [ref=e15]:
+    - generic [ref=e17]:
+      - generic [ref=e18]:
+        - generic [ref=e19]:
+          - generic [ref=e20]: sports_tennis
+          - text: Next-Gen Athletic Booking Infrastructure
+        - heading "Find and book local sports courts in seconds." [level=1] [ref=e21]
+        - paragraph [ref=e22]: Real-time court availability, synchronized venue reservation desks, and zero booking markups for badminton, football turfs, tennis, pickleball, and padel.
+      - generic [ref=e23]:
+        - generic [ref=e24]:
+          - button "grid_view All Sports" [ref=e25] [cursor=pointer]:
+            - generic [ref=e26]: grid_view
+            - text: All Sports
+          - button "sports_tennis Badminton" [ref=e27] [cursor=pointer]:
+            - generic [ref=e28]: sports_tennis
+            - text: Badminton
+          - button "sports_soccer Football Turf" [ref=e29] [cursor=pointer]:
+            - generic [ref=e30]: sports_soccer
+            - text: Football Turf
+          - button "sports_baseball Tennis" [ref=e31] [cursor=pointer]:
+            - generic [ref=e32]: sports_baseball
+            - text: Tennis
+        - generic [ref=e33]:
+          - generic [ref=e34]:
+            - generic [ref=e35]: search
+            - textbox "Venue name, club, or locality..." [ref=e36]
+          - generic [ref=e37] [cursor=pointer]:
+            - generic [ref=e38]: calendar_today
+            - generic [ref=e39]: Today
+            - generic [ref=e40]: expand_more
+          - generic [ref=e41] [cursor=pointer]:
+            - generic [ref=e42]: schedule
+            - generic [ref=e43]: 7:00 PM+
+            - generic [ref=e44]: expand_more
+          - link "Search Courts" [ref=e45] [cursor=pointer]:
+            - /url: /explore
+    - generic [ref=e47]:
+      - generic [ref=e48]:
+        - generic [ref=e49]:
+          - heading "Browse by Discipline" [level=2] [ref=e50]
+          - paragraph [ref=e51]: Verified competition-grade facilities and neighborhood venues
+        - generic [ref=e52]: 7 Categories Managed
+      - generic [ref=e53]:
+        - link "sports Badminton Dynamic count" [ref=e54] [cursor=pointer]:
+          - /url: /explore
+          - generic [ref=e55]: sports
+          - paragraph [ref=e57]: Badminton
+          - paragraph [ref=e58]: Dynamic count
+        - link "sports Football Turf Dynamic count" [ref=e60] [cursor=pointer]:
+          - /url: /explore
+          - generic [ref=e61]: sports
+          - paragraph [ref=e63]: Football Turf
+          - paragraph [ref=e64]: Dynamic count
+        - link "sports Tennis Dynamic count" [ref=e66] [cursor=pointer]:
+          - /url: /explore
+          - generic [ref=e67]: sports
+          - paragraph [ref=e69]: Tennis
+          - paragraph [ref=e70]: Dynamic count
+        - link "sports Pickleball Dynamic count" [ref=e72] [cursor=pointer]:
+          - /url: /explore
+          - generic [ref=e73]: sports
+          - paragraph [ref=e75]: Pickleball
+          - paragraph [ref=e76]: Dynamic count
+        - link "sports Basketball Dynamic count" [ref=e78] [cursor=pointer]:
+          - /url: /explore
+          - generic [ref=e79]: sports
+          - paragraph [ref=e81]: Basketball
+          - paragraph [ref=e82]: Dynamic count
+        - link "sports Cricket Nets Dynamic count" [ref=e84] [cursor=pointer]:
+          - /url: /explore
+          - generic [ref=e85]: sports
+          - paragraph [ref=e87]: Cricket Nets
+          - paragraph [ref=e88]: Dynamic count
+        - link "sports Padel Dynamic count" [ref=e90] [cursor=pointer]:
+          - /url: /explore
+          - generic [ref=e91]: sports
+          - paragraph [ref=e93]: Padel
+          - paragraph [ref=e94]: Dynamic count
+    - generic [ref=e97]:
+      - generic [ref=e98]:
+        - heading "Top Rated Venues" [level=2] [ref=e99]
+        - link "View all arrow_forward" [ref=e100] [cursor=pointer]:
+          - /url: /explore
+          - text: View all
+          - generic [ref=e101]: arrow_forward
+      - generic [ref=e102]:
+        - generic [ref=e103]:
+          - generic [ref=e105]:
+            - generic [ref=e106]: star
+            - text: "4.8"
+          - generic [ref=e107]:
+            - heading "Ahmedabad Sports Arena" [level=3] [ref=e108]
+            - paragraph [ref=e109]:
+              - generic [ref=e110]: location_on
+              - text: SG Highway, Ahmedabad, Gujarat
+            - generic [ref=e111]:
+              - generic [ref=e112]: Badminton
+              - generic [ref=e113]: Tennis
+            - link "View Availability" [ref=e114] [cursor=pointer]:
+              - /url: /venue/f1
+        - generic [ref=e115]:
+          - generic [ref=e117]:
+            - generic [ref=e118]: star
+            - text: "4.8"
+          - generic [ref=e119]:
+            - heading "Navrangpura Sports Hub" [level=3] [ref=e120]
+            - paragraph [ref=e121]:
+              - generic [ref=e122]: location_on
+              - text: Navrangpura, Ahmedabad, Gujarat
+            - generic [ref=e123]:
+              - generic [ref=e124]: Cricket
+              - generic [ref=e125]: Football
+            - link "View Availability" [ref=e126] [cursor=pointer]:
+              - /url: /venue/f2
+    - generic [ref=e128]:
+      - heading "Why athletes choose QuickCourt" [level=2] [ref=e129]
+      - generic [ref=e130]:
+        - generic [ref=e131]:
+          - generic [ref=e132]: bolt
+          - heading "Instant Confirmation" [level=3] [ref=e134]
+          - paragraph [ref=e135]: Live syncing with venue desks means your slot is guaranteed the moment you book.
+        - generic [ref=e136]:
+          - generic [ref=e137]: verified
+          - heading "No Hidden Markups" [level=3] [ref=e139]
+          - paragraph [ref=e140]: Pay exactly what the venue charges. We don't inflate prices for booking online.
+        - generic [ref=e141]:
+          - generic [ref=e142]: event_available
+          - heading "Real-time Matrix" [level=3] [ref=e144]
+          - paragraph [ref=e145]: View all courts and times simultaneously in our high-density scheduling view.
+  - button "construction" [ref=e147] [cursor=pointer]
+  - alert [ref=e149]

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>QuickCourt | Apex Badminton &amp; Multi-Sport Arena - Court &amp; Time Selection</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Plus Jakarta Sans Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary": "#ffffff",
+            "tertiary-fixed": "#dae2fd",
+            "surface-tint": "#216b43",
+            "surface-container-high": "#dce9ff",
+            "on-surface": "#0b1c30",
+            "secondary-fixed": "#6ffbbe",
+            "surface-container-highest": "#d3e4fe",
+            "inverse-on-surface": "#eaf1ff",
+            "secondary-fixed-dim": "#4edea3",
+            "primary-fixed": "#a8f3c1",
+            "on-tertiary-fixed": "#131b2e",
+            "on-tertiary": "#ffffff",
+            "on-secondary-fixed-variant": "#005236",
+            "background": "#f8f9ff",
+            "on-primary-container": "#89d2a2",
+            "on-secondary-fixed": "#002113",
+            "on-primary-fixed-variant": "#00522e",
+            "surface": "#f8f9ff",
+            "error-container": "#ffdad6",
+            "tertiary": "#31394e",
+            "on-surface-variant": "#404941",
+            "surface-bright": "#f8f9ff",
+            "surface-container-lowest": "#ffffff",
+            "outline-variant": "#bfc9bf",
+            "surface-variant": "#d3e4fe",
+            "on-tertiary-container": "#bbc2dc",
+            "secondary": "#006c49",
+            "on-secondary": "#ffffff",
+            "tertiary-fixed-dim": "#bec6e0",
+            "on-tertiary-fixed-variant": "#3f465c",
+            "inverse-surface": "#213145",
+            "primary": "#004225",
+            "on-secondary-container": "#00714d",
+            "surface-container": "#e5eeff",
+            "inverse-primary": "#8dd6a6",
+            "primary-container": "#0a5c36",
+            "on-error-container": "#93000a",
+            "secondary-container": "#6cf8bb",
+            "on-error": "#ffffff",
+            "tertiary-container": "#485066",
+            "surface-dim": "#cbdbf5",
+            "outline": "#707a71",
+            "primary-fixed-dim": "#8dd6a6",
+            "on-primary-fixed": "#002110",
+            "surface-container-low": "#eff4ff",
+            "on-background": "#0b1c30",
+            "error": "#ba1a1a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "margin-lg": "3rem",
+            "space-lg": "1.5rem",
+            "margin-md": "2rem",
+            "space-xs": "0.25rem",
+            "gutter-lg": "2rem",
+            "gutter": "1rem",
+            "space-xl": "2rem",
+            "gutter-md": "1.5rem",
+            "margin": "1rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "display-lg": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-xl-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    .hatch-pattern {
+      background: repeating-linear-gradient(
+        -45deg,
+        #f1f5f9,
+        #f1f5f9 6px,
+        #e2e8f0 6px,
+        #e2e8f0 12px
+      );
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col font-body-md">
+<!-- TOP APP BAR (Shared Components JSON Anchor) -->
+<header class="w-full bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline sticky top-0 z-40">
+<div class="w-full px-6 lg:px-12 flex justify-between items-center h-16 max-w-7xl mx-auto">
+<!-- Left: Logo & Location Indicator -->
+<div class="flex items-center gap-6">
+<a class="text-headline-md font-headline-md font-bold tracking-tight text-primary dark:text-primary-fixed flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-primary-container text-2xl" style="font-variation-settings: 'FILL' 1;">sports_tennis</span>
+<span>QuickCourt</span>
+</a>
+<div class="h-5 w-[1px] bg-outline-variant hidden sm:block"></div>
+<button class="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-surface hover:bg-surface-container-high transition-colors duration-150 text-body-sm font-body-sm text-on-surface">
+<span class="material-symbols-outlined text-base text-primary-container">location_on</span>
+<span class="font-semibold">Austin, TX</span>
+<span class="material-symbols-outlined text-xs text-outline">expand_more</span>
+</button>
+</div>
+<!-- Navigation Links -->
+<nav class="hidden md:flex items-center space-x-8">
+<!-- Exact match for Venues active destination flow -->
+<a class="text-primary dark:text-primary-fixed font-semibold border-b-2 border-primary dark:border-primary-fixed pb-1 text-label-lg font-label-lg" href="#">Venues</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors duration-150 pb-1 text-label-lg font-label-lg" href="#">Schedule</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors duration-150 pb-1 text-label-lg font-label-lg" href="#">Tournaments</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors duration-150 pb-1 text-label-lg font-label-lg" href="#">Support</a>
+</nav>
+<!-- Trailing Action Cluster -->
+<div class="flex items-center gap-3">
+<div class="hidden lg:flex items-center space-x-2 mr-2">
+<button aria-label="Help" class="p-2 text-outline hover:text-primary dark:hover:text-primary-fixed transition-colors duration-150">
+<span class="material-symbols-outlined text-xl">help_outline</span>
+</button>
+<button aria-label="Language" class="p-2 text-outline hover:text-primary dark:hover:text-primary-fixed transition-colors duration-150">
+<span class="material-symbols-outlined text-xl">language</span>
+</button>
+</div>
+<button class="text-on-surface-variant dark:text-surface-variant hover:text-primary text-label-lg font-label-lg font-semibold px-3 py-2 transition-all duration-150 hidden sm:inline-block">Contact Sales</button>
+<button class="bg-primary-container text-on-primary hover:bg-primary text-label-lg font-label-lg px-4 py-2 rounded-xl transition-all duration-150 active:scale-[0.99] font-medium shadow-sm flex items-center gap-1.5">
+<span class="material-symbols-outlined text-lg">account_circle</span>
+<span>My Bookings</span>
+</button>
+</div>
+</div>
+</header>
+<!-- BREADCRUMB & VENUE HEADER STRIP -->
+<section class="bg-surface-container-lowest border-b border-outline-variant/60">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 pt-4 pb-6">
+<!-- Breadcrumb Navigation -->
+<nav class="flex items-center gap-2 text-body-sm font-body-sm text-outline mb-3">
+<a class="hover:text-primary transition-colors" href="#">Venues</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Austin</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Apex Badminton &amp; Multi-Sport Arena</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-on-surface font-semibold">Court &amp; Time Selection</span>
+</nav>
+<!-- Venue Title Card Grid -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<div class="space-y-1.5">
+<div class="flex items-center flex-wrap gap-2.5">
+<h1 class="text-headline-xl font-headline-xl tracking-tight text-on-surface">Apex Badminton &amp; Multi-Sport Arena</h1>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary-container/40 text-primary font-label-sm text-xs font-bold border border-secondary-fixed-dim">
+<span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">verified</span>
+              BWF Certified
+            </span>
+</div>
+<div class="flex flex-wrap items-center gap-4 text-body-sm font-body-sm text-on-surface-variant">
+<!-- Badges -->
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-md bg-surface-container text-tertiary font-medium text-xs">Badminton (10 Courts)</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container text-tertiary font-medium text-xs">Pickleball (4 Boxes)</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container text-tertiary font-medium text-xs">Synthetic Turf</span>
+</div>
+<div class="h-3 w-[1px] bg-outline-variant hidden sm:block"></div>
+<!-- Reviews -->
+<div class="flex items-center gap-1 text-on-surface">
+<span class="material-symbols-outlined text-amber-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">4.9</span>
+<span class="text-outline">(248 verified athletes)</span>
+</div>
+<div class="h-3 w-[1px] bg-outline-variant hidden sm:block"></div>
+<!-- Address -->
+<span class="flex items-center gap-1 text-outline">
+<span class="material-symbols-outlined text-sm">location_on</span>
+              4105 Metric Blvd, Austin, TX 78758
+            </span>
+</div>
+</div>
+<!-- Pricing Headline & Venue Quick Filters -->
+<div class="flex sm:items-center gap-4 lg:self-end">
+<div class="text-right">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-outline block">Facility Desk Rate</span>
+<span class="text-headline-md font-headline-md font-bold text-primary-container">$24.00 – $36.00 <span class="text-body-sm font-body-sm text-outline font-normal">/ hr</span></span>
+</div>
+<div class="h-10 w-[1px] bg-outline-variant hidden sm:block"></div>
+<div class="flex bg-surface-container rounded-xl p-1 border border-outline-variant/70">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-primary text-label-md font-label-md font-semibold shadow-sm transition-all">All Sports</button>
+<button class="px-3 py-1.5 rounded-lg text-outline hover:text-on-surface text-label-md font-label-md transition-all">Badminton</button>
+<button class="px-3 py-1.5 rounded-lg text-outline hover:text-on-surface text-label-md font-label-md transition-all">Pickleball</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- MAIN RESERVATION WORKSPACE (12-COL DESKTOP SPLIT) -->
+<main class="flex-grow max-w-7xl w-full mx-auto px-6 lg:px-12 py-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- LEFT MATRIX CANVAS (8 COLUMNS) -->
+<section class="lg:col-span-8 space-y-6">
+<!-- SECTION 1: DATE SELECTION STRIP & FILTER BAR -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/80 p-4 shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-xl">calendar_month</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Select Date &amp; Session Range</h2>
+</div>
+<!-- Mini Calendar Button -->
+<button class="flex items-center gap-1.5 text-body-sm font-body-sm text-primary hover:text-primary-container px-2.5 py-1 rounded-lg border border-outline-variant hover:border-primary transition-all">
+<span class="material-symbols-outlined text-sm">event</span>
+<span class="font-medium">October 2025</span>
+<span class="material-symbols-outlined text-xs">keyboard_arrow_down</span>
+</button>
+</div>
+<!-- Date Selector Horizontal Rail -->
+<div class="flex items-center gap-2.5 overflow-x-auto pb-1 custom-scrollbar">
+<!-- Oct 24 (Selected Active Date) -->
+<button class="flex-shrink-0 w-28 py-2.5 px-2 rounded-xl bg-primary-container text-on-primary flex flex-col items-center justify-center border-2 border-primary shadow-sm transition-all cursor-pointer">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-on-primary-container">Today</span>
+<span class="text-headline-md font-headline-md font-bold my-0.5">Oct 24</span>
+<span class="text-[10px] leading-tight font-bold bg-white/20 text-white px-2 py-0.5 rounded-full mt-1">14 slots left</span>
+</button>
+<!-- Oct 25 -->
+<button class="flex-shrink-0 w-28 py-2.5 px-2 rounded-xl bg-surface-container-lowest hover:bg-surface text-on-surface flex flex-col items-center justify-center border border-outline-variant hover:border-outline transition-all cursor-pointer">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-outline">Fri</span>
+<span class="text-headline-md font-headline-md font-bold my-0.5">Oct 25</span>
+<span class="text-[10px] leading-tight font-semibold text-secondary px-2 py-0.5 rounded-full bg-secondary-container/30 mt-1">22 slots left</span>
+</button>
+<!-- Oct 26 -->
+<button class="flex-shrink-0 w-28 py-2.5 px-2 rounded-xl bg-surface-container-lowest hover:bg-surface text-on-surface flex flex-col items-center justify-center border border-outline-variant hover:border-outline transition-all cursor-pointer">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-outline">Sat</span>
+<span class="text-headline-md font-headline-md font-bold my-0.5">Oct 26</span>
+<span class="text-[10px] leading-tight font-semibold text-secondary px-2 py-0.5 rounded-full bg-secondary-container/30 mt-1">8 slots left</span>
+</button>
+<!-- Oct 27 -->
+<button class="flex-shrink-0 w-28 py-2.5 px-2 rounded-xl bg-surface-container-lowest hover:bg-surface text-on-surface flex flex-col items-center justify-center border border-outline-variant hover:border-outline transition-all cursor-pointer">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-outline">Sun</span>
+<span class="text-headline-md font-headline-md font-bold my-0.5">Oct 27</span>
+<span class="text-[10px] leading-tight font-semibold text-secondary px-2 py-0.5 rounded-full bg-secondary-container/30 mt-1">19 slots left</span>
+</button>
+<!-- Oct 28 -->
+<button class="flex-shrink-0 w-28 py-2.5 px-2 rounded-xl bg-surface-container-lowest hover:bg-surface text-on-surface flex flex-col items-center justify-center border border-outline-variant hover:border-outline transition-all cursor-pointer">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-outline">Mon</span>
+<span class="text-headline-md font-headline-md font-bold my-0.5">Oct 28</span>
+<span class="text-[10px] leading-tight font-semibold text-secondary px-2 py-0.5 rounded-full bg-secondary-container/30 mt-1">31 slots left</span>
+</button>
+<!-- Oct 29 -->
+<button class="flex-shrink-0 w-28 py-2.5 px-2 rounded-xl bg-surface-container-lowest hover:bg-surface text-on-surface flex flex-col items-center justify-center border border-outline-variant hover:border-outline transition-all cursor-pointer">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-outline">Tue</span>
+<span class="text-headline-md font-headline-md font-bold my-0.5">Oct 29</span>
+<span class="text-[10px] leading-tight font-semibold text-secondary px-2 py-0.5 rounded-full bg-secondary-container/30 mt-1">27 slots left</span>
+</button>
+<!-- Oct 30 -->
+<button class="flex-shrink-0 w-28 py-2.5 px-2 rounded-xl bg-surface-container-lowest hover:bg-surface text-on-surface flex flex-col items-center justify-center border border-outline-variant hover:border-outline transition-all cursor-pointer">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-outline">Wed</span>
+<span class="text-headline-md font-headline-md font-bold my-0.5">Oct 30</span>
+<span class="text-[10px] leading-tight font-semibold text-secondary px-2 py-0.5 rounded-full bg-secondary-container/30 mt-1">34 slots left</span>
+</button>
+</div>
+<!-- Time of Day Range Filters -->
+<div class="pt-2 border-t border-outline-variant/50 flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="text-label-sm font-label-sm text-outline mr-1">Time Block:</span>
+<button class="px-3 py-1 rounded-lg text-xs font-semibold bg-surface-container-lowest text-outline hover:text-on-surface border border-outline-variant">All Day</button>
+<button class="px-3 py-1 rounded-lg text-xs font-semibold bg-surface-container-lowest text-outline hover:text-on-surface border border-outline-variant">Morning (6 AM - 12 PM)</button>
+<button class="px-3 py-1 rounded-lg text-xs font-semibold bg-surface-container-lowest text-outline hover:text-on-surface border border-outline-variant">Afternoon (12 PM - 5 PM)</button>
+<button class="px-3 py-1 rounded-lg text-xs font-semibold bg-primary-container text-on-primary border border-primary">Evening (5 PM - 11 PM)</button>
+</div>
+<div class="text-label-sm font-label-sm text-outline flex items-center gap-1">
+<span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              Live Sync: 10s ago
+            </div>
+</div>
+</div>
+<!-- MATRIX LEGEND -->
+<div class="flex flex-wrap items-center gap-y-2 gap-x-6 px-1 text-label-sm font-label-sm"><div class="flex items-center gap-2"><div class="w-6 h-6 rounded border-2 border-outline bg-surface-container-lowest flex items-center justify-center shadow-2xs"><span class="text-[10px] font-bold text-on-surface">$</span></div><div><span class="text-on-surface font-bold">Available</span> <span class="text-outline text-xs">(Price / Selectable)</span></div></div><div class="flex items-center gap-2"><div class="w-6 h-6 rounded bg-primary-container text-on-primary flex items-center justify-center border-2 border-primary ring-1 ring-primary"><span class="material-symbols-outlined text-sm font-bold">check</span></div><div><span class="text-on-surface font-bold">Selected (You)</span></div></div><div class="flex items-center gap-2"><div class="w-6 h-6 rounded bg-surface-container-highest border border-outline-variant/80 flex items-center justify-center text-outline"><span class="material-symbols-outlined text-xs">person</span></div><div><span class="text-outline font-semibold">Booked</span> <span class="text-outline text-xs">(Occupied)</span></div></div><div class="flex items-center gap-2"><div class="w-6 h-6 rounded bg-amber-100 border-2 border-amber-300 flex items-center justify-center text-amber-800"><span class="material-symbols-outlined text-xs">lock</span></div><div><span class="text-amber-800 font-bold">Temporarily Locked</span> <span class="text-amber-700 text-xs">(In Cart)</span></div></div><div class="flex items-center gap-2"><div class="w-6 h-6 rounded hatch-pattern border-2 border-outline-variant flex items-center justify-center text-outline"><span class="material-symbols-outlined text-xs text-outline">block</span></div><div><span class="text-outline font-semibold">Blocked</span> <span class="text-outline text-xs">(Host / Clinic)</span></div></div></div>
+<!-- SECTION 2: COURT SCHEDULE MATRIX -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/80 shadow-sm overflow-hidden">
+<div class="overflow-x-auto custom-scrollbar">
+<div class="min-w-[760px]">
+<!-- Timeline Header Bar -->
+<div class="grid grid-cols-6 border-b border-outline-variant/80 bg-surface-container-low text-label-sm font-label-sm font-semibold text-outline text-center py-2.5">
+<div class="text-left pl-4 font-bold text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base text-primary-container">stadium</span>
+<span>Court Specification</span>
+</div>
+<div class="border-l border-outline-variant/60">06:00 PM – 07:00 PM</div>
+<div class="border-l border-outline-variant/60 relative">
+<div class="absolute -top-1 left-0 transform -translate-x-1/2 w-2 h-2 rounded-full bg-emerald-500"></div>
+<span class="text-primary font-bold">07:00 PM – 08:00 PM</span>
+</div>
+<div class="border-l border-outline-variant/60">08:00 PM – 09:00 PM</div>
+<div class="border-l border-outline-variant/60">09:00 PM – 10:00 PM</div>
+<div class="border-l border-outline-variant/60">10:00 PM – 11:00 PM</div>
+</div>
+<!-- COURT ROW 1: Court 1 Championship Taraflex -->
+<div class="grid grid-cols-6 border-b border-outline-variant/50 hover:bg-surface-container-low/40 transition-colors"><div class="p-3.5 pr-2"><div class="flex items-center justify-between"><span class="text-headline-sm font-headline-sm text-on-surface">Court 1</span><span class="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed">Championship</span></div><p class="text-label-sm font-label-sm text-outline mt-0.5">BWF Taraflex (7.0mm Green)</p><p class="text-[11px] text-on-surface-variant flex items-center gap-1 mt-1"><span class="material-symbols-outlined text-xs text-primary">lightbulb</span> 950 Lux anti-glare</p></div><div class="p-2 border-l border-outline-variant/40 flex items-center"><div class="w-full h-14 rounded-lg bg-surface-container border border-outline-variant/70 flex flex-col items-center justify-center text-outline cursor-not-allowed select-none"><span class="text-label-sm font-bold text-outline flex items-center gap-1"><span class="material-symbols-outlined text-xs">event_busy</span> Booked</span><span class="text-[10px] text-outline font-medium">League Play</span></div></div><div class="p-2 border-l border-outline-variant/40 flex items-center"><div class="w-full h-14 rounded-lg bg-primary-container text-on-primary border-2 border-primary flex flex-col items-center justify-center shadow-sm cursor-pointer ring-2 ring-primary ring-offset-1"><div class="flex items-center gap-1 font-bold text-label-md"><span class="material-symbols-outlined text-sm font-bold">check_circle</span><span>Selected</span></div><span class="text-xs font-semibold text-on-primary-container">$24.00</span></div></div><div class="p-2 border-l border-outline-variant/40 flex items-center"><button class="w-full h-14 rounded-lg bg-surface-container-lowest hover:bg-emerald-50 text-on-surface border-2 border-outline-variant hover:border-primary transition-all flex flex-col items-center justify-center group cursor-pointer hover:shadow-sm"><span class="text-label-md font-bold text-on-surface group-hover:text-primary">$24.00</span><span class="text-[10px] px-1.5 py-0.5 rounded-full bg-secondary-container/40 text-secondary font-bold flex items-center gap-0.5 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Available</span></button></div><div class="p-2 border-l border-outline-variant/40 flex items-center"><div class="w-full h-14 rounded-lg bg-amber-50 border-2 border-amber-300 flex flex-col items-center justify-center text-amber-800 cursor-not-allowed select-none"><span class="text-[11px] font-bold flex items-center gap-1 text-amber-800"><span class="material-symbols-outlined text-xs animate-spin">timelapse</span> Locked</span><span class="text-[10px] text-amber-700 font-medium">In checkout (2m)</span></div></div><div class="p-2 border-l border-outline-variant/40 flex items-center"><button class="w-full h-14 rounded-lg bg-surface-container-lowest hover:bg-emerald-50 text-on-surface border-2 border-outline-variant hover:border-primary transition-all flex flex-col items-center justify-center group cursor-pointer hover:shadow-sm"><span class="text-label-md font-bold text-on-surface group-hover:text-primary">$22.00</span><span class="text-[10px] px-1.5 py-0.5 rounded-full bg-secondary-container/40 text-secondary font-bold flex items-center gap-0.5 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Available</span></button></div></div>
+<!-- COURT ROW 2: Court 2 Pro Synthetic Green -->
+<div class="grid grid-cols-6 border-b border-outline-variant/50 hover:bg-surface-container-low/40 transition-colors"><div class="p-3.5 pr-2"><div class="flex items-center justify-between"><span class="text-headline-sm font-headline-sm text-on-surface">Court 2</span><span class="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-surface-container text-tertiary">Standard</span></div><p class="text-label-sm font-label-sm text-outline mt-0.5">Pro Synthetic Multi-Cushion</p><p class="text-[11px] text-on-surface-variant flex items-center gap-1 mt-1"><span class="material-symbols-outlined text-xs text-primary">ac_unit</span> Climate A/C 68°F</p></div><div class="p-2 border-l border-outline-variant/40 flex items-center"><button class="w-full h-14 rounded-lg bg-surface-container-lowest hover:bg-emerald-50 text-on-surface border-2 border-outline-variant hover:border-primary transition-all flex flex-col items-center justify-center group cursor-pointer hover:shadow-sm"><span class="text-label-md font-bold text-on-surface group-hover:text-primary">$24.00</span><span class="text-[10px] px-1.5 py-0.5 rounded-full bg-secondary-container/40 text-secondary font-bold flex items-center gap-0.5 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Available</span></button></div><div class="p-2 border-l border-outline-variant/40 flex items-center"><div class="w-full h-14 rounded-lg bg-surface-container border border-outline-variant/70 flex flex-col items-center justify-center text-outline cursor-not-allowed select-none"><span class="text-label-sm font-bold text-outline flex items-center gap-1"><span class="material-symbols-outlined text-xs">event_busy</span> Booked</span><span class="text-[10px] text-outline font-medium">Member Resv</span></div></div><div class="p-2 border-l border-outline-variant/40 flex items-center"><div class="w-full h-14 rounded-lg bg-surface-container border border-outline-variant/70 flex flex-col items-center justify-center text-outline cursor-not-allowed select-none"><span class="text-label-sm font-bold text-outline flex items-center gap-1"><span class="material-symbols-outlined text-xs">event_busy</span> Booked</span><span class="text-[10px] text-outline font-medium">Member Resv</span></div></div><div class="p-2 border-l border-outline-variant/40 flex items-center"><button class="w-full h-14 rounded-lg bg-surface-container-lowest hover:bg-emerald-50 text-on-surface border-2 border-outline-variant hover:border-primary transition-all flex flex-col items-center justify-center group cursor-pointer hover:shadow-sm"><span class="text-label-md font-bold text-on-surface group-hover:text-primary">$24.00</span><span class="text-[10px] px-1.5 py-0.5 rounded-full bg-secondary-container/40 text-secondary font-bold flex items-center gap-0.5 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Available</span></button></div><div class="p-2 border-l border-outline-variant/40 flex items-center"><button class="w-full h-14 rounded-lg bg-surface-container-lowest hover:bg-emerald-50 text-on-surface border-2 border-outline-variant hover:border-primary transition-all flex flex-col items-center justify-center group cursor-pointer hover:shadow-sm"><span class="text-label-md font-bold text-on-surface group-hover:text-primary">$20.00</span><span class="text-[10px] px-1.5 py-0.5 rounded-full bg-secondary-container/40 text-secondary font-bold flex items-center gap-0.5 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Available</span></button></div></div>
+<!-- COURT ROW 3: Court 3 Club Timber Wood -->
+<div class="grid grid-cols-6 border-b border-outline-variant/50 hover:bg-surface-container-low/40 transition-colors"><div class="p-3.5 pr-2"><div class="flex items-center justify-between"><span class="text-headline-sm font-headline-sm text-on-surface">Court 3</span><span class="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-surface-container text-tertiary">Timber Wood</span></div><p class="text-label-sm font-label-sm text-outline mt-0.5">Sprung Canadian Hard Maple</p><p class="text-[11px] text-on-surface-variant flex items-center gap-1 mt-1"><span class="material-symbols-outlined text-xs text-primary">straighten</span> High impact damping</p></div><div class="p-2 border-l border-outline-variant/40 flex items-center"><button class="w-full h-14 rounded-lg bg-surface-container-lowest hover:bg-emerald-50 text-on-surface border-2 border-outline-variant hover:border-primary transition-all flex flex-col items-center justify-center group cursor-pointer hover:shadow-sm"><span class="text-label-md font-bold text-on-surface group-hover:text-primary">$26.00</span><span class="text-[10px] px-1.5 py-0.5 rounded-full bg-secondary-container/40 text-secondary font-bold flex items-center gap-0.5 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Available</span></button></div><div class="p-2 border-l border-outline-variant/40 flex items-center"><button class="w-full h-14 rounded-lg bg-surface-container-lowest hover:bg-emerald-50 text-on-surface border-2 border-outline-variant hover:border-primary transition-all flex flex-col items-center justify-center group cursor-pointer hover:shadow-sm"><span class="text-label-md font-bold text-on-surface group-hover:text-primary">$26.00</span><span class="text-[10px] px-1.5 py-0.5 rounded-full bg-secondary-container/40 text-secondary font-bold flex items-center gap-0.5 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Available</span></button></div><div class="p-2 border-l border-outline-variant/40 flex items-center"><div class="w-full h-14 rounded-lg hatch-pattern border-2 border-outline-variant/80 flex flex-col items-center justify-center text-outline cursor-not-allowed select-none bg-surface-container-low"><span class="text-[11px] font-bold flex items-center gap-1 text-tertiary"><span class="material-symbols-outlined text-xs text-outline">block</span> <span class="line-through">Blocked</span></span><span class="text-[10px] text-tertiary font-semibold px-1 rounded bg-surface-container-highest/80">Surface Clean</span></div></div><div class="p-2 border-l border-outline-variant/40 flex items-center"><div class="w-full h-14 rounded-lg hatch-pattern border-2 border-outline-variant/80 flex flex-col items-center justify-center text-outline cursor-not-allowed select-none bg-surface-container-low"><span class="text-[11px] font-bold flex items-center gap-1 text-tertiary"><span class="material-symbols-outlined text-xs text-outline">block</span> <span class="line-through">Academy</span></span><span class="text-[10px] text-tertiary font-semibold px-1 rounded bg-surface-container-highest/80">Private Clinic</span></div></div><div class="p-2 border-l border-outline-variant/40 flex items-center"><button class="w-full h-14 rounded-lg bg-surface-container-lowest hover:bg-emerald-50 text-on-surface border-2 border-outline-variant hover:border-primary transition-all flex flex-col items-center justify-center group cursor-pointer hover:shadow-sm"><span class="text-label-md font-bold text-on-surface group-hover:text-primary">$22.00</span><span class="text-[10px] px-1.5 py-0.5 rounded-full bg-secondary-container/40 text-secondary font-bold flex items-center gap-0.5 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Available</span></button></div></div>
+<!-- COURT ROW 4: Court 4 Training Bay -->
+<div class="grid grid-cols-6 border-b border-outline-variant/50 hover:bg-surface-container-low/40 transition-colors"><div class="p-3.5 pr-2"><div class="flex items-center justify-between"><span class="text-headline-sm font-headline-sm text-on-surface">Court 4</span><span class="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-surface-container text-tertiary">Solo / Drill</span></div><p class="text-label-sm font-label-sm text-outline mt-0.5">Half-Court Drill Station</p><p class="text-[11px] text-on-surface-variant flex items-center gap-1 mt-1"><span class="material-symbols-outlined text-xs text-primary">smart_toy</span> Feeder compatible</p></div><div class="p-2 border-l border-outline-variant/40 flex items-center"><button class="w-full h-14 rounded-lg bg-surface-container-lowest hover:bg-emerald-50 text-on-surface border-2 border-outline-variant hover:border-primary transition-all flex flex-col items-center justify-center group cursor-pointer hover:shadow-sm"><span class="text-label-md font-bold text-on-surface group-hover:text-primary">$18.00</span><span class="text-[10px] px-1.5 py-0.5 rounded-full bg-secondary-container/40 text-secondary font-bold flex items-center gap-0.5 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Available</span></button></div><div class="p-2 border-l border-outline-variant/40 flex items-center"><button class="w-full h-14 rounded-lg bg-surface-container-lowest hover:bg-emerald-50 text-on-surface border-2 border-outline-variant hover:border-primary transition-all flex flex-col items-center justify-center group cursor-pointer hover:shadow-sm"><span class="text-label-md font-bold text-on-surface group-hover:text-primary">$18.00</span><span class="text-[10px] px-1.5 py-0.5 rounded-full bg-secondary-container/40 text-secondary font-bold flex items-center gap-0.5 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Available</span></button></div><div class="p-2 border-l border-outline-variant/40 flex items-center"><button class="w-full h-14 rounded-lg bg-surface-container-lowest hover:bg-emerald-50 text-on-surface border-2 border-outline-variant hover:border-primary transition-all flex flex-col items-center justify-center group cursor-pointer hover:shadow-sm"><span class="text-label-md font-bold text-on-surface group-hover:text-primary">$18.00</span><span class="text-[10px] px-1.5 py-0.5 rounded-full bg-secondary-container/40 text-secondary font-bold flex items-center gap-0.5 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Available</span></button></div><div class="p-2 border-l border-outline-variant/40 flex items-center"><div class="w-full h-14 rounded-lg bg-surface-container border border-outline-variant/70 flex flex-col items-center justify-center text-outline cursor-not-allowed select-none"><span class="text-label-sm font-bold text-outline flex items-center gap-1"><span class="material-symbols-outlined text-xs">event_busy</span> Booked</span><span class="text-[10px] text-outline font-medium">Drill Bay</span></div></div><div class="p-2 border-l border-outline-variant/40 flex items-center"><div class="w-full h-14 rounded-lg bg-surface-container border border-outline-variant/70 flex flex-col items-center justify-center text-outline cursor-not-allowed select-none"><span class="text-label-sm font-bold text-outline flex items-center gap-1"><span class="material-symbols-outlined text-xs">event_busy</span> Booked</span><span class="text-[10px] text-outline font-medium">Drill Bay</span></div></div></div>
+<!-- COURT ROW 5: Court 5 Pickleball Dual Box -->
+<div class="grid grid-cols-6 hover:bg-surface-container-low/40 transition-colors"><div class="p-3.5 pr-2"><div class="flex items-center justify-between"><span class="text-headline-sm font-headline-sm text-on-surface">Court 5</span><span class="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed">Pickleball</span></div><p class="text-label-sm font-label-sm text-outline mt-0.5">Dual Line Regulation Box</p><p class="text-[11px] text-on-surface-variant flex items-center gap-1 mt-1"><span class="material-symbols-outlined text-xs text-primary">sports_tennis</span> Heavy-duty net</p></div><div class="p-2 border-l border-outline-variant/40 flex items-center"><button class="w-full h-14 rounded-lg bg-surface-container-lowest hover:bg-emerald-50 text-on-surface border-2 border-outline-variant hover:border-primary transition-all flex flex-col items-center justify-center group cursor-pointer hover:shadow-sm"><span class="text-label-md font-bold text-on-surface group-hover:text-primary">$28.00</span><span class="text-[10px] px-1.5 py-0.5 rounded-full bg-secondary-container/40 text-secondary font-bold flex items-center gap-0.5 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Available</span></button></div><div class="p-2 border-l border-outline-variant/40 flex items-center"><div class="w-full h-14 rounded-lg bg-surface-container border border-outline-variant/70 flex flex-col items-center justify-center text-outline cursor-not-allowed select-none"><span class="text-label-sm font-bold text-outline flex items-center gap-1"><span class="material-symbols-outlined text-xs">event_busy</span> Booked</span><span class="text-[10px] text-outline font-medium">Pickle Duos</span></div></div><div class="p-2 border-l border-outline-variant/40 flex items-center"><button class="w-full h-14 rounded-lg bg-surface-container-lowest hover:bg-emerald-50 text-on-surface border-2 border-outline-variant hover:border-primary transition-all flex flex-col items-center justify-center group cursor-pointer hover:shadow-sm"><span class="text-label-md font-bold text-on-surface group-hover:text-primary">$28.00</span><span class="text-[10px] px-1.5 py-0.5 rounded-full bg-secondary-container/40 text-secondary font-bold flex items-center gap-0.5 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Available</span></button></div><div class="p-2 border-l border-outline-variant/40 flex items-center"><button class="w-full h-14 rounded-lg bg-surface-container-lowest hover:bg-emerald-50 text-on-surface border-2 border-outline-variant hover:border-primary transition-all flex flex-col items-center justify-center group cursor-pointer hover:shadow-sm"><span class="text-label-md font-bold text-on-surface group-hover:text-primary">$28.00</span><span class="text-[10px] px-1.5 py-0.5 rounded-full bg-secondary-container/40 text-secondary font-bold flex items-center gap-0.5 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Available</span></button></div><div class="p-2 border-l border-outline-variant/40 flex items-center"><button class="w-full h-14 rounded-lg bg-surface-container-lowest hover:bg-emerald-50 text-on-surface border-2 border-outline-variant hover:border-primary transition-all flex flex-col items-center justify-center group cursor-pointer hover:shadow-sm"><span class="text-label-md font-bold text-on-surface group-hover:text-primary">$24.00</span><span class="text-[10px] px-1.5 py-0.5 rounded-full bg-secondary-container/40 text-secondary font-bold flex items-center gap-0.5 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Available</span></button></div></div>
+</div>
+</div>
+</div>
+<!-- SECTION 3: ADD-ONS & ATHLETE EQUIPMENT DRAWER -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/80 p-5 shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface">Equipment &amp; Facility Add-ons</h3>
+<p class="text-body-sm font-body-sm text-outline">Pre-strung tournament racquets and match shuttles ready at court check-in desk.</p>
+</div>
+<span class="text-label-sm font-label-sm text-primary font-semibold">Optional</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
+<!-- Addon 1: Yonex Racquet -->
+<label class="relative flex flex-col p-3.5 rounded-xl border-2 border-outline-variant/70 hover:border-outline cursor-pointer transition-all bg-surface hover:bg-surface-container-high/30">
+<div class="flex items-start justify-between mb-2">
+<span class="material-symbols-outlined text-primary text-2xl">sports_tennis</span>
+<input checked="" class="w-[18px] h-[18px] text-primary-container rounded border-outline-variant focus:ring-primary" type="checkbox"/>
+</div>
+<span class="font-bold text-label-lg text-on-surface">Yonex Astrox 88D Pro</span>
+<span class="text-body-sm text-outline mb-2">4U / BG80 Pre-strung 26lbs</span>
+<span class="mt-auto font-bold text-label-md text-primary-container">+$5.00 <span class="text-outline font-normal text-xs">/ session</span></span>
+</label>
+<!-- Addon 2: Shuttles -->
+<label class="relative flex flex-col p-3.5 rounded-xl border-2 border-outline-variant/70 hover:border-outline cursor-pointer transition-all bg-surface hover:bg-surface-container-high/30">
+<div class="flex items-start justify-between mb-2">
+<span class="material-symbols-outlined text-primary text-2xl">sports_baseball</span>
+<input class="w-[18px] h-[18px] text-primary-container rounded border-outline-variant focus:ring-primary" type="checkbox"/>
+</div>
+<span class="font-bold text-label-lg text-on-surface">Aerosensa 30 Shuttles</span>
+<span class="text-body-sm text-outline mb-2">Tube of 6 Feather Birds (Speed 77)</span>
+<span class="mt-auto font-bold text-label-md text-primary-container">+$8.00 <span class="text-outline font-normal text-xs">/ tube</span></span>
+</label>
+<!-- Addon 3: Ball/Shuttle Machine -->
+<label class="relative flex flex-col p-3.5 rounded-xl border-2 border-outline-variant/70 hover:border-outline cursor-pointer transition-all bg-surface hover:bg-surface-container-high/30">
+<div class="flex items-start justify-between mb-2">
+<span class="material-symbols-outlined text-primary text-2xl">smart_toy</span>
+<input class="w-[18px] h-[18px] text-primary-container rounded border-outline-variant focus:ring-primary" type="checkbox"/>
+</div>
+<span class="font-bold text-label-lg text-on-surface">Robotic Shuttle Feeder</span>
+<span class="text-body-sm text-outline mb-2">Preset drill routines + remote</span>
+<span class="mt-auto font-bold text-label-md text-primary-container">+$15.00 <span class="text-outline font-normal text-xs">/ hour</span></span>
+</label>
+</div>
+</div>
+</section>
+<!-- RIGHT STICKY BOOKING SUMMARY RAIL (4 COLUMNS) -->
+<aside class="lg:col-span-4 sticky top-20 space-y-4">
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/80 p-6 shadow-sm space-y-5">
+<div class="flex items-center justify-between pb-3 border-b border-outline-variant/60">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Booking Summary</h2>
+<span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-bold border border-emerald-200">1 Slot Selected</span>
+</div>
+<!-- Session Recap Card -->
+<div class="bg-surface rounded-lg p-3.5 border border-outline-variant/60 space-y-3">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-xl">sports_score</span>
+</div>
+<div class="overflow-hidden">
+<span class="text-xs font-semibold text-outline uppercase tracking-wider block">Target Venue &amp; Court</span>
+<h4 class="font-bold text-label-lg text-on-surface truncate">Apex Badminton Arena</h4>
+<p class="text-body-sm font-semibold text-primary">Court 1 (Championship Taraflex)</p>
+</div>
+</div>
+<div class="pt-2.5 border-t border-outline-variant/50 space-y-1.5 text-body-sm">
+<div class="flex items-center justify-between text-on-surface">
+<span class="text-outline flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">calendar_today</span> Date:
+                </span>
+<span class="font-semibold">Today, Oct 24, 2025</span>
+</div>
+<div class="flex items-center justify-between text-on-surface">
+<span class="text-outline flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">schedule</span> Time Slot:
+                </span>
+<span class="font-semibold">07:00 PM – 08:00 PM</span>
+</div>
+<div class="flex items-center justify-between text-on-surface">
+<span class="text-outline flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">timelapse</span> Duration:
+                </span>
+<span class="font-medium text-tertiary">60 Minutes</span>
+</div>
+</div>
+</div>
+<!-- Itemized Financial Breakdown -->
+<div class="space-y-2.5 text-body-sm border-b border-outline-variant/60 pb-4">
+<div class="flex justify-between items-center text-on-surface">
+<span>Court Desk Rate (1 hr)</span>
+<span class="font-medium">$24.00</span>
+</div>
+<div class="flex justify-between items-center text-on-surface">
+<span class="flex items-center gap-1">
+<span>Yonex Astrox 88D Pro (x1)</span>
+<span class="text-outline text-xs">(Add-on)</span>
+</span>
+<span class="font-medium">$5.00</span>
+</div>
+<div class="flex justify-between items-center text-on-surface">
+<span class="flex items-center gap-1">
+<span>QuickCourt Service Fee</span>
+<span class="material-symbols-outlined text-xs text-primary" title="Direct facility integration - zero consumer markups">info</span>
+</span>
+<span class="text-secondary font-bold">$0.00 <span class="text-[11px] font-normal text-outline line-through">$2.50</span></span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant text-xs">
+<span>Sales &amp; Local Municipal Tax (8.25%)</span>
+<span>$2.39</span>
+</div>
+</div>
+<!-- Total Calculation -->
+<div class="flex items-baseline justify-between pt-1">
+<div>
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-outline block">Total Payable Now</span>
+<span class="text-headline-lg font-headline-lg font-bold text-on-surface">$31.39</span>
+</div>
+<span class="text-xs text-outline font-medium">USD Includes all taxes</span>
+</div>
+<!-- Primary CTA Button -->
+<button class="w-full h-11 bg-primary-container hover:bg-primary text-on-primary font-label-lg font-semibold rounded-lg flex items-center justify-center gap-2 shadow-md transition-all active:scale-[0.99]">
+<span>Continue to Booking Summary</span>
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+<!-- Athlete Guarantees -->
+<div class="pt-2 space-y-2 text-xs text-outline">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+<span>100% Free cancellation up to 2 hours before start</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-base">key</span>
+<span>Instant contactless turnstile PIN delivered via SMS</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-base">lock</span>
+<span>Encrypted 256-bit instant court lock assurance</span>
+</div>
+</div>
+</div>
+<!-- Venue Contact Card Helper -->
+<div class="bg-surface-container-low/70 rounded-xl border border-outline-variant/60 p-4 text-body-sm flex items-center gap-3">
+<span class="material-symbols-outlined text-outline text-2xl">support_agent</span>
+<div class="text-xs text-outline">
+<span class="font-bold text-on-surface block">Need customized group rates?</span>
+            Hosting a tournament or clinic? <a class="text-primary font-semibold hover:underline" href="#">Contact Desk Concierge</a>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- WEB FOOTER (Shared Components JSON Anchor) -->
+<footer class="w-full bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline mt-12">
+<div class="w-full px-6 lg:px-12 py-8 flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto gap-4">
+<!-- Copyright text -->
+<div class="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
+<span class="text-headline-sm font-headline-sm font-bold text-primary dark:text-primary-fixed">QuickCourt</span>
+<span class="text-on-surface-variant dark:text-surface-variant text-body-sm font-body-sm">
+          © 2025 QuickCourt Operations Inc. All rights reserved. Precision court scheduling &amp; sports facility engine.
+        </span>
+</div>
+<!-- Footer navigation links -->
+<div class="flex flex-wrap items-center justify-center gap-6">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">Terms of Service</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">Venue Standards</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">API Docs</a>
+<a class="text-primary dark:text-primary-fixed font-medium text-body-sm font-body-sm flex items-center gap-1.5" href="#">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span>System Status</span>
+</a>
+</div>
+</div>
+</footer>
+</body></html>

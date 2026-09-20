@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>QuickCourt | Security Verification</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-container": "#6cf8bb",
+            "primary-fixed-dim": "#8dd6a6",
+            "surface-variant": "#d3e4fe",
+            "on-tertiary-fixed": "#131b2e",
+            "on-surface-variant": "#404941",
+            "background": "#f8f9ff",
+            "on-tertiary": "#ffffff",
+            "surface-container-high": "#dce9ff",
+            "on-error-container": "#93000a",
+            "inverse-surface": "#213145",
+            "tertiary-fixed-dim": "#bec6e0",
+            "error": "#ba1a1a",
+            "tertiary": "#31394e",
+            "outline": "#707a71",
+            "on-surface": "#0b1c30",
+            "surface": "#f8f9ff",
+            "secondary-fixed": "#6ffbbe",
+            "surface-tint": "#216b43",
+            "error-container": "#ffdad6",
+            "surface-container-low": "#eff4ff",
+            "surface-bright": "#f8f9ff",
+            "tertiary-fixed": "#dae2fd",
+            "primary": "#004225",
+            "on-secondary": "#ffffff",
+            "on-secondary-fixed-variant": "#005236",
+            "on-secondary-container": "#00714d",
+            "inverse-on-surface": "#eaf1ff",
+            "tertiary-container": "#485066",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-fixed-variant": "#3f465c",
+            "on-primary-fixed-variant": "#00522e",
+            "outline-variant": "#bfc9bf",
+            "on-tertiary-container": "#bbc2dc",
+            "on-primary-fixed": "#002110",
+            "primary-fixed": "#a8f3c1",
+            "inverse-primary": "#8dd6a6",
+            "on-secondary-fixed": "#002113",
+            "primary-container": "#0a5c36",
+            "surface-container": "#e5eeff",
+            "on-primary": "#ffffff",
+            "surface-dim": "#cbdbf5",
+            "surface-container-highest": "#d3e4fe",
+            "on-error": "#ffffff",
+            "secondary-fixed-dim": "#4edea3",
+            "secondary": "#006c49",
+            "on-background": "#0b1c30",
+            "on-primary-container": "#89d2a2"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-lg": "1.5rem",
+            "margin": "1rem",
+            "space-md": "1rem",
+            "margin-md": "2rem",
+            "space-xl": "2rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem",
+            "gutter-md": "1.5rem",
+            "gutter-lg": "2rem",
+            "space-sm": "0.5rem",
+            "margin-lg": "3rem"
+          },
+          "fontFamily": {
+            "display-lg-mobile": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "display-lg": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-xl-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .court-grid-pattern {
+      background-color: #f8f9ff;
+      background-image: 
+        linear-gradient(to right, rgba(11, 28, 48, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(11, 28, 48, 0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .court-grid-accent {
+      background: radial-gradient(circle at 50% 18%, rgba(10, 92, 54, 0.07) 0%, transparent 60%);
+    }
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+      -webkit-appearance: none; 
+      margin: 0; 
+    }
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col justify-between antialiased relative selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Atmospheric Sports Court Architectural Lines -->
+<div class="fixed inset-0 pointer-events-none court-grid-pattern z-0"></div>
+<div class="fixed inset-0 pointer-events-none court-grid-accent z-0"></div>
+<!-- Top Minimal Header with Brand & Sync Indicator -->
+<header class="w-full bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant/50 sticky top-0 z-30">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
+<!-- Brand Logo -->
+<a class="flex items-center gap-2.5 group focus:outline-none" href="#">
+<div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center text-on-primary transition-transform duration-150 group-hover:scale-95">
+<span class="material-symbols-outlined text-[20px]" data-icon="sports_tennis">sports_tennis</span>
+</div>
+<span class="text-headline-md font-headline-md font-bold tracking-tight text-primary">QuickCourt</span>
+</a>
+<!-- Trailing Action Cluster -->
+<div class="flex items-center gap-4">
+<!-- CourtNet Live Node Badge -->
+<div class="hidden sm:flex items-center gap-2 px-3 py-1 bg-surface-container-low rounded-full border border-outline-variant/60">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant tracking-wider">CourtNet Sync: Live</span>
+</div>
+<div class="h-4 w-[1px] bg-outline-variant/60 hidden sm:block"></div>
+<!-- Back Link -->
+<a class="inline-flex items-center gap-1.5 font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors duration-150 group" href="#">
+<span class="material-symbols-outlined text-[18px] transition-transform duration-150 group-hover:-translate-x-0.5" data-icon="arrow_back">arrow_back</span>
+<span>Back to Sign In</span>
+</a>
+</div>
+</div>
+</header>
+<!-- Main Verification Card Canvas -->
+<main class="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-6 py-10">
+<div class="w-full max-w-[500px]">
+<!-- Surface Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/60 p-6 sm:p-10 shadow-[0_4px_24px_-4px_rgba(15,23,42,0.06)] relative overflow-hidden">
+<!-- Architectural Tennis Service Court Inset Hairline -->
+<div class="absolute top-0 left-0 right-0 h-1 bg-primary-container"></div>
+<!-- Status & Protocol Capsule -->
+<div class="flex items-center justify-between gap-2 mb-6">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-container-low border border-outline-variant/60 text-primary">
+<span class="material-symbols-outlined text-[15px]" data-icon="lock" data-weight="fill" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-label-sm text-label-sm tracking-wider">TWO-FACTOR AUTHENTICATION</span>
+</div>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-2 py-0.5 rounded">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+            v2.4 Secure
+          </span>
+</div>
+<!-- Header Content -->
+<div class="text-left mb-6">
+<h1 class="font-headline-xl text-headline-xl text-on-surface font-bold tracking-tight mb-2">
+            Verify your identity
+          </h1>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Enter the 6-digit confirmation code dispatched to your registered credential:
+          </p>
+<!-- Masked Credential Strip -->
+<div class="mt-3 p-2.5 rounded-lg bg-surface-container-low/70 border border-outline-variant/40 flex items-center justify-between">
+<div class="flex items-center gap-2 truncate">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="mark_email_read">mark_email_read</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">+1 (555) 019-2834 • a***@quickcourt.io</span>
+</div>
+<button class="font-label-sm text-label-sm text-primary hover:text-secondary font-bold underline underline-offset-2 shrink-0 ml-2" type="button">
+              Edit destination
+            </button>
+</div>
+</div>
+<!-- Interactive OTP Matrix Form -->
+<form class="space-y-6" id="otpForm" onsubmit="event.preventDefault();">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-3">
+              One-Time Security Token
+            </label>
+<!-- 6-digit Slot Matrix -->
+<div class="grid grid-cols-6 gap-2 sm:gap-3" id="otp-container">
+<!-- Digit 1 (Pre-filled for realism) -->
+<div class="relative">
+<input autocomplete="one-time-code" class="otp-digit w-full h-14 sm:h-16 text-center font-headline-xl text-headline-xl font-bold text-on-surface bg-surface-container-lowest border-2 border-primary-container rounded-xl focus:outline-none transition-all duration-150 shadow-sm" data-index="0" inputmode="numeric" maxlength="1" type="text" value="4"/>
+</div>
+<!-- Digit 2 (Pre-filled for realism) -->
+<div class="relative">
+<input class="otp-digit w-full h-14 sm:h-16 text-center font-headline-xl text-headline-xl font-bold text-on-surface bg-surface-container-lowest border-2 border-primary-container rounded-xl focus:outline-none transition-all duration-150 shadow-sm" data-index="1" inputmode="numeric" maxlength="1" type="text" value="8"/>
+</div>
+<!-- Digit 3 (Active Focus Target) -->
+<div class="relative">
+<input autofocus="" class="otp-digit w-full h-14 sm:h-16 text-center font-headline-xl text-headline-xl font-bold text-on-surface bg-surface-container-lowest border-2 border-primary-container rounded-xl ring-4 ring-secondary-container/40 focus:outline-none transition-all duration-150 shadow-sm" data-index="2" inputmode="numeric" maxlength="1" type="text"/>
+<span class="absolute bottom-2 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-primary-container rounded-full animate-pulse"></span>
+</div>
+<!-- Digit 4 -->
+<div class="relative">
+<input class="otp-digit w-full h-14 sm:h-16 text-center font-headline-xl text-headline-xl font-bold text-on-surface bg-surface-container-lowest border border-outline-variant rounded-xl focus:border-primary-container focus:ring-4 focus:ring-secondary-container/40 focus:outline-none transition-all duration-150" data-index="3" inputmode="numeric" maxlength="1" type="text"/>
+</div>
+<!-- Digit 5 -->
+<div class="relative">
+<input class="otp-digit w-full h-14 sm:h-16 text-center font-headline-xl text-headline-xl font-bold text-on-surface bg-surface-container-lowest border border-outline-variant rounded-xl focus:border-primary-container focus:ring-4 focus:ring-secondary-container/40 focus:outline-none transition-all duration-150" data-index="4" inputmode="numeric" maxlength="1" type="text"/>
+</div>
+<!-- Digit 6 -->
+<div class="relative">
+<input class="otp-digit w-full h-14 sm:h-16 text-center font-headline-xl text-headline-xl font-bold text-on-surface bg-surface-container-lowest border border-outline-variant rounded-xl focus:border-primary-container focus:ring-4 focus:ring-secondary-container/40 focus:outline-none transition-all duration-150" data-index="5" inputmode="numeric" maxlength="1" type="text"/>
+</div>
+</div>
+<div class="mt-2.5 flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm px-1">
+<span class="flex items-center gap-1 text-[12px]">
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="verified_user">verified_user</span>
+                Passphrase active for 5 minutes
+              </span>
+<span class="text-[12px] font-mono font-medium text-outline">Token #QC-84920</span>
+</div>
+</div>
+<!-- Primary Submit Action Button -->
+<button class="w-full h-12 bg-primary-container hover:bg-primary text-on-primary font-label-lg text-label-lg rounded-xl flex items-center justify-center gap-2 shadow-sm transition-all duration-150 active:scale-[0.99] group focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" type="submit">
+<span>Verify &amp; Continue</span>
+<span class="material-symbols-outlined text-[18px] transition-transform duration-150 group-hover:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- Resend Mechanism Section -->
+<div class="pt-2 border-t border-outline-variant/40 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+              Didn't receive a code?
+            </span>
+<div class="flex items-center gap-2">
+<button class="font-label-md text-label-md text-outline cursor-not-allowed transition-colors duration-150 flex items-center gap-1.5" disabled="" id="resendBtn" type="button">
+<span class="material-symbols-outlined text-[16px] animate-spin" data-icon="sync">sync</span>
+<span>Resend in <span class="font-semibold text-on-surface" id="countdownTimer">0:42</span></span>
+</button>
+</div>
+</div>
+<!-- Alternative Auth Paths -->
+<div class="bg-surface-container-low rounded-xl p-3 border border-outline-variant/40 flex flex-col gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant px-1 font-bold">
+              Alternative Methods
+            </span>
+<div class="grid grid-cols-2 gap-2">
+<button class="h-9 px-2.5 bg-surface-container-lowest hover:bg-surface-bright border border-outline-variant/60 rounded-lg flex items-center justify-center gap-1.5 text-on-surface font-label-sm text-label-sm transition-colors duration-150" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="phonelink_lock">phonelink_lock</span>
+<span class="truncate">Authenticator App</span>
+</button>
+<button class="h-9 px-2.5 bg-surface-container-lowest hover:bg-surface-bright border border-outline-variant/60 rounded-lg flex items-center justify-center gap-1.5 text-on-surface font-label-sm text-label-sm transition-colors duration-150" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="sms">sms</span>
+<span class="truncate">Send via SMS</span>
+</button>
+</div>
+</div>
+</form>
+</div>
+<!-- Trust Badges Under Card -->
+<div class="mt-8 grid grid-cols-3 gap-3 px-2 text-center">
+<div class="flex flex-col items-center gap-1">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary mb-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="shield">shield</span>
+</div>
+<span class="font-label-sm text-label-sm font-bold text-on-surface">256-Bit SSL Encrypted</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Bank-tier facility security</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary mb-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="nfc">nfc</span>
+</div>
+<span class="font-label-sm text-label-sm font-bold text-on-surface">Turnstile Pass Sync</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Instant gate permissions</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary mb-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="verified">verified</span>
+</div>
+<span class="font-label-sm text-label-sm font-bold text-on-surface">Verified Identity</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Global athlete registry</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Shared Component: Web Footer -->
+<footer class="w-full border-t border-outline-variant px-6 lg:px-12 py-8 bg-surface-container-lowest max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 z-10">
+<div class="flex flex-col md:flex-row items-center gap-3 text-center md:text-left">
+<span class="text-headline-sm font-headline-sm font-bold text-primary">QuickCourt</span>
+<span class="hidden md:inline text-outline-variant">|</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+        © 2025 QuickCourt Operations Inc. All rights reserved. Precision court scheduling &amp; sports facility engine.
+      </p>
+</div>
+<div class="flex flex-wrap items-center justify-center gap-6">
+<a class="text-on-surface-variant hover:text-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">Venue Standards</a>
+<a class="text-on-surface-variant hover:text-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">API Docs</a>
+<a class="text-on-surface-variant hover:text-on-surface text-body-sm font-body-sm transition-colors duration-150" href="#">System Status</a>
+</div>
+</footer>
+<!-- Micro-Interactions Script for Smooth 6-Box Navigation -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const inputs = Array.from(document.querySelectorAll('.otp-digit'));
+      
+      inputs.forEach((input, index) => {
+        input.addEventListener('input', (e) => {
+          const val = e.target.value;
+          if (val.length > 0) {
+            // Keep only the last character if multiple are entered
+            e.target.value = val.slice(-1);
+            if (index < inputs.length - 1) {
+              inputs[index + 1].focus();
+              inputs[index + 1].select();
+            }
+          }
+        });
+
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Backspace' && !e.target.value && index > 0) {
+            inputs[index - 1].focus();
+            inputs[index - 1].select();
+          } else if (e.key === 'ArrowLeft' && index > 0) {
+            inputs[index - 1].focus();
+          } else if (e.key === 'ArrowRight' && index < inputs.length - 1) {
+            inputs[index + 1].focus();
+          }
+        });
+
+        input.addEventListener('paste', (e) => {
+          e.preventDefault();
+          const text = (e.clipboardData || window.clipboardData).getData('text').trim();
+          if (/^\d+$/.test(text)) {
+            const digits = text.split('').slice(0, 6);
+            digits.forEach((digit, i) => {
+              if (inputs[i]) {
+                inputs[i].value = digit;
+              }
+            });
+            const nextFocusIndex = Math.min(digits.length, inputs.length - 1);
+            inputs[nextFocusIndex].focus();
+          }
+        });
+      });
+
+      // Countdown Timer Simulation
+      let timeLeft = 42;
+      const countdownEl = document.getElementById('countdownTimer');
+      const resendBtn = document.getElementById('resendBtn');
+
+      const interval = setInterval(() => {
+        timeLeft--;
+        if (timeLeft <= 0) {
+          clearInterval(interval);
+          countdownEl.parentElement.innerHTML = 'Resend Code';
+          resendBtn.disabled = false;
+          resendBtn.classList.remove('cursor-not-allowed', 'text-outline');
+          resendBtn.classList.add('text-primary', 'hover:text-secondary', 'font-semibold', 'cursor-pointer');
+          resendBtn.querySelector('.material-symbols-outlined').classList.remove('animate-spin');
+        } else {
+          const formatted = timeLeft < 10 ? `0:0${timeLeft}` : `0:${timeLeft}`;
+          countdownEl.textContent = formatted;
+        }
+      }, 1000);
+    });
+  </script>
+</body></html>

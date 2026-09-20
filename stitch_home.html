@@ -1,0 +1,1342 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>QuickCourt — Interactive Prototype</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+          colors: {
+            court: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              500: '#22c55e',
+              700: '#15803d',
+              800: '#0a5c36',
+              900: '#004225',
+              950: '#002110',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24; }
+    .material-symbols-outlined.fill { font-variation-settings: 'FILL' 1; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+  </style>
+</head>
+<body class="bg-[#f8f9ff] text-[#0b1c30] font-sans antialiased selection:bg-court-800 selection:text-white">
+
+  <!-- TOP PROTOTYPE BAR -->
+  <div class="bg-[#0b1c30] text-white text-xs py-2 px-4 sticky top-0 z-50 border-b border-white/10 shadow-sm flex items-center justify-between">
+    <div class="max-w-7xl mx-auto w-full flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center gap-1.5 font-bold text-emerald-400 bg-white/10 px-2.5 py-0.5 rounded-full text-[11px]">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          PROTOTYPE ACTIVE
+        </span>
+        <span class="text-white/60 hidden sm:inline text-[11px]">All buttons &amp; flows fully clickable</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-white/50 text-[11px] hidden md:inline">Mode:</span>
+        <button onclick="setRole('player')" id="rolePlayerBtn" class="px-2.5 py-1 rounded bg-court-800 text-white font-semibold text-[11px] transition-all">Player View</button>
+        <button onclick="setRole('owner')" id="roleOwnerBtn" class="px-2.5 py-1 rounded bg-white/10 hover:bg-white/20 text-white/80 font-semibold text-[11px] transition-all">Facility Owner</button>
+        <button onclick="setRole('admin')" id="roleAdminBtn" class="px-2.5 py-1 rounded bg-white/10 hover:bg-white/20 text-white/80 font-semibold text-[11px] transition-all">Admin Ops</button>
+        <button onclick="openDrawer('bookingsDrawer')" class="ml-2 px-2.5 py-1 rounded bg-emerald-600/30 text-emerald-300 border border-emerald-500/30 text-[11px] font-semibold flex items-center gap-1">
+          <span class="material-symbols-outlined text-[14px]">confirmation_number</span>
+          <span>Passes (<span id="globalBookingBadge">2</span>)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed top-16 right-5 z-[999] bg-white border border-slate-200 shadow-2xl rounded-xl p-3.5 flex items-center gap-3 transform translate-y-[-20px] opacity-0 pointer-events-none transition-all duration-300 max-w-sm">
+    <div class="w-8 h-8 rounded-full bg-court-100 text-court-800 flex items-center justify-center shrink-0">
+      <span class="material-symbols-outlined text-[18px]">verified</span>
+    </div>
+    <div>
+      <div id="toastTitle" class="text-xs font-bold text-slate-900">Success</div>
+      <div id="toastMsg" class="text-[11px] text-slate-500">Action executed in prototype state.</div>
+    </div>
+  </div>
+
+  <!-- MAIN HEADER -->
+  <header class="bg-white/95 backdrop-blur-md sticky top-9 z-40 border-b border-slate-200/80">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between gap-4">
+      <!-- Logo + Location -->
+      <div class="flex items-center gap-5">
+        <a href="javascript:void(0)" onclick="resetHome()" class="flex items-center gap-2">
+          <div class="w-9 h-9 rounded-lg bg-court-800 flex items-center justify-center text-white shadow-sm">
+            <span class="material-symbols-outlined text-[22px]">sports_tennis</span>
+          </div>
+          <span class="font-extrabold text-xl tracking-tight text-court-900">Quick<span class="text-court-800">Court</span></span>
+        </a>
+
+        <!-- Location Dropdown -->
+        <div class="relative">
+          <button onclick="toggleDropdown('locationMenu')" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 hover:border-slate-300 text-xs font-semibold text-slate-700 bg-slate-50 transition-colors">
+            <span class="material-symbols-outlined text-court-800 text-[16px]">location_on</span>
+            <span id="currentCityText">Austin, TX</span>
+            <span class="material-symbols-outlined text-[16px] text-slate-400">expand_more</span>
+          </button>
+          <div id="locationMenu" class="hidden absolute top-full left-0 mt-1.5 w-44 bg-white border border-slate-200 rounded-xl shadow-xl py-1 z-50 text-xs">
+            <button onclick="selectCity('Austin, TX')" class="w-full text-left px-3 py-2 hover:bg-slate-50 font-semibold text-court-800 flex items-center justify-between">Austin, TX <span class="material-symbols-outlined text-[14px]">check</span></button>
+            <button onclick="selectCity('Dallas, TX')" class="w-full text-left px-3 py-2 hover:bg-slate-50 text-slate-700">Dallas, TX</button>
+            <button onclick="selectCity('Houston, TX')" class="w-full text-left px-3 py-2 hover:bg-slate-50 text-slate-700">Houston, TX</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center Search -->
+      <div class="hidden md:flex flex-1 max-w-sm">
+        <div class="w-full flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-100 border border-transparent focus-within:border-court-800 focus-within:bg-white transition-all text-xs">
+          <span class="material-symbols-outlined text-slate-400 text-[18px]">search</span>
+          <input id="headerSearch" oninput="liveSearchVenues(this.value)" type="text" placeholder="Search courts, sports, clubs..." class="w-full bg-transparent outline-none placeholder:text-slate-400 text-slate-800">
+        </div>
+      </div>
+
+      <!-- Nav Links & CTAs -->
+      <div class="flex items-center gap-3 md:gap-6 text-xs font-semibold">
+        <nav class="hidden lg:flex items-center gap-6 text-slate-600">
+          <button onclick="scrollToId('venuesSection')" class="hover:text-court-800 transition-colors">Find Venues</button>
+          <button onclick="scrollToId('sportsSection')" class="hover:text-court-800 transition-colors">Sports</button>
+          <button onclick="openDrawer('bookingsDrawer')" class="hover:text-court-800 transition-colors">My Bookings</button>
+          <button onclick="openModal('hostModal')" class="hover:text-court-800 transition-colors">Partner Host</button>
+        </nav>
+        <button onclick="openModal('hostModal')" class="hidden sm:inline-flex px-3.5 py-1.5 rounded-lg border border-slate-300 hover:bg-slate-50 text-slate-700 transition-colors">
+          List a Court
+        </button>
+        <button onclick="openDrawer('profileDrawer')" class="w-9 h-9 rounded-full bg-court-800 text-white flex items-center justify-center font-bold text-xs ring-2 ring-court-800/20 hover:ring-court-800 transition-all shadow-sm">
+          AL
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- LIVE STATUS BAR -->
+  <div class="bg-court-50 border-b border-court-100 py-2 px-4 text-xs">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-court-500 animate-pulse"></span>
+        <span class="text-slate-500 uppercase tracking-wider font-bold text-[10px]">Live Austin Network:</span>
+        <span id="liveCounter" class="font-bold text-court-900">142 Courts Open Tonight</span>
+      </div>
+      <div class="hidden sm:flex items-center gap-4 text-slate-600 text-[11px]">
+        <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[15px] text-court-700">verified</span> Guaranteed Desk Rates</span>
+        <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[15px] text-court-700">bolt</span> Instant Lock Confirmation</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO SECTION WITH SEARCH CONSOLE -->
+  <section class="bg-white border-b border-slate-200 pt-8 pb-10">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="max-w-3xl mb-6">
+        <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-court-50 border border-court-200 text-court-800 text-[11px] font-bold uppercase tracking-wider mb-3">
+          <span class="material-symbols-outlined text-[14px]">sports_tennis</span> Next-Gen Athletic Booking
+        </div>
+        <h1 class="text-3xl md:text-5xl font-extrabold text-slate-950 tracking-tight leading-tight mb-3">
+          Find and book local sports courts in seconds.
+        </h1>
+        <p class="text-slate-600 text-sm md:text-base leading-relaxed">
+          Real-time court availability, verified competition surfaces, and instant confirmation with zero markup.
+        </p>
+      </div>
+
+      <!-- SEARCH CONSOLE -->
+      <div class="bg-[#f0f4fb] rounded-2xl p-3 md:p-4 border border-slate-200/80 shadow-sm">
+        <!-- Sport Filter Pills -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-3 mb-3 border-b border-slate-200 scrollbar-none" id="heroSportPills">
+          <button onclick="setSportFilter('all', this)" class="sport-btn px-3.5 py-1.5 rounded-lg bg-court-800 text-white text-xs font-bold shrink-0 transition-colors">All Sports</button>
+          <button onclick="setSportFilter('badminton', this)" class="sport-btn px-3.5 py-1.5 rounded-lg bg-white hover:bg-slate-100 text-slate-700 text-xs font-semibold shrink-0 transition-colors">🏸 Badminton</button>
+          <button onclick="setSportFilter('football', this)" class="sport-btn px-3.5 py-1.5 rounded-lg bg-white hover:bg-slate-100 text-slate-700 text-xs font-semibold shrink-0 transition-colors">⚽ Football Turf</button>
+          <button onclick="setSportFilter('tennis', this)" class="sport-btn px-3.5 py-1.5 rounded-lg bg-white hover:bg-slate-100 text-slate-700 text-xs font-semibold shrink-0 transition-colors">🎾 Tennis</button>
+          <button onclick="setSportFilter('pickleball', this)" class="sport-btn px-3.5 py-1.5 rounded-lg bg-white hover:bg-slate-100 text-slate-700 text-xs font-semibold shrink-0 transition-colors">🏓 Pickleball &amp; Padel</button>
+          <button onclick="setSportFilter('basketball', this)" class="sport-btn px-3.5 py-1.5 rounded-lg bg-white hover:bg-slate-100 text-slate-700 text-xs font-semibold shrink-0 transition-colors">🏀 Basketball</button>
+          <button onclick="setSportFilter('cricket', this)" class="sport-btn px-3.5 py-1.5 rounded-lg bg-white hover:bg-slate-100 text-slate-700 text-xs font-semibold shrink-0 transition-colors">🏏 Cricket Nets</button>
+        </div>
+
+        <!-- 3 Matrix Inputs + Action -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-2.5">
+          <!-- Search Venue -->
+          <div class="md:col-span-4 bg-white rounded-xl p-2.5 border border-slate-200 flex items-center gap-2">
+            <span class="material-symbols-outlined text-court-800 text-[20px]">search</span>
+            <div class="flex-1 min-w-0">
+              <label class="block text-[9px] uppercase tracking-wider font-extrabold text-slate-400">Search Venues</label>
+              <input id="matrixSearchInput" oninput="liveSearchVenues(this.value)" type="text" placeholder="Apex, Vanguard, Baseline..." class="w-full bg-transparent text-xs font-semibold text-slate-800 outline-none truncate">
+            </div>
+          </div>
+
+          <!-- Zone / Radius -->
+          <div class="md:col-span-3 bg-white rounded-xl p-2.5 border border-slate-200 flex items-center gap-2">
+            <span class="material-symbols-outlined text-court-800 text-[20px]">location_on</span>
+            <div class="flex-1 min-w-0">
+              <label class="block text-[9px] uppercase tracking-wider font-extrabold text-slate-400">Zone Filter</label>
+              <select id="zoneSelector" onchange="applyMatrixFilter()" class="w-full bg-transparent text-xs font-semibold text-slate-800 outline-none cursor-pointer">
+                <option value="all">All Austin Areas</option>
+                <option value="downtown">Downtown (&lt; 3 mi)</option>
+                <option value="north">North Loop</option>
+                <option value="west">West Lake</option>
+                <option value="east">East Austin</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Date -->
+          <div class="md:col-span-3 bg-white rounded-xl p-2.5 border border-slate-200 flex items-center gap-2">
+            <span class="material-symbols-outlined text-court-800 text-[20px]">calendar_today</span>
+            <div class="flex-1 min-w-0">
+              <label class="block text-[9px] uppercase tracking-wider font-extrabold text-slate-400">Date</label>
+              <select id="dateSelector" onchange="applyMatrixFilter()" class="w-full bg-transparent text-xs font-semibold text-slate-800 outline-none cursor-pointer">
+                <option value="today">Today (Thu, Oct 24)</option>
+                <option value="tomorrow">Tomorrow (Fri, Oct 25)</option>
+                <option value="weekend">Saturday (Oct 26)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Apply Button -->
+          <div class="md:col-span-2">
+            <button onclick="applyMatrixFilter(true)" class="w-full h-full min-h-[46px] rounded-xl bg-court-800 hover:bg-court-900 text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-all">
+              <span class="material-symbols-outlined text-[18px]">tune</span>
+              <span>Apply</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Fast Filters -->
+        <div class="mt-3 pt-2.5 flex flex-wrap items-center gap-2 text-xs">
+          <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Fast Searches:</span>
+          <button onclick="setFastTag('lighted')" class="fast-tag px-2.5 py-1 rounded bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 text-[11px] font-semibold flex items-center gap-1">⚡ Lighted Courts Tonight</button>
+          <button onclick="setSportFilter('badminton')" class="fast-tag px-2.5 py-1 rounded bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 text-[11px] font-semibold flex items-center gap-1">🏸 Indoor Badminton</button>
+          <button onclick="setSportFilter('football')" class="fast-tag px-2.5 py-1 rounded bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 text-[11px] font-semibold flex items-center gap-1">⚽ 7v7 Turfs</button>
+          <button onclick="setFastTag('clay')" class="fast-tag px-2.5 py-1 rounded bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 text-[11px] font-semibold flex items-center gap-1">🎾 Clay Tennis Courts</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BROWSE BY DISCIPLINE SECTION -->
+  <section id="sportsSection" class="py-8 max-w-7xl mx-auto px-4 md:px-8">
+    <div class="flex items-center justify-between mb-4">
+      <div>
+        <h2 class="text-lg md:text-xl font-bold text-slate-900">Browse by Discipline</h2>
+        <p class="text-xs text-slate-500">Verified competition-grade facilities and neighborhood venues</p>
+      </div>
+      <span class="text-xs text-slate-400 font-semibold hidden sm:inline">7 Categories Managed</span>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
+      <div onclick="setSportFilter('badminton')" class="bg-white p-3 rounded-xl border border-slate-200 hover:border-court-800 hover:shadow-sm cursor-pointer transition-all group">
+        <div class="w-9 h-9 rounded-lg bg-court-50 group-hover:bg-court-800 group-hover:text-white text-court-800 flex items-center justify-center transition-colors mb-2">
+          <span class="material-symbols-outlined text-[20px]">sports_tennis</span>
+        </div>
+        <div class="font-bold text-xs text-slate-800">Badminton</div>
+        <div class="text-[10px] text-court-700 font-semibold mt-0.5">34 Courts open</div>
+      </div>
+
+      <div onclick="setSportFilter('football')" class="bg-white p-3 rounded-xl border border-slate-200 hover:border-court-800 hover:shadow-sm cursor-pointer transition-all group">
+        <div class="w-9 h-9 rounded-lg bg-court-50 group-hover:bg-court-800 group-hover:text-white text-court-800 flex items-center justify-center transition-colors mb-2">
+          <span class="material-symbols-outlined text-[20px]">sports_soccer</span>
+        </div>
+        <div class="font-bold text-xs text-slate-800">Football Turf</div>
+        <div class="text-[10px] text-court-700 font-semibold mt-0.5">18 Turfs nearby</div>
+      </div>
+
+      <div onclick="setSportFilter('tennis')" class="bg-white p-3 rounded-xl border border-slate-200 hover:border-court-800 hover:shadow-sm cursor-pointer transition-all group">
+        <div class="w-9 h-9 rounded-lg bg-court-50 group-hover:bg-court-800 group-hover:text-white text-court-800 flex items-center justify-center transition-colors mb-2">
+          <span class="material-symbols-outlined text-[20px]">sports_baseball</span>
+        </div>
+        <div class="font-bold text-xs text-slate-800">Tennis</div>
+        <div class="text-[10px] text-court-700 font-semibold mt-0.5">26 Courts open</div>
+      </div>
+
+      <div onclick="setSportFilter('pickleball')" class="bg-white p-3 rounded-xl border border-slate-200 hover:border-court-800 hover:shadow-sm cursor-pointer transition-all group">
+        <div class="w-9 h-9 rounded-lg bg-court-50 group-hover:bg-court-800 group-hover:text-white text-court-800 flex items-center justify-center transition-colors mb-2">
+          <span class="material-symbols-outlined text-[20px]">sports_kabaddi</span>
+        </div>
+        <div class="font-bold text-xs text-slate-800">Pickleball</div>
+        <div class="text-[10px] text-court-700 font-semibold mt-0.5">22 Dedicated</div>
+      </div>
+
+      <div onclick="setSportFilter('basketball')" class="bg-white p-3 rounded-xl border border-slate-200 hover:border-court-800 hover:shadow-sm cursor-pointer transition-all group">
+        <div class="w-9 h-9 rounded-lg bg-court-50 group-hover:bg-court-800 group-hover:text-white text-court-800 flex items-center justify-center transition-colors mb-2">
+          <span class="material-symbols-outlined text-[20px]">sports_basketball</span>
+        </div>
+        <div class="font-bold text-xs text-slate-800">Basketball</div>
+        <div class="text-[10px] text-court-700 font-semibold mt-0.5">15 Courts open</div>
+      </div>
+
+      <div onclick="setSportFilter('cricket')" class="bg-white p-3 rounded-xl border border-slate-200 hover:border-court-800 hover:shadow-sm cursor-pointer transition-all group">
+        <div class="w-9 h-9 rounded-lg bg-court-50 group-hover:bg-court-800 group-hover:text-white text-court-800 flex items-center justify-center transition-colors mb-2">
+          <span class="material-symbols-outlined text-[20px]">sports_cricket</span>
+        </div>
+        <div class="font-bold text-xs text-slate-800">Cricket Nets</div>
+        <div class="text-[10px] text-court-700 font-semibold mt-0.5">12 Practice nets</div>
+      </div>
+
+      <div onclick="setSportFilter('pickleball')" class="bg-white p-3 rounded-xl border border-slate-200 hover:border-court-800 hover:shadow-sm cursor-pointer transition-all group col-span-2 sm:col-span-1">
+        <div class="w-9 h-9 rounded-lg bg-court-50 group-hover:bg-court-800 group-hover:text-white text-court-800 flex items-center justify-center transition-colors mb-2">
+          <span class="material-symbols-outlined text-[20px]">sports</span>
+        </div>
+        <div class="font-bold text-xs text-slate-800">Padel</div>
+        <div class="text-[10px] text-court-700 font-semibold mt-0.5">8 Panoramic</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAST TRACK / INSTANT RESERVE TONIGHT BAR -->
+  <section class="bg-white border-y border-slate-200 py-6">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-4">
+        <div class="flex items-center gap-2">
+          <span class="px-2 py-0.5 rounded bg-rose-100 text-rose-700 text-[10px] font-extrabold uppercase tracking-wider">Fast Track</span>
+          <h3 class="font-bold text-sm text-slate-900">Available Tonight • Instant Reserve</h3>
+        </div>
+        <span class="text-xs text-slate-400">Direct confirmation without host approval delays</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3" id="fastTrackGrid">
+        <!-- Slot 1 -->
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 flex items-center justify-between hover:border-court-800 transition-all">
+          <div>
+            <div class="text-xs font-bold text-slate-900">Apex Arena • Court 3</div>
+            <div class="text-xs font-extrabold text-court-800 mt-0.5">7:00 PM – 8:00 PM</div>
+            <div class="text-[11px] text-slate-500">$28.00 • Synthetic Mat</div>
+          </div>
+          <button onclick="openBookingDrawer('apex', 'Apex Arena Court 3', 28, '7:00 PM – 8:00 PM')" class="px-3 py-1.5 rounded-lg bg-court-800 hover:bg-court-900 text-white text-xs font-bold transition-all shadow-sm">
+            Quick Book
+          </button>
+        </div>
+
+        <!-- Slot 2 -->
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 flex items-center justify-between hover:border-court-800 transition-all">
+          <div>
+            <div class="text-xs font-bold text-slate-900">Vanguard Pitch B</div>
+            <div class="text-xs font-extrabold text-court-800 mt-0.5">8:30 PM – 9:30 PM</div>
+            <div class="text-[11px] text-slate-500">$55.00 • 7v7 Floodlit</div>
+          </div>
+          <button onclick="openBookingDrawer('vanguard', 'Vanguard Pitch B', 55, '8:30 PM – 9:30 PM')" class="px-3 py-1.5 rounded-lg bg-court-800 hover:bg-court-900 text-white text-xs font-bold transition-all shadow-sm">
+            Quick Book
+          </button>
+        </div>
+
+        <!-- Slot 3 -->
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 flex items-center justify-between hover:border-court-800 transition-all">
+          <div>
+            <div class="text-xs font-bold text-slate-900">Metro Clay Court 1</div>
+            <div class="text-xs font-extrabold text-court-800 mt-0.5">6:00 PM – 7:00 PM</div>
+            <div class="text-[11px] text-slate-500">$32.00 • Red Clay</div>
+          </div>
+          <button onclick="openBookingDrawer('metro', 'Metro Clay Court 1', 32, '6:00 PM – 7:00 PM')" class="px-3 py-1.5 rounded-lg bg-court-800 hover:bg-court-900 text-white text-xs font-bold transition-all shadow-sm">
+            Quick Book
+          </button>
+        </div>
+
+        <!-- Slot 4 -->
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 flex items-center justify-between hover:border-court-800 transition-all">
+          <div>
+            <div class="text-xs font-bold text-slate-900">Baseline Padel 2</div>
+            <div class="text-xs font-extrabold text-court-800 mt-0.5">9:00 PM – 10:30 PM</div>
+            <div class="text-[11px] text-slate-500">$48.00 • 90 Min Match</div>
+          </div>
+          <button onclick="openBookingDrawer('baseline', 'Baseline Padel 2', 48, '9:00 PM – 10:30 PM')" class="px-3 py-1.5 rounded-lg bg-court-800 hover:bg-court-900 text-white text-xs font-bold transition-all shadow-sm">
+            Quick Book
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOP RATED VENUES SECTION -->
+  <section id="venuesSection" class="py-10 max-w-7xl mx-auto px-4 md:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+      <div>
+        <div class="flex items-center gap-1.5 text-xs text-court-800 font-bold uppercase tracking-wider mb-1">
+          <span class="w-2 h-2 rounded-full bg-court-500"></span> Curated Facilities
+        </div>
+        <h2 class="text-2xl font-extrabold text-slate-950">Top Rated Venues Near You</h2>
+      </div>
+
+      <!-- Sub Filters -->
+      <div class="flex items-center gap-2">
+        <div class="bg-white p-1 rounded-lg border border-slate-200 flex text-xs font-semibold" id="subfilterGroup">
+          <button onclick="setSubFilter('all', this)" class="sub-btn px-3 py-1 rounded-md bg-court-800 text-white">All</button>
+          <button onclick="setSubFilter('indoor', this)" class="sub-btn px-3 py-1 rounded-md text-slate-600 hover:text-slate-900">Indoor</button>
+          <button onclick="setSubFilter('lighted', this)" class="sub-btn px-3 py-1 rounded-md text-slate-600 hover:text-slate-900">Lighted</button>
+          <button onclick="setSubFilter('rental', this)" class="sub-btn px-3 py-1 rounded-md text-slate-600 hover:text-slate-900">Equipment</button>
+        </div>
+        <button onclick="resetHome()" class="text-xs font-bold text-court-800 hover:underline ml-2" id="venueCountBadge">View All (4)</button>
+      </div>
+    </div>
+
+    <!-- CARDS GRID -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5" id="venueGrid">
+
+      <!-- Card 1: Apex Badminton -->
+      <div class="venue-card bg-white rounded-2xl overflow-hidden border border-slate-200 hover:shadow-lg transition-all flex flex-col group" data-sport="badminton" data-indoor="true" data-lighted="true" data-rental="true" data-zone="downtown" data-name="apex">
+        <div class="relative aspect-[16/10] overflow-hidden bg-slate-100 cursor-pointer" onclick="openBookingDrawer('apex')">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8cgxhqKLHFjAlv9NkUxRScaD4RysweA9bDCxZy6hAUcofZ-V6GbcDZWJIdA1ZMIoofQOSiUEmKNNWwmiCODCGAxx7_FCnTXvk-j8CDF_pf6gebKsvz29aruCjnfWBpSYr8Ws3QS8Aj_Zw5MXUpTaXA2ilB3kBwhGo8yE0sNXCdyxMMw-JOZklbkjovyqCN2V6jLCmMPOoomQtGuJerWSS9Sh6S1u3h1ZT0ypTmrbFGo046V4u_Z9-" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300">
+          <div class="absolute top-2.5 left-2.5 bg-white/95 backdrop-blur px-2 py-0.5 rounded-md text-[11px] font-bold text-slate-800 shadow-sm flex items-center gap-1">
+            <span class="text-amber-500">★</span> 4.9 <span class="text-slate-400 font-normal">(128)</span>
+          </div>
+          <div class="absolute top-2.5 right-2.5 bg-court-800 text-white px-2 py-0.5 rounded-md text-[11px] font-bold">1.8 mi away</div>
+          <div class="absolute bottom-2.5 left-2.5 bg-slate-900/80 text-white text-[10px] font-semibold px-2 py-0.5 rounded">Badminton • 8 Synthetic Courts</div>
+        </div>
+        <div class="p-4 flex flex-col flex-1">
+          <h3 onclick="openBookingDrawer('apex')" class="font-bold text-sm text-slate-900 hover:text-court-800 cursor-pointer transition-colors">Apex Badminton Arena</h3>
+          <p class="text-xs text-slate-500 mt-0.5 mb-3">Downtown Austin • BWF Grade-1 Mats</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded text-slate-600 font-medium">Locker Rooms</span>
+            <span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded text-slate-600 font-medium">Racquet Stringing</span>
+            <span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded text-slate-600 font-medium">Free Parking</span>
+          </div>
+          <div class="mt-auto pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] uppercase font-bold text-slate-400 block">Rate</span>
+              <span class="text-sm font-extrabold text-slate-900">$24 <span class="text-xs font-normal text-slate-400">/hr</span></span>
+            </div>
+            <div class="flex gap-1.5">
+              <button onclick="openBookingDrawer('apex')" class="px-2.5 py-1.5 rounded-lg border border-slate-300 text-xs font-semibold hover:bg-slate-50">Details</button>
+              <button onclick="openBookingDrawer('apex')" class="px-3 py-1.5 rounded-lg bg-court-800 hover:bg-court-900 text-white text-xs font-bold shadow-sm">View Slots</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Vanguard 5v5 Turf -->
+      <div class="venue-card bg-white rounded-2xl overflow-hidden border border-slate-200 hover:shadow-lg transition-all flex flex-col group" data-sport="football" data-indoor="false" data-lighted="true" data-rental="true" data-zone="north" data-name="vanguard">
+        <div class="relative aspect-[16/10] overflow-hidden bg-slate-100 cursor-pointer" onclick="openBookingDrawer('vanguard')">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRsUAE-tSNg9i36DDAGfbmm5sNdETROtkkwhtAOe89HFalF2_NiIoQSq7ObQNQ_Or9Mh1lucc2w8ye5jvp4rsiNav4Kmk7S0poI4QtTucp5hpbxPTPrqsNi1Rhb7V6-_02HaRq8JiWvDoqWjaTQC_UTYbghtjIjA4g8H5xxpaMoiK1Qp20I8Q7RudXO_jcqqVaysa5TTeBCJBlACFpKzU_2Stha8wOp7JpYPAGK1nIwk1ffPkcVXwX" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300">
+          <div class="absolute top-2.5 left-2.5 bg-white/95 backdrop-blur px-2 py-0.5 rounded-md text-[11px] font-bold text-slate-800 shadow-sm flex items-center gap-1">
+            <span class="text-amber-500">★</span> 4.8 <span class="text-slate-400 font-normal">(94)</span>
+          </div>
+          <div class="absolute top-2.5 right-2.5 bg-court-800 text-white px-2 py-0.5 rounded-md text-[11px] font-bold">3.2 mi away</div>
+          <div class="absolute bottom-2.5 left-2.5 bg-slate-900/80 text-white text-[10px] font-semibold px-2 py-0.5 rounded">Football • 4 Floodlit Pitches</div>
+        </div>
+        <div class="p-4 flex flex-col flex-1">
+          <h3 onclick="openBookingDrawer('vanguard')" class="font-bold text-sm text-slate-900 hover:text-court-800 cursor-pointer transition-colors">Vanguard 5v5 &amp; 7v7 Turfs</h3>
+          <p class="text-xs text-slate-500 mt-0.5 mb-3">North Loop • Verified Court Desk</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded text-slate-600 font-medium">FIFA 2-Star</span>
+            <span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded text-slate-600 font-medium">Floodlights</span>
+            <span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded text-slate-600 font-medium">Ball &amp; Bibs</span>
+          </div>
+          <div class="mt-auto pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] uppercase font-bold text-slate-400 block">Rate</span>
+              <span class="text-sm font-extrabold text-slate-900">$55 <span class="text-xs font-normal text-slate-400">/hr</span></span>
+            </div>
+            <div class="flex gap-1.5">
+              <button onclick="openBookingDrawer('vanguard')" class="px-2.5 py-1.5 rounded-lg border border-slate-300 text-xs font-semibold hover:bg-slate-50">Details</button>
+              <button onclick="openBookingDrawer('vanguard')" class="px-3 py-1.5 rounded-lg bg-court-800 hover:bg-court-900 text-white text-xs font-bold shadow-sm">View Slots</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Metro Tennis Academy -->
+      <div class="venue-card bg-white rounded-2xl overflow-hidden border border-slate-200 hover:shadow-lg transition-all flex flex-col group" data-sport="tennis" data-indoor="false" data-lighted="true" data-rental="true" data-zone="west" data-name="metro">
+        <div class="relative aspect-[16/10] overflow-hidden bg-slate-100 cursor-pointer" onclick="openBookingDrawer('metro')">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXHVj7VYWiwQ1VJKJqD-5rykAoko42rid_Tnw8I6_j57PPaiJWbq1r4QW9du5BM-_vnPV8KLk0HNNEqgr7z3Ap9jPkbBHoWKhPo887BU5e6bFmJ44RoNRnWqMueYjOxpYw2GQ1fog2JC09FGe85--8nIM0YUQGAWZNgqkm3XOhJA2bPCso9pr2MZp9mwfOT6OpFIFhfLAXCHuUd8mZrxlOrmAWWBG-hbeLrD9g0v60rR6uy0KADk-M" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300">
+          <div class="absolute top-2.5 left-2.5 bg-white/95 backdrop-blur px-2 py-0.5 rounded-md text-[11px] font-bold text-slate-800 shadow-sm flex items-center gap-1">
+            <span class="text-amber-500">★</span> 4.9 <span class="text-slate-400 font-normal">(210)</span>
+          </div>
+          <div class="absolute top-2.5 right-2.5 bg-court-800 text-white px-2 py-0.5 rounded-md text-[11px] font-bold">4.5 mi away</div>
+          <div class="absolute bottom-2.5 left-2.5 bg-slate-900/80 text-white text-[10px] font-semibold px-2 py-0.5 rounded">Tennis • Red Clay &amp; Hard</div>
+        </div>
+        <div class="p-4 flex flex-col flex-1">
+          <h3 onclick="openBookingDrawer('metro')" class="font-bold text-sm text-slate-900 hover:text-court-800 cursor-pointer transition-colors">Metro Tennis Academy</h3>
+          <p class="text-xs text-slate-500 mt-0.5 mb-3">West Lake • Verified Court Desk</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded text-slate-600 font-medium">6 Hard Courts</span>
+            <span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded text-slate-600 font-medium">Ball Machine</span>
+            <span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded text-slate-600 font-medium">Coaching</span>
+          </div>
+          <div class="mt-auto pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] uppercase font-bold text-slate-400 block">Rate</span>
+              <span class="text-sm font-extrabold text-slate-900">$32 <span class="text-xs font-normal text-slate-400">/hr</span></span>
+            </div>
+            <div class="flex gap-1.5">
+              <button onclick="openBookingDrawer('metro')" class="px-2.5 py-1.5 rounded-lg border border-slate-300 text-xs font-semibold hover:bg-slate-50">Details</button>
+              <button onclick="openBookingDrawer('metro')" class="px-3 py-1.5 rounded-lg bg-court-800 hover:bg-court-900 text-white text-xs font-bold shadow-sm">View Slots</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Baseline Indoor Padel -->
+      <div class="venue-card bg-white rounded-2xl overflow-hidden border border-slate-200 hover:shadow-lg transition-all flex flex-col group" data-sport="pickleball" data-indoor="true" data-lighted="true" data-rental="true" data-zone="east" data-name="baseline">
+        <div class="relative aspect-[16/10] overflow-hidden bg-slate-100 cursor-pointer" onclick="openBookingDrawer('baseline')">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuACKbnrLrE2etxsC66LOP04klXuXNtDmjb7byB9c5TL7tetatHsOA5VRvAjM4Z32Nk0e9Lnv7O_Ef93CAX-cdnF-HMAExhiAv2i8sfY-DpqwsLWj8j0hv9Ma2RRDxaRiz-QLuXDol7imjeVlcrH_TS7HyqgWvYjO11A-D7QnsgaXobE8XkF_3K-Yc3AcYUFX1NB-9LNowdrR7XcJb-c2NhuUw8s9akf-5TutyRIWNZXTdhGDsXmNH9B" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300">
+          <div class="absolute top-2.5 left-2.5 bg-white/95 backdrop-blur px-2 py-0.5 rounded-md text-[11px] font-bold text-slate-800 shadow-sm flex items-center gap-1">
+            <span class="text-amber-500">★</span> 5.0 <span class="text-slate-400 font-normal">(67)</span>
+          </div>
+          <div class="absolute top-2.5 right-2.5 bg-court-800 text-white px-2 py-0.5 rounded-md text-[11px] font-bold">2.1 mi away</div>
+          <div class="absolute bottom-2.5 left-2.5 bg-slate-900/80 text-white text-[10px] font-semibold px-2 py-0.5 rounded">Padel &amp; Pickleball • 8 Indoor</div>
+        </div>
+        <div class="p-4 flex flex-col flex-1">
+          <h3 onclick="openBookingDrawer('baseline')" class="font-bold text-sm text-slate-900 hover:text-court-800 cursor-pointer transition-colors">Baseline Indoor Padel Club</h3>
+          <p class="text-xs text-slate-500 mt-0.5 mb-3">East Austin • Verified Court Desk</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded text-slate-600 font-medium">Panoramic Glass</span>
+            <span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded text-slate-600 font-medium">AC Lounge</span>
+            <span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded text-slate-600 font-medium">Paddle Rental</span>
+          </div>
+          <div class="mt-auto pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] uppercase font-bold text-slate-400 block">Rate</span>
+              <span class="text-sm font-extrabold text-slate-900">$36 <span class="text-xs font-normal text-slate-400">/hr</span></span>
+            </div>
+            <div class="flex gap-1.5">
+              <button onclick="openBookingDrawer('baseline')" class="px-2.5 py-1.5 rounded-lg border border-slate-300 text-xs font-semibold hover:bg-slate-50">Details</button>
+              <button onclick="openBookingDrawer('baseline')" class="px-3 py-1.5 rounded-lg bg-court-800 hover:bg-court-900 text-white text-xs font-bold shadow-sm">View Slots</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RAPID BOOKING DESK SECTION -->
+  <section class="py-10 bg-slate-100/70 border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h2 class="text-xl font-bold text-slate-950">Rapid Booking Desk</h2>
+          <p class="text-xs text-slate-500">Real-time venue slot inventory with direct court reservation links</p>
+        </div>
+        <span class="text-xs text-slate-400 font-medium hidden sm:inline flex items-center gap-1">
+          <span class="w-2 h-2 rounded-full bg-court-500"></span> Auto-refreshed 2 mins ago
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4" id="rapidGrid">
+        <!-- Item 1 -->
+        <div class="bg-white p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div class="flex items-start gap-3.5">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwcr8J684bleFMZJPf78hC1x0siDfaXp7e5eqj5gIYLtwllnoHRzs3quH0hoq2xCYV-f2SnFxNtvMMGT3ftxnE95HnFmOpjgOQftTmPRnCHhqDCWWEbqgUzMyitH4tLdXk_GcKShHEr0kcO3ZGW-T3vKjfPSIfuSzCI5V2WxLY21xPZ-kC5fhsVov6xVYXFfzdPRRZMaPSUfgHUDXg-hP-pZU3FjrUFk6MNPlzP8ohm3oeuk_Q2xLo" class="w-16 h-16 rounded-lg object-cover shrink-0 cursor-pointer" onclick="openBookingDrawer('south-austin', 'South Austin Tennis', 26)">
+            <div>
+              <div class="flex items-center gap-2">
+                <h4 class="font-bold text-sm text-slate-900 hover:text-court-800 cursor-pointer" onclick="openBookingDrawer('south-austin', 'South Austin Tennis', 26)">South Austin Tennis Center</h4>
+                <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-court-100 text-court-800">Open until 11:30 PM</span>
+              </div>
+              <p class="text-xs text-slate-500 mt-0.5">8 Hard Courts • Pro Clay Available</p>
+              <div class="flex items-center gap-3 mt-1.5 text-[11px] text-slate-500">
+                <span class="text-court-700 font-semibold flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[14px]">event_available</span> 3 courts left tonight
+                </span>
+                <span>• Free cancel 2h before</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto gap-2 border-t sm:border-t-0 pt-2 sm:pt-0 border-slate-100">
+            <div class="text-sm font-extrabold text-slate-900">$26 <span class="text-xs font-normal text-slate-400">/hr</span></div>
+            <button onclick="openBookingDrawer('south-austin', 'South Austin Tennis', 26)" class="px-4 py-1.5 rounded-lg bg-court-800 hover:bg-court-900 text-white text-xs font-bold shadow-sm">
+              Check Slots
+            </button>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="bg-white p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div class="flex items-start gap-3.5">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3i6SCs4TfVttQ9PtRIIeTOEy8r9kZ1Cjn8OtMbQW3iTBXACK0XfIPuGztX-mqxl2VT2rG1pzRoz6yBwp7POZ6o6UrWbOhWCe_PAa7p1it452MjOl-dgotB0TRU2VHtOshm8zIrA6ljy-8D8snjcXfliqUL5EHKuf5HdGysAwJTdFAd8YQxPMN09kuhSU5pg4PQTKNepEQfaUSMpqvFEGLNuMNVOvo6YaPTDzWyvUODJUEi6p60q4f" class="w-16 h-16 rounded-lg object-cover shrink-0 cursor-pointer" onclick="openBookingDrawer('fieldhouse', 'The Fieldhouse Sports Hub', 40)">
+            <div>
+              <div class="flex items-center gap-2">
+                <h4 class="font-bold text-sm text-slate-900 hover:text-court-800 cursor-pointer" onclick="openBookingDrawer('fieldhouse', 'The Fieldhouse Sports Hub', 40)">The Fieldhouse Sports Hub</h4>
+                <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-court-100 text-court-800">Open 24/7 Access</span>
+              </div>
+              <p class="text-xs text-slate-500 mt-0.5">Full Court Basketball &amp; 4 Indoor Pickleball Courts</p>
+              <div class="flex items-center gap-3 mt-1.5 text-[11px] text-slate-500">
+                <span class="text-court-700 font-semibold flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[14px]">event_available</span> 5 slots open
+                </span>
+                <span>• Free cancel 4h before</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto gap-2 border-t sm:border-t-0 pt-2 sm:pt-0 border-slate-100">
+            <div class="text-sm font-extrabold text-slate-900">$40 <span class="text-xs font-normal text-slate-400">/hr</span></div>
+            <button onclick="openBookingDrawer('fieldhouse', 'The Fieldhouse Sports Hub', 40)" class="px-4 py-1.5 rounded-lg bg-court-800 hover:bg-court-900 text-white text-xs font-bold shadow-sm">
+              Check Slots
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST & VALUE PROPOSITION -->
+  <section class="py-12 max-w-7xl mx-auto px-4 md:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <h2 class="text-2xl font-extrabold text-slate-950 mb-2">Built for Players, Engineered for Facilities</h2>
+      <p class="text-xs md:text-sm text-slate-500">The zero-friction protocol for reserving athletic facilities without phone calls, double-bookings, or payment friction.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="bg-white p-5 rounded-xl border border-slate-200">
+        <div class="w-10 h-10 rounded-lg bg-court-50 text-court-800 flex items-center justify-center mb-3">
+          <span class="material-symbols-outlined text-[24px]">sync_alt</span>
+        </div>
+        <h3 class="font-bold text-sm text-slate-900 mb-1.5">Direct Venue API Sync</h3>
+        <p class="text-xs text-slate-500 leading-relaxed">Live integration directly with court management boards. When you confirm in QuickCourt, that slot is locked instantaneously.</p>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl border border-slate-200">
+        <div class="w-10 h-10 rounded-lg bg-court-50 text-court-800 flex items-center justify-center mb-3">
+          <span class="material-symbols-outlined text-[24px]">price_check</span>
+        </div>
+        <h3 class="font-bold text-sm text-slate-900 mb-1.5">Zero Booking Markup</h3>
+        <p class="text-xs text-slate-500 leading-relaxed">Pay exact desk rates. Venues license our software, meaning you pay zero platform convenience markup.</p>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl border border-slate-200">
+        <div class="w-10 h-10 rounded-lg bg-court-50 text-court-800 flex items-center justify-center mb-3">
+          <span class="material-symbols-outlined text-[24px]">groups</span>
+        </div>
+        <h3 class="font-bold text-sm text-slate-900 mb-1.5">Instant Bill Splitting</h3>
+        <p class="text-xs text-slate-500 leading-relaxed">Stop chasing group money via peer-to-peer apps. Generate a QuickCourt split link so teammates pay their share straight into the tab.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOST CTA BANNER -->
+  <section class="max-w-7xl mx-auto px-4 md:px-8 pb-12">
+    <div class="bg-court-900 text-white rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-md">
+      <div class="max-w-xl">
+        <span class="px-2.5 py-0.5 rounded bg-white/10 text-emerald-300 text-[10px] font-bold uppercase tracking-wider mb-2 inline-block">For Facility Operators</span>
+        <h3 class="text-2xl font-extrabold text-white mb-2">Eliminate idle court hours with QuickCourt OS</h3>
+        <p class="text-xs md:text-sm text-white/80">Connect your courts to Austin's fastest-growing athletic community. Auto-schedule lights, manage memberships, and receive direct card payouts.</p>
+      </div>
+      <div class="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
+        <button onclick="openModal('hostModal')" class="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-white text-court-900 text-xs font-bold hover:bg-slate-100 shadow-sm transition-colors">
+          List Your Facility
+        </button>
+        <button onclick="setRole('owner')" class="w-full sm:w-auto px-5 py-2.5 rounded-lg border border-white/30 text-white text-xs font-bold hover:bg-white/10 transition-colors">
+          View Host OS
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-slate-200 py-8 text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded bg-court-800 flex items-center justify-center text-white text-xs font-bold">Q</div>
+        <span class="font-bold text-slate-900">QuickCourt</span>
+        <span>© 2025 QuickCourt Inc. High-performance court infrastructure.</span>
+      </div>
+      <div class="flex items-center gap-6 font-semibold">
+        <button onclick="showToast('Terms of Service', 'Standard player liability and clean shoe policy applies.')" class="hover:text-slate-800">Terms</button>
+        <button onclick="showToast('Privacy Policy', 'Encrypted checkout powered by Stripe.')" class="hover:text-slate-800">Privacy</button>
+        <button onclick="openModal('hostModal')" class="hover:text-slate-800">Facility Network</button>
+        <button onclick="showToast('Support Desk', 'Live 24/7 athletic help desk online.')" class="hover:text-slate-800">Support</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================= -->
+  <!-- MODALS & DRAWERS (CLICKABLE PROTOTYPE OVERLAYS) -->
+  <!-- ============================================================= -->
+
+  <!-- MODAL BACKDROP -->
+  <div id="modalBackdrop" onclick="closeAllDrawers()" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+
+  <!-- 1. VENUE & 4-STATE COURT/TIME SLOT BOOKING DRAWER -->
+  <div id="bookingDrawer" class="fixed inset-y-0 right-0 max-w-lg w-full bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col">
+    <div class="p-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+      <div>
+        <span id="drawerBadge" class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-court-100 text-court-800">Badminton</span>
+        <h3 id="drawerVenueTitle" class="text-base font-extrabold text-slate-900 mt-1">Apex Badminton Arena</h3>
+        <p id="drawerVenueSub" class="text-xs text-slate-500">Downtown Austin • BWF Grade-1 Mats</p>
+      </div>
+      <button onclick="closeDrawer('bookingDrawer')" class="w-8 h-8 rounded-full hover:bg-slate-200 flex items-center justify-center text-slate-500">
+        <span class="material-symbols-outlined text-[20px]">close</span>
+      </button>
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-5 space-y-5 text-xs">
+      <!-- Court Picker -->
+      <div>
+        <label class="block font-bold text-slate-900 mb-2">1. Select Court or Pitch</label>
+        <div class="grid grid-cols-3 gap-2" id="courtList">
+          <button onclick="pickCourt(this, 'Court 1')" class="court-btn p-2 rounded-lg border-2 border-court-800 bg-court-50 font-bold text-court-800 text-left">
+            <div>Court 1</div>
+            <div class="text-[10px] font-normal text-slate-500">Olympic Mat</div>
+          </button>
+          <button onclick="pickCourt(this, 'Court 2')" class="court-btn p-2 rounded-lg border border-slate-200 font-bold text-slate-700 text-left hover:bg-slate-50">
+            <div>Court 2</div>
+            <div class="text-[10px] font-normal text-slate-500">Synthetic Pro</div>
+          </button>
+          <button onclick="pickCourt(this, 'Court 3')" class="court-btn p-2 rounded-lg border border-slate-200 font-bold text-slate-700 text-left hover:bg-slate-50">
+            <div>Court 3</div>
+            <div class="text-[10px] font-normal text-slate-500">Center Stage</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- 4-State Time Slot Matrix -->
+      <div>
+        <div class="flex items-center justify-between mb-1.5">
+          <label class="font-bold text-slate-900">2. Select Time Slot (Today, Oct 24)</label>
+          <span class="text-[10px] text-court-700 font-bold flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-court-500 animate-ping"></span> Live Desk Sync
+          </span>
+        </div>
+
+        <!-- Legend -->
+        <div class="flex items-center gap-3 text-[10px] text-slate-500 bg-slate-50 p-2 rounded-lg border border-slate-200 mb-3">
+          <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded bg-white border border-slate-300"></span> Available</span>
+          <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded bg-court-800"></span> Selected</span>
+          <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded bg-amber-400"></span> Locked</span>
+          <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded bg-slate-200 line-through"></span> Booked</span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2" id="slotMatrixContainer">
+          <!-- Available -->
+          <button onclick="pickSlot(this, '5:00 PM – 6:00 PM', 24)" class="slot-pill p-2 rounded-lg border border-slate-200 hover:border-court-800 text-left transition-all">
+            <div class="font-bold text-slate-900">5:00 PM – 6:00 PM</div>
+            <div class="text-[11px] text-court-700 font-bold">$24.00</div>
+          </button>
+
+          <!-- Selected Default -->
+          <button onclick="pickSlot(this, '6:00 PM – 7:00 PM', 24)" class="slot-pill p-2 rounded-lg border-2 border-court-800 bg-court-800 text-white text-left transition-all">
+            <div class="font-bold text-white">6:00 PM – 7:00 PM</div>
+            <div class="text-[11px] text-white/90 font-bold">$24.00 (Active)</div>
+          </button>
+
+          <!-- Available -->
+          <button onclick="pickSlot(this, '7:00 PM – 8:00 PM', 28)" class="slot-pill p-2 rounded-lg border border-slate-200 hover:border-court-800 text-left transition-all">
+            <div class="font-bold text-slate-900">7:00 PM – 8:00 PM</div>
+            <div class="text-[11px] text-court-700 font-bold">$28.00</div>
+          </button>
+
+          <!-- Temporarily Locked -->
+          <div class="p-2 rounded-lg border border-amber-300 bg-amber-50 text-left cursor-not-allowed">
+            <div class="font-bold text-amber-900">8:00 PM – 9:00 PM</div>
+            <div class="text-[10px] text-amber-700 font-semibold flex items-center gap-1 mt-0.5">
+              <span class="material-symbols-outlined text-[12px] animate-spin">hourglass_top</span> Held in Checkout
+            </div>
+          </div>
+
+          <!-- Booked -->
+          <div class="p-2 rounded-lg bg-slate-100 text-slate-400 text-left cursor-not-allowed line-through">
+            <div class="font-medium">9:00 PM – 10:00 PM</div>
+            <div class="text-[10px] text-slate-400 uppercase font-bold">Reserved</div>
+          </div>
+
+          <!-- Available -->
+          <button onclick="pickSlot(this, '10:00 PM – 11:00 PM', 22)" class="slot-pill p-2 rounded-lg border border-slate-200 hover:border-court-800 text-left transition-all">
+            <div class="font-bold text-slate-900">10:00 PM – 11:00 PM</div>
+            <div class="text-[11px] text-court-700 font-bold">$22.00 (Late Night)</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Add-ons -->
+      <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-2">
+        <label class="block font-bold text-slate-900">3. Optional Equipment Rentals</label>
+        <label class="flex items-center justify-between cursor-pointer">
+          <span class="flex items-center gap-2 text-slate-700">
+            <input type="checkbox" id="addonRacquet" onchange="updateDrawerTotal()" class="rounded text-court-800 focus:ring-0">
+            <span>2x Tournament Grade Racquets / Paddles</span>
+          </span>
+          <span class="font-bold text-slate-800">+$8.00</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Drawer Footer -->
+    <div class="p-4 border-t border-slate-200 bg-white space-y-3">
+      <div class="flex items-center justify-between">
+        <div>
+          <span class="text-[10px] uppercase font-bold text-slate-400">Selected Slot</span>
+          <div class="font-bold text-xs text-slate-900" id="drawerSelectedSummary">Court 1 • 6:00 PM – 7:00 PM</div>
+        </div>
+        <div class="text-right">
+          <span class="text-[10px] uppercase font-bold text-slate-400">Total</span>
+          <div class="text-lg font-extrabold text-court-800" id="drawerPriceDisplay">$24.00</div>
+        </div>
+      </div>
+      <button onclick="proceedToCheckout()" class="w-full py-2.5 rounded-lg bg-court-800 hover:bg-court-900 text-white text-xs font-bold shadow-md flex items-center justify-center gap-1.5 transition-all">
+        <span>Proceed to Instant Checkout</span>
+        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- 2. CHECKOUT MODAL -->
+  <div id="checkoutModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full shadow-2xl border border-slate-200 overflow-hidden text-xs">
+      <div class="p-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-court-800 text-[20px]">lock</span>
+          <span class="font-bold text-sm text-slate-900">Desk Rate Protected Checkout</span>
+        </div>
+        <button onclick="closeModal('checkoutModal')" class="text-slate-400 hover:text-slate-600">
+          <span class="material-symbols-outlined text-[18px]">close</span>
+        </button>
+      </div>
+
+      <div class="p-5 space-y-4">
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-2">
+          <div class="flex justify-between font-bold text-slate-900">
+            <span id="coVenue">Apex Badminton Arena</span>
+            <span id="coPrice">$24.00</span>
+          </div>
+          <div class="text-slate-500 flex justify-between">
+            <span id="coSlot">Court 1 • Today, 6:00 PM – 7:00 PM</span>
+            <span>1 hr</span>
+          </div>
+          <div class="text-court-700 font-semibold flex justify-between">
+            <span>QuickCourt Convenience Fee</span>
+            <span>$0.00 (Zero Markup)</span>
+          </div>
+          <div class="border-t border-slate-200 pt-2 flex justify-between font-extrabold text-sm text-slate-900">
+            <span>Total Payable</span>
+            <span class="text-court-800" id="coFinalTotal">$24.00</span>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-800 mb-1.5">Payment Method</label>
+          <div class="space-y-1.5">
+            <label class="flex items-center justify-between p-2.5 rounded-lg border-2 border-court-800 bg-court-50 cursor-pointer">
+              <span class="flex items-center gap-2 font-bold text-slate-900">
+                <input type="radio" name="payMethod" checked="" class="text-court-800 focus:ring-0">
+                <span>Card (Stripe Instant Lock)</span>
+              </span>
+              <span class="text-slate-500 font-mono text-[11px]">•••• 4242</span>
+            </label>
+            <label class="flex items-center justify-between p-2.5 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer">
+              <span class="flex items-center gap-2 text-slate-700">
+                <input type="radio" name="payMethod" class="text-court-800 focus:ring-0">
+                <span>Pay at Facility Desk</span>
+              </span>
+              <span class="text-[10px] font-bold text-court-700 bg-court-100 px-1.5 py-0.5 rounded">No Card Needed</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200 text-[11px] text-slate-500 flex items-start gap-1.5">
+          <span class="material-symbols-outlined text-[16px] text-court-700 shrink-0">verified_user</span>
+          <span>100% money back guarantee if cancelled up to 2 hours before play. Automatic refund to your payment card.</span>
+        </div>
+      </div>
+
+      <div class="p-4 border-t border-slate-200 flex gap-2">
+        <button onclick="closeModal('checkoutModal')" class="flex-1 py-2 rounded-lg border border-slate-300 font-semibold hover:bg-slate-50">Cancel</button>
+        <button onclick="confirmBooking()" class="flex-2 w-2/3 py-2 rounded-lg bg-court-800 hover:bg-court-900 text-white font-bold shadow-sm flex items-center justify-center gap-1">
+          <span class="material-symbols-outlined text-[16px]">check_circle</span> Confirm &amp; Lock
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. BOOKING SUCCESS PASS MODAL -->
+  <div id="successModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-sm w-full shadow-2xl border border-slate-200 overflow-hidden text-xs text-center">
+      <div class="bg-court-800 text-white p-5">
+        <div class="w-10 h-10 rounded-full bg-white text-court-800 flex items-center justify-center mx-auto mb-2 font-bold shadow-md">
+          <span class="material-symbols-outlined text-[24px]">done_all</span>
+        </div>
+        <h3 class="font-extrabold text-base">Court Slot Confirmed!</h3>
+        <p class="text-[11px] text-white/80 mt-0.5">Direct API Lock Sync Complete • Venue Desk Notified</p>
+      </div>
+
+      <div class="p-5 space-y-4">
+        <div class="bg-slate-50 rounded-xl p-3.5 border border-slate-200 space-y-2">
+          <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Access Pass #QC-8921</div>
+          <div class="font-extrabold text-sm text-slate-900" id="passVenue">Apex Badminton Arena</div>
+          <div class="text-xs text-court-800 font-bold" id="passSlot">Court 1 • Today, 6:00 PM – 7:00 PM</div>
+          
+          <!-- QR / PIN Box -->
+          <div class="w-32 h-32 mx-auto bg-white p-2 rounded-lg border border-slate-200 shadow-inner flex flex-col items-center justify-center">
+            <span class="material-symbols-outlined text-[72px] text-slate-800">qr_code_2</span>
+            <span class="font-mono font-bold text-slate-900 text-[11px]">PIN: 7892#</span>
+          </div>
+          <p class="text-[11px] text-slate-500">Scan at entrance turnstile or show front desk.</p>
+        </div>
+
+        <button onclick="closeModal('successModal'); openDrawer('bookingsDrawer');" class="w-full py-2.5 rounded-lg bg-court-800 hover:bg-court-900 text-white font-bold shadow-sm">
+          View in My Bookings
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. MY BOOKINGS DRAWER WITH ACTIVE CANCELLATION -->
+  <div id="bookingsDrawer" class="fixed inset-y-0 right-0 max-w-md w-full bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col text-xs">
+    <div class="p-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+      <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-court-800 text-[20px]">confirmation_number</span>
+        <div>
+          <h3 class="font-extrabold text-sm text-slate-900">My Court Passes</h3>
+          <p class="text-[11px] text-slate-500">Manage bookings, turnstile PINs, &amp; refunds</p>
+        </div>
+      </div>
+      <button onclick="closeDrawer('bookingsDrawer')" class="w-8 h-8 rounded-full hover:bg-slate-200 flex items-center justify-center text-slate-500">
+        <span class="material-symbols-outlined text-[18px]">close</span>
+      </button>
+    </div>
+
+    <!-- Filter tabs -->
+    <div class="flex border-b border-slate-200 px-4 bg-slate-50 text-[11px] font-bold">
+      <button onclick="filterBookingsTab('upcoming', this)" class="bk-tab py-2.5 border-b-2 border-court-800 text-court-800 mr-4">Upcoming (<span id="upcomingBadge">2</span>)</button>
+      <button onclick="filterBookingsTab('completed', this)" class="bk-tab py-2.5 text-slate-500 hover:text-slate-800 mr-4">Completed (4)</button>
+      <button onclick="filterBookingsTab('cancelled', this)" class="bk-tab py-2.5 text-slate-500 hover:text-slate-800">Cancelled</button>
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-4 space-y-3" id="bookingsList">
+      <!-- Active 1 -->
+      <div id="bkItem1" class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-2">
+        <div class="flex justify-between items-start">
+          <div>
+            <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-court-100 text-court-800">CONFIRMED</span>
+            <h4 class="font-bold text-sm text-slate-900 mt-1">Apex Badminton Arena</h4>
+            <p class="text-slate-500 text-[11px]">Court 1 • Today, 6:00 PM – 7:00 PM</p>
+          </div>
+          <span class="font-extrabold text-slate-900">$24.00</span>
+        </div>
+        <div class="bg-white p-2 rounded border border-slate-200 flex items-center justify-between text-[11px]">
+          <span class="text-slate-500 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">pin</span> PIN: <strong class="text-slate-800">7892#</strong></span>
+          <span class="text-court-700 font-bold">Active Pass</span>
+        </div>
+        <div class="flex justify-between items-center pt-1 border-t border-slate-200">
+          <button onclick="showToast('Turnstile Pass', 'QR Code Pass #QC-8921 active on turnstile network.')" class="font-bold text-court-800 hover:underline">Show QR</button>
+          <button onclick="cancelBooking('bkItem1', '$24.00')" class="font-semibold text-rose-600 hover:underline">Cancel Booking</button>
+        </div>
+      </div>
+
+      <!-- Active 2 -->
+      <div id="bkItem2" class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-2">
+        <div class="flex justify-between items-start">
+          <div>
+            <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-court-100 text-court-800">CONFIRMED</span>
+            <h4 class="font-bold text-sm text-slate-900 mt-1">Vanguard 5v5 Turf</h4>
+            <p class="text-slate-500 text-[11px]">Pitch B • Saturday, Oct 26 • 8:30 PM</p>
+          </div>
+          <span class="font-extrabold text-slate-900">$55.00</span>
+        </div>
+        <div class="bg-white p-2 rounded border border-slate-200 flex items-center justify-between text-[11px]">
+          <span class="text-slate-500 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">pin</span> PIN: <strong class="text-slate-800">4410#</strong></span>
+          <span class="text-court-700 font-bold">Active Pass</span>
+        </div>
+        <div class="flex justify-between items-center pt-1 border-t border-slate-200">
+          <button onclick="showToast('Turnstile Pass', 'QR Code Pass #QC-3312 active.')" class="font-bold text-court-800 hover:underline">Show QR</button>
+          <button onclick="cancelBooking('bkItem2', '$55.00')" class="font-semibold text-rose-600 hover:underline">Cancel Booking</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. PROFILE DRAWER -->
+  <div id="profileDrawer" class="fixed inset-y-0 right-0 max-w-sm w-full bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col text-xs">
+    <div class="p-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-full bg-court-800 text-white font-bold flex items-center justify-center">AL</div>
+        <div>
+          <h3 class="font-bold text-sm text-slate-900">Alex Lawson</h3>
+          <p class="text-[10px] text-slate-400">QuickCourt Player #8841</p>
+        </div>
+      </div>
+      <button onclick="closeDrawer('profileDrawer')" class="w-8 h-8 rounded-full hover:bg-slate-200 flex items-center justify-center text-slate-500">
+        <span class="material-symbols-outlined text-[18px]">close</span>
+      </button>
+    </div>
+
+    <div class="p-5 space-y-4">
+      <div>
+        <label class="block font-bold text-slate-700 mb-1">Full Name</label>
+        <input type="text" value="Alex Lawson" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 outline-none font-semibold text-slate-800">
+      </div>
+      <div>
+        <label class="block font-bold text-slate-700 mb-1">Phone (for turnstile SMS PINs)</label>
+        <input type="text" value="+1 (512) 555-0198" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 outline-none font-semibold text-slate-800">
+      </div>
+      <div>
+        <label class="block font-bold text-slate-700 mb-1">Skill Rating / Level</label>
+        <select class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 outline-none font-semibold text-slate-800">
+          <option>Intermediate (DUPR 3.5 / NTRP 4.0)</option>
+          <option>Advanced Competition</option>
+          <option>Recreational / Beginner</option>
+        </select>
+      </div>
+      <button onclick="showToast('Profile Updated', 'Player preferences synchronized across devices.'); closeDrawer('profileDrawer');" class="w-full py-2 rounded-lg bg-court-800 hover:bg-court-900 text-white font-bold shadow-sm">
+        Save Changes
+      </button>
+    </div>
+  </div>
+
+  <!-- 6. FACILITY HOST / LIST A COURT MODAL -->
+  <div id="hostModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full shadow-2xl border border-slate-200 overflow-hidden text-xs">
+      <div class="bg-court-900 text-white p-4 flex items-center justify-between">
+        <div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-400">QuickCourt OS</span>
+          <h3 class="font-extrabold text-sm">List Your Sports Facility</h3>
+        </div>
+        <button onclick="closeModal('hostModal')" class="text-white/60 hover:text-white">
+          <span class="material-symbols-outlined text-[18px]">close</span>
+        </button>
+      </div>
+
+      <div class="p-5 space-y-3">
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Venue Name</label>
+          <input type="text" id="hostVenueName" placeholder="e.g. Austin Padel Club" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 font-semibold text-slate-800 outline-none">
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Sport Type</label>
+            <select class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 font-semibold text-slate-800 outline-none">
+              <option>Badminton</option>
+              <option>Football Turf</option>
+              <option>Tennis</option>
+              <option>Pickleball &amp; Padel</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Number of Courts</label>
+            <input type="number" value="4" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 font-semibold text-slate-800 outline-none">
+          </div>
+        </div>
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Facility Address</label>
+          <input type="text" placeholder="Street, Austin, TX" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 font-semibold text-slate-800 outline-none">
+        </div>
+        <button onclick="submitHostApplication()" class="w-full py-2.5 rounded-lg bg-court-800 hover:bg-court-900 text-white font-bold shadow-sm mt-2">
+          Submit for Fast Approval
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT STATE ENGINE -->
+  <script>
+    // State
+    let currentSport = 'all';
+    let currentSubFilter = 'all';
+    let currentZone = 'all';
+    let selectedSlotData = { venue: 'Apex Badminton Arena', slot: '6:00 PM – 7:00 PM', price: 24 };
+
+    function showToast(title, msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastTitle').textContent = title;
+      document.getElementById('toastMsg').textContent = msg;
+      toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-[-20px]');
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-[-20px]');
+      }, 3200);
+    }
+
+    function toggleDropdown(id) {
+      document.getElementById(id).classList.toggle('hidden');
+    }
+
+    function selectCity(city) {
+      document.getElementById('currentCityText').textContent = city;
+      document.getElementById('locationMenu').classList.add('hidden');
+      showToast('Location Switched', 'Showing available courts in ' + city);
+    }
+
+    function scrollToId(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Role switching simulator
+    function setRole(role) {
+      ['rolePlayerBtn', 'roleOwnerBtn', 'roleAdminBtn'].forEach(id => {
+        document.getElementById(id).className = 'px-2.5 py-1 rounded bg-white/10 hover:bg-white/20 text-white/80 font-semibold text-[11px] transition-all';
+      });
+      if (role === 'player') {
+        document.getElementById('rolePlayerBtn').className = 'px-2.5 py-1 rounded bg-court-800 text-white font-semibold text-[11px] transition-all';
+        showToast('Player View Active', 'Exploring venues, slots, and personal bookings.');
+      } else if (role === 'owner') {
+        document.getElementById('roleOwnerBtn').className = 'px-2.5 py-1 rounded bg-court-800 text-white font-semibold text-[11px] transition-all';
+        openModal('hostModal');
+        showToast('Facility Host OS', 'Open court slots management and host portal.');
+      } else if (role === 'admin') {
+        document.getElementById('roleAdminBtn').className = 'px-2.5 py-1 rounded bg-court-800 text-white font-semibold text-[11px] transition-all';
+        showToast('Admin Ops Queue', 'All pending facility verification queues certified.');
+      }
+    }
+
+    // Sport Filtering
+    function setSportFilter(sport, btnElement) {
+      currentSport = sport;
+      const pills = document.querySelectorAll('#heroSportPills .sport-btn');
+      pills.forEach(btn => {
+        btn.className = 'sport-btn px-3.5 py-1.5 rounded-lg bg-white hover:bg-slate-100 text-slate-700 text-xs font-semibold shrink-0 transition-colors';
+      });
+      if (btnElement) {
+        btnElement.className = 'sport-btn px-3.5 py-1.5 rounded-lg bg-court-800 text-white text-xs font-bold shrink-0 transition-colors';
+      }
+      applyFilters();
+    }
+
+    function setSubFilter(type, btn) {
+      currentSubFilter = type;
+      const buttons = document.querySelectorAll('#subfilterGroup .sub-btn');
+      buttons.forEach(b => b.className = 'sub-btn px-3 py-1 rounded-md text-slate-600 hover:text-slate-900');
+      btn.className = 'sub-btn px-3 py-1 rounded-md bg-court-800 text-white';
+      applyFilters();
+    }
+
+    function setFastTag(tag) {
+      if (tag === 'lighted') setSubFilter('lighted', document.querySelectorAll('#subfilterGroup .sub-btn')[2]);
+      if (tag === 'clay') setSportFilter('tennis', document.querySelectorAll('#heroSportPills .sport-btn')[3]);
+    }
+
+    function liveSearchVenues(query) {
+      const q = query.toLowerCase().trim();
+      const cards = document.querySelectorAll('.venue-card');
+      let count = 0;
+      cards.forEach(card => {
+        const name = card.textContent.toLowerCase();
+        if (!q || name.includes(q)) {
+          card.classList.remove('hidden');
+          count++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+      document.getElementById('venueCountBadge').textContent = 'Showing (' + count + ')';
+    }
+
+    function applyMatrixFilter(showFeedback = false) {
+      currentZone = document.getElementById('zoneSelector').value;
+      applyFilters();
+      if (showFeedback) showToast('Filters Applied', 'Synchronized real-time venue desk rates.');
+    }
+
+    function applyFilters() {
+      const cards = document.querySelectorAll('.venue-card');
+      let visibleCount = 0;
+      cards.forEach(card => {
+        const sport = card.dataset.sport;
+        const indoor = card.dataset.indoor === 'true';
+        const lighted = card.dataset.lighted === 'true';
+        const rental = card.dataset.rental === 'true';
+        const zone = card.dataset.zone;
+
+        let matchesSport = (currentSport === 'all') || (sport === currentSport);
+        let matchesSub = true;
+        if (currentSubFilter === 'indoor') matchesSub = indoor;
+        if (currentSubFilter === 'lighted') matchesSub = lighted;
+        if (currentSubFilter === 'rental') matchesSub = rental;
+
+        let matchesZone = (currentZone === 'all') || (zone === currentZone);
+
+        if (matchesSport && matchesSub && matchesZone) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+      document.getElementById('venueCountBadge').textContent = 'Showing (' + visibleCount + ')';
+    }
+
+    function resetHome() {
+      setSportFilter('all', document.querySelectorAll('#heroSportPills .sport-btn')[0]);
+      setSubFilter('all', document.querySelectorAll('#subfilterGroup .sub-btn')[0]);
+      document.getElementById('zoneSelector').value = 'all';
+      document.getElementById('matrixSearchInput').value = '';
+      document.getElementById('headerSearch').value = '';
+      applyFilters();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      showToast('All Venues Restored', 'Displaying full verified facility network.');
+    }
+
+    // Drawer & Modal controls
+    function openDrawer(id) {
+      document.getElementById('modalBackdrop').classList.remove('hidden');
+      document.getElementById(id).classList.remove('translate-x-full');
+    }
+
+    function closeDrawer(id) {
+      document.getElementById(id).classList.add('translate-x-full');
+      document.getElementById('modalBackdrop').classList.add('hidden');
+    }
+
+    function openModal(id) {
+      document.getElementById('modalBackdrop').classList.remove('hidden');
+      document.getElementById(id).classList.remove('hidden');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+      document.getElementById('modalBackdrop').classList.add('hidden');
+    }
+
+    function closeAllDrawers() {
+      ['bookingDrawer', 'bookingsDrawer', 'profileDrawer'].forEach(id => {
+        document.getElementById(id).classList.add('translate-x-full');
+      });
+      ['checkoutModal', 'successModal', 'hostModal', 'modalBackdrop'].forEach(id => {
+        document.getElementById(id).classList.add('hidden');
+      });
+    }
+
+    // Booking Flow
+    function openBookingDrawer(venueKey, venueTitle, basePrice, defaultSlot) {
+      const titles = {
+        'apex': 'Apex Badminton Arena',
+        'vanguard': 'Vanguard 5v5 & 7v7 Turfs',
+        'metro': 'Metro Tennis Academy',
+        'baseline': 'Baseline Indoor Padel Club',
+        'south-austin': 'South Austin Tennis Center',
+        'fieldhouse': 'The Fieldhouse Sports Hub'
+      };
+      const sports = {
+        'apex': 'Badminton',
+        'vanguard': 'Football Turf',
+        'metro': 'Tennis',
+        'baseline': 'Padel & Pickleball',
+        'south-austin': 'Tennis',
+        'fieldhouse': 'Basketball'
+      };
+      const rates = { 'apex': 24, 'vanguard': 55, 'metro': 32, 'baseline': 36, 'south-austin': 26, 'fieldhouse': 40 };
+
+      const name = venueTitle || titles[venueKey] || 'Apex Badminton Arena';
+      const price = basePrice || rates[venueKey] || 24;
+      const slot = defaultSlot || '6:00 PM – 7:00 PM';
+
+      selectedSlotData = { venue: name, slot: slot, price: price };
+      document.getElementById('drawerVenueTitle').textContent = name;
+      document.getElementById('drawerBadge').textContent = sports[venueKey] || 'Sports';
+      document.getElementById('drawerPriceDisplay').textContent = '$' + price + '.00';
+      document.getElementById('drawerSelectedSummary').textContent = 'Court 1 • ' + slot;
+      openDrawer('bookingDrawer');
+    }
+
+    function pickCourt(btn, courtName) {
+      document.querySelectorAll('#courtList .court-btn').forEach(b => {
+        b.className = 'court-btn p-2 rounded-lg border border-slate-200 font-bold text-slate-700 text-left hover:bg-slate-50';
+      });
+      btn.className = 'court-btn p-2 rounded-lg border-2 border-court-800 bg-court-50 font-bold text-court-800 text-left';
+      document.getElementById('drawerSelectedSummary').textContent = courtName + ' • ' + selectedSlotData.slot;
+    }
+
+    function pickSlot(btn, slotTime, slotPrice) {
+      document.querySelectorAll('#slotMatrixContainer .slot-pill').forEach(b => {
+        b.className = 'slot-pill p-2 rounded-lg border border-slate-200 hover:border-court-800 text-left transition-all';
+        const priceTag = b.querySelector('.text-court-700');
+        if (priceTag) priceTag.className = 'text-[11px] text-court-700 font-bold';
+      });
+      btn.className = 'slot-pill p-2 rounded-lg border-2 border-court-800 bg-court-800 text-white text-left transition-all';
+      selectedSlotData.slot = slotTime;
+      selectedSlotData.price = slotPrice;
+      updateDrawerTotal();
+    }
+
+    function updateDrawerTotal() {
+      let total = selectedSlotData.price;
+      if (document.getElementById('addonRacquet') && document.getElementById('addonRacquet').checked) {
+        total += 8;
+      }
+      document.getElementById('drawerPriceDisplay').textContent = '$' + total + '.00';
+      document.getElementById('drawerSelectedSummary').textContent = 'Court 1 • ' + selectedSlotData.slot;
+    }
+
+    function proceedToCheckout() {
+      closeDrawer('bookingDrawer');
+      let total = selectedSlotData.price;
+      if (document.getElementById('addonRacquet') && document.getElementById('addonRacquet').checked) total += 8;
+
+      document.getElementById('coVenue').textContent = selectedSlotData.venue;
+      document.getElementById('coPrice').textContent = '$' + selectedSlotData.price + '.00';
+      document.getElementById('coSlot').textContent = 'Court 1 • ' + selectedSlotData.slot;
+      document.getElementById('coFinalTotal').textContent = '$' + total + '.00';
+      openModal('checkoutModal');
+    }
+
+    function confirmBooking() {
+      closeModal('checkoutModal');
+      document.getElementById('passVenue').textContent = selectedSlotData.venue;
+      document.getElementById('passSlot').textContent = 'Court 1 • ' + selectedSlotData.slot;
+      openModal('successModal');
+
+      // Increment count
+      const badge = document.getElementById('globalBookingBadge');
+      const cur = parseInt(badge.textContent) || 2;
+      badge.textContent = cur + 1;
+      document.getElementById('upcomingBadge').textContent = cur + 1;
+
+      // Add to bookings list
+      const newItem = document.createElement('div');
+      newItem.id = 'bkItem' + Date.now();
+      newItem.className = 'bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-2';
+      newItem.innerHTML = `
+        <div class="flex justify-between items-start">
+          <div>
+            <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-court-100 text-court-800">CONFIRMED</span>
+            <h4 class="font-bold text-sm text-slate-900 mt-1">${selectedSlotData.venue}</h4>
+            <p class="text-slate-500 text-[11px]">Court 1 • ${selectedSlotData.slot}</p>
+          </div>
+          <span class="font-extrabold text-slate-900">$${selectedSlotData.price}.00</span>
+        </div>
+        <div class="bg-white p-2 rounded border border-slate-200 flex items-center justify-between text-[11px]">
+          <span class="text-slate-500 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">pin</span> PIN: <strong class="text-slate-800">8921#</strong></span>
+          <span class="text-court-700 font-bold">Active Pass</span>
+        </div>
+        <div class="flex justify-between items-center pt-1 border-t border-slate-200">
+          <button onclick="showToast('Turnstile Pass', 'QR Code Pass #QC-8921 active.')" class="font-bold text-court-800 hover:underline">Show QR</button>
+          <button onclick="cancelBooking('${newItem.id}', '$${selectedSlotData.price}.00')" class="font-semibold text-rose-600 hover:underline">Cancel Booking</button>
+        </div>
+      `;
+      document.getElementById('bookingsList').prepend(newItem);
+    }
+
+    function cancelBooking(itemId, refundAmount) {
+      if (confirm('Cancel reservation and receive an instant ' + refundAmount + ' full refund?')) {
+        const elem = document.getElementById(itemId);
+        if (elem) {
+          elem.innerHTML = `
+            <div class="p-3 bg-rose-50 rounded-lg border border-rose-200 text-rose-800 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] uppercase font-bold text-rose-600">CANCELLED & REFUNDED</span>
+                <div class="font-bold text-xs mt-0.5">Reservation voided</div>
+              </div>
+              <span class="font-bold text-xs text-rose-700">Ref: ${refundAmount}</span>
+            </div>
+          `;
+          const badge = document.getElementById('globalBookingBadge');
+          const cur = Math.max(0, (parseInt(badge.textContent) || 2) - 1);
+          badge.textContent = cur;
+          document.getElementById('upcomingBadge').textContent = cur;
+          showToast('Reservation Cancelled', refundAmount + ' credited back to payment card.');
+        }
+      }
+    }
+
+    function filterBookingsTab(tab, btn) {
+      document.querySelectorAll('.bk-tab').forEach(b => {
+        b.className = 'bk-tab py-2.5 text-slate-500 hover:text-slate-800 mr-4';
+      });
+      btn.className = 'bk-tab py-2.5 border-b-2 border-court-800 text-court-800 mr-4 font-bold';
+      showToast('Bookings Filtered', 'Displaying ' + tab + ' reservations.');
+    }
+
+    function submitHostApplication() {
+      const name = document.getElementById('hostVenueName').value || 'Austin Padel Club';
+      closeModal('hostModal');
+      showToast('Application Submitted', name + ' received for express desk API onboarding.');
+    }
+  </script>
+
+
+</body></html>

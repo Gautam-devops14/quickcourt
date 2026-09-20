@@ -1,0 +1,332 @@
+[
+  {
+    "dir": "quickcourt_add_edit_court_ahmedabad_inr",
+    "role": "Owner",
+    "route": "/owner/facilities/[id]/courts/new",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_add_edit_court_ahmedabad_inr_owner_portal_tagged",
+    "role": "Owner",
+    "route": "/owner/facilities/[id]/courts/new",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_add_edit_facility_ahmedabad",
+    "role": "Owner",
+    "route": "/owner/facilities/new or [id]/edit",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_add_edit_facility_ahmedabad_owner_portal_tagged",
+    "role": "Owner",
+    "route": "/owner/facilities/new or [id]/edit",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_admin_admin_profile_security_settings",
+    "role": "Admin",
+    "route": "/admin/profile",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_admin_dashboard_ahmedabad_operations",
+    "role": "Admin",
+    "route": "/admin",
+    "status": "Fully Implemented"
+  },
+  {
+    "dir": "quickcourt_admin_facility_approvals_verification_hub",
+    "role": "Admin",
+    "route": "/admin/approvals",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_admin_facility_review_enhanced_photo_grid_lightbox",
+    "role": "Admin",
+    "route": "/admin/approvals/[id]",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_admin_facility_submission_review",
+    "role": "Admin",
+    "route": "/admin/approvals/[id]",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_admin_reject_facility_modal_destructive_cta_required_notice",
+    "role": "Admin",
+    "route": "Modal in /admin/approvals/[id]",
+    "status": "Not Implemented"
+  },
+  {
+    "dir": "quickcourt_admin_reject_facility_modal_overlay",
+    "role": "Admin",
+    "route": "Modal in /admin/approvals/[id]",
+    "status": "Not Implemented"
+  },
+  {
+    "dir": "quickcourt_admin_users_owners_management",
+    "role": "Admin",
+    "route": "/admin/users",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_admin_users_owners_management_streamlined_table_booking_history",
+    "role": "Admin",
+    "route": "/admin/users",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_booking_details",
+    "role": "User",
+    "route": "/bookings/[id]",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_booking_details_ahmedabad_inr",
+    "role": "User",
+    "route": "/bookings/[id]",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_booking_success",
+    "role": "User",
+    "route": "/success",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_booking_success_ahmedabad_inr",
+    "role": "User",
+    "route": "/success",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_booking_summary",
+    "role": "User",
+    "route": "/checkout",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_booking_summary_ahmedabad_inr",
+    "role": "User",
+    "route": "/checkout",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_court_management_ahmedabad",
+    "role": "Owner",
+    "route": "/owner/facilities/[id]/courts",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_court_management_ahmedabad_owner_portal_tagged",
+    "role": "Owner",
+    "route": "/owner/facilities/[id]/courts",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_court_time_selection",
+    "role": "User",
+    "route": "/venue/[id]/book",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_court_time_selection_ahmedabad_inr",
+    "role": "User",
+    "route": "/venue/[id]/book",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_court_time_selection_enhanced_slot_states",
+    "role": "User",
+    "route": "/venue/[id]/book",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_explore_venues",
+    "role": "User",
+    "route": "/explore",
+    "status": "Fully Implemented"
+  },
+  {
+    "dir": "quickcourt_explore_venues_ahmedabad",
+    "role": "User",
+    "route": "/explore",
+    "status": "Fully Implemented"
+  },
+  {
+    "dir": "quickcourt_facility_approval_status_owner_portal_prominent_rejection",
+    "role": "Owner",
+    "route": "",
+    "status": "Not Implemented"
+  },
+  {
+    "dir": "quickcourt_facility_approval_status_verification_hub",
+    "role": "Owner",
+    "route": "",
+    "status": "Not Implemented"
+  },
+  {
+    "dir": "quickcourt_facility_management_ahmedabad",
+    "role": "Owner",
+    "route": "/owner/facilities",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_facility_management_ahmedabad_owner_portal_tagged",
+    "role": "Owner",
+    "route": "/owner/facilities",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_facility_owner_dashboard_ahmedabad",
+    "role": "Owner",
+    "route": "/owner",
+    "status": "Fully Implemented"
+  },
+  {
+    "dir": "quickcourt_facility_owner_dashboard_ahmedabad_owner_portal_tagged",
+    "role": "Owner",
+    "route": "/owner",
+    "status": "Fully Implemented"
+  },
+  {
+    "dir": "quickcourt_facility_owner_onboarding_multi_turf_setup",
+    "role": "Owner",
+    "route": "",
+    "status": "Not Implemented"
+  },
+  {
+    "dir": "quickcourt_full_interactive_homepage_prototype",
+    "role": "User",
+    "route": "/",
+    "status": "Fully Implemented"
+  },
+  {
+    "dir": "quickcourt_home",
+    "role": "User",
+    "route": "/",
+    "status": "Fully Implemented"
+  },
+  {
+    "dir": "quickcourt_interactive_prototype_1",
+    "role": "User",
+    "route": "",
+    "status": "Not Implemented"
+  },
+  {
+    "dir": "quickcourt_interactive_prototype_2",
+    "role": "User",
+    "route": "",
+    "status": "Not Implemented"
+  },
+  {
+    "dir": "quickcourt_logo",
+    "role": "User",
+    "route": "",
+    "status": "Not Implemented"
+  },
+  {
+    "dir": "quickcourt_my_bookings",
+    "role": "User",
+    "route": "/bookings",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_my_bookings_ahmedabad_inr",
+    "role": "User",
+    "route": "/bookings",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_otp_verification",
+    "role": "User",
+    "route": "None (Mocked)",
+    "status": "Not Implemented"
+  },
+  {
+    "dir": "quickcourt_owner_bookings_management_ahmedabad",
+    "role": "Owner",
+    "route": "/owner/bookings",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_owner_bookings_management_ahmedabad_owner_portal_tagged",
+    "role": "Owner",
+    "route": "/owner/bookings",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_owner_profile_account_settings",
+    "role": "Owner",
+    "route": "/owner/profile",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_owner_profile_account_settings_owner_portal_tagged",
+    "role": "Owner",
+    "route": "/owner/profile",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_sign_in_athlete_portal",
+    "role": "User",
+    "route": "None (Mocked)",
+    "status": "Not Implemented"
+  },
+  {
+    "dir": "quickcourt_sign_up_athlete_registration",
+    "role": "User",
+    "route": "None (Mocked)",
+    "status": "Not Implemented"
+  },
+  {
+    "dir": "quickcourt_simulated_payment",
+    "role": "User",
+    "route": "/success (merged)",
+    "status": "Not Implemented"
+  },
+  {
+    "dir": "quickcourt_simulated_payment_ahmedabad_inr",
+    "role": "User",
+    "route": "/success (merged)",
+    "status": "Not Implemented"
+  },
+  {
+    "dir": "quickcourt_time_slot_management_ahmedabad",
+    "role": "Owner",
+    "route": "/owner/schedule",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_time_slot_management_owner_portal_bulk_actions",
+    "role": "Owner",
+    "route": "/owner/schedule",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_user_profile",
+    "role": "User",
+    "route": "/profile",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_user_profile_ahmedabad_inr",
+    "role": "User",
+    "route": "/profile",
+    "status": "Partially Implemented"
+  },
+  {
+    "dir": "quickcourt_venue_details",
+    "role": "User",
+    "route": "/venue/[id]",
+    "status": "Fully Implemented"
+  },
+  {
+    "dir": "quickcourt_venue_details_ahmedabad_inr",
+    "role": "User",
+    "route": "/venue/[id]",
+    "status": "Fully Implemented"
+  }
+]

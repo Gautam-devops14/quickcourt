@@ -1,0 +1,674 @@
+<main class="ml-64 flex-1 p-6 md:p-8 space-y-6 max-w-[1440px]">
+<!-- Dashboard Top Section & Controls -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2 border-b border-outline-variant">
+<div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface font-bold tracking-tight">Facility Operations &amp; Performance</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">
+            Real-time court utilization, incoming revenue, turnstile synchronizations, and player requests for Apex Badminton Academy.
+          </p>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<!-- Range Tabs -->
+<div class="flex items-center bg-surface-container-low border border-outline-variant rounded-lg p-1">
+<button class="px-3 py-1 text-xs font-label-md rounded bg-surface-container-lowest text-primary font-bold shadow-sm">Today</button>
+<button class="px-3 py-1 text-xs font-label-md rounded text-on-surface-variant hover:text-on-surface">This Week</button>
+<button class="px-3 py-1 text-xs font-label-md rounded text-on-surface-variant hover:text-on-surface">This Month</button>
+</div>
+<button class="flex items-center gap-1.5 px-3.5 py-2 bg-surface-container-lowest hover:bg-surface-container border border-outline-variant text-on-surface font-label-md text-label-md rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+<span>Today, Oct 24, 2025</span>
+</button>
+<button class="flex items-center gap-1.5 px-3.5 py-2 bg-surface-container-lowest hover:bg-surface-container border border-outline-variant text-on-surface font-label-md text-label-md rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Export Report</span>
+</button>
+</div>
+</div>
+<!-- 4 Key Metric KPI Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+<!-- KPI 1: Gross Earnings -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant font-semibold">Simulated Gross Earnings</span>
+<div class="p-2 bg-surface-container rounded-lg text-primary">
+<span class="material-symbols-outlined text-[20px]">currency_rupee</span>
+</div>
+</div>
+<div class="mt-3">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl font-bold text-on-surface">₹1,48,650</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-secondary font-bold">+14.2%</span>
+</div>
+<div class="flex items-center justify-between text-xs text-on-surface-variant mt-2 pt-2 border-t border-outline-variant">
+<span>Today: <strong class="text-on-surface">₹18,450</strong></span>
+<span class="text-[11px] text-secondary font-medium">Payout tomorrow to HDFC Bank</span>
+</div>
+</div>
+</div>
+<!-- KPI 2: Total Bookings -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant font-semibold">Total Bookings &amp; Slotted Play</span>
+<div class="p-2 bg-surface-container rounded-lg text-primary">
+<span class="material-symbols-outlined text-[20px]">confirmation_number</span>
+</div>
+</div>
+<div class="mt-3">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl font-bold text-on-surface">342 Bookings</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-secondary font-bold">+8.6%</span>
+</div>
+<div class="flex items-center justify-between text-xs text-on-surface-variant mt-2 pt-2 border-t border-outline-variant">
+<span>Today's Roster: <strong class="text-on-surface">46 Slots</strong></span>
+<span class="text-[11px]">88% Month avg. fill rate</span>
+</div>
+</div>
+</div>
+<!-- KPI 3: Live Utilization -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant font-semibold">Active Courts / Live Load</span>
+<div class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-secondary font-label-sm text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+              Live Peak
+            </div>
+</div>
+<div class="mt-3">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl font-bold text-on-surface">7 / 8 Courts</span>
+<span class="font-label-md text-label-md text-secondary font-semibold">88% Occ.</span>
+</div>
+<div class="flex items-center gap-3 text-xs text-on-surface-variant mt-2 pt-2 border-t border-outline-variant">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-secondary"></span> 6 In-play</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-surface-dim"></span> 1 Warmup</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-outline-variant"></span> 1 Maint.</span>
+</div>
+</div>
+</div>
+<!-- KPI 4: Pending Approvals -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant font-semibold">Pending Approvals &amp; Offline Holds</span>
+<div class="p-2 bg-error-container text-on-error-container rounded-lg">
+<span class="material-symbols-outlined text-[20px]">pending_actions</span>
+</div>
+</div>
+<div class="mt-3">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl font-bold text-on-surface">4 Requests</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-error-container text-on-error-container font-bold">Action Needed</span>
+</div>
+<div class="flex items-center justify-between text-xs text-on-surface-variant mt-2 pt-2 border-t border-outline-variant">
+<span>2 Tournament • 1 Clinic</span>
+<span class="text-[11px] font-semibold text-primary">Resolve Now</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Layout 2-Column: Left 8 cols, Right 4 cols -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- LEFT COLUMN (8 Columns) -->
+<div class="lg:col-span-8 space-y-6">
+<!-- Section a: Booking Trends & Hourly Occupancy Chart -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-outline-variant">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">Occupancy &amp; Revenue Pace</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Daily utilization curves across morning badminton regulars and evening league rushes.</p>
+</div>
+<div class="flex items-center bg-surface-container-low border border-outline-variant rounded-lg p-1 text-xs">
+<button class="px-3 py-1 font-label-sm rounded bg-surface-container-lowest text-primary font-bold shadow-sm">Hourly Peak (6 AM - 11 PM)</button>
+<button class="px-3 py-1 font-label-sm rounded text-on-surface-variant hover:text-on-surface">7-Day Volume</button>
+</div>
+</div>
+<!-- Visualization Canvas -->
+<div class="mt-6">
+<div class="flex items-center justify-between text-xs font-label-sm text-on-surface-variant mb-2">
+<span>PEAK WINDOW: <strong class="text-primary">07:00 PM – 09:30 PM</strong> (₹700/hr desk yield)</span>
+<span class="flex items-center gap-2">
+<span class="inline-block w-2.5 h-2.5 rounded bg-primary-container"></span> Actual Booked
+                  <span class="inline-block w-2.5 h-2.5 rounded bg-surface-container-high ml-2"></span> Projected Unbooked
+                </span>
+</div>
+<!-- Bar Matrix for Hours in Ahmedabad (6 AM to 11 PM) -->
+<div class="h-48 flex items-end justify-between gap-1.5 pt-6 pb-2 px-1 border-b border-outline-variant">
+<!-- 06 AM -->
+<div class="flex-1 flex flex-col items-center gap-1 group cursor-pointer h-full justify-end">
+<div class="w-full bg-primary-container rounded-t transition-all group-hover:bg-primary" style="height: 70%;"></div>
+<span class="text-[10px] text-on-surface-variant">6 AM</span>
+</div>
+<!-- 07 AM -->
+<div class="flex-1 flex flex-col items-center gap-1 group cursor-pointer h-full justify-end">
+<div class="w-full bg-primary-container rounded-t transition-all group-hover:bg-primary" style="height: 85%;"></div>
+<span class="text-[10px] text-on-surface-variant">7 AM</span>
+</div>
+<!-- 08 AM -->
+<div class="flex-1 flex flex-col items-center gap-1 group cursor-pointer h-full justify-end">
+<div class="w-full bg-primary-container rounded-t transition-all group-hover:bg-primary" style="height: 80%;"></div>
+<span class="text-[10px] text-on-surface-variant">8 AM</span>
+</div>
+<!-- 09 AM -->
+<div class="flex-1 flex flex-col items-center gap-1 group cursor-pointer h-full justify-end">
+<div class="w-full bg-primary-container rounded-t transition-all group-hover:bg-primary" style="height: 55%;"></div>
+<span class="text-[10px] text-on-surface-variant">9 AM</span>
+</div>
+<!-- 10 AM -->
+<div class="flex-1 flex flex-col items-center gap-1 group cursor-pointer h-full justify-end">
+<div class="w-full bg-primary-container rounded-t transition-all group-hover:bg-primary" style="height: 40%;"></div>
+<span class="text-[10px] text-on-surface-variant">10A</span>
+</div>
+<!-- 11 AM -->
+<div class="flex-1 flex flex-col items-center gap-1 group cursor-pointer h-full justify-end">
+<div class="w-full bg-surface-container-high rounded-t transition-all" style="height: 30%;"></div>
+<span class="text-[10px] text-on-surface-variant">11A</span>
+</div>
+<!-- 12 PM -->
+<div class="flex-1 flex flex-col items-center gap-1 group cursor-pointer h-full justify-end">
+<div class="w-full bg-surface-container-high rounded-t transition-all" style="height: 25%;"></div>
+<span class="text-[10px] text-on-surface-variant">12P</span>
+</div>
+<!-- 01 PM -->
+<div class="flex-1 flex flex-col items-center gap-1 group cursor-pointer h-full justify-end">
+<div class="w-full bg-surface-container-high rounded-t transition-all" style="height: 20%;"></div>
+<span class="text-[10px] text-on-surface-variant">1 PM</span>
+</div>
+<!-- 02 PM -->
+<div class="flex-1 flex flex-col items-center gap-1 group cursor-pointer h-full justify-end">
+<div class="w-full bg-surface-container-high rounded-t transition-all" style="height: 22%;"></div>
+<span class="text-[10px] text-on-surface-variant">2 PM</span>
+</div>
+<!-- 03 PM -->
+<div class="flex-1 flex flex-col items-center gap-1 group cursor-pointer h-full justify-end">
+<div class="w-full bg-surface-container-high rounded-t transition-all" style="height: 35%;"></div>
+<span class="text-[10px] text-on-surface-variant">3 PM</span>
+</div>
+<!-- 04 PM -->
+<div class="flex-1 flex flex-col items-center gap-1 group cursor-pointer h-full justify-end">
+<div class="w-full bg-primary-container rounded-t transition-all group-hover:bg-primary" style="height: 50%;"></div>
+<span class="text-[10px] text-on-surface-variant">4 PM</span>
+</div>
+<!-- 05 PM -->
+<div class="flex-1 flex flex-col items-center gap-1 group cursor-pointer h-full justify-end">
+<div class="w-full bg-primary-container rounded-t transition-all group-hover:bg-primary" style="height: 75%;"></div>
+<span class="text-[10px] text-on-surface-variant">5 PM</span>
+</div>
+<!-- 06 PM -->
+<div class="flex-1 flex flex-col items-center gap-1 group cursor-pointer h-full justify-end">
+<div class="w-full bg-primary-container rounded-t transition-all group-hover:bg-primary" style="height: 90%;"></div>
+<span class="text-[10px] text-on-surface-variant">6 PM</span>
+</div>
+<!-- 07 PM (Peak) -->
+<div class="flex-1 flex flex-col items-center gap-1 group cursor-pointer h-full justify-end relative">
+<div class="absolute -top-6 bg-on-surface text-surface text-[9px] px-1 py-0.5 rounded font-bold whitespace-nowrap shadow">98% Peak</div>
+<div class="w-full bg-primary rounded-t transition-all" style="height: 98%;"></div>
+<span class="text-[10px] text-primary font-bold">7 PM</span>
+</div>
+<!-- 08 PM -->
+<div class="flex-1 flex flex-col items-center gap-1 group cursor-pointer h-full justify-end">
+<div class="w-full bg-primary rounded-t transition-all" style="height: 95%;"></div>
+<span class="text-[10px] text-primary font-bold">8 PM</span>
+</div>
+<!-- 09 PM -->
+<div class="flex-1 flex flex-col items-center gap-1 group cursor-pointer h-full justify-end">
+<div class="w-full bg-primary-container rounded-t transition-all group-hover:bg-primary" style="height: 88%;"></div>
+<span class="text-[10px] text-on-surface-variant">9 PM</span>
+</div>
+<!-- 10 PM -->
+<div class="flex-1 flex flex-col items-center gap-1 group cursor-pointer h-full justify-end">
+<div class="w-full bg-primary-container rounded-t transition-all group-hover:bg-primary" style="height: 65%;"></div>
+<span class="text-[10px] text-on-surface-variant">10P</span>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-4 mt-4 pt-3 bg-surface-container-low p-3 rounded-lg border border-outline-variant">
+<div>
+<span class="text-xs text-on-surface-variant block">Morning Rush Yield</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">₹7,200</span>
+<span class="text-[11px] text-on-surface-variant">6 AM - 10 AM (Regulars)</span>
+</div>
+<div>
+<span class="text-xs text-on-surface-variant block">Afternoon Off-Peak Discount</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">₹3,400</span>
+<span class="text-[11px] text-secondary">Student 20% Promo</span>
+</div>
+<div>
+<span class="text-xs text-on-surface-variant block">Prime Evening Revenue</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">₹11,600</span>
+<span class="text-[11px] text-primary font-semibold">100% Slot occupancy</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section b: Live Court Booking Calendar & Schedule Strip (Today's Timeline) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6">
+<div class="flex items-center justify-between pb-4 border-b border-outline-variant">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">Live Court Status &amp; Turnstile Strip</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Real-time occupancy for Courts 1 to 4 with synchronized gate access tokens.</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-xs font-label-md text-on-surface-variant">Filter Surface:</span>
+<span class="px-2 py-1 bg-surface-container rounded text-xs font-label-md text-primary font-semibold">All Courts (8)</span>
+</div>
+</div>
+<!-- Schedule Matrix View -->
+<div class="mt-4 space-y-3">
+<!-- Court 1 -->
+<div class="p-3.5 rounded-lg border border-outline-variant bg-surface-bright flex flex-col md:flex-row md:items-center justify-between gap-3">
+<div class="w-48 shrink-0">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<h3 class="font-label-lg text-label-lg font-bold text-on-surface">Court 1</h3>
+</div>
+<span class="text-xs text-on-surface-variant">BWF Champ Teraflex (Green)</span>
+</div>
+<div class="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-2">
+<!-- Slot 06:00 PM -->
+<div class="p-2 rounded bg-surface-container-high border border-outline-variant text-left">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold text-on-surface">06:00 PM</span>
+<span class="text-[10px] px-1 py-0.2 bg-secondary text-on-secondary rounded font-semibold">In Play</span>
+</div>
+<p class="text-xs font-bold text-on-surface truncate mt-1">Alex Morgan</p>
+<span class="text-[11px] text-on-surface-variant">#QC-9204 • Pin Verified</span>
+</div>
+<!-- Slot 07:00 PM -->
+<div class="p-2 rounded bg-surface-container border border-outline-variant text-left">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold text-on-surface">07:00 PM</span>
+<span class="text-[10px] px-1 py-0.2 bg-surface-tint text-on-primary rounded font-semibold">Ready</span>
+</div>
+<p class="text-xs font-bold text-on-surface truncate mt-1">Samir Mehta</p>
+<span class="text-[11px] text-on-surface-variant">#QC-9205 • Turnstile Synced</span>
+</div>
+<!-- Slot 08:00 PM -->
+<div class="p-2 rounded bg-surface-container-low border border-outline-variant text-left">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold text-on-surface">08:00 PM</span>
+<span class="text-[10px] px-1 py-0.2 bg-tertiary text-on-tertiary rounded">Reserved</span>
+</div>
+<p class="text-xs font-bold text-on-surface truncate mt-1">Corporate League</p>
+<span class="text-[11px] text-on-surface-variant">Semi-Finals (Round 1)</span>
+</div>
+</div>
+<div class="shrink-0 flex items-center">
+<button class="text-xs px-2.5 py-1.5 bg-surface-container-lowest hover:bg-surface-container border border-outline-variant rounded font-semibold text-primary">
+                    Manage
+                  </button>
+</div>
+</div>
+<!-- Court 2 -->
+<div class="p-3.5 rounded-lg border border-outline-variant bg-surface-bright flex flex-col md:flex-row md:items-center justify-between gap-3">
+<div class="w-48 shrink-0">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<h3 class="font-label-lg text-label-lg font-bold text-on-surface">Court 2</h3>
+</div>
+<span class="text-xs text-on-surface-variant">Pro Synthetic (Navy Blue)</span>
+</div>
+<div class="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-2">
+<div class="p-2 rounded bg-surface-container border border-outline-variant text-left">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold text-on-surface">06:00 PM</span>
+<span class="text-[10px] px-1 py-0.2 bg-secondary text-on-secondary rounded">Active</span>
+</div>
+<p class="text-xs font-bold text-on-surface truncate mt-1">Sneha Joshi &amp; Partner</p>
+<span class="text-[11px] text-on-surface-variant">Doubles Practice</span>
+</div>
+<div class="p-2 rounded bg-surface-container-lowest border-2 border-dashed border-outline-variant flex items-center justify-between px-3">
+<div>
+<span class="text-[11px] font-bold text-primary">07:00 PM Available</span>
+<p class="text-[11px] text-on-surface-variant">Base Rate: ₹650/hr</p>
+</div>
+<button class="px-2 py-1 bg-primary text-on-primary rounded text-[11px] font-bold hover:bg-primary-container">
+                      Hold Slot
+                    </button>
+</div>
+<div class="p-2 rounded bg-surface-container border border-outline-variant text-left">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold text-on-surface">08:00 PM</span>
+<span class="text-[10px] px-1 py-0.2 bg-tertiary-container text-surface rounded">Booked</span>
+</div>
+<p class="text-xs font-bold text-on-surface truncate mt-1">Gaurav Trivedi</p>
+<span class="text-[11px] text-on-surface-variant">#QC-9211 • Paid UPI</span>
+</div>
+</div>
+<div class="shrink-0 flex items-center">
+<button class="text-xs px-2.5 py-1.5 bg-surface-container-lowest hover:bg-surface-container border border-outline-variant rounded font-semibold text-primary">
+                    Manage
+                  </button>
+</div>
+</div>
+<!-- Court 3 -->
+<div class="p-3.5 rounded-lg border border-outline-variant bg-surface-bright flex flex-col md:flex-row md:items-center justify-between gap-3">
+<div class="w-48 shrink-0">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<h3 class="font-label-lg text-label-lg font-bold text-on-surface">Court 3</h3>
+</div>
+<span class="text-xs text-on-surface-variant">Cushioned Timber Wood</span>
+</div>
+<div class="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-2">
+<div class="p-2 rounded bg-surface-container border border-outline-variant text-left">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold text-on-surface">06:00 PM</span>
+<span class="text-[10px] px-1 py-0.2 bg-secondary text-on-secondary rounded">Active</span>
+</div>
+<p class="text-xs font-bold text-on-surface truncate mt-1">Hardik Shah (Singles)</p>
+<span class="text-[11px] text-on-surface-variant">Turnstile PIN #8103</span>
+</div>
+<div class="p-2 rounded bg-surface-container border border-outline-variant text-left">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold text-on-surface">07:00 PM</span>
+<span class="text-[10px] px-1 py-0.2 bg-secondary text-on-secondary rounded">Confirmed</span>
+</div>
+<p class="text-xs font-bold text-on-surface truncate mt-1">Ahmedabad Smashers</p>
+<span class="text-[11px] text-on-surface-variant">Club League Roster</span>
+</div>
+<div class="p-2 rounded bg-surface-container border border-outline-variant text-left">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold text-on-surface">08:00 PM</span>
+<span class="text-[10px] px-1 py-0.2 bg-secondary text-on-secondary rounded">Confirmed</span>
+</div>
+<p class="text-xs font-bold text-on-surface truncate mt-1">Rohan Bhatt</p>
+<span class="text-[11px] text-on-surface-variant">Coaching Block (Nihar)</span>
+</div>
+</div>
+<div class="shrink-0 flex items-center">
+<button class="text-xs px-2.5 py-1.5 bg-surface-container-lowest hover:bg-surface-container border border-outline-variant rounded font-semibold text-primary">
+                    Manage
+                  </button>
+</div>
+</div>
+<!-- Court 4 -->
+<div class="p-3.5 rounded-lg border border-outline-variant bg-surface-bright flex flex-col md:flex-row md:items-center justify-between gap-3">
+<div class="w-48 shrink-0">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-outline-variant"></span>
+<h3 class="font-label-lg text-label-lg font-bold text-on-surface">Court 4 (Bay)</h3>
+</div>
+<span class="text-xs text-on-surface-variant">Training Bay &amp; Ball Feeder</span>
+</div>
+<div class="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-2">
+<div class="p-2 rounded bg-surface-container-high border border-outline-variant text-left">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold text-on-surface">06:00 PM</span>
+<span class="text-[10px] px-1 py-0.2 bg-surface-dim text-on-surface rounded">Clinic</span>
+</div>
+<p class="text-xs font-bold text-on-surface truncate mt-1">Junior Sub-14 Group</p>
+<span class="text-[11px] text-on-surface-variant">Coach Amit Desai</span>
+</div>
+<div class="p-2 rounded bg-surface-container-lowest border-2 border-dashed border-outline-variant flex items-center justify-between px-3">
+<div>
+<span class="text-[11px] font-bold text-primary">07:00 PM Open</span>
+<p class="text-[11px] text-on-surface-variant">Base Rate: ₹500/hr</p>
+</div>
+<button class="px-2 py-1 bg-primary text-on-primary rounded text-[11px] font-bold hover:bg-primary-container">
+                      Hold Slot
+                    </button>
+</div>
+<div class="p-2 rounded bg-surface-container-lowest border-2 border-dashed border-outline-variant flex items-center justify-between px-3">
+<div>
+<span class="text-[11px] font-bold text-primary">08:00 PM Open</span>
+<p class="text-[11px] text-on-surface-variant">Base Rate: ₹500/hr</p>
+</div>
+<button class="px-2 py-1 bg-primary text-on-primary rounded text-[11px] font-bold hover:bg-primary-container">
+                      Hold Slot
+                    </button>
+</div>
+</div>
+<div class="shrink-0 flex items-center">
+<button class="text-xs px-2.5 py-1.5 bg-surface-container-lowest hover:bg-surface-container border border-outline-variant rounded font-semibold text-primary">
+                    Manage
+                  </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Section c: Pending Approvals & Queue Management Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6">
+<div class="flex items-center justify-between pb-4 border-b border-outline-variant">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-error animate-pulse"></span>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">Pending Host Actions &amp; Hold Requests</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Corporate blocks and offline invoice clears awaiting director signature.</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-bold">3 Urgent</span>
+</div>
+<div class="mt-4 space-y-3">
+<!-- Item 1 -->
+<div class="p-4 rounded-lg border border-outline-variant bg-surface flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Ahmedabad Corporate Shuttlers</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-xs font-semibold text-on-surface-variant">Corporate Hold</span>
+</div>
+<p class="text-xs text-on-surface-variant">
+                    Date: <strong>Saturday, Oct 26</strong> • Time: <strong>04:00 PM – 08:00 PM</strong> (4 Hours) • Courts: <strong>Courts 1, 2, 3</strong>
+</p>
+<p class="text-xs text-primary font-bold">Quoted Total: ₹8,400 INR (GST Included)</p>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<button class="px-3.5 py-1.5 bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md rounded font-semibold transition-colors">
+                    Approve &amp; Lock Slots
+                  </button>
+<button class="px-3 py-1.5 bg-surface-container-lowest hover:bg-surface-container border border-outline-variant text-on-surface font-label-md text-label-md rounded font-medium transition-colors">
+                    Review / Decline
+                  </button>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="p-4 rounded-lg border border-outline-variant bg-surface flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Coach Nihar Pandya (Junior Clinic)</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-xs font-semibold text-on-surface-variant">Recurring Academy</span>
+</div>
+<p class="text-xs text-on-surface-variant">
+                    Date: <strong>Sunday, Oct 27</strong> • Time: <strong>07:00 AM – 10:00 AM</strong> • Court: <strong>Court 4 (Training Bay)</strong>
+</p>
+<p class="text-xs text-primary font-bold">Affiliate Tier: ₹2,250 INR (20% Academy Subsidy)</p>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<button class="px-3.5 py-1.5 bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md rounded font-semibold transition-colors">
+                    Approve
+                  </button>
+<button class="px-3 py-1.5 bg-surface-container-lowest hover:bg-surface-container border border-outline-variant text-on-surface font-label-md text-label-md rounded font-medium transition-colors">
+                    Adjust Slot
+                  </button>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="p-4 rounded-lg border border-outline-variant bg-surface flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Dr. K. Vora (Offline Walk-in Hold)</span>
+<span class="px-2 py-0.5 rounded bg-surface-dim text-xs font-semibold text-on-surface">Desk Cash Payment</span>
+</div>
+<p class="text-xs text-on-surface-variant">
+                    Date: <strong>Today, 09:00 PM – 10:00 PM</strong> • Court: <strong>Court 2</strong>
+</p>
+<p class="text-xs text-error font-bold">Unpaid Balance: ₹600 INR pending cash register receipt</p>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<button class="px-3.5 py-1.5 bg-secondary-container hover:bg-secondary-fixed text-on-secondary-fixed-variant font-label-md text-label-md rounded font-bold transition-colors">
+                    Confirm Cash &amp; Issue PIN
+                  </button>
+<button class="px-3 py-1.5 bg-surface-container-lowest hover:bg-surface-container border border-outline-variant text-on-surface font-label-md text-label-md rounded font-medium transition-colors">
+                    Cancel Hold
+                  </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN (4 Columns) -->
+<div class="lg:col-span-4 space-y-6">
+<!-- Section a: Live Reservation Stream -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5">
+<div class="flex items-center justify-between pb-3 border-b border-outline-variant">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Recent Live Bookings</h2>
+<span class="text-[11px] font-label-sm text-secondary font-bold flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> Auto-Sync
+              </span>
+</div>
+<div class="mt-3 divide-y divide-outline-variant">
+<!-- Item 1 -->
+<div class="py-3 flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center font-bold text-xs text-primary shrink-0 mt-0.5">
+                  AM
+                </div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<h4 class="font-label-md text-label-md font-bold text-on-surface truncate">Alex Morgan</h4>
+<span class="font-label-md text-label-md font-bold text-primary">₹810.00</span>
+</div>
+<p class="text-xs text-on-surface-variant truncate">Court 1 (BWF Teraflex) • 07:00 - 08:00 PM</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-[10px] px-1.5 py-0.5 rounded bg-surface-container text-on-surface font-mono font-bold">PIN #4920</span>
+<span class="text-[10px] text-secondary font-semibold">UPI Paid</span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="py-3 flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center font-bold text-xs text-primary shrink-0 mt-0.5">
+                  HS
+                </div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<h4 class="font-label-md text-label-md font-bold text-on-surface truncate">Hardik Shah</h4>
+<span class="font-label-md text-label-md font-bold text-primary">₹650.00</span>
+</div>
+<p class="text-xs text-on-surface-variant truncate">Court 3 (Timber Wood) • 08:00 - 09:00 PM</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-[10px] px-1.5 py-0.5 rounded bg-surface-container text-on-surface font-mono font-bold">PIN #8103</span>
+<span class="text-[10px] text-secondary font-semibold">Turnstile Synced</span>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="py-3 flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center font-bold text-xs text-primary shrink-0 mt-0.5">
+                  VP
+                </div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<h4 class="font-label-md text-label-md font-bold text-on-surface truncate">Vikram Patel</h4>
+<span class="font-label-md text-label-md font-bold text-primary">₹1,400.00</span>
+</div>
+<p class="text-xs text-on-surface-variant truncate">5v5 Turf Pitches • Tomorrow 07:00 AM</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-[10px] px-1.5 py-0.5 rounded bg-surface-variant text-on-surface font-semibold">Split Pay (6/10 paid)</span>
+</div>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="py-3 flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center font-bold text-xs text-primary shrink-0 mt-0.5">
+                  SJ
+                </div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<h4 class="font-label-md text-label-md font-bold text-on-surface truncate">Sneha Joshi</h4>
+<span class="font-label-md text-label-md font-bold text-primary">₹600.00</span>
+</div>
+<p class="text-xs text-on-surface-variant truncate">Court 2 (Standard) • Tomorrow 06:00 PM</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-[10px] text-secondary font-semibold">Instant Confirmed</span>
+</div>
+</div>
+</div>
+</div>
+<a class="block text-center text-xs font-label-md text-primary font-bold pt-3 hover:underline" href="#">
+              View All 46 Today Reservations →
+            </a>
+</div>
+<!-- Section b: Settlement & Yield Breakdown -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface pb-3 border-b border-outline-variant">
+              Monthly Settlement Summary
+            </h2>
+<div class="space-y-3 mt-4">
+<div class="flex items-center justify-between text-xs">
+<span class="text-on-surface-variant">Court Slotted Rentals</span>
+<span class="font-semibold text-on-surface">₹1,24,000 <span class="text-on-surface-variant text-[11px]">(83.4%)</span></span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5">
+<div class="bg-primary h-1.5 rounded-full" style="width: 83.4%"></div>
+</div>
+<div class="flex items-center justify-between text-xs pt-1">
+<span class="text-on-surface-variant">Gear &amp; Stringing Add-ons</span>
+<span class="font-semibold text-on-surface">₹18,450 <span class="text-on-surface-variant text-[11px]">(12.4%)</span></span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5">
+<div class="bg-secondary h-1.5 rounded-full" style="width: 12.4%"></div>
+</div>
+<div class="flex items-center justify-between text-xs pt-1">
+<span class="text-on-surface-variant">Yonex Shuttles &amp; Hydration</span>
+<span class="font-semibold text-on-surface">₹6,200 <span class="text-on-surface-variant text-[11px]">(4.2%)</span></span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5">
+<div class="bg-surface-tint h-1.5 rounded-full" style="width: 4.2%"></div>
+</div>
+<div class="p-3 bg-surface-container-low rounded-lg border border-outline-variant mt-3 space-y-1">
+<div class="flex items-center justify-between text-xs">
+<span class="text-on-surface-variant">QuickCourt Platform Take</span>
+<span class="text-secondary font-bold">0% (Founding Partner Offer)</span>
+</div>
+<div class="flex items-center justify-between text-xs font-bold pt-1 border-t border-outline-variant">
+<span class="text-on-surface">Net Payout to Host</span>
+<span class="text-primary text-sm">₹1,48,650 INR</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section c: Venue Operational Hardware Controls -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface pb-3 border-b border-outline-variant">
+              Quick Venue Hardware Controls
+            </h2>
+<div class="mt-4 space-y-3">
+<!-- Lighting Toggle -->
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface border border-outline-variant">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-on-surface-variant">lightbulb</span>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">Arena Court Floodlights</p>
+<span class="text-[11px] text-on-surface-variant">Auto Schedule Sync (Active)</span>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Turnstile Override -->
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface border border-outline-variant">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary">meeting_room</span>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">Turnstiles Gate 1 &amp; 2</p>
+<span class="text-[11px] text-secondary font-semibold">Normal QR &amp; PIN Verification</span>
+</div>
+</div>
+<button class="text-xs font-semibold px-2 py-1 bg-surface-container hover:bg-surface-container-high rounded text-on-surface border border-outline-variant">
+                  Force Hold
+                </button>
+</div>
+<!-- Quick Broadcast Bar -->
+<div class="pt-2">
+<label class="text-xs font-label-md text-on-surface-variant block mb-1.5">Broadcast Message to Venue Displays</label>
+<div class="flex items-center gap-2">
+<input class="flex-1 h-9 px-3 text-xs bg-surface border border-outline-variant rounded-lg focus:outline-none focus:border-primary" placeholder="e.g. Please wear non-marking shoes on Court 1..." type="text"/>
+<button class="h-9 px-3 bg-primary text-on-primary rounded-lg text-xs font-bold hover:bg-primary-container shrink-0">
+                    Send
+                  </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
