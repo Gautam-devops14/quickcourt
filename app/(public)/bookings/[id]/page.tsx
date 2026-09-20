@@ -477,6 +477,7 @@ export default function BookingDetailsPage({ params }: { params: { id: string } 
             </div>
             <p className="text-on-surface-variant font-body-sm text-body-sm">
               Need urgent court assistance or experiencing turnstile RFID sync delays?
+              Need urgent court assistance or experiencing lighting delays?
             </p>
             <div className="space-y-2 pt-1 font-body-sm text-body-sm">
               <a className="flex items-center justify-between p-2.5 rounded-lg border border-outline-variant/60 hover:bg-surface-container-low transition-colors text-on-surface" href="tel:+919825012834">
@@ -648,6 +649,7 @@ export default function BookingDetailsPage({ params }: { params: { id: string } 
                 <span className="material-symbols-outlined text-4xl text-secondary animate-bounce">check_circle</span>
                 <h4 className="font-bold text-on-surface">Pass Transferred!</h4>
                 <p className="text-body-sm text-on-surface-variant">Recipient will receive SMS gate pass with instant turnstile access.</p>
+                <p className="text-body-sm text-on-surface-variant">Recipient will receive SMS gate pass with instant court check-in access.</p>
               </div>
             ) : (
               <form onSubmit={handleConfirmTransfer} className="space-y-4">

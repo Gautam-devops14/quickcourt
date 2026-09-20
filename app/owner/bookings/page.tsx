@@ -39,6 +39,7 @@ export default function OwnerBookingsPage() {
           </div>
           <p className="text-on-surface-variant font-body-md text-body-md mt-1 max-w-3xl">
             Monitor confirmed reservations, track daily revenue streams, and verify upcoming gate turnstile allocations.
+            Monitor confirmed reservations, track daily revenue streams, and verify upcoming court allocations.
           </p>
         </div>
       </div>

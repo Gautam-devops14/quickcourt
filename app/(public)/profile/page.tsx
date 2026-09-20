@@ -29,6 +29,8 @@ export default function ProfilePage() {
           </div>
           <p className="text-on-surface-variant font-body-md text-body-md mt-1 max-w-3xl">
             Manage your personal information, court contact credentials for turnstile PIN access, and security.
+          <p className="text-body-md font-body-md text-on-surface-variant mt-1">
+            Manage your personal information, court contact credentials for match booking access, and security.
           </p>
         </div>
         <div className="flex items-center gap-3 shrink-0">
@@ -125,6 +127,8 @@ export default function ProfilePage() {
                 <p className="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1.5 mt-1">
                   <span className="material-symbols-outlined text-sm text-secondary">lock_clock</span>
                   Used for immediate SMS turnstile PIN delivery at booked facilities.
+                  <span className="material-symbols-outlined text-sm text-secondary">verified</span>
+                  Used for instant SMS booking confirmations and match alerts.
                 </p>
               </div>
 
@@ -183,6 +187,7 @@ export default function ProfilePage() {
               <div>
                 <h2 className="font-headline-sm text-headline-sm text-on-surface font-bold">Court Pass & Notification Preferences</h2>
                 <p className="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Automated delivery systems for gate turnstiles, match alerts, and financial splits.</p>
+                <p className="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Automated delivery systems for booking passes, match alerts, and financial splits.</p>
               </div>
               <span className="material-symbols-outlined text-primary">notifications_active</span>
             </div>
@@ -192,6 +197,7 @@ export default function ProfilePage() {
                 <div className="space-y-1 max-w-xl">
                   <div className="flex items-center gap-2">
                     <span className="font-label-lg text-label-lg text-on-surface font-semibold">Turnstile Gate Sync (4-Digit Instant PIN)</span>
+                    <span className="font-label-lg text-label-lg text-on-surface font-semibold">Instant Booking Pass (SMS & WhatsApp)</span>
                     <span className="bg-secondary-fixed/50 text-on-secondary-fixed-variant px-2 py-0.5 rounded text-label-sm font-bold">Recommended</span>
                   </div>
                   <p className="text-body-sm font-body-sm text-on-surface-variant">

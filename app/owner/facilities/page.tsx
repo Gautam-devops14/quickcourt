@@ -38,6 +38,7 @@ export default function FacilityManagementPage() {
           </div>
           <p className="text-on-surface-variant font-body-md text-body-md mt-1 max-w-2xl">
             Configure court specifications, set hourly rates, manage turnstile sync rules, and submit locations for verification.
+            Configure court specifications, set hourly rates, manage online booking rules, and submit locations for verification.
           </p>
         </div>
         

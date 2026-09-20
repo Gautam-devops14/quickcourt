@@ -143,6 +143,7 @@ export default function SuccessPage() {
               <h3 className="text-label-lg font-label-lg text-on-surface font-semibold">Strict Facility Protocols</h3>
               <p className="text-body-sm font-body-sm text-on-surface-variant leading-relaxed">
                 Only authentic <strong>non-marking gum rubber court shoes</strong> are permitted past the green turnstiles. Arrive with adequate time for wristband collection.
+                Only authentic <strong>non-marking gum rubber court shoes</strong> are permitted past the access gates. Arrive with adequate time for wristband collection.
               </p>
               <p className="text-body-sm font-body-sm text-on-surface-variant pt-1">
                 Front Desk support hotline:{' '}

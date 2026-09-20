@@ -358,6 +358,7 @@ export default function Home() {
                 </div>
                 <p className="text-xs text-on-surface-variant max-w-sm leading-relaxed">
                   Next-generation athletic facility booking platform. Real-time floor availability, verified surfaces, transparent pricing, and instant turnstile reservations across Ahmedabad and beyond.
+                  Next-generation athletic facility booking platform. Real-time floor availability, verified surfaces, transparent pricing, and instant court reservations across Ahmedabad and beyond.
                 </p>
                 <div className="flex items-center gap-3 pt-2 text-on-surface-variant">
                   <span className="text-xs font-semibold text-primary flex items-center gap-1">

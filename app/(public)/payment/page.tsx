@@ -89,6 +89,7 @@ function PaymentContent() {
               </h1>
               <p className="text-body-sm font-body-sm text-on-surface-variant mt-0.5">
                 No real funds will be charged. Choose any test method below to generate a valid automated turnstile entry barcode and confirmation voucher.
+                No real funds will be charged. Choose any test method below to generate a valid booking confirmation and receipt voucher.
               </p>
             </div>
           </div>
@@ -247,6 +248,7 @@ function PaymentContent() {
               </Link>
               <p className="text-center text-[12px] text-on-surface-variant pt-1">
                 Immediate gate turnstile PIN and NFC access pass will be generated upon confirmation.
+                Immediate booking confirmation and digital match pass will be generated upon confirmation.
               </p>
             </div>
           </div>
@@ -256,6 +258,7 @@ function PaymentContent() {
             {[
               { icon: 'shield', label: 'PCI-DSS Compliant', sub: 'Simulated token vault' },
               { icon: 'pin', label: 'Instant Turnstile PIN', sub: 'Automated court doors' },
+              { icon: 'confirmation_number', label: 'Instant Booking Pass', sub: 'Confirmed desk access' },
               { icon: 'currency_exchange', label: '100% Refundable', sub: 'Up to 2 hrs prior' },
             ].map(badge => (
               <div key={badge.label} className="p-3 bg-surface-container-lowest border border-outline-variant rounded-lg flex items-center gap-2.5">
@@ -370,6 +373,7 @@ function PaymentContent() {
               <span className="material-symbols-outlined text-secondary text-base mt-0.5">flash_on</span>
               <p className="text-[12px] text-on-surface-variant leading-relaxed">
                 Upon successful simulated payment, turnstile PIN & digital pass will be issued immediately to your registered phone.
+                Upon successful simulated payment, booking confirmation & digital match pass will be issued immediately to your registered phone.
               </p>
             </div>
           </div>

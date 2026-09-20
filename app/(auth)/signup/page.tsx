@@ -63,6 +63,8 @@ export default function SignupPage() {
               <p className="mt-1.5 text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1.5">
                 <span className="material-symbols-outlined text-[15px] text-secondary">pin</span>
                 <span>Used for instant SMS turnstile PIN access at booked facilities</span>
+                <span className="material-symbols-outlined text-[15px] text-secondary">verified</span>
+                <span>Used for instant SMS match booking pass delivery</span>
               </p>
             </div>
 
