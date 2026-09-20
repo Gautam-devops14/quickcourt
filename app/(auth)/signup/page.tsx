@@ -61,8 +61,6 @@ export default function SignupPage() {
                 <input required className="w-full bg-surface-container-lowest border border-outline-variant rounded-xl pl-10 pr-3.5 py-2.5 text-body-md font-body-md text-on-surface placeholder:text-outline/70 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" id="phone" name="phone" placeholder="+91 98765 43210" type="tel" />
               </div>
               <p className="mt-1.5 text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1.5">
-                <span className="material-symbols-outlined text-[15px] text-secondary">pin</span>
-                <span>Used for instant SMS turnstile PIN access at booked facilities</span>
                 <span className="material-symbols-outlined text-[15px] text-secondary">verified</span>
                 <span>Used for instant SMS match booking pass delivery</span>
               </p>

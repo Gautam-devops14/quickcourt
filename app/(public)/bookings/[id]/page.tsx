@@ -476,7 +476,6 @@ export default function BookingDetailsPage({ params }: { params: { id: string } 
               Venue Assistance
             </div>
             <p className="text-on-surface-variant font-body-sm text-body-sm">
-              Need urgent court assistance or experiencing turnstile RFID sync delays?
               Need urgent court assistance or experiencing lighting delays?
             </p>
             <div className="space-y-2 pt-1 font-body-sm text-body-sm">
@@ -648,7 +647,6 @@ export default function BookingDetailsPage({ params }: { params: { id: string } 
               <div className="p-6 text-center space-y-2">
                 <span className="material-symbols-outlined text-4xl text-secondary animate-bounce">check_circle</span>
                 <h4 className="font-bold text-on-surface">Pass Transferred!</h4>
-                <p className="text-body-sm text-on-surface-variant">Recipient will receive SMS gate pass with instant turnstile access.</p>
                 <p className="text-body-sm text-on-surface-variant">Recipient will receive SMS gate pass with instant court check-in access.</p>
               </div>
             ) : (

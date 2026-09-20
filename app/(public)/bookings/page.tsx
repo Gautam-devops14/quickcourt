@@ -80,7 +80,6 @@ export default function BookingsPage() {
             </span>
           </div>
           <p className="text-body-md font-body-md text-on-surface-variant max-w-2xl">
-            Manage your upcoming court access, entrance turnstile PINs, past match receipts, and cancellations.
             Manage your upcoming court access, match booking passes, past receipts, and cancellations.
           </p>
         </div>
@@ -152,8 +151,6 @@ export default function BookingsPage() {
                         </div>
                         <div className="flex items-center gap-3 text-on-primary-container text-body-sm">
                           <span className="flex items-center gap-1 font-medium">
-                            <span className="material-symbols-outlined text-[16px]">lock_open</span>
-                            Turnstile Synced & Confirmed
                             <span className="material-symbols-outlined text-[16px]">check_circle</span>
                             Desk Confirmed & Active
                           </span>
@@ -371,7 +368,6 @@ export default function BookingsPage() {
               </li>
               <li className="flex items-start gap-2.5">
                 <span className="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center text-primary text-label-sm shrink-0 mt-0.5 font-bold">3</span>
-                <div><strong className="text-on-surface">Keypad Entry:</strong> Enter your 4-digit PIN followed by the <code className="font-bold font-mono text-primary bg-surface px-1 py-0.5 rounded border border-outline-variant">#</code> key at the lane turnstile.</div>
                 <div><strong className="text-on-surface">Desk Verification:</strong> Show your Booking Reference ID at the facility reception for immediate court assignment.</div>
               </li>
             </ul>
@@ -384,7 +380,6 @@ export default function BookingsPage() {
               </span>
               <div>
                 <h3 className="text-label-lg font-bold text-on-surface">Immediate Venue Dispatch</h3>
-                <p className="text-body-sm text-on-surface-variant mt-0.5">Stuck at a turnstile or lights haven&apos;t switched on automatically?</p>
                 <p className="text-body-sm text-on-surface-variant mt-0.5">Need help locating your court or lights coordination?</p>
               </div>
             </div>

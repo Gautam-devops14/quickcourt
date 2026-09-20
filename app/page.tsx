@@ -357,7 +357,6 @@ export default function Home() {
                   <span className="px-2 py-0.5 rounded bg-primary-container text-on-primary-container text-[10px] font-bold uppercase">India</span>
                 </div>
                 <p className="text-xs text-on-surface-variant max-w-sm leading-relaxed">
-                  Next-generation athletic facility booking platform. Real-time floor availability, verified surfaces, transparent pricing, and instant turnstile reservations across Ahmedabad and beyond.
                   Next-generation athletic facility booking platform. Real-time floor availability, verified surfaces, transparent pricing, and instant court reservations across Ahmedabad and beyond.
                 </p>
                 <div className="flex items-center gap-3 pt-2 text-on-surface-variant">
