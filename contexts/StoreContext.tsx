@@ -103,8 +103,6 @@ interface ConfirmBookingOptions {
 interface StoreContextType extends StoreState {
   setCurrentUser: (user: User | null) => void;
   setSelectedCity: (city: string) => void;
-  lockSlot: (slotId: string) => void;
-  toggleLockSlot: (slotId: string) => void; // Multi-hour selection
   lockSlot: (slotId: string, slotObj?: TimeSlot) => void;
   toggleLockSlot: (slotId: string, slotObj?: TimeSlot) => void; // Multi-hour selection
   unlockSlot: (slotId?: string) => void;
@@ -175,7 +173,6 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
   };
 
   // Toggle or add slot for multi-hour reservation
-  const toggleLockSlot = (slotId: string) => {
   const toggleLockSlot = (slotId: string, slotObj?: TimeSlot) => {
     setState(prev => {
       const isAlreadyInCart = prev.cartSlots.some(s => s.id === slotId);
@@ -192,7 +189,6 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
           cartSlot: newCart[0] || null
         };
       } else {
-        const targetSlot = newSlots.find(s => s.id === slotId);
         let targetSlot = newSlots.find(s => s.id === slotId);
         if (!targetSlot && slotObj) {
           targetSlot = { ...slotObj };
@@ -200,7 +196,6 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
         }
         if (!targetSlot || targetSlot.status !== 'AVAILABLE') return prev;
         newSlots = newSlots.map(s => s.id === slotId ? { ...s, status: 'LOCKED' as const } : s);
-        const newCart = [...prev.cartSlots, { ...targetSlot, status: 'LOCKED' as const }];
         const lockedSlot: TimeSlot = { ...targetSlot, status: 'LOCKED' as const };
         const newCart = [...prev.cartSlots, lockedSlot];
         return {
@@ -213,10 +208,8 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     });
   };
 
-  const lockSlot = (slotId: string) => {
   const lockSlot = (slotId: string, slotObj?: TimeSlot) => {
     // Single slot or first slot selection
-    toggleLockSlot(slotId);
     toggleLockSlot(slotId, slotObj);
   };
 

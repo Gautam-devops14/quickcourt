@@ -30,13 +30,10 @@ export default function BookingDetailsPage({ params }: { params: { id: string } 
   const facility = facilities.find(f => f.id === booking.facilityId);
   const bookingSlots = slots.filter(s => booking.slotIds.includes(s.id));
   
-  if (!court || !facility || bookingSlots.length === 0) return notFound();
   if (!court || !facility) return notFound();
 
   const firstSlot = bookingSlots[0];
   const lastSlot = bookingSlots[bookingSlots.length - 1];
-  const timeString = `${formatTime(firstSlot.startTime)} – ${formatTime(lastSlot.endTime)}`;
-  const duration = bookingSlots.length * 60; // Assumes 60m slots
   const timeString = firstSlot && lastSlot ? `${formatTime(firstSlot.startTime)} – ${formatTime(lastSlot.endTime)}` : '07:00 PM – 08:00 PM';
   const duration = (bookingSlots.length || 1) * 60; // Assumes 60m slots
   
