@@ -2,9 +2,11 @@
 import { useState } from 'react';
 import { useStore } from '@/contexts/StoreContext';
 import { BookingStatus } from '@/types';
+import Link from 'next/link';
 
 export default function OwnerBookingsPage() {
   const { facilities, courts, bookings, users, currentUser } = useStore();
+  const [activeMenuId, setActiveMenuId] = useState<string | null>(null);
   
   const currentOwnerId = currentUser?.id ?? 'o1';
   const ownerFacilities = facilities.filter(f => f.ownerId === currentOwnerId);
@@ -155,10 +157,49 @@ export default function OwnerBookingsPage() {
                         )}
                       </td>
                       <td className="py-3.5 px-4 text-right">
-                        <div className="flex items-center justify-end gap-1">
-                          <button className="p-1 hover:bg-surface-container rounded text-outline hover:text-on-surface" title="View Options">
+                        <div className="relative inline-block text-left">
+                          <button 
+                            onClick={() => setActiveMenuId(activeMenuId === b.id ? null : b.id)}
+                            className="p-1 hover:bg-surface-container rounded text-outline hover:text-on-surface" 
+                            title="Actions"
+                          >
                             <span className="material-symbols-outlined text-headline-sm">more_vert</span>
                           </button>
+
+                          {activeMenuId === b.id && (
+                            <>
+                              <div className="fixed inset-0 z-10" onClick={() => setActiveMenuId(null)}></div>
+                              <div className="absolute right-0 mt-1 w-44 rounded-lg bg-surface-container-lowest shadow-lg border border-outline-variant py-1 z-20 text-left">
+                                <Link
+                                  href={`/bookings/${b.id}`}
+                                  className="flex items-center gap-2 px-3.5 py-2 text-body-sm text-on-surface hover:bg-surface-container transition-colors"
+                                  onClick={() => setActiveMenuId(null)}
+                                >
+                                  <span className="material-symbols-outlined text-base text-primary">confirmation_number</span>
+                                  <span>View Details</span>
+                                </Link>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setActiveMenuId(null);
+                                    window.print();
+                                  }}
+                                  className="w-full flex items-center gap-2 px-3.5 py-2 text-body-sm text-on-surface hover:bg-surface-container transition-colors"
+                                >
+                                  <span className="material-symbols-outlined text-base text-outline">print</span>
+                                  <span>Print Booking</span>
+                                </button>
+                                <a
+                                  href={`mailto:${user?.email || 'player@quickcourt.in'}?subject=QuickCourt%20Booking%20${b.id}`}
+                                  className="flex items-center gap-2 px-3.5 py-2 text-body-sm text-on-surface hover:bg-surface-container transition-colors"
+                                  onClick={() => setActiveMenuId(null)}
+                                >
+                                  <span className="material-symbols-outlined text-base text-outline">mail</span>
+                                  <span>Contact Player</span>
+                                </a>
+                              </div>
+                            </>
+                          )}
                         </div>
                       </td>
                     </tr>

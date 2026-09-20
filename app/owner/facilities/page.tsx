@@ -149,7 +149,7 @@ export default function FacilityManagementPage() {
                   <div className="flex items-start justify-between gap-3">
                     <div className="space-y-1">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <Link href={`/owner/facilities/${facility.id}/approval`}>
+                        <Link href={`/owner/facilities/${facility.id}`}>
                           <h3 className="text-headline-sm font-headline-sm font-bold text-on-surface hover:text-primary transition-colors">{facility.name}</h3>
                         </Link>
                         {statusBadge}

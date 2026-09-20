@@ -21,6 +21,13 @@ export default function OwnerDashboard() {
   const activeCourts = ownerCourts.filter(c => c.status === 'ACTIVE').length;
   
   const today = new Date().toISOString().split('T')[0];
+  const todayBookings = ownerBookings.filter(b => {
+    const bookingDate = b.date ? b.date.split('T')[0] : '';
+    return bookingDate === today && (b.status === 'CONFIRMED' || b.status === 'COMPLETED');
+  });
+
+  const todayRevenue = todayBookings.reduce((sum, b) => sum + (b.totalAmount ?? b.amount), 0);
+  
   const todaySlots = ownerSlots.filter(s => s.date === today);
   const bookedToday = todaySlots.filter(s => s.status === 'BOOKED').length;
   const fillRate = todaySlots.length ? Math.round((bookedToday / todaySlots.length) * 100) : 0;
@@ -37,55 +44,50 @@ export default function OwnerDashboard() {
           </p>
         </div>
         <div className="flex items-center gap-3 shrink-0">
-          <button className="h-11 px-4 rounded-xl border border-outline-variant bg-surface-container-lowest text-on-surface font-label-lg hover:bg-surface-container-low transition-colors flex items-center gap-2">
-            <span className="material-symbols-outlined text-lg">calendar_today</span>
-            Jump to Date
-          </button>
-          <button className="h-11 px-5 rounded-xl bg-primary text-on-primary font-label-lg hover:bg-primary-container transition-colors shadow-sm flex items-center gap-2">
+          <Link href="/owner/facilities/new" className="h-11 px-5 rounded-xl bg-primary text-on-primary font-label-lg hover:bg-primary-container transition-colors shadow-sm flex items-center gap-2">
             <span className="material-symbols-outlined text-lg">add_location_alt</span>
-            <Link href="/owner/facilities/new">New Facility Setup</Link>
-          </button>
+            <span>New Facility Setup</span>
+          </Link>
         </div>
       </div>
 
       {/* KPI Cards Strip */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
-        {/* KPI 1: Gross Sales */}
-        <div className="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 flex flex-col justify-between hover:border-primary transition-colors cursor-pointer">
+        {/* KPI 1: Today's Revenue */}
+        <div className="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 flex flex-col justify-between">
           <div className="flex items-start justify-between">
-            <span className="font-label-md text-label-md text-on-surface-variant font-semibold">Today&apos;s Ledger Output</span>
+            <span className="font-label-md text-label-md text-on-surface-variant font-semibold">Today&apos;s Revenue</span>
             <span className="material-symbols-outlined text-primary">account_balance_wallet</span>
           </div>
           <div className="mt-3">
-            <span className="font-headline-xl text-headline-xl font-bold text-on-surface">₹{totalRevenue}</span>
-            <div className="flex items-center gap-1.5 text-secondary text-label-sm font-label-sm mt-1">
-              <span className="material-symbols-outlined text-[16px]">trending_up</span>
-              <span>12.4% vs last week</span>
+            <span className="font-headline-xl text-headline-xl font-bold text-on-surface">₹{todayRevenue}</span>
+            <div className="text-outline text-label-sm font-label-sm mt-1">
+              <span>{todayBookings.length} bookings today • No historical data yet</span>
             </div>
           </div>
         </div>
 
-        {/* KPI 2: Fill Rate */}
-        <div className="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 flex flex-col justify-between hover:border-primary transition-colors cursor-pointer">
+        {/* KPI 2: Fill Rate / Occupancy */}
+        <div className="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 flex flex-col justify-between">
           <div className="flex items-start justify-between">
-            <span className="font-label-md text-label-md text-on-surface-variant font-semibold">Prime Slot Fill Rate</span>
+            <span className="font-label-md text-label-md text-on-surface-variant font-semibold">Today&apos;s Occupancy</span>
             <span className="material-symbols-outlined text-primary">pie_chart</span>
           </div>
           <div className="mt-3">
             <span className="font-headline-xl text-headline-xl font-bold text-on-surface">{fillRate}%</span>
             <div className="flex items-center justify-between text-xs text-on-surface-variant mt-2 pt-2 border-t border-outline-variant">
-              <span>Today&apos;s Roster: <strong className="text-on-surface">{todaySlots.length} Slots</strong></span>
+              <span>Today&apos;s Slots: <strong className="text-on-surface">{bookedToday} / {todaySlots.length} Booked</strong></span>
             </div>
           </div>
         </div>
 
         {/* KPI 3: Live Utilization */}
-        <div className="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 flex flex-col justify-between hover:border-primary transition-colors cursor-pointer">
+        <div className="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 flex flex-col justify-between">
           <div className="flex items-start justify-between">
             <span className="font-label-md text-label-md text-on-surface-variant font-semibold">Active Courts</span>
             <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-secondary font-label-sm font-label-sm font-bold">
               <span className="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-              Live Peak
+              Operational
             </div>
           </div>
           <div className="mt-3">
@@ -93,13 +95,13 @@ export default function OwnerDashboard() {
               <span className="font-headline-xl text-headline-xl font-bold text-on-surface">{activeCourts} / {ownerCourts.length} Courts</span>
             </div>
             <div className="flex items-center gap-3 text-xs text-on-surface-variant mt-2 pt-2 border-t border-outline-variant">
-              <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-secondary"></span> In-play</span>
+              <span>{ownerCourts.filter(c => c.status === 'MAINTENANCE').length} in maintenance</span>
             </div>
           </div>
         </div>
 
         {/* KPI 4: Pending Approvals */}
-        <div className="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 flex flex-col justify-between hover:border-error transition-colors cursor-pointer">
+        <Link href="/owner/facilities" className="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 flex flex-col justify-between hover:border-primary transition-colors cursor-pointer">
           <div className="flex items-start justify-between">
             <span className="font-label-md text-label-md text-on-surface-variant font-semibold">Pending Approvals</span>
             <div className="p-2 bg-error-container text-on-error-container rounded-lg">
@@ -108,14 +110,14 @@ export default function OwnerDashboard() {
           </div>
           <div className="mt-3">
             <div className="flex items-baseline gap-2">
-              <span className="font-headline-xl text-headline-xl font-bold text-on-surface">{pendingApprovals} Requests</span>
-              {pendingApprovals > 0 && <span className="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-error-container text-on-error-container font-bold">Action Needed</span>}
+              <span className="font-headline-xl text-headline-xl font-bold text-on-surface">{pendingApprovals} Facilities</span>
+              {pendingApprovals > 0 && <span className="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-error-container text-on-error-container font-bold">In Review</span>}
             </div>
             <div className="flex items-center justify-between text-xs text-on-surface-variant mt-2 pt-2 border-t border-outline-variant">
-              <Link href="/owner/facilities" className="text-[11px] font-semibold text-primary">Manage Approvals</Link>
+              <span className="text-[11px] font-semibold text-primary">View Portfolio Approvals →</span>
             </div>
           </div>
-        </div>
+        </Link>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -123,21 +125,38 @@ export default function OwnerDashboard() {
           <div className="bg-surface-container-lowest border border-outline-variant rounded-lg p-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-outline-variant">
               <div>
-                <h2 className="font-headline-md text-headline-md text-on-surface font-bold">Occupancy & Revenue Pace</h2>
-                <p className="font-body-sm text-body-sm text-on-surface-variant">Daily utilization curves across morning regulars and evening league rushes.</p>
+                <h2 className="font-headline-md text-headline-md text-on-surface font-bold">Today&apos;s Facility Operations</h2>
+                <p className="font-body-sm text-body-sm text-on-surface-variant">Live summary of active venues and booking transactions for {today}.</p>
               </div>
             </div>
             
-            {/* Visual Bar chart Mock */}
-            <div className="mt-6">
-              <div className="h-48 flex items-end justify-between gap-1.5 pt-6 pb-2 px-1 border-b border-outline-variant">
-                {[60, 85, 45, 30, 20, 15, 30, 50, 75, 90, 85, 50].map((h, i) => (
-                  <div key={i} className="flex-1 flex flex-col items-center gap-1 group cursor-pointer h-full justify-end">
-                    <div className="w-full bg-primary-container rounded-t transition-all group-hover:bg-primary" style={{ height: `${h}%` }}></div>
-                    <span className="text-[10px] text-on-surface-variant">{6+i}H</span>
-                  </div>
-                ))}
-              </div>
+            <div className="mt-4">
+              {todayBookings.length === 0 ? (
+                <div className="py-12 text-center text-on-surface-variant space-y-2">
+                  <span className="material-symbols-outlined text-4xl text-outline">event_busy</span>
+                  <p className="font-body-md font-medium">No bookings recorded for today yet.</p>
+                  <p className="text-xs text-outline">Reservations made by users will reflect here in real time.</p>
+                </div>
+              ) : (
+                <div className="divide-y divide-outline-variant/50">
+                  {todayBookings.map(b => {
+                    const c = ownerCourts.find(court => court.id === b.courtId);
+                    const f = ownerFacilities.find(fac => fac.id === b.facilityId);
+                    return (
+                      <div key={b.id} className="py-3 flex items-center justify-between">
+                        <div>
+                          <p className="text-body-md font-semibold text-on-surface">{f?.name} — {c?.name}</p>
+                          <p className="text-xs text-outline">{b.paymentType === 'ADVANCE_20' ? '20% Security Advance' : 'Full Payment'} • Ref #{b.id.slice(0, 8)}</p>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-body-md font-bold text-on-surface">₹{b.totalAmount ?? b.amount}</p>
+                          <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 font-semibold">{b.status}</span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
         </div>

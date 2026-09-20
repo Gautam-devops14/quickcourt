@@ -1,0 +1,307 @@
+"use client";
+import { useStore } from '@/contexts/StoreContext';
+import { notFound } from 'next/navigation';
+import Link from 'next/link';
+
+export default function OwnerFacilityDetailsPage({ params }: { params: { id: string } }) {
+  const { facilities, courts, bookings, slots, users, updateCourt } = useStore();
+  const facility = facilities.find(f => f.id === params.id);
+
+  if (!facility) return notFound();
+
+  const facilityCourts = courts.filter(c => c.facilityId === facility.id);
+  const facilityBookings = bookings.filter(b => b.facilityId === facility.id);
+
+  const handleToggleWebBook = (courtId: string, currentVal: boolean | undefined) => {
+    updateCourt(courtId, { webBookEnabled: currentVal === false });
+  };
+
+  return (
+    <div className="space-y-8">
+      {/* Header */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-outline-variant">
+        <div>
+          <div className="flex items-center gap-3">
+            <h1 className="font-headline-xl text-headline-xl text-on-surface font-bold">{facility.name}</h1>
+            <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-label-md font-semibold border ${
+              facility.status === 'APPROVED'
+                ? 'bg-emerald-50 text-emerald-800 border-emerald-200'
+                : facility.status === 'PENDING'
+                ? 'bg-surface-container-high text-on-surface-variant border-outline-variant'
+                : facility.status === 'REJECTED'
+                ? 'bg-error-container text-on-error-container border-error'
+                : 'bg-surface-container text-outline border-outline-variant'
+            }`}>
+              {facility.status === 'APPROVED' ? 'Approved • Active' : facility.status}
+            </span>
+          </div>
+          <p className="text-on-surface-variant font-body-md text-body-md mt-1 flex items-center gap-1">
+            <span className="material-symbols-outlined text-base text-outline">location_on</span>
+            {facility.location}
+          </p>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <Link
+            href={`/owner/facilities/${facility.id}/approval`}
+            className="h-10 px-4 rounded-lg border border-outline-variant bg-surface-container-lowest hover:bg-surface-container font-label-md text-label-md text-on-surface flex items-center gap-1.5 transition-colors"
+          >
+            <span className="material-symbols-outlined text-base">verified</span>
+            Approval Hub
+          </Link>
+          <Link
+            href={`/owner/facilities/${facility.id}/edit`}
+            className="h-10 px-4 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md hover:bg-primary flex items-center gap-1.5 transition-colors shadow-xs"
+          >
+            <span className="material-symbols-outlined text-base">edit</span>
+            Edit Facility
+          </Link>
+        </div>
+      </div>
+
+      {/* Rejection Alert if Applicable */}
+      {facility.status === 'REJECTED' && facility.rejectionReason && (
+        <div className="p-4 rounded-xl bg-error-container/20 border border-error text-error text-body-md font-body-md flex items-start gap-3">
+          <span className="material-symbols-outlined text-2xl shrink-0 mt-0.5">error</span>
+          <div>
+            <strong className="font-semibold block mb-0.5">Verification Rejected by Platform Admin</strong>
+            <p className="text-on-surface">{facility.rejectionReason}</p>
+            <Link href={`/owner/facilities/${facility.id}/edit`} className="inline-block mt-2 font-label-md text-label-md text-primary hover:underline">
+              Edit Details & Documents to Resubmit →
+            </Link>
+          </div>
+        </div>
+      )}
+
+      {/* Grid: Overview & Operating Hours */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Core Info */}
+        <div className="bg-surface-container-lowest rounded-xl border border-outline-variant p-6 space-y-4">
+          <h2 className="font-headline-sm text-headline-sm font-bold text-on-surface flex items-center gap-2">
+            <span className="material-symbols-outlined text-primary text-xl">info</span>
+            Facility Overview
+          </h2>
+          <div className="space-y-3 text-body-sm font-body-sm">
+            <div>
+              <span className="text-outline block text-xs">Description</span>
+              <p className="text-on-surface mt-0.5">{facility.description || 'No description provided.'}</p>
+            </div>
+            <div>
+              <span className="text-outline block text-xs">Offered Sports</span>
+              <div className="flex flex-wrap gap-1.5 mt-1">
+                {facility.sports && facility.sports.length > 0 ? (
+                  facility.sports.map(s => (
+                    <span key={s} className="px-2 py-0.5 rounded bg-surface border border-outline-variant text-label-sm font-label-sm text-on-surface">
+                      {s}
+                    </span>
+                  ))
+                ) : (
+                  <span className="text-outline">None specified</span>
+                )}
+              </div>
+            </div>
+            <div>
+              <span className="text-outline block text-xs">Amenities</span>
+              <div className="flex flex-wrap gap-1.5 mt-1">
+                {facility.amenities && facility.amenities.length > 0 ? (
+                  facility.amenities.map(a => (
+                    <span key={a} className="px-2 py-0.5 rounded bg-surface-container text-label-sm font-label-sm text-on-surface-variant">
+                      {a}
+                    </span>
+                  ))
+                ) : (
+                  <span className="text-outline">None listed</span>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Operating Hours */}
+        <div className="bg-surface-container-lowest rounded-xl border border-outline-variant p-6 space-y-4">
+          <h2 className="font-headline-sm text-headline-sm font-bold text-on-surface flex items-center gap-2">
+            <span className="material-symbols-outlined text-primary text-xl">schedule</span>
+            Operating Hours
+          </h2>
+          <div className="space-y-3 text-body-sm font-body-sm">
+            <div className="flex justify-between items-center py-1.5 border-b border-outline-variant/60">
+              <span className="text-on-surface-variant">Standard Timing</span>
+              <span className="font-medium text-on-surface">{facility.openTime || '06:00'} - {facility.closeTime || '23:00'}</span>
+            </div>
+            <div className="flex justify-between items-center py-1.5 border-b border-outline-variant/60">
+              <span className="text-on-surface-variant">Slot Duration</span>
+              <span className="font-medium text-on-surface">{facility.slotDuration || 60} minutes</span>
+            </div>
+            <div className="flex justify-between items-center py-1.5 border-b border-outline-variant/60">
+              <span className="text-on-surface-variant">24/7 Access</span>
+              <span className="font-medium text-on-surface">{facility.is24Hours ? 'Enabled' : 'Disabled'}</span>
+            </div>
+            <div className="flex justify-between items-center py-1.5">
+              <span className="text-on-surface-variant">Weekly Schedule</span>
+              <span className="font-medium text-secondary">All 7 Days Open</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Verification Documents */}
+        <div className="bg-surface-container-lowest rounded-xl border border-outline-variant p-6 space-y-4">
+          <h2 className="font-headline-sm text-headline-sm font-bold text-on-surface flex items-center gap-2">
+            <span className="material-symbols-outlined text-primary text-xl">verified_user</span>
+            Verification & Compliance
+          </h2>
+          <div className="space-y-2.5">
+            {facility.documents && facility.documents.length > 0 ? (
+              facility.documents.map((doc, idx) => (
+                <div key={idx} className="p-3 rounded-lg bg-surface border border-outline-variant flex items-center justify-between">
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <span className="material-symbols-outlined text-primary shrink-0">description</span>
+                    <div className="truncate">
+                      <span className="font-label-md text-label-md text-on-surface block truncate">{doc.name}</span>
+                      <span className="text-outline text-[11px] block">{doc.type || 'Document'}</span>
+                    </div>
+                  </div>
+                  <span className="text-secondary text-xs font-semibold shrink-0">Verified</span>
+                </div>
+              ))
+            ) : (
+              <p className="text-outline text-body-sm font-body-sm italic">No compliance documents uploaded yet.</p>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Courts & Live Web Book Controls */}
+      <div className="bg-surface-container-lowest rounded-xl border border-outline-variant p-6 space-y-5">
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="font-headline-md text-headline-md font-bold text-on-surface">Registered Courts ({facilityCourts.length})</h2>
+            <p className="text-body-sm font-body-sm text-on-surface-variant">Configure real-time web booking availability and base tariffs.</p>
+          </div>
+          <Link
+            href={`/owner/facilities/${facility.id}/courts/new`}
+            className="h-9 px-3 rounded-lg bg-primary text-on-primary font-label-md text-label-md flex items-center gap-1.5 hover:bg-primary-container transition-colors shadow-xs"
+          >
+            <span className="material-symbols-outlined text-base">add</span>
+            Add Court
+          </Link>
+        </div>
+
+        {facilityCourts.length === 0 ? (
+          <div className="py-10 text-center border border-dashed border-outline-variant rounded-xl">
+            <span className="material-symbols-outlined text-4xl text-outline mb-2">sports_tennis</span>
+            <p className="text-on-surface-variant font-body-md">No courts registered under this facility yet.</p>
+            <Link href={`/owner/facilities/${facility.id}/courts/new`} className="mt-3 inline-flex items-center gap-1.5 text-label-md text-primary hover:underline">
+              Add First Court →
+            </Link>
+          </div>
+        ) : (
+          <div className="divide-y divide-outline-variant/60">
+            {facilityCourts.map(court => (
+              <div key={court.id} className="py-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2.5">
+                    <h3 className="font-headline-sm text-headline-sm font-bold text-on-surface">{court.name}</h3>
+                    <span className="px-2 py-0.5 rounded bg-surface border border-outline-variant text-label-sm font-label-sm text-on-surface font-medium">
+                      {court.sport}
+                    </span>
+                    <span className={`px-2 py-0.5 rounded-full text-xs font-semibold ${
+                      court.status === 'ACTIVE' ? 'bg-emerald-50 text-emerald-800' : 'bg-surface-container text-outline'
+                    }`}>
+                      {court.status}
+                    </span>
+                  </div>
+                  <p className="text-body-sm font-body-sm text-on-surface-variant">
+                    Base Tariff: ₹{court.pricePerHour}/hr • Peak: ₹{court.weekdayNightPrice || court.pricePerHour}/hr
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-6">
+                  {/* Web Book Toggle */}
+                  <div className="flex items-center gap-2">
+                    <span className="text-label-sm font-label-sm text-on-surface">Web Book:</span>
+                    <label className="relative inline-flex items-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        className="sr-only peer"
+                        checked={court.webBookEnabled !== false}
+                        onChange={() => handleToggleWebBook(court.id, court.webBookEnabled)}
+                      />
+                      <div className="w-9 h-5 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+                    </label>
+                  </div>
+
+                  <Link
+                    href={`/owner/facilities/${facility.id}/courts/${court.id}/edit`}
+                    className="h-9 px-3 rounded-lg border border-outline-variant hover:bg-surface-container font-label-md text-label-md text-on-surface flex items-center gap-1 transition-colors"
+                  >
+                    <span className="material-symbols-outlined text-base">tune</span>
+                    Edit
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Bookings for this Facility */}
+      <div className="bg-surface-container-lowest rounded-xl border border-outline-variant p-6 space-y-4">
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="font-headline-md text-headline-md font-bold text-on-surface">Bookings at this Facility ({facilityBookings.length})</h2>
+            <p className="text-body-sm font-body-sm text-on-surface-variant">Real-time ledger of player bookings across all courts.</p>
+          </div>
+          <Link href="/owner/bookings" className="text-label-md font-label-md text-primary hover:underline">
+            View All Ledger →
+          </Link>
+        </div>
+
+        {facilityBookings.length === 0 ? (
+          <div className="py-8 text-center border border-outline-variant/60 rounded-lg text-outline text-body-sm">
+            No bookings recorded yet for this facility.
+          </div>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-body-sm">
+              <thead className="bg-surface text-on-surface-variant font-label-sm border-b border-outline-variant">
+                <tr>
+                  <th className="p-3">Booking ID</th>
+                  <th className="p-3">Player</th>
+                  <th className="p-3">Court</th>
+                  <th className="p-3">Date</th>
+                  <th className="p-3">Payment</th>
+                  <th className="p-3">Status</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-outline-variant/60">
+                {facilityBookings.map(b => {
+                  const bookingUser = users.find(u => u.id === b.userId);
+                  const court = courts.find(c => c.id === b.courtId);
+                  const paid = b.advanceAmount ?? b.amount;
+                  const total = b.totalAmount ?? b.amount;
+
+                  return (
+                    <tr key={b.id} className="hover:bg-surface-container-lowest">
+                      <td className="p-3 font-mono font-bold text-primary">{b.id}</td>
+                      <td className="p-3 font-medium text-on-surface">{bookingUser?.name || 'Player'}</td>
+                      <td className="p-3 text-on-surface-variant">{court?.name || 'Court'}</td>
+                      <td className="p-3 text-on-surface">{b.date}</td>
+                      <td className="p-3 font-medium">₹{paid} / ₹{total}</td>
+                      <td className="p-3">
+                        <span className={`px-2 py-0.5 rounded-full text-xs font-semibold ${
+                          b.status === 'CONFIRMED' ? 'bg-emerald-50 text-emerald-800' : 'bg-surface-container text-outline'
+                        }`}>
+                          {b.status}
+                        </span>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}

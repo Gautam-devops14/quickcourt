@@ -161,37 +161,7 @@ function PaymentContent() {
                       <span>Verified</span>
                     </div>
                   </div>
-                  <p className="text-[12px] text-on-surface-variant">A payment notification will be pushed to your test UPI application.</p>
-                </div>
-                <div className="relative flex py-2 items-center">
-                  <div className="flex-grow border-t border-outline-variant"></div>
-                  <span className="flex-shrink mx-4 text-label-sm font-label-sm text-outline uppercase font-semibold">or scan and pay</span>
-                  <div className="flex-grow border-t border-outline-variant"></div>
-                </div>
-                <div className="flex flex-col sm:flex-row items-center gap-5 p-4 border border-dashed border-outline rounded-xl bg-surface-container-low/50">
-                  <div className="w-28 h-28 bg-surface-container-lowest border border-outline-variant rounded-lg p-2 flex items-center justify-center shadow-xs">
-                    <div className="w-full h-full border-4 border-on-surface p-1 relative flex flex-col justify-between">
-                      <div className="flex justify-between">
-                        <div className="w-5 h-5 bg-on-surface"></div>
-                        <div className="w-5 h-5 bg-on-surface"></div>
-                      </div>
-                      <div className="flex justify-center items-center">
-                        <span className="material-symbols-outlined text-primary-container text-lg">sports_tennis</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <div className="w-5 h-5 bg-on-surface"></div>
-                        <div className="w-2 h-2 bg-on-surface self-end"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="text-center sm:text-left space-y-1.5">
-                    <div className="text-label-md font-label-md text-on-surface font-bold">Scan Court Booking QR with any UPI App</div>
-                    <p className="text-body-sm font-body-sm text-on-surface-variant">Instant confirmation: QR remains dynamic and auto-refreshes with the 8-minute slot hold window.</p>
-                    <div className="inline-flex items-center gap-1.5 text-label-sm font-label-sm text-secondary font-semibold">
-                      <span className="material-symbols-outlined text-sm">bolt</span>
-                      Zero processing fees applies on QuickCourt UPI
-                    </div>
-                  </div>
+                  <p className="text-[12px] text-on-surface-variant">A payment notification will be pushed to your test UPI application to approve the simulated transaction.</p>
                 </div>
               </div>
             )}

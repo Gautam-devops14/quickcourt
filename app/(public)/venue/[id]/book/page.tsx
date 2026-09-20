@@ -24,8 +24,8 @@ export default function BookVenuePage({ params }: { params: { id: string } }) {
   const slotIntervalMinutes = facility?.slotDuration || 60;    // e.g. 60 min
   const maxSlotsAllowed = Math.floor((maxBookingDuration * 60) / slotIntervalMinutes);
 
-  // Active courts only (Filter out MAINTENANCE courts per P0 Item 8)
-  const facilityCourts = courts.filter(c => c.facilityId === facility?.id && c.status === 'ACTIVE');
+  // Active courts with Web Book enabled (Requirement 7)
+  const facilityCourts = courts.filter(c => c.facilityId === facility?.id && c.status === 'ACTIVE' && c.webBookEnabled !== false);
   const allFacilityCourts = courts.filter(c => c.facilityId === facility?.id); // for display/status check
 
   const selectedDateObj = new Date(selectedDate);
@@ -44,23 +44,14 @@ export default function BookVenuePage({ params }: { params: { id: string } }) {
     setSelectedDate(newDate);
   };
 
-  // Generate or filter slots for selected date and operating hours (P0 Items 4, 5, 8, 18)
+  // Generate slots for selected date and operating hours reflecting live booking/lock state
   const facilitySlots = useMemo(() => {
     if (!facility) return [];
-    // Standard daily operating hour bounds
     const facilityOpenHour = facility.is24Hours ? 0 : parseInt((facility.openTime || '06:00').split(':')[0]);
     const facilityCloseHour = facility.is24Hours ? 24 : parseInt((facility.closeTime || '23:00').split(':')[0]);
 
-    // Check if slots exist for selectedDate
-    const existingDateSlots = slots.filter(s => s.date === selectedDate && facilityCourts.some(c => c.id === s.courtId));
-    if (existingDateSlots.length > 0) {
-      return existingDateSlots;
-    }
-
-    // Generate dynamic slots within operating hours for this date
     const generated: TimeSlot[] = [];
     facilityCourts.forEach(c => {
-      // Court operating hours override if specific
       const startH = c.is24Hours ? 0 : (c.openTime ? parseInt(c.openTime.split(':')[0]) : facilityOpenHour);
       const endH = c.is24Hours ? 24 : (c.closeTime ? parseInt(c.closeTime.split(':')[0]) : facilityCloseHour);
 
@@ -68,21 +59,26 @@ export default function BookVenuePage({ params }: { params: { id: string } }) {
         const startStr = `${String(h).padStart(2, '0')}:00`;
         const endStr = `${String(h + 1).padStart(2, '0')}:00`;
         const isNight = h >= 18;
-        
-        // Realistic pseudo-occupancy: lock prime evening slots on weekends or busy courts
-        const isMockBooked = (h === 19 || h === 20) && (c.id.includes('c1') || isWeekendSelected);
+        const slotId = `slot-${c.id}-${selectedDate}-${startStr}`;
+
+        // Check central state for this slot on this date
+        const centralSlot = slots.find(s => 
+          (s.id === slotId || (s.courtId === c.id && s.date === selectedDate && s.startTime === startStr))
+        );
 
         const slotPrice = isWeekendSelected
           ? (isNight ? (c.weekendNightPrice ?? Math.round(c.pricePerHour * 1.5)) : (c.weekendDayPrice ?? Math.round(c.pricePerHour * 1.2)))
           : (isNight ? (c.weekdayNightPrice ?? Math.round(c.pricePerHour * 1.3)) : (c.weekdayDayPrice ?? c.pricePerHour));
 
+        let status: 'AVAILABLE' | 'LOCKED' | 'BOOKED' | 'BLOCKED' = centralSlot ? centralSlot.status : 'AVAILABLE';
+
         generated.push({
-          id: `gen-${c.id}-${selectedDate}-${startStr}`,
+          id: centralSlot ? centralSlot.id : slotId,
           courtId: c.id,
           date: selectedDate,
           startTime: startStr,
           endTime: endStr,
-          status: isMockBooked ? 'BOOKED' : 'AVAILABLE',
+          status,
           isNight,
           isWeekend: isWeekendSelected,
           calculatedPrice: slotPrice
@@ -103,28 +99,30 @@ export default function BookVenuePage({ params }: { params: { id: string } }) {
     return true;
   });
 
-  // Slot click with Max Booking Duration enforcement (P0 Item 6, 7)
+  // Slot click supporting multi-court selection and maxBookingDuration per court (Requirement 3)
   const handleSlotClick = (slotId: string, status: string) => {
     setDurationLimitError('');
     const isCurrentlySelected = activeCartSlots.some(s => s.id === slotId);
 
     if (isCurrentlySelected) {
-      // Toggle off is always permitted
       toggleLockSlot(slotId);
       return;
     }
 
     if (status !== 'AVAILABLE') return;
 
-    // Check maximum booking duration
-    if (activeCartSlots.length >= maxSlotsAllowed) {
-      setDurationLimitError(`Facility maximum booking limit reached: ${maxBookingDuration} hours (${maxSlotsAllowed} slots max per reservation).`);
+    const targetSlot = facilitySlots.find(s => s.id === slotId);
+    if (!targetSlot) return;
+
+    // Count existing slots selected for THIS SPECIFIC COURT
+    const courtSlotsInCart = activeCartSlots.filter(s => s.courtId === targetSlot.courtId);
+    if (courtSlotsInCart.length >= maxSlotsAllowed) {
+      const courtName = facilityCourts.find(c => c.id === targetSlot.courtId)?.name || 'Court';
+      setDurationLimitError(`${courtName} maximum duration reached: ${maxBookingDuration} hours (${maxSlotsAllowed} slots max per court).`);
       return;
     }
 
-    toggleLockSlot(slotId);
-    const slotObj = facilitySlots.find(s => s.id === slotId);
-    toggleLockSlot(slotId, slotObj);
+    toggleLockSlot(slotId, targetSlot);
   };
 
   const handleContinue = () => {

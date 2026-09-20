@@ -54,6 +54,7 @@ export interface Court {
   closeTime?: string; // e.g. "23:00"
   is24Hours?: boolean;
   status: 'ACTIVE' | 'MAINTENANCE';
+  webBookEnabled?: boolean; // online web booking allowed (true by default)
 }
 
 export type SlotStatus = 'AVAILABLE' | 'LOCKED' | 'BOOKED' | 'BLOCKED';

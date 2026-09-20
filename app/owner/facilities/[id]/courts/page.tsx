@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { notFound, useRouter } from 'next/navigation';
 
 export default function CourtManagementPage({ params }: { params: { id: string } }) {
-  const { facilities, courts, deleteCourt } = useStore();
+  const { facilities, courts, updateCourt, deleteCourt } = useStore();
   const router = useRouter();
 
   const facility = facilities.find(f => f.id === params.id);
@@ -14,6 +14,11 @@ export default function CourtManagementPage({ params }: { params: { id: string }
 
   const activeCourts = facilityCourts.filter(c => c.status === 'ACTIVE').length;
   const maintenanceCourts = facilityCourts.filter(c => c.status === 'MAINTENANCE').length;
+
+  const handleToggleWebBook = (courtId: string, currentVal: boolean | undefined) => {
+    const newVal = currentVal === false ? true : false;
+    updateCourt(courtId, { webBookEnabled: newVal });
+  };
 
   const handleDelete = (courtId: string) => {
     if(confirm('Are you sure you want to decommission this court?')) {
@@ -166,7 +171,12 @@ export default function CourtManagementPage({ params }: { params: { id: string }
                 <div className="flex flex-col items-center pl-2">
                   <span className="font-label-sm text-[10px] text-outline mb-1">Web Book</span>
                   <label className="relative inline-flex items-center cursor-pointer">
-                    <input type="checkbox" className="sr-only peer" checked={court.status === 'ACTIVE'} readOnly />
+                    <input 
+                      type="checkbox" 
+                      className="sr-only peer" 
+                      checked={court.webBookEnabled !== false} 
+                      onChange={() => handleToggleWebBook(court.id, court.webBookEnabled)}
+                    />
                     <div className="w-9 h-5 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
                   </label>
                 </div>
