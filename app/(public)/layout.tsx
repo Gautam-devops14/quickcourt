@@ -1,4 +1,5 @@
 import { TopNav } from "@/components/shared/TopNav";
+import { MobileBottomNav } from "@/components/shared/MobileBottomNav";
 
 export default function PublicLayout({
   children,
@@ -11,6 +12,7 @@ export default function PublicLayout({
       <main className="w-full pt-16 min-h-screen pb-20 md:pb-0">
         {children}
       </main>
+      <MobileBottomNav />
     </div>
   );
 }

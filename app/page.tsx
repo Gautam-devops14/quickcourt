@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation';
 import { useState, useMemo } from 'react';
 import { ShieldAlert, UserCircle } from 'lucide-react';
 import { TopNav } from '@/components/shared/TopNav';
+import { MobileBottomNav } from "@/components/shared/MobileBottomNav";
+
 
 
 export default function Home() {
@@ -438,6 +440,7 @@ export default function Home() {
           </div>
         )}
       </div>
+      <MobileBottomNav />
     </>
   );
 }

@@ -1,10 +1,16 @@
 "use client";
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { Suspense } from "react";
+
+import { useStore, defaultUsers } from '@/contexts/StoreContext';
 import Link from 'next/link';
 import { useRef, useEffect } from 'react';
 
-export default function OtpPage() {
+function OtpContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirect = searchParams?.get('redirect') || '/';
+  const { setCurrentUser } = useStore();
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -15,7 +21,9 @@ export default function OtpPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    router.push('/');
+    const user = defaultUsers.find(u => u.role === 'USER');
+    if (user) setCurrentUser(user);
+    router.push(redirect);
   };
 
   return (
@@ -137,5 +145,13 @@ export default function OtpPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function OtpPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <OtpContent />
+    </Suspense>
   );
 }

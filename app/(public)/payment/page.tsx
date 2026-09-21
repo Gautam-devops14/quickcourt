@@ -74,28 +74,23 @@ function PaymentContent() {
   ];
 
   return (
-    <main className="flex-grow max-w-7xl w-full mx-auto px-6 lg:px-12 py-8">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    <main className="flex-grow max-w-7xl w-full mx-auto px-3 py-4 sm:px-6 lg:px-12 sm:py-8">
+      <div className="flex flex-col lg:grid lg:grid-cols-12 gap-4 lg:gap-8 items-start">
 
         {/* LEFT COLUMN: Payment Methods — 7 cols */}
-        <div className="lg:col-span-7 flex flex-col gap-6">
+        <div className="order-1 lg:col-span-7 flex flex-col gap-4 lg:gap-6 w-full">
 
           {/* Simulation Notice Banner */}
-          <div className="bg-surface-container-low border border-primary-container/20 rounded-xl p-4 flex items-start gap-3">
-            <span className="material-symbols-outlined text-primary-container text-xl mt-0.5">info</span>
+          <div className="bg-surface-container-low border border-primary-container/20 rounded-lg p-2.5 flex items-center gap-2">
+            <span className="material-symbols-outlined text-primary-container text-base">verified</span>
             <div>
-              <h1 className="text-label-lg font-label-lg text-primary-container font-bold">
-                Simulated Payment Gateway — For Demonstration & Testing Only
-              </h1>
-              <p className="text-body-sm font-body-sm text-on-surface-variant mt-0.5">
-                No real funds will be charged. Choose any test method below to generate a valid booking confirmation and receipt voucher.
-              </p>
+              <span className="text-[12px] font-semibold text-primary-container">Secure simulated payment</span>
             </div>
           </div>
 
           {/* Payment Mode Selector */}
-          <div className="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm">
-            <div className="flex items-center justify-between pb-4 border-b border-outline-variant mb-6">
+          <div className="bg-surface-container-lowest border border-outline-variant rounded-xl p-3 sm:p-6 shadow-sm flex flex-col">
+            <div className="flex items-center justify-between pb-3 sm:pb-4 border-b border-outline-variant mb-4 sm:mb-6">
               <h2 className="text-headline-sm font-headline-sm text-on-surface font-bold">Select Payment Method</h2>
               <span className="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1">
                 <span className="material-symbols-outlined text-secondary text-sm">verified_user</span>
@@ -104,13 +99,13 @@ function PaymentContent() {
             </div>
 
             {/* Method Selector Tabs */}
-            <div className="grid grid-cols-3 gap-3 mb-6">
+            <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-4 sm:mb-6">
               {TAB_CONFIG.map(tab => (
                 <button
                   key={tab.key}
                   onClick={() => setMethod(tab.key)}
                   type="button"
-                  className={`p-3.5 text-left rounded-xl border-2 transition-all relative flex flex-col justify-between h-24
+                  className={`p-2 sm:p-3.5 text-left rounded-lg sm:rounded-xl border transition-all relative flex flex-col justify-between h-[78px] sm:h-[90px]
                     ${method === tab.key
                       ? 'border-primary-container bg-surface-container-low'
                       : 'border-outline-variant bg-surface-container-lowest hover:border-outline'}`}
@@ -128,8 +123,7 @@ function PaymentContent() {
                     )}
                   </div>
                   <div>
-                    <span className="block text-label-md font-label-md text-on-surface font-bold">{tab.label}</span>
-                    <span className="block text-[11px] text-on-surface-variant">{tab.sub}</span>
+                    <span className="block text-[11px] sm:text-label-md font-bold text-on-surface leading-tight">{tab.label}</span>\n<span className="block text-[10px] sm:text-[11px] text-on-surface-variant leading-tight truncate">{tab.sub}</span>
                   </div>
                 </button>
               ))}
@@ -138,10 +132,10 @@ function PaymentContent() {
             {/* UPI Form */}
             {method === 'upi' && (
               <div className="space-y-5">
-                <div className="flex items-center gap-2 p-3 bg-surface-container-low rounded-lg border border-outline-variant">
-                  <span className="text-label-sm font-label-sm font-semibold text-on-surface-variant">Supported apps:</span>
+                <div className="flex flex-wrap items-center gap-1.5 p-2 sm:p-3 bg-surface-container-low rounded-lg border border-outline-variant">
+                  <span className="text-[11px] sm:text-label-sm font-semibold text-on-surface-variant">Apps:</span>
                   {['Google Pay', 'PhonePe', 'Paytm UPI'].map(app => (
-                    <span key={app} className="px-2 py-0.5 bg-surface-container-lowest border border-outline-variant rounded text-label-sm font-label-sm text-on-surface font-semibold">{app}</span>
+                    <span key={app} className="px-1.5 py-0.5 bg-surface-container-lowest border border-outline-variant rounded text-[11px] text-on-surface font-semibold">{app}</span>
                   ))}
                 </div>
                 <div className="space-y-2">
@@ -150,7 +144,7 @@ function PaymentContent() {
                   </label>
                   <div className="relative">
                     <input
-                      className="w-full h-[42px] px-3 pr-24 rounded border border-outline-variant bg-surface-container-lowest text-body-md font-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none"
+                      className="w-full h-[40px] sm:h-[42px] text-sm px-3 pr-24 rounded border border-outline-variant bg-surface-container-lowest text-body-md font-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none"
                       id="upi-id"
                       placeholder="username@bank"
                       type="text"
@@ -161,7 +155,7 @@ function PaymentContent() {
                       <span>Verified</span>
                     </div>
                   </div>
-                  <p className="text-[12px] text-on-surface-variant">A payment notification will be pushed to your test UPI application to approve the simulated transaction.</p>
+                  <p className="text-[10px] sm:text-[12px] text-on-surface-variant leading-tight mt-1">Payment notification will be pushed to your simulated UPI app.</p>
                 </div>
               </div>
             )}
@@ -169,34 +163,34 @@ function PaymentContent() {
             {/* Card Form */}
             {method === 'card' && (
               <div className="space-y-4">
-                <div className="flex items-center justify-between p-3 bg-surface-container-low rounded-lg border border-outline-variant">
-                  <span className="text-label-sm font-label-sm text-on-surface-variant">Accepted Networks:</span>
+                <div className="flex flex-wrap items-center justify-between p-2 sm:p-3 bg-surface-container-low rounded-lg border border-outline-variant gap-2">
+                  <span className="text-[11px] sm:text-label-sm text-on-surface-variant">Networks:</span>
                   <div className="flex items-center gap-2">
-                    {['VISA', 'Mastercard', 'AMEX'].map(n => (
-                      <span key={n} className="px-2 py-0.5 bg-surface-container-lowest border border-outline-variant rounded text-label-sm font-label-sm font-bold text-tertiary">{n}</span>
+                    {['VISA', 'Mastercard', 'RuPay'].map(n => (
+                      <span key={n} className="px-1.5 py-0.5 bg-surface-container-lowest border border-outline-variant rounded text-[10px] sm:text-label-sm font-bold text-tertiary">{n}</span>
                     ))}
                   </div>
                 </div>
                 <div className="space-y-1.5">
                   <label className="block text-label-sm font-label-sm text-on-surface font-semibold" htmlFor="card-holder">Cardholder Name</label>
-                  <input className="w-full h-[42px] px-3 rounded border border-outline-variant bg-surface-container-lowest text-body-md font-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none" id="card-holder" type="text" defaultValue="PLAYER ONE" />
+                  <input className="w-full h-[40px] sm:h-[42px] text-sm px-3 rounded border border-outline-variant bg-surface-container-lowest text-body-md font-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none" id="card-holder" type="text" defaultValue="PLAYER ONE" />
                 </div>
                 <div className="space-y-1.5">
                   <label className="block text-label-sm font-label-sm text-on-surface font-semibold" htmlFor="card-num">Card Number</label>
                   <div className="relative">
-                    <input className="w-full h-[42px] px-3 rounded border border-outline-variant bg-surface-container-lowest text-body-md font-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none font-mono" id="card-num" type="text" defaultValue="4532 •••• •••• 4920" />
+                    <input className="w-full h-[40px] sm:h-[42px] text-sm px-3 rounded border border-outline-variant bg-surface-container-lowest text-body-md font-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none font-mono" id="card-num" type="text" defaultValue="4532 •••• •••• 4920" />
                     <span className="material-symbols-outlined absolute right-3 top-2.5 text-on-surface-variant text-xl">credit_card</span>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1.5">
                     <label className="block text-label-sm font-label-sm text-on-surface font-semibold" htmlFor="card-exp">Expiry Date</label>
-                    <input className="w-full h-[42px] px-3 rounded border border-outline-variant bg-surface-container-lowest text-body-md font-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none font-mono" id="card-exp" placeholder="MM/YY" type="text" defaultValue="08/28" />
+                    <input className="w-full h-[40px] sm:h-[42px] text-sm px-3 rounded border border-outline-variant bg-surface-container-lowest text-body-md font-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none font-mono" id="card-exp" placeholder="MM/YY" type="text" defaultValue="08/28" />
                   </div>
                   <div className="space-y-1.5">
                     <label className="block text-label-sm font-label-sm text-on-surface font-semibold" htmlFor="card-cvv">CVV / CVC</label>
                     <div className="relative">
-                      <input className="w-full h-[42px] px-3 rounded border border-outline-variant bg-surface-container-lowest text-body-md font-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none font-mono" id="card-cvv" maxLength={4} placeholder="123" type="password" />
+                      <input className="w-full h-[40px] sm:h-[42px] text-sm px-3 rounded border border-outline-variant bg-surface-container-lowest text-body-md font-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none font-mono" id="card-cvv" maxLength={4} placeholder="123" type="password" />
                       <span className="material-symbols-outlined absolute right-3 top-2.5 text-outline text-lg">help</span>
                     </div>
                   </div>
@@ -219,7 +213,7 @@ function PaymentContent() {
               </div>
             )}
 
-            {/* Primary Action */}
+            {/* Primary Action (Desktop) */}\n            <div className="hidden lg:block">
             <div className="pt-6 mt-6 border-t border-outline-variant space-y-3">
               <button
                 onClick={handlePay}
@@ -246,9 +240,7 @@ function PaymentContent() {
                 Cancel & Return to Summary
               </Link>
               <p className="text-center text-[12px] text-on-surface-variant pt-1">
-                Immediate booking confirmation and digital match pass will be generated upon confirmation.
-              </p>
-            </div>
+                Immediate booking confirmation and digital match pass will be generated upon confirmation.\n              </p>\n            </div>\n            </div>
           </div>
 
           {/* Security & Guarantee Badges Strip */}
@@ -270,7 +262,7 @@ function PaymentContent() {
         </div>
 
         {/* RIGHT COLUMN: Order Summary — 5 cols */}
-        <div className="lg:col-span-5 flex flex-col gap-5 sticky top-24">
+        <div className="order-2 lg:col-span-5 flex flex-col gap-4 lg:gap-5 lg:sticky top-24 w-full">
 
           {/* Slot Hold Countdown */}
           <div className="bg-surface-container-lowest border-2 border-secondary/40 rounded-xl p-3.5 flex items-center justify-between shadow-xs">

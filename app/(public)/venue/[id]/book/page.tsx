@@ -327,7 +327,7 @@ export default function BookVenuePage({ params }: { params: { id: string } }) {
                   <button
                     key={d.iso}
                     onClick={() => handleSelectDate(d.iso)}
-                    className={`flex-shrink-0 w-28 py-2.5 px-2 rounded-xl flex flex-col items-center justify-center border-2 transition-all cursor-pointer
+                    className={`flex-shrink-0 w-28 py-2.5 px-2 rounded-xl flex flex-col items-center justify-center border transition-all cursor-pointer
                       ${isSelected
                         ? 'bg-primary-container text-on-primary border-primary shadow-sm'
                         : 'bg-surface-container-lowest hover:bg-surface text-on-surface border-outline-variant hover:border-outline'
@@ -345,36 +345,35 @@ export default function BookVenuePage({ params }: { params: { id: string } }) {
             </div>
 
             {/* Time Block Filter Bar */}
-            <div className="pt-2 border-t border-outline-variant/50 flex flex-wrap items-center justify-between gap-3">
-              <div className="flex items-center gap-1.5 flex-wrap">
-                <span className="text-label-sm font-label-sm text-outline mr-1">Time Block:</span>
+            <div className="pt-2 border-t border-outline-variant/50">
+              <div className="flex gap-2 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 hide-scrollbar scroll-smooth">
                 <button 
                   onClick={() => setTimeBlockFilter('ALL')} 
-                  className={`px-3 py-1 rounded-lg text-xs font-semibold transition-colors border ${timeBlockFilter === 'ALL' ? 'bg-primary-container text-on-primary border-primary' : 'bg-surface-container-lowest text-outline hover:text-on-surface border-outline-variant'}`}
+                  className={`shrink-0 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors border ${timeBlockFilter === 'ALL' ? 'bg-primary-container text-on-primary border-primary' : 'bg-surface-container-lowest text-outline hover:text-on-surface border-outline-variant'}`}
                 >
                   All Day
                 </button>
                 <button 
                   onClick={() => setTimeBlockFilter('MORNING')} 
-                  className={`px-3 py-1 rounded-lg text-xs font-semibold transition-colors border ${timeBlockFilter === 'MORNING' ? 'bg-primary-container text-on-primary border-primary' : 'bg-surface-container-lowest text-outline hover:text-on-surface border-outline-variant'}`}
+                  className={`shrink-0 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors border ${timeBlockFilter === 'MORNING' ? 'bg-primary-container text-on-primary border-primary' : 'bg-surface-container-lowest text-outline hover:text-on-surface border-outline-variant'}`}
                 >
-                  Morning (6 AM - 12 PM)
+                  Morning (6AM-12PM)
                 </button>
                 <button 
                   onClick={() => setTimeBlockFilter('AFTERNOON')} 
-                  className={`px-3 py-1 rounded-lg text-xs font-semibold transition-colors border ${timeBlockFilter === 'AFTERNOON' ? 'bg-primary-container text-on-primary border-primary' : 'bg-surface-container-lowest text-outline hover:text-on-surface border-outline-variant'}`}
+                  className={`shrink-0 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors border ${timeBlockFilter === 'AFTERNOON' ? 'bg-primary-container text-on-primary border-primary' : 'bg-surface-container-lowest text-outline hover:text-on-surface border-outline-variant'}`}
                 >
-                  Afternoon (12 PM - 5 PM)
+                  Afternoon (12PM-5PM)
                 </button>
                 <button 
                   onClick={() => setTimeBlockFilter('EVENING')} 
-                  className={`px-3 py-1 rounded-lg text-xs font-semibold transition-colors border ${timeBlockFilter === 'EVENING' ? 'bg-primary-container text-on-primary border-primary' : 'bg-surface-container-lowest text-outline hover:text-on-surface border-outline-variant'}`}
+                  className={`shrink-0 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors border ${timeBlockFilter === 'EVENING' ? 'bg-primary-container text-on-primary border-primary' : 'bg-surface-container-lowest text-outline hover:text-on-surface border-outline-variant'}`}
                 >
-                  Evening (5 PM - 11 PM)
+                  Evening (5PM-11PM)
                 </button>
               </div>
-              <div className="text-label-sm font-label-sm text-outline flex items-center gap-1">
-                <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <div className="text-[10px] text-outline flex items-center gap-1 mt-1">
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                 Max {maxBookingDuration} hrs per session
               </div>
             </div>
@@ -391,31 +390,25 @@ export default function BookVenuePage({ params }: { params: { id: string } }) {
           )}
 
           {/* LEGEND */}
-          <div className="flex flex-wrap items-center gap-y-2 gap-x-6 px-1 text-label-sm font-label-sm">
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded border-2 border-outline bg-surface-container-lowest flex items-center justify-center shadow-xs">
-                <span className="text-[10px] font-bold text-on-surface">₹</span>
-              </div>
-              <div><span className="text-on-surface font-bold">Available</span> <span className="text-outline text-xs">(Click to reserve)</span></div>
+          <div className="flex flex-row items-center gap-4 px-2 py-1 text-[11px] font-medium border-t border-b sm:border-none border-outline-variant/30 my-2 sm:my-0">
+            <div className="flex items-center gap-1.5">
+              <span className="text-on-surface font-bold">₹</span>
+              <span className="text-on-surface">Available</span>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded bg-primary-container text-on-primary flex items-center justify-center border-2 border-primary ring-1 ring-primary">
-                <span className="material-symbols-outlined text-sm font-bold">check</span>
-              </div>
-              <div><span className="text-on-surface font-bold">Selected</span></div>
+            <div className="flex items-center gap-1.5">
+              <span className="material-symbols-outlined text-[14px] text-primary">check</span>
+              <span className="text-on-surface">Selected</span>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded bg-surface-container-highest border border-outline-variant/80 flex items-center justify-center text-outline">
-                <span className="material-symbols-outlined text-xs">person</span>
-              </div>
-              <div><span className="text-outline font-semibold">Booked</span></div>
+            <div className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-outline"></span>
+              <span className="text-outline">Booked</span>
             </div>
           </div>
 
           {/* COURT SCHEDULE MATRIX */}
           <div className="bg-surface-container-lowest rounded-xl border border-outline-variant/80 shadow-sm overflow-hidden">
-            <div className="overflow-x-auto">
-              <div className="min-w-[760px]">
+            <div className="w-full">
+              <div className="w-full">
 
                 {/* Show offline maintenance courts notice if any */}
                 {allFacilityCourts.some(c => c.status === 'MAINTENANCE') && (
@@ -441,23 +434,23 @@ export default function BookVenuePage({ params }: { params: { id: string } }) {
                     return (
                       <div key={court.id} className={`p-4 border-outline-variant/50 hover:bg-surface-container-low/20 transition-colors ${courtIdx < facilityCourts.length - 1 ? 'border-b' : ''}`}>
                         {/* Court Info Header */}
-                        <div className="flex items-center justify-between mb-3">
-                          <div className="flex items-center gap-2.5">
-                            <span className="text-headline-sm font-bold text-on-surface">{court.name}</span>
-                            <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 gap-2">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <span className="text-sm font-bold text-on-surface leading-none">{court.name}</span>
+                            <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed leading-none">
                               {court.sport}
                             </span>
-                            <span className="text-xs text-on-surface-variant font-semibold">
+                            <span className="text-[11px] text-on-surface-variant font-semibold leading-none">
                               Base: ₹{court.pricePerHour}/hr
                             </span>
                           </div>
-                          <span className="text-[11px] text-on-surface-variant flex items-center gap-1">
-                            <span className="material-symbols-outlined text-xs text-primary">lightbulb</span> LED Competition illumination
+                          <span className="hidden sm:flex text-[11px] text-on-surface-variant items-center gap-1">
+                            <span className="material-symbols-outlined text-xs text-primary">lightbulb</span> LED
                           </span>
                         </div>
 
                         {/* Slot Pills Grid */}
-                        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-2.5">
+                        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-2">
                           {courtSlots.length === 0 ? (
                             <div className="col-span-full py-4 text-center text-xs text-on-surface-variant">No slots match the selected time filter.</div>
                           ) : (
@@ -471,9 +464,9 @@ export default function BookVenuePage({ params }: { params: { id: string } }) {
                                   key={slot.id}
                                   disabled={isBooked || isLocked}
                                   onClick={() => handleSlotClick(slot.id, slot.status)}
-                                  className={`h-16 rounded-xl border-2 p-2 flex flex-col items-center justify-center transition-all ${
+                                  className={`h-[60px] sm:h-[64px] rounded-lg border flex flex-col items-center justify-center transition-all p-1 ${
                                     isSelected
-                                      ? 'bg-primary-container text-on-primary border-primary shadow-sm ring-2 ring-primary ring-offset-1'
+                                      ? 'bg-primary-container text-on-primary border-primary shadow-sm ring-1 ring-primary'
                                       : isBooked
                                       ? 'bg-surface-container border-outline-variant/60 text-outline cursor-not-allowed'
                                       : isLocked
@@ -481,11 +474,11 @@ export default function BookVenuePage({ params }: { params: { id: string } }) {
                                       : 'bg-surface-container-lowest hover:bg-emerald-50 border-outline-variant hover:border-primary text-on-surface cursor-pointer'
                                   }`}
                                 >
-                                  <div className="text-xs font-bold flex items-center gap-1">
+                                  <div className="text-[11px] font-bold flex items-center gap-1">
                                     {isSelected && <span className="material-symbols-outlined text-sm font-bold">check</span>}
                                     <span>{slot.startTime} – {slot.endTime}</span>
                                   </div>
-                                  <div className="text-[11px] font-semibold mt-0.5">
+                                  <div className="text-[10px] font-semibold mt-0.5">
                                     {isBooked ? 'Booked' : isLocked ? 'In Cart' : `₹${slot.calculatedPrice}`}
                                   </div>
                                 </button>
@@ -631,6 +624,23 @@ export default function BookVenuePage({ params }: { params: { id: string } }) {
         </aside>
 
       </div>
+    
+      {/* MOBILE STICKY SUMMARY */}
+      {activeCartSlots.length > 0 && (
+        <div className="lg:hidden fixed bottom-[calc(64px+env(safe-area-inset-bottom))] left-0 right-0 bg-surface-container-lowest border-t border-outline-variant/30 shadow-[0_-10px_15px_-3px_rgba(0,0,0,0.05)] p-3 z-40 pb-[calc(env(safe-area-inset-bottom)+12px)] flex items-center justify-between">
+          <div className="flex flex-col">
+            <span className="text-xs font-bold text-on-surface">{activeCartSlots.length} slot{activeCartSlots.length > 1 ? 's' : ''}</span>
+            <span className="text-sm font-black text-primary">₹{totalCartPrice}</span>
+          </div>
+          <button 
+            onClick={handleContinue}
+            className="px-6 py-2 bg-primary hover:bg-primary-container text-on-primary text-sm font-bold rounded-xl shadow-sm transition-colors"
+          >
+            Continue
+          </button>
+        </div>
+      )}
     </main>
+
   );
 }
