@@ -3,6 +3,15 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useStore } from '@/contexts/StoreContext';
 
+const SAFE_SPORTS_IMAGES = [
+  'https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?auto=format&fit=crop&q=80&w=800',
+  'https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&q=80&w=800',
+  'https://images.unsplash.com/photo-1459865264687-595d652de67e?auto=format&fit=crop&q=80&w=800',
+  'https://images.unsplash.com/photo-1558365849-6ebd8b0454b2?auto=format&fit=crop&q=80&w=800',
+  'https://images.unsplash.com/photo-1622279457486-69d73ce28b09?auto=format&fit=crop&q=80&w=800',
+  'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&q=80&w=800'
+];
+
 export default function VenueDetailsPage() {
   const params = useParams();
   const venueId = params.id as string;
@@ -35,7 +44,7 @@ export default function VenueDetailsPage() {
     <div className="bg-surface min-h-screen pb-24">
       {/* Venue Hero Image Section */}
       <div className="w-full h-64 md:h-96 bg-surface-container relative overflow-hidden">
-        <img src={`https://loremflickr.com/1200/800/sports,stadium?lock=${facility.id.replace(/[^0-9]/g, '') || 1}`} className="absolute inset-0 w-full h-full object-cover" alt="" />
+        <img src={SAFE_SPORTS_IMAGES[Number(facility.id.replace(/[^0-9]/g, '') || 1) % SAFE_SPORTS_IMAGES.length]} className="absolute inset-0 w-full h-full object-cover" alt="" />
         <div className="absolute inset-0 bg-gradient-to-t from-on-surface/80 to-transparent"></div>
         <div className="absolute bottom-0 left-0 right-0 max-w-7xl mx-auto px-margin md:px-margin-md lg:px-margin-lg pb-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
