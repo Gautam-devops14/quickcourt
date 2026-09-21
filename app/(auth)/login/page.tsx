@@ -148,7 +148,7 @@ function LoginContent() {
           </div>
           <div className="flex items-center gap-1.5 font-label-sm text-label-sm">
             <span className="material-symbols-outlined text-[16px] text-secondary">nfc</span>
-            <span>Instant Turnstile Pass Sync</span>
+            <span>Instant Booking Sync</span>
           </div>
           <div className="flex items-center gap-1.5 font-label-sm text-label-sm">
             <span className="material-symbols-outlined text-[16px] text-secondary">price_check</span>

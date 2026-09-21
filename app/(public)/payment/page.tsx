@@ -59,7 +59,7 @@ function PaymentContent() {
   const handlePay = async () => {
     setIsProcessing(true);
     // Simulate payment processing delay
-    await new Promise(r => setTimeout(r, 1500));
+    
     confirmBooking(amountToChargeNow, {
       totalAmount: total,
       paymentType: isAdvance ? 'ADVANCE_20' : 'FULL',

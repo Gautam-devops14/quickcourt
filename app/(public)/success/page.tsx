@@ -40,17 +40,17 @@ export default function SuccessPage() {
                 <div className="flex flex-wrap items-center justify-between gap-3 mb-1">
                   <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-label-sm font-label-sm font-semibold bg-secondary-container/30 text-on-secondary-container border border-primary/10">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span>
-                    TURNSTILE AUTHORIZED
+                    BOOKING CONFIRMED
                   </span>
                   <span className="text-body-sm font-body-sm text-on-surface-variant">
                     Confirmed at {new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })}
                   </span>
                 </div>
                 <h1 className="text-headline-xl font-headline-xl text-on-surface mb-2 tracking-tight font-bold">
-                  Reservation Confirmed & Turnstile Synced!
+                  Reservation Confirmed!
                 </h1>
                 <p className="text-body-md font-body-md text-on-surface-variant">
-                  Your court access PIN and digital pass have been activated. A confirmation SMS and receipt have been dispatched to your mobile number (+91 ••••• 12834).
+                  Your booking has been successfully recorded. A confirmation SMS and receipt have been dispatched to your mobile number (+91 ••••• 12834).
                 </p>
 
                 {/* Booking Reference Bar */}
@@ -225,7 +225,7 @@ export default function SuccessPage() {
               <span className="material-symbols-outlined text-primary-container">directions</span>
             </div>
             <p className="text-body-sm font-body-sm text-on-surface-variant">
-              Enter through <strong>North Entrance B</strong>. Follow court lines toward your assigned court. Gear lockers are located immediately to the right of Turnstile #2.
+              Show your booking confirmation at the venue reception. Follow the signs to your assigned court.
             </p>
             <a className="text-label-sm font-label-sm text-primary font-semibold hover:underline inline-flex items-center gap-1" href="https://maps.google.com" target="_blank" rel="noreferrer">
               Open in Maps

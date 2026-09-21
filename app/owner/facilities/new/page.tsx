@@ -716,7 +716,7 @@ export default function AddFacilityPage() {
             </div>
             <div>
               <h4 className="font-bold text-sm text-on-surface">Attach Regulatory Compliance Documents</h4>
-              <p className="text-xs text-on-surface-variant mt-0.5">PDF, PNG, JPG accepted (AMC Sports Zoning, Fire Safety NOC, Electricity Bill)</p>
+              <p className="text-xs text-on-surface-variant mt-0.5">PDF, PNG, JPG accepted (Municipal Zoning, Fire Safety NOC, Electricity Bill)</p>
             </div>
             <div className="flex items-center justify-center gap-3 pt-2">
               <select

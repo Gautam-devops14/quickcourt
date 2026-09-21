@@ -132,8 +132,8 @@ function OtpContent() {
             <div className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary mb-1">
               <span className="material-symbols-outlined text-[18px]">nfc</span>
             </div>
-            <span className="font-label-sm text-label-sm font-bold text-on-surface">Turnstile Pass Sync</span>
-            <span className="font-body-sm text-[11px] text-on-surface-variant">Instant gate permissions</span>
+            <span className="font-label-sm text-label-sm font-bold text-on-surface">Instant Booking Sync</span>
+            <span className="font-body-sm text-[11px] text-on-surface-variant">Fast confirmations</span>
           </div>
           <div className="flex flex-col items-center gap-1">
             <div className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary mb-1">

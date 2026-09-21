@@ -95,7 +95,7 @@ export default function AdminDashboardPage() {
                   <h2 className="font-headline-md text-headline-md text-on-surface">Pending Facility Verification</h2>
                   {pendingCount > 0 && <span className="px-2 py-0.5 rounded-full bg-error text-on-error font-label-sm text-[11px] font-bold">{pendingCount} Action Required</span>}
                 </div>
-                <p className="font-body-sm text-body-sm text-outline mt-0.5">Physical inspection checklist, Fire NOC, and AMC sports zoning validation</p>
+                <p className="font-body-sm text-body-sm text-outline mt-0.5">Physical inspection checklist, Fire NOC, and municipal zoning validation</p>
               </div>
             </div>
 

@@ -355,8 +355,8 @@ export default function BookingDetailsPage({ params }: { params: { id: string } 
               <div className="flex gap-3 p-3 rounded-lg bg-surface-container-low/50 border border-outline-variant/60">
                 <span className="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">door_open</span>
                 <div>
-                  <h4 className="font-semibold text-on-surface font-label-md text-label-md">Turnstile Activation</h4>
-                  <p className="text-on-surface-variant font-body-sm text-body-sm mt-0.5">Turnstile auto-activates 15 minutes before scheduled match.</p>
+                  <h4 className="font-semibold text-on-surface font-label-md text-label-md">Check-in Process</h4>
+                  <p className="text-on-surface-variant font-body-sm text-body-sm mt-0.5">Please check in at the reception 15 minutes before your scheduled match.</p>
                 </div>
               </div>
             </div>

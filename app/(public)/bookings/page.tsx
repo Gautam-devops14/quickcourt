@@ -168,7 +168,7 @@ export default function BookingsPage() {
                             {!isFirst && (
                               <span className="bg-surface-container-low text-secondary font-medium px-2 py-0.5 rounded text-label-sm flex items-center gap-1">
                                 <span className="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-                                Turnstile Confirmed
+                                Booking Confirmed
                               </span>
                             )}
                           </div>
@@ -354,13 +354,13 @@ export default function BookingsPage() {
         <aside className="lg:col-span-4 space-y-6">
           <div className="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-sm">
             <div className="flex items-center gap-2 text-primary font-bold text-headline-sm mb-3">
-              <span className="material-symbols-outlined text-[22px]">sensor_door</span>
-              <span>Turnstile Arrival Protocol</span>
+              <span className="material-symbols-outlined text-[22px]">storefront</span>
+              <span>Arrival Protocol</span>
             </div>
             <ul className="space-y-3 text-body-sm text-on-surface-variant">
               <li className="flex items-start gap-2.5">
                 <span className="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center text-primary text-label-sm shrink-0 mt-0.5 font-bold">1</span>
-                <div><strong className="text-on-surface">Arrive 10-15m Early:</strong> Gates activate exactly 15 minutes before your scheduled match block.</div>
+                <div><strong className="text-on-surface">Arrive 10-15m Early:</strong> Check in at reception 15 minutes before your scheduled match block.</div>
               </li>
               <li className="flex items-start gap-2.5">
                 <span className="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center text-primary text-label-sm shrink-0 mt-0.5 font-bold">2</span>

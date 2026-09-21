@@ -195,7 +195,7 @@ export default function ProfilePage() {
                     <span className="bg-secondary-fixed/50 text-on-secondary-fixed-variant px-2 py-0.5 rounded text-label-sm font-bold">Recommended</span>
                   </div>
                   <p className="text-body-sm font-body-sm text-on-surface-variant">
-                    Automatically dispatch instant SMS and Wallet passes 15 minutes before court reservation starts. Turnstiles unlock upon code entry.
+                    Automatically dispatch instant SMS and Wallet passes 15 minutes before court reservation starts. Show pass at reception upon arrival.
                   </p>
                 </div>
                 <label className="relative inline-flex items-center cursor-pointer shrink-0 mt-1">

@@ -146,7 +146,7 @@ export default function SignupPage() {
           </div>
           <div className="flex items-center justify-center gap-1.5 text-center border-x border-outline-variant/60">
             <span className="material-symbols-outlined text-secondary text-[18px]">contactless</span>
-            <span className="font-label-sm text-label-sm text-on-surface-variant">Turnstile Pass Sync</span>
+            <span className="font-label-sm text-label-sm text-on-surface-variant">Instant Booking Sync</span>
           </div>
           <div className="flex items-center justify-center gap-1.5 text-center">
             <span className="material-symbols-outlined text-primary-container text-[18px]">check_circle</span>

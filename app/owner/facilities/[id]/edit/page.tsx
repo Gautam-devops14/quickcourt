@@ -22,7 +22,7 @@ export default function EditFacilityPage({ params }: { params: { id: string } })
       setName(facility.name);
       setLocation(facility.location);
       setSports([...facility.sports]);
-      setDescription(`${facility.name} offers great courts...`); // placeholder description since it's not in the mock model
+      setDescription(facility.description || "");
     }
   }, [facility]);
 
