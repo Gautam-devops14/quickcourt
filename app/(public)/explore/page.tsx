@@ -169,7 +169,7 @@ function ExploreContent() {
           {visibleFacilities.map(facility => (
             <div key={facility.id} className="bg-surface-container-lowest border border-outline-variant/50 rounded-xl overflow-hidden hover:border-primary transition-colors flex flex-col">
               <div className="h-48 bg-surface-container relative">
-                 <img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?auto=format&fit=crop&w=600" className="w-full h-full object-cover" alt="" />
+                 <img src={`https://loremflickr.com/600/400/sports,court?lock=${facility.id.replace(/[^0-9]/g, '') || 1}`} className="w-full h-full object-cover" alt="" />
                  <div className="absolute top-3 left-3 bg-surface-container-lowest/90 backdrop-blur px-2 py-1 rounded font-label-sm text-label-sm font-bold flex items-center gap-1 text-on-surface">
                     <span className="material-symbols-outlined text-secondary text-[14px]">star</span> {(facility.rating || 0).toFixed(1)}
                  </div>

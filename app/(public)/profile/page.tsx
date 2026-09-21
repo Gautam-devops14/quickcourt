@@ -62,7 +62,7 @@ export default function ProfilePage() {
             {/* Avatar & Identity Strip */}
             <div className="flex flex-col sm:flex-row sm:items-center gap-6 p-4 rounded-xl bg-surface-container-low/50 border border-outline-variant/40">
               <div className="relative group shrink-0">
-                <img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?auto=format&fit=crop&w=200" alt="Athlete Profile" className="w-20 h-20 rounded-xl object-cover border-2 border-primary-container shadow-sm" />
+                <img src="https://i.pravatar.cc/200?img=33" alt="Athlete Profile" className="w-20 h-20 rounded-xl object-cover border-2 border-primary-container shadow-sm" />
                 <div className="absolute inset-0 bg-inverse-surface/40 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer">
                   <span className="material-symbols-outlined text-on-primary">photo_camera</span>
                 </div>

@@ -35,7 +35,7 @@ export default function VenueDetailsPage() {
     <div className="bg-surface min-h-screen pb-24">
       {/* Venue Hero Image Section */}
       <div className="w-full h-64 md:h-96 bg-surface-container relative overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?auto=format&fit=crop&w=1200" className="absolute inset-0 w-full h-full object-cover" alt="" />
+        <img src={`https://loremflickr.com/1200/800/sports,stadium?lock=${facility.id.replace(/[^0-9]/g, '') || 1}`} className="absolute inset-0 w-full h-full object-cover" alt="" />
         <div className="absolute inset-0 bg-gradient-to-t from-on-surface/80 to-transparent"></div>
         <div className="absolute bottom-0 left-0 right-0 max-w-7xl mx-auto px-margin md:px-margin-md lg:px-margin-lg pb-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
