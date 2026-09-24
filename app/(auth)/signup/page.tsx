@@ -106,13 +106,13 @@ export default function SignupPage() {
             <div className="pt-1 pb-1">
               <label className="flex items-start gap-3 cursor-pointer group">
                 <div className="flex items-center h-5 mt-0.5">
-                  <input defaultChecked className="w-4 h-4 rounded border-outline-variant text-primary-container focus:ring-primary-container cursor-pointer transition" id="terms" type="checkbox" />
+                  <input required className="w-4 h-4 rounded border-outline-variant text-primary-container focus:ring-primary-container cursor-pointer transition" id="terms" type="checkbox" />
                 </div>
                 <span className="text-body-sm font-body-sm text-on-surface-variant leading-snug">
                   I agree to the QuickCourt 
-                  <a className="text-primary font-medium underline hover:text-primary-container ml-1" href="#">Terms of Service</a> 
+                  <Link className="text-primary font-medium underline hover:text-primary-container ml-1" href="/terms" target="_blank">Terms & Conditions</Link> 
                   and 
-                  <a className="text-primary font-medium underline hover:text-primary-container ml-1" href="#">Privacy Policy</a>
+                  <Link className="text-primary font-medium underline hover:text-primary-container ml-1" href="/privacy" target="_blank">Privacy Policy</Link>
                 </span>
               </label>
             </div>

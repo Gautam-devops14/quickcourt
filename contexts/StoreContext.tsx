@@ -2,62 +2,16 @@
 
 import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
 import { Facility, Court, TimeSlot, Booking, User, FacilityStatus } from '@/types';
-import { mockFacilities } from '@/data/mock';
+import { demoUsers, demoFacilities, demoCourts, demoSlots, demoBookings } from '@/data/demoData';
 
 const STORAGE_KEY = 'quickcourt_demo_final_v1';
 
-const extendedFacilities: Facility[] = [];
 
-const initialCourts: Court[] = extendedFacilities.flatMap(f => {
-  let courts: Court[] = [];
-  let courtIndex = 1;
-  f.sports.forEach(sport => {
-    let courtCount = sport === 'Badminton' ? 3 : sport === 'Tennis' ? 2 : sport === 'Football Turf' ? 1 : 2;
-    for(let i=0; i<courtCount; i++) {
-      let name = sport === 'Football Turf' ? `Turf ${i+1}` : sport === 'Table Tennis' ? `Table ${i+1}` : `Court ${i+1}`;
-      const base = sport === 'Football Turf' ? 1200 : sport === 'Tennis' ? 800 : sport === 'Cricket Nets' ? 700 : 500;
-      courts.push({
-        id: `c${courtIndex}-${f.id}`,
-        facilityId: f.id,
-        name: name,
-        sport: sport,
-        pricePerHour: base,
-        weekdayDayPrice: base,
-        weekdayNightPrice: Math.round(base * 1.3),
-        weekendDayPrice: Math.round(base * 1.2),
-        weekendNightPrice: Math.round(base * 1.5),
-        openTime: '06:00',
-        closeTime: '23:00',
-        is24Hours: false,
-        status: 'ACTIVE'
-      });
-      courtIndex++;
-    }
-  });
-  return courts;
-});
+const extendedFacilities: Facility[] = demoFacilities;
+const initialCourts: Court[] = demoCourts;
+const initialSlots: TimeSlot[] = demoSlots;
+export const defaultUsers: User[] = demoUsers;
 
-const today = new Date().toISOString().split('T')[0];
-// Generate slots covering Morning, Afternoon, and Evening
-const initialSlots: TimeSlot[] = initialCourts.flatMap(c => [
-  { id: `s-m1-${c.id}`, courtId: c.id, date: today, startTime: '07:00', endTime: '08:00', status: 'AVAILABLE' as const, isNight: false, isWeekend: false, calculatedPrice: c.weekdayDayPrice ?? c.pricePerHour },
-  { id: `s-m2-${c.id}`, courtId: c.id, date: today, startTime: '09:00', endTime: '10:00', status: 'AVAILABLE' as const, isNight: false, isWeekend: false, calculatedPrice: c.weekdayDayPrice ?? c.pricePerHour },
-  { id: `s-a1-${c.id}`, courtId: c.id, date: today, startTime: '14:00', endTime: '15:00', status: 'AVAILABLE' as const, isNight: false, isWeekend: false, calculatedPrice: c.weekdayDayPrice ?? c.pricePerHour },
-  { id: `s-a2-${c.id}`, courtId: c.id, date: today, startTime: '16:00', endTime: '17:00', status: 'AVAILABLE' as const, isNight: false, isWeekend: false, calculatedPrice: c.weekdayDayPrice ?? c.pricePerHour },
-  { id: `s1-${c.id}`, courtId: c.id, date: today, startTime: '17:00', endTime: '18:00', status: 'AVAILABLE' as const, isNight: false, isWeekend: false, calculatedPrice: c.weekdayDayPrice ?? c.pricePerHour },
-  { id: `s2-${c.id}`, courtId: c.id, date: today, startTime: '18:00', endTime: '19:00', status: 'AVAILABLE' as const, isNight: true, isWeekend: false, calculatedPrice: c.weekdayNightPrice ?? c.pricePerHour },
-  { id: `s3-${c.id}`, courtId: c.id, date: today, startTime: '19:00', endTime: '20:00', status: 'BOOKED' as const, isNight: true, isWeekend: false, calculatedPrice: c.weekdayNightPrice ?? c.pricePerHour },
-  { id: `s4-${c.id}`, courtId: c.id, date: today, startTime: '20:00', endTime: '21:00', status: 'AVAILABLE' as const, isNight: true, isWeekend: false, calculatedPrice: c.weekdayNightPrice ?? c.pricePerHour },
-  { id: `s5-${c.id}`, courtId: c.id, date: today, startTime: '21:00', endTime: '22:00', status: 'AVAILABLE' as const, isNight: true, isWeekend: false, calculatedPrice: c.weekdayNightPrice ?? c.pricePerHour },
-]);
-
-export const defaultUsers: User[] = [
-  { id: 'u1', name: 'Player One', role: 'USER', email: 'player@quickcourt.in', status: 'ACTIVE', password: 'password123' },
-  { id: 'u2', name: 'Ravi Kumar', role: 'USER', email: 'ravi@quickcourt.in', status: 'ACTIVE', password: 'password123' },
-  { id: 'o1', name: 'Vikram Patel', role: 'OWNER', email: 'owner@quickcourt.in', status: 'ACTIVE', password: 'password123' },
-  { id: 'o2', name: 'Neha Sharma', role: 'OWNER', email: 'neha@quickcourt.in', status: 'ACTIVE', password: 'password123' },
-  { id: 'a1', name: 'Super Admin', role: 'ADMIN', email: 'admin@quickcourt.in', status: 'ACTIVE', password: 'password123' }
-];
 
 interface StoreState {
   currentUser: User | null;
@@ -118,7 +72,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     facilities: extendedFacilities,
     courts: initialCourts,
     slots: initialSlots,
-    bookings: [],
+    bookings: demoBookings,
     cartSlot: null,
     cartSlots: [],
     selectedCity: 'Ahmedabad'

@@ -413,8 +413,8 @@ export default function Home() {
             <div className="pt-6 border-t border-outline-variant/40 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-on-surface-variant">
               <div>© 2026 QuickCourt Technologies Private Limited. All rights reserved.</div>
               <div className="flex items-center gap-4">
-                <span className="hover:text-on-surface cursor-pointer">Terms of Service</span>
-                <span className="hover:text-on-surface cursor-pointer">Privacy Policy</span>
+                <Link href="/terms" className="hover:text-primary transition-colors">Terms of Service</Link>
+                <Link href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
                 <span className="hover:text-on-surface cursor-pointer">Cancellation Policy</span>
                 <span className="hover:text-on-surface cursor-pointer">Support</span>
               </div>
@@ -445,6 +445,8 @@ export default function Home() {
               <button onClick={() => handleRoleSelect('USER', '/explore')} className="w-full py-1.5 bg-surface text-on-surface border border-outline-variant rounded hover:bg-surface-container">Enter as Player One</button>
               <button onClick={() => handleRoleSelect('OWNER', '/owner')} className="w-full py-1.5 bg-surface text-on-surface border border-outline-variant rounded hover:bg-surface-container">Enter as Vikram (Owner)</button>
               <button onClick={() => handleRoleSelect('ADMIN', '/admin')} className="w-full py-1.5 bg-surface text-on-surface border border-outline-variant rounded hover:bg-surface-container">Enter as Super Admin</button>
+              <div className="border-t border-outline-variant my-1"></div>
+              <button onClick={() => { localStorage.removeItem('quickcourt_demo_final_v1'); window.location.reload(); }} className="w-full py-1.5 bg-red-50 text-red-600 border border-red-200 rounded hover:bg-red-100 font-semibold text-xs">Reset Demo State</button>
             </div>
           </div>
         )}
