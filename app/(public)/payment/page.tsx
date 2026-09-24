@@ -4,7 +4,7 @@ import { useStore } from '@/contexts/StoreContext';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 
-type PaymentMethod = 'upi' | 'card' | 'netbanking';
+type PaymentMethod = 'upi' | 'card';
 
 function PaymentContent() {
   const formatTime = (t: string) => {
@@ -19,7 +19,6 @@ function PaymentContent() {
   const { cartSlot, cartSlots, facilities, courts, confirmBooking } = useStore();
   const router = useRouter();
   const [method, setMethod] = useState<PaymentMethod>('upi');
-  const [selectedBank, setSelectedBank] = useState('SBI Netbanking');
   const [isProcessing, setIsProcessing] = useState(false);
   const [countdown, setCountdown] = useState(7 * 60 + 42);
 
@@ -71,15 +70,14 @@ function PaymentContent() {
   const TAB_CONFIG: { key: PaymentMethod; icon: string; label: string; sub: string }[] = [
     { key: 'upi', icon: 'qr_code_scanner', label: 'UPI / Instant QR', sub: 'GPay, PhonePe, Paytm' },
     { key: 'card', icon: 'credit_card', label: 'Credit / Debit Card', sub: 'Visa, MC, Rupay' },
-    { key: 'netbanking', icon: 'account_balance', label: 'Net Banking', sub: 'SBI, HDFC, ICICI' },
   ];
 
   return (
-    <main className="flex-grow max-w-7xl w-full mx-auto px-3 py-4 sm:px-6 lg:px-12 sm:py-8">
+    <main className="flex-grow max-w-7xl w-full mx-auto px-3 py-4 sm:px-6 lg:px-12 sm:py-8 overflow-x-hidden">
       <div className="flex flex-col lg:grid lg:grid-cols-12 gap-4 lg:gap-8 items-start">
 
         {/* LEFT COLUMN: Payment Methods — 7 cols */}
-        <div className="order-1 lg:col-span-7 flex flex-col gap-4 lg:gap-6 w-full">
+        <div className="order-2 lg:order-1 lg:col-span-7 flex flex-col gap-4 lg:gap-6 w-full max-w-full overflow-hidden">
 
           {/* Simulation Notice Banner */}
           <div className="bg-surface-container-low border border-primary-container/20 rounded-lg p-2.5 flex items-center gap-2">
@@ -100,7 +98,7 @@ function PaymentContent() {
             </div>
 
             {/* Method Selector Tabs */}
-            <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-4 sm:mb-6">
+            <div className="grid grid-cols-2 gap-2 sm:gap-3 mb-4 sm:mb-6">
               {TAB_CONFIG.map(tab => (
                 <button
                   key={tab.key}
@@ -200,23 +198,8 @@ function PaymentContent() {
               </div>
             )}
 
-            {/* Net Banking Form */}
-            {method === 'netbanking' && (
-              <div className="space-y-4">
-                <label className="block text-label-sm font-label-sm text-on-surface font-semibold">Select Mock Bank or Institutional Account</label>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-                  {['SBI Netbanking', 'HDFC Direct', 'ICICI Bank', 'Axis Bank', 'Kotak Bank', 'Other Banks...'].map((bank) => (
-                    <button key={bank} type="button" onClick={() => setSelectedBank(bank)} className={`p-3 border rounded-lg text-left text-label-sm font-label-sm font-semibold transition-all
-                      ${selectedBank === bank ? 'border-primary-container bg-surface-container-low text-primary' : 'border-outline-variant bg-surface-container-lowest text-on-surface-variant hover:border-outline'}`}>
-                      {bank}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
 
-            {/* Primary Action (Desktop) */}
-            <div className="hidden lg:block">
+            {/* Primary Action */}
             <div className="pt-6 mt-6 border-t border-outline-variant space-y-3">
               <button
                 onClick={handlePay}
@@ -246,7 +229,6 @@ function PaymentContent() {
                 Immediate booking confirmation and digital match pass will be generated upon confirmation.
               </p>
             </div>
-            </div>
           </div>
 
           {/* Security & Guarantee Badges Strip */}
@@ -268,7 +250,7 @@ function PaymentContent() {
         </div>
 
         {/* RIGHT COLUMN: Order Summary — 5 cols */}
-        <div className="order-2 lg:col-span-5 flex flex-col gap-4 lg:gap-5 lg:sticky top-24 w-full">
+        <div className="order-1 lg:order-2 lg:col-span-5 flex flex-col gap-4 lg:gap-5 lg:sticky top-24 w-full max-w-full overflow-hidden">
 
           {/* Slot Hold Countdown */}
           <div className="bg-surface-container-lowest border-2 border-secondary/40 rounded-xl p-3.5 flex items-center justify-between shadow-xs">
