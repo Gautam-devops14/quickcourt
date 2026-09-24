@@ -1,9 +1,38 @@
 "use client";
 import { useStore } from '@/contexts/StoreContext';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
 
 export default function AdminProfilePage() {
-  const { currentUser } = useStore();
+  const { currentUser, updateUser, signOut } = useStore();
+  const router = useRouter();
+
+  const [name, setName] = useState(currentUser?.name || '');
+  const [email, setEmail] = useState(currentUser?.email || '');
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    if (currentUser) {
+      setName(currentUser.name);
+      setEmail(currentUser.email);
+    }
+  }, [currentUser]);
+
+  const handleLogout = () => {
+    signOut();
+    router.push('/');
+  };
+
+  const handleSave = () => {
+    if (!name.trim()) {
+      setMessage('Name cannot be empty.');
+      return;
+    }
+    updateUser({ name, email });
+    setMessage('Profile updated successfully.');
+    setTimeout(() => setMessage(''), 3000);
+  };
 
   return (
     <div className="max-w-7xl mx-auto space-y-6">
@@ -31,16 +60,19 @@ export default function AdminProfilePage() {
             Manage municipal supervisory identity, two-factor authentication, AMC field ops signing authority, and active system session tokens across Ahmedabad.
           </p>
         </div>
-        <div className="flex items-center gap-2.5 shrink-0">
-          <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-surface-container-lowest text-on-surface border border-outline-variant hover:bg-surface-container-low text-label-lg font-label-lg transition-colors shadow-sm">
-            <span className="material-symbols-outlined text-[18px]">edit</span>
-            <span>Edit Profile</span>
-          </button>
-          <button className="flex items-center gap-2 px-5 py-2 rounded-lg bg-primary text-on-primary hover:bg-primary-container transition-colors text-label-lg font-label-lg shadow-sm">
+        <div className="flex flex-col sm:flex-row items-center gap-2.5 shrink-0">
+          {message && (
+            <span className={`text-label-md font-bold px-3 py-1.5 rounded-lg ${
+              message.includes('successfully') ? 'bg-emerald-50 text-emerald-700' : 'bg-error-container/30 text-error'
+            }`}>
+              {message}
+            </span>
+          )}
+          <button onClick={handleSave} className="flex items-center gap-2 px-5 py-2 rounded-lg bg-primary text-on-primary hover:bg-primary-container transition-colors text-label-lg font-label-lg shadow-sm">
             <span className="material-symbols-outlined text-[18px]">check_circle</span>
             <span>Save Changes</span>
           </button>
-          <button className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-surface-container-lowest text-error border border-error-container hover:bg-error-container/30 transition-colors text-label-lg font-label-lg" title="Sign out session">
+          <button onClick={handleLogout} className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-surface-container-lowest text-error border border-error-container hover:bg-error-container/30 transition-colors text-label-lg font-label-lg" title="Sign out session">
             <span className="material-symbols-outlined text-[18px]">logout</span>
             <span className="hidden sm:inline">Logout</span>
           </button>
@@ -61,11 +93,11 @@ export default function AdminProfilePage() {
               {currentUser?.name?.slice(0, 1) || 'A'}
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <h4 className="text-headline-sm text-on-surface font-bold">{currentUser?.name || 'Admin User'}</h4>
+              <div className="flex items-center gap-2 mb-2">
+                <input type="text" value={name} onChange={e => setName(e.target.value)} className="h-8 px-2 rounded border border-outline-variant bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary text-headline-sm font-bold w-[250px]" />
                 <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-secondary-container text-on-secondary-container uppercase">Tier-1 Admin</span>
               </div>
-              <p className="text-body-sm font-body-sm text-outline mt-1">{currentUser?.email || 'admin@quickcourt.in'}</p>
+              <input type="email" value={email} onChange={e => setEmail(e.target.value)} className="h-7 px-2 rounded border border-outline-variant bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary text-body-sm font-body-sm w-[250px]" />
             </div>
           </div>
 

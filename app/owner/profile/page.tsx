@@ -1,12 +1,41 @@
 "use client";
 import { useStore } from '@/contexts/StoreContext';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
 
 export default function OwnerProfilePage() {
-  const { currentUser, facilities } = useStore();
+  const { currentUser, facilities, updateUser, signOut } = useStore();
+  const router = useRouter();
   
   const currentOwnerId = currentUser?.id ?? 'o1';
   const ownerFacilities = facilities.filter(f => f.ownerId === currentOwnerId);
+
+  const [name, setName] = useState(currentUser?.name || '');
+  const [email, setEmail] = useState(currentUser?.email || '');
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    if (currentUser) {
+      setName(currentUser.name);
+      setEmail(currentUser.email);
+    }
+  }, [currentUser]);
+
+  const handleLogout = () => {
+    signOut();
+    router.push('/');
+  };
+
+  const handleSave = () => {
+    if (!name.trim()) {
+      setMessage('Name cannot be empty.');
+      return;
+    }
+    updateUser({ name, email });
+    setMessage('Profile updated successfully.');
+    setTimeout(() => setMessage(''), 3000);
+  };
 
   return (
     <div className="space-y-6">
@@ -23,12 +52,19 @@ export default function OwnerProfilePage() {
             Manage your personal profile, settlement accounts, API keys, and notification preferences.
           </p>
         </div>
-        <div className="flex items-center gap-3 shrink-0">
-          <button className="h-11 px-4 rounded-xl border border-outline-variant text-on-surface font-label-lg text-label-lg bg-surface-container-lowest hover:bg-error-container/30 hover:border-error hover:text-error transition-all flex items-center gap-2">
+        <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
+          {message && (
+            <span className={`text-label-md font-bold px-3 py-1.5 rounded-lg ${
+              message.includes('successfully') ? 'bg-emerald-50 text-emerald-700' : 'bg-error-container/30 text-error'
+            }`}>
+              {message}
+            </span>
+          )}
+          <button onClick={handleLogout} className="h-11 px-4 rounded-xl border border-outline-variant text-on-surface font-label-lg text-label-lg bg-surface-container-lowest hover:bg-error-container/30 hover:border-error hover:text-error transition-all flex items-center gap-2">
             <span className="material-symbols-outlined text-lg">logout</span>
             Sign Out
           </button>
-          <button className="h-11 px-6 rounded-xl bg-primary text-on-primary font-label-lg text-label-lg hover:bg-primary-container transition-colors shadow-sm flex items-center gap-2">
+          <button onClick={handleSave} className="h-11 px-6 rounded-xl bg-primary text-on-primary font-label-lg text-label-lg hover:bg-primary-container transition-colors shadow-sm flex items-center gap-2">
             <span className="material-symbols-outlined text-lg">save</span>
             Save Settings
           </button>
@@ -62,11 +98,11 @@ export default function OwnerProfilePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-1.5">
                 <label className="block font-label-md text-label-md text-on-surface">Full Name</label>
-                <input type="text" defaultValue={currentUser?.name} className="w-full h-11 px-3.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary" />
+                <input type="text" value={name} onChange={e => setName(e.target.value)} className="w-full h-11 px-3.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary" />
               </div>
               <div className="space-y-1.5">
                 <label className="block font-label-md text-label-md text-on-surface">Email Address</label>
-                <input type="email" defaultValue={currentUser?.email} className="w-full h-11 px-3.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary" />
+                <input type="email" value={email} onChange={e => setEmail(e.target.value)} className="w-full h-11 px-3.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary" />
               </div>
             </div>
           </div>

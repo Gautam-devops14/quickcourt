@@ -1,15 +1,52 @@
 "use client"
 import { useStore } from '@/contexts/StoreContext';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { ProtectedRoute } from '@/components/shared/ProtectedRoute';
+import { useState, useEffect } from 'react';
 
 export default function ProfilePage() {
-  const { currentUser, bookings } = useStore();
+  const { currentUser, bookings, updateUser, signOut } = useStore();
+  const router = useRouter();
   
   // Default to a mock user if not logged in for the UI design preview
   const user = currentUser || {
     name: 'Alex Morgan',
     email: 'player@quickcourt.in',
+    phone: '',
     role: 'USER',
+  };
+
+  const [name, setName] = useState(user.name);
+  const [email, setEmail] = useState(user.email);
+  const [phone, setPhone] = useState(user.phone || '');
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    if (currentUser) {
+      setName(currentUser.name);
+      setEmail(currentUser.email);
+      setPhone(currentUser.phone || '');
+    }
+  }, [currentUser]);
+
+  const handleLogout = () => {
+    signOut();
+    router.push('/');
+  };
+
+  const handleSave = () => {
+    if (!name.trim()) {
+      setMessage('Name cannot be empty.');
+      return;
+    }
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+      setMessage('Invalid email format.');
+      return;
+    }
+    updateUser({ name, email, phone });
+    setMessage('Profile updated successfully.');
+    setTimeout(() => setMessage(''), 3000);
   };
 
   const userBookings = bookings.filter(b => b.userId === (currentUser?.id || 'u1'));
@@ -17,7 +54,8 @@ export default function ProfilePage() {
   const totalHours = completedMatches; // Assuming 1 hour per match for mock
 
   return (
-    <main className="flex-1 max-w-7xl mx-auto w-full px-6 md:px-12 py-8 space-y-8">
+    <ProtectedRoute>
+      <main className="flex-1 max-w-7xl mx-auto w-full px-6 md:px-12 py-8 space-y-8">
       {/* Page Header with Headline & Global Action Group */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-outline-variant/60">
         <div>
@@ -31,12 +69,19 @@ export default function ProfilePage() {
             Manage your personal information, court contact credentials for match booking access, and security.
           </p>
         </div>
-        <div className="flex items-center gap-3 shrink-0">
-          <button className="h-11 px-4 rounded-xl border border-outline-variant text-on-surface font-label-lg text-label-lg bg-surface-container-lowest hover:bg-error-container/30 hover:border-error hover:text-error transition-all duration-150 flex items-center gap-2 active:scale-[0.98]" type="button">
+        <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
+          {message && (
+            <span className={`text-label-md font-bold px-3 py-1.5 rounded-lg ${
+              message.includes('successfully') ? 'bg-emerald-50 text-emerald-700' : 'bg-error-container/30 text-error'
+            }`}>
+              {message}
+            </span>
+          )}
+          <button onClick={handleLogout} className="h-11 px-4 rounded-xl border border-outline-variant text-on-surface font-label-lg text-label-lg bg-surface-container-lowest hover:bg-error-container/30 hover:border-error hover:text-error transition-all duration-150 flex items-center gap-2 active:scale-[0.98]" type="button">
             <span className="material-symbols-outlined text-lg">logout</span>
             Logout
           </button>
-          <button className="h-11 px-6 rounded-xl bg-primary-container text-on-primary font-label-lg text-label-lg hover:bg-primary transition-colors shadow-sm flex items-center gap-2 active:scale-[0.98]" type="button">
+          <button onClick={handleSave} className="h-11 px-6 rounded-xl bg-primary-container text-on-primary font-label-lg text-label-lg hover:bg-primary transition-colors shadow-sm flex items-center gap-2 active:scale-[0.98]" type="button">
             <span className="material-symbols-outlined text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>check</span>
             Save Changes
           </button>
@@ -91,7 +136,7 @@ export default function ProfilePage() {
               <div className="space-y-1.5">
                 <label className="block font-label-md text-label-md text-on-surface" htmlFor="fullName">Full Legal Name</label>
                 <div className="relative">
-                  <input id="fullName" type="text" defaultValue={user.name} className="w-full h-11 px-3.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition" />
+                  <input id="fullName" type="text" value={name} onChange={e => setName(e.target.value)} className="w-full h-11 px-3.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition" />
                   <span className="material-symbols-outlined absolute right-3 top-3 text-outline-variant text-lg">person</span>
                 </div>
               </div>
@@ -105,7 +150,7 @@ export default function ProfilePage() {
                   </span>
                 </div>
                 <div className="relative">
-                  <input id="email" type="email" defaultValue={user.email} className="w-full h-11 px-3.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition" />
+                  <input id="email" type="email" value={email} onChange={e => setEmail(e.target.value)} className="w-full h-11 px-3.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition" />
                   <span className="material-symbols-outlined absolute right-3 top-3 text-outline-variant text-lg">mail</span>
                 </div>
               </div>
@@ -119,7 +164,7 @@ export default function ProfilePage() {
                   </span>
                 </div>
                 <div className="relative">
-                  <input id="phone" type="tel" defaultValue="+91 98250 12834" className="w-full h-11 px-3.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition" />
+                  <input id="phone" type="tel" value={phone} onChange={e => setPhone(e.target.value)} className="w-full h-11 px-3.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition" />
                   <span className="material-symbols-outlined absolute right-3 top-3 text-outline-variant text-lg">phone_iphone</span>
                 </div>
                 <p className="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1.5 mt-1">
@@ -351,7 +396,7 @@ export default function ProfilePage() {
               </div>
 
               <div className="pt-3 border-t border-outline-variant/20">
-                <button className="w-full h-10 rounded-lg border border-outline-variant text-on-surface font-label-md text-label-md hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2" type="button">
+                <button onClick={() => { signOut(); router.push("/"); }} className="w-full h-10 rounded-lg border border-outline-variant text-on-surface font-label-md text-label-md hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2" type="button">
                   <span className="material-symbols-outlined text-base">devices_other</span>
                   Log Out of All Devices
                 </button>
@@ -368,6 +413,7 @@ export default function ProfilePage() {
           
         </div>
       </div>
-    </main>
+      </main>
+    </ProtectedRoute>
   );
 }

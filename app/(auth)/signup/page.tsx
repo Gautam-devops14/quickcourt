@@ -1,15 +1,36 @@
 "use client";
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { useStore } from '@/contexts/StoreContext';
 
 export default function SignupPage() {
   const router = useRouter();
+  const { signUp, currentUser } = useStore();
+  useEffect(() => {
+    if (currentUser) {
+      if (currentUser.role === 'ADMIN') router.push('/admin');
+      else if (currentUser.role === 'OWNER') router.push('/owner');
+      else router.push('/');
+    }
+  }, [currentUser, router]);
   const [showPassword, setShowPassword] = useState(false);
+
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    router.push('/otp');
+    signUp({
+      name: `${firstName} ${lastName}`.trim(),
+      email,
+      phone,
+      password,
+    });
+    router.push('/');
   };
 
   return (
@@ -30,12 +51,12 @@ export default function SignupPage() {
                   <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-outline">
                     <span className="material-symbols-outlined text-[19px]">person</span>
                   </div>
-                  <input required className="w-full bg-surface-container-lowest border border-outline-variant rounded-xl pl-10 pr-3.5 py-2.5 text-body-md font-body-md text-on-surface placeholder:text-outline/70 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" id="firstName" name="firstName" placeholder="Alex" type="text" />
+                  <input required value={firstName} onChange={e => setFirstName(e.target.value)} className="w-full bg-surface-container-lowest border border-outline-variant rounded-xl pl-10 pr-3.5 py-2.5 text-body-md font-body-md text-on-surface placeholder:text-outline/70 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" id="firstName" name="firstName" placeholder="Alex" type="text" />
                 </div>
               </div>
               <div>
                 <label className="block font-label-md text-label-md text-on-surface mb-1.5" htmlFor="lastName">Last Name</label>
-                <input required className="w-full bg-surface-container-lowest border border-outline-variant rounded-xl px-3.5 py-2.5 text-body-md font-body-md text-on-surface placeholder:text-outline/70 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" id="lastName" name="lastName" placeholder="Morgan" type="text" />
+                <input required value={lastName} onChange={e => setLastName(e.target.value)} className="w-full bg-surface-container-lowest border border-outline-variant rounded-xl px-3.5 py-2.5 text-body-md font-body-md text-on-surface placeholder:text-outline/70 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" id="lastName" name="lastName" placeholder="Morgan" type="text" />
               </div>
             </div>
 
@@ -45,7 +66,7 @@ export default function SignupPage() {
                 <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-outline">
                   <span className="material-symbols-outlined text-[19px]">mail</span>
                 </div>
-                <input required className="w-full bg-surface-container-lowest border border-outline-variant rounded-xl pl-10 pr-3.5 py-2.5 text-body-md font-body-md text-on-surface placeholder:text-outline/70 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" id="email" name="email" placeholder="player@quickcourt.in" type="email" />
+                <input required value={email} onChange={e => setEmail(e.target.value)} className="w-full bg-surface-container-lowest border border-outline-variant rounded-xl pl-10 pr-3.5 py-2.5 text-body-md font-body-md text-on-surface placeholder:text-outline/70 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" id="email" name="email" placeholder="player@quickcourt.in" type="email" />
               </div>
             </div>
 
@@ -58,7 +79,7 @@ export default function SignupPage() {
                 <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-outline">
                   <span className="material-symbols-outlined text-[19px]">phone</span>
                 </div>
-                <input required className="w-full bg-surface-container-lowest border border-outline-variant rounded-xl pl-10 pr-3.5 py-2.5 text-body-md font-body-md text-on-surface placeholder:text-outline/70 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" id="phone" name="phone" placeholder="+91 98765 43210" type="tel" />
+                <input required value={phone} onChange={e => setPhone(e.target.value)} className="w-full bg-surface-container-lowest border border-outline-variant rounded-xl pl-10 pr-3.5 py-2.5 text-body-md font-body-md text-on-surface placeholder:text-outline/70 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" id="phone" name="phone" placeholder="+91 98765 43210" type="tel" />
               </div>
               <p className="mt-1.5 text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1.5">
                 <span className="material-symbols-outlined text-[15px] text-secondary">verified</span>
@@ -75,7 +96,7 @@ export default function SignupPage() {
                 <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-outline">
                   <span className="material-symbols-outlined text-[19px]">lock</span>
                 </div>
-                <input required className="w-full bg-surface-container-lowest border border-outline-variant rounded-xl pl-10 pr-10 py-2.5 text-body-md font-body-md text-on-surface placeholder:text-outline/70 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" id="password" name="password" placeholder="Minimum 8 characters" type={showPassword ? 'text' : 'password'} />
+                <input required value={password} onChange={e => setPassword(e.target.value)} className="w-full bg-surface-container-lowest border border-outline-variant rounded-xl pl-10 pr-10 py-2.5 text-body-md font-body-md text-on-surface placeholder:text-outline/70 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" id="password" name="password" placeholder="Minimum 8 characters" type={showPassword ? 'text' : 'password'} />
                 <button onClick={() => setShowPassword(!showPassword)} className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-outline hover:text-on-surface focus:outline-none" title="Toggle password visibility" type="button">
                   <span className="material-symbols-outlined text-[19px]">{showPassword ? 'visibility_off' : 'visibility'}</span>
                 </button>

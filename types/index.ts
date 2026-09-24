@@ -11,6 +11,7 @@ export interface User {
   preferredSports?: string[];
   emergencyContactName?: string;
   emergencyContactPhone?: string;
+  password?: string;
 }
 
 export type FacilityStatus = 'DRAFT' | 'PENDING' | 'APPROVED' | 'REJECTED';

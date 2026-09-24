@@ -23,6 +23,7 @@ export default function EditCourtPage({ params }: { params: { id: string, courtI
   const [closeTime, setCloseTime] = useState('23:00');
   const [is24Hours, setIs24Hours] = useState(false);
   const [status, setStatus] = useState<'ACTIVE' | 'MAINTENANCE'>('ACTIVE');
+  const [webBookEnabled, setWebBookEnabled] = useState(true);
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -38,6 +39,7 @@ export default function EditCourtPage({ params }: { params: { id: string, courtI
       setCloseTime(court.closeTime ?? '23:00');
       setIs24Hours(court.is24Hours ?? false);
       setStatus(court.status ?? 'ACTIVE');
+      setWebBookEnabled(court.webBookEnabled !== false);
     }
   }, [court]);
 
@@ -60,6 +62,7 @@ export default function EditCourtPage({ params }: { params: { id: string, courtI
       closeTime: is24Hours ? '23:59' : closeTime,
       is24Hours,
       status,
+      webBookEnabled,
     });
     router.push(`/owner/facilities/${params.id}/courts`);
   };
@@ -100,11 +103,20 @@ export default function EditCourtPage({ params }: { params: { id: string, courtI
 
       {/* Card 1: Court Identity & Status */}
       <section className="bg-surface-container-lowest border border-outline-variant rounded-lg p-6 space-y-5">
-        <div className="flex items-center justify-between border-b border-outline-variant pb-3">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-outline-variant pb-3 gap-3">
           <div className="flex items-center gap-2.5">
             <span className="material-symbols-outlined text-primary text-xl">stadium</span>
             <h2 className="text-headline-sm font-headline-sm text-on-surface">Court Identity & Operating Status</h2>
           </div>
+          <label className="flex items-center gap-2 cursor-pointer bg-surface-container-low px-3 py-1.5 rounded-lg border border-outline-variant">
+            <input
+              type="checkbox"
+              checked={webBookEnabled}
+              onChange={e => setWebBookEnabled(e.target.checked)}
+              className="w-4 h-4 rounded text-primary focus:ring-primary"
+            />
+            <span className="text-label-md font-bold text-on-surface">Instant Online Booking (Web Book)</span>
+          </label>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

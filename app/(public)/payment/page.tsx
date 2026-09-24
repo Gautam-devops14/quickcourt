@@ -19,6 +19,7 @@ function PaymentContent() {
   const { cartSlot, cartSlots, facilities, courts, confirmBooking } = useStore();
   const router = useRouter();
   const [method, setMethod] = useState<PaymentMethod>('upi');
+  const [selectedBank, setSelectedBank] = useState('SBI Netbanking');
   const [isProcessing, setIsProcessing] = useState(false);
   const [countdown, setCountdown] = useState(7 * 60 + 42);
 
@@ -123,7 +124,8 @@ function PaymentContent() {
                     )}
                   </div>
                   <div>
-                    <span className="block text-[11px] sm:text-label-md font-bold text-on-surface leading-tight">{tab.label}</span>\n<span className="block text-[10px] sm:text-[11px] text-on-surface-variant leading-tight truncate">{tab.sub}</span>
+                    <span className="block text-[11px] sm:text-label-md font-bold text-on-surface leading-tight">{tab.label}</span>
+                    <span className="block text-[10px] sm:text-[11px] text-on-surface-variant leading-tight truncate">{tab.sub}</span>
                   </div>
                 </button>
               ))}
@@ -203,9 +205,9 @@ function PaymentContent() {
               <div className="space-y-4">
                 <label className="block text-label-sm font-label-sm text-on-surface font-semibold">Select Mock Bank or Institutional Account</label>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-                  {['SBI Netbanking', 'HDFC Direct', 'ICICI Bank', 'Axis Bank', 'Kotak Bank', 'Other Banks...'].map((bank, i) => (
-                    <button key={bank} type="button" className={`p-3 border rounded-lg text-left text-label-sm font-label-sm font-semibold transition-all
-                      ${i === 0 ? 'border-primary-container bg-surface-container-low text-primary' : 'border-outline-variant bg-surface-container-lowest text-on-surface-variant hover:border-outline'}`}>
+                  {['SBI Netbanking', 'HDFC Direct', 'ICICI Bank', 'Axis Bank', 'Kotak Bank', 'Other Banks...'].map((bank) => (
+                    <button key={bank} type="button" onClick={() => setSelectedBank(bank)} className={`p-3 border rounded-lg text-left text-label-sm font-label-sm font-semibold transition-all
+                      ${selectedBank === bank ? 'border-primary-container bg-surface-container-low text-primary' : 'border-outline-variant bg-surface-container-lowest text-on-surface-variant hover:border-outline'}`}>
                       {bank}
                     </button>
                   ))}
@@ -213,7 +215,8 @@ function PaymentContent() {
               </div>
             )}
 
-            {/* Primary Action (Desktop) */}\n            <div className="hidden lg:block">
+            {/* Primary Action (Desktop) */}
+            <div className="hidden lg:block">
             <div className="pt-6 mt-6 border-t border-outline-variant space-y-3">
               <button
                 onClick={handlePay}
@@ -240,7 +243,10 @@ function PaymentContent() {
                 Cancel & Return to Summary
               </Link>
               <p className="text-center text-[12px] text-on-surface-variant pt-1">
-                Immediate booking confirmation and digital match pass will be generated upon confirmation.\n              </p>\n            </div>\n            </div>
+                Immediate booking confirmation and digital match pass will be generated upon confirmation.
+              </p>
+            </div>
+            </div>
           </div>
 
           {/* Security & Guarantee Badges Strip */}

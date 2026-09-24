@@ -3,6 +3,7 @@ import { useStore } from '@/contexts/StoreContext';
 import Link from 'next/link';
 import { notFound, useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { ProtectedRoute } from '@/components/shared/ProtectedRoute';
 
 export default function BookingDetailsPage({ params }: { params: { id: string } }) {
   const formatTime = (t: string) => {
@@ -116,7 +117,8 @@ export default function BookingDetailsPage({ params }: { params: { id: string } 
   };
 
   return (
-    <main className="flex-1 w-full max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-6 space-y-6">
+    <ProtectedRoute>
+      <main className="flex-1 w-full max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-6 space-y-6">
       {/* BREADCRUMBS & CONTEXT NAV */}
       <div className="flex flex-wrap items-center justify-between gap-3 pt-2 print:hidden">
         <nav aria-label="Breadcrumbs" className="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
@@ -691,5 +693,6 @@ export default function BookingDetailsPage({ params }: { params: { id: string } 
         </div>
       )}
     </main>
+    </ProtectedRoute>
   );
 }

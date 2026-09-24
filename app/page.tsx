@@ -403,8 +403,8 @@ export default function Home() {
                 <h4 className="font-bold text-xs uppercase tracking-wider text-on-surface mb-3">Facility Partners</h4>
                 <ul className="space-y-2 text-xs text-on-surface-variant">
                   <li><Link href="/owner/facilities/new" className="hover:text-primary transition-colors font-semibold text-primary">Partner Registration</Link></li>
-                  <li><Link href="/owner" className="hover:text-primary transition-colors">Partner Dashboard</Link></li>
-                  <li><Link href="/admin" className="hover:text-primary transition-colors">Admin Operations</Link></li>
+                  <li><Link href="/owner/login" className="hover:text-primary transition-colors">Partner Dashboard</Link></li>
+                  <li><Link href="/admin/login" className="hover:text-primary transition-colors">Admin Operations</Link></li>
                   <li><Link href="/login" className="hover:text-primary transition-colors">Portal Login</Link></li>
                 </ul>
               </div>

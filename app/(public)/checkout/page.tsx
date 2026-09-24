@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { TimeSlot } from '@/types';
+import { ProtectedRoute } from '@/components/shared/ProtectedRoute';
 
 export default function CheckoutPage() {
   const formatTime = (t: string) => {
@@ -63,7 +64,8 @@ export default function CheckoutPage() {
   const payAtVenueAmount = total - advanceAmount;
 
   return (
-    <main className="flex-grow max-w-7xl w-full mx-auto px-6 lg:px-12 py-8">
+    <ProtectedRoute>
+      <main className="flex-1 max-w-7xl w-full mx-auto px-6 lg:px-12 py-8 min-h-screen">
       {/* Clean Header Section */}
       <div className="border-b border-outline-variant pb-6 mb-8">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -426,6 +428,7 @@ export default function CheckoutPage() {
           </div>
         </div>
       </div>
-    </main>
+      </main>
+    </ProtectedRoute>
   );
 }

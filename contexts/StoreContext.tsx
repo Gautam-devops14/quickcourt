@@ -4,34 +4,9 @@ import React, { createContext, useContext, useState, useEffect, useRef } from 'r
 import { Facility, Court, TimeSlot, Booking, User, FacilityStatus } from '@/types';
 import { mockFacilities } from '@/data/mock';
 
-const STORAGE_KEY = 'quickcourt_shared_state_v1';
+const STORAGE_KEY = 'quickcourt_demo_final_v1';
 
-const extendedFacilities: Facility[] = [
-  ...mockFacilities,
-  {
-    id: 'f4',
-    ownerId: 'o1',
-    name: 'Bopal Sports Arena',
-    location: 'Bopal, Ahmedabad, Gujarat',
-    status: 'REJECTED' as FacilityStatus,
-    sports: ['Tennis'],
-    amenities: ['Parking'],
-    rejectionReason: 'Please provide clearer facility photos and complete operating hours.',
-    photos: [],
-    rating: 4.2
-  },
-  {
-    id: 'f5',
-    ownerId: 'o2',
-    name: 'Thaltej Badminton Club',
-    location: 'Thaltej, Ahmedabad, Gujarat',
-    status: 'PENDING' as FacilityStatus,
-    sports: ['Badminton'],
-    amenities: ['AC', 'Locker Room'],
-    photos: [],
-    rating: 4.6
-  }
-];
+const extendedFacilities: Facility[] = [];
 
 const initialCourts: Court[] = extendedFacilities.flatMap(f => {
   let courts: Court[] = [];
@@ -77,11 +52,11 @@ const initialSlots: TimeSlot[] = initialCourts.flatMap(c => [
 ]);
 
 export const defaultUsers: User[] = [
-  { id: 'u1', name: 'Player One', role: 'USER', email: 'player@quickcourt.in', status: 'ACTIVE' },
-  { id: 'u2', name: 'Ravi Kumar', role: 'USER', email: 'ravi@quickcourt.in', status: 'ACTIVE' },
-  { id: 'o1', name: 'Vikram Patel', role: 'OWNER', email: 'owner@quickcourt.in', status: 'ACTIVE' },
-  { id: 'o2', name: 'Neha Sharma', role: 'OWNER', email: 'neha@quickcourt.in', status: 'ACTIVE' },
-  { id: 'a1', name: 'Super Admin', role: 'ADMIN', email: 'admin@quickcourt.in', status: 'ACTIVE' }
+  { id: 'u1', name: 'Player One', role: 'USER', email: 'player@quickcourt.in', status: 'ACTIVE', password: 'password123' },
+  { id: 'u2', name: 'Ravi Kumar', role: 'USER', email: 'ravi@quickcourt.in', status: 'ACTIVE', password: 'password123' },
+  { id: 'o1', name: 'Vikram Patel', role: 'OWNER', email: 'owner@quickcourt.in', status: 'ACTIVE', password: 'password123' },
+  { id: 'o2', name: 'Neha Sharma', role: 'OWNER', email: 'neha@quickcourt.in', status: 'ACTIVE', password: 'password123' },
+  { id: 'a1', name: 'Super Admin', role: 'ADMIN', email: 'admin@quickcourt.in', status: 'ACTIVE', password: 'password123' }
 ];
 
 interface StoreState {
@@ -114,6 +89,8 @@ interface StoreContextType extends StoreState {
   rescheduleBooking: (bookingId: string, newSlotId: string) => void;
   rateBooking: (bookingId: string, rating: number) => void;
   updateUser: (user: Partial<User>) => void;
+  signUp: (user: Partial<User>) => void;
+  login: (email: string, password: string, requiredRole?: string) => { success: boolean; error?: string; user?: User };
   signOut: () => void;
   
   // Owner Actions
@@ -141,16 +118,13 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     facilities: extendedFacilities,
     courts: initialCourts,
     slots: initialSlots,
-    bookings: [
-       { id: 'b-mock1', userId: 'u1', facilityId: 'f101', courtId: 'c1-f101', slotIds: ['s3-c1-f101'], status: 'CONFIRMED', amount: 500, totalAmount: 500, advanceAmount: 500, remainingAmount: 0, paymentType: 'FULL', date: new Date().toISOString() },
-       { id: 'b-mock2', userId: 'u2', facilityId: 'f102', courtId: 'c1-f102', slotIds: ['s3-c1-f102'], status: 'COMPLETED', amount: 600, totalAmount: 600, advanceAmount: 600, remainingAmount: 0, paymentType: 'FULL', date: new Date(Date.now() - 86400000 * 2).toISOString(), rated: false }
-    ],
+    bookings: [],
     cartSlot: null,
     cartSlots: [],
     selectedCity: 'Ahmedabad'
   });
 
-  const isHydrated = useRef(false);
+  const [isHydrated, setIsHydrated] = useState(false);
 
   // Hydrate from localStorage on client mount
   useEffect(() => {
@@ -165,13 +139,14 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
           slots: parsed.slots || prev.slots,
           bookings: parsed.bookings || prev.bookings,
           users: parsed.users || prev.users,
+          currentUser: parsed.currentUser !== undefined ? parsed.currentUser : prev.currentUser,
           selectedCity: parsed.selectedCity || prev.selectedCity,
         }));
       }
     } catch {
       // ignore JSON parse or storage access errors
     } finally {
-      isHydrated.current = true;
+      setIsHydrated(true);
     }
 
     // Cross-tab / cross-window synchronization listener
@@ -186,6 +161,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
             slots: parsed.slots || prev.slots,
             bookings: parsed.bookings || prev.bookings,
             users: parsed.users || prev.users,
+            currentUser: parsed.currentUser !== undefined ? parsed.currentUser : prev.currentUser,
           }));
         } catch {
           // ignore
@@ -197,9 +173,8 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
 
-  // Persist state to localStorage on changes after hydration
   useEffect(() => {
-    if (!isHydrated.current) return;
+    if (!isHydrated) return;
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({
         facilities: state.facilities,
@@ -207,12 +182,13 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
         slots: state.slots,
         bookings: state.bookings,
         users: state.users,
+        currentUser: state.currentUser,
         selectedCity: state.selectedCity
       }));
     } catch {
       // ignore quota exceeded or privacy mode errors
     }
-  }, [state.facilities, state.courts, state.slots, state.bookings, state.users, state.selectedCity]);
+  }, [isHydrated, state.facilities, state.courts, state.slots, state.bookings, state.users, state.currentUser, state.selectedCity]);
 
   const setCurrentUser = (user: User | null) => {
     setState(prev => ({ ...prev, currentUser: user }));
@@ -236,6 +212,39 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
         users: prev.users.map(u => u.id === updated.id ? updated : u)
       };
     });
+  };
+
+  const signUp = (userData: Partial<User>) => {
+    const newUser: User = {
+      id: `u-${Date.now()}`,
+      name: userData.name || 'New Player',
+      role: 'USER', // Force PLAYER role
+      email: userData.email || '',
+      phone: userData.phone || '',
+      status: 'ACTIVE',
+      password: userData.password || 'password123'
+    };
+    setState(prev => ({
+      ...prev,
+      users: [...prev.users, newUser],
+      currentUser: newUser
+    }));
+  };
+
+  const login = (email: string, password: string, requiredRole?: string) => {
+    // In realistic mock, we find user by email or phone
+    const user = state.users.find(u => u.email === email || u.phone === email);
+    if (!user) {
+      return { success: false, error: 'Account not found.' };
+    }
+    if (user.password !== password) {
+      return { success: false, error: 'Invalid password.' };
+    }
+    if (requiredRole && user.role !== requiredRole) {
+      return { success: false, error: `Invalid credentials for ${requiredRole.toLowerCase()} login.` };
+    }
+    setCurrentUser(user);
+    return { success: true, user };
   };
 
   // Toggle or add slot for multi-hour reservation
@@ -502,7 +511,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <StoreContext.Provider value={{
-      ...state, setCurrentUser, setSelectedCity, signOut, updateUser, lockSlot, toggleLockSlot, unlockSlot, clearCart, confirmBooking, cancelBooking, rescheduleBooking, rateBooking,
+      ...state, setCurrentUser, setSelectedCity, signOut, updateUser, signUp, login, lockSlot, toggleLockSlot, unlockSlot, clearCart, confirmBooking, cancelBooking, rescheduleBooking, rateBooking,
       addFacility, updateFacility, addCourt, updateCourt, deleteCourt, blockSlots, unblockSlots, resubmitFacility,
       adminApproveFacility, adminRejectFacility, toggleUserStatus
     }}>

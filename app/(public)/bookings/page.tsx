@@ -3,6 +3,7 @@ import { useStore } from '@/contexts/StoreContext';
 import Link from 'next/link';
 import { useState } from 'react';
 import { TimeSlot } from '@/types';
+import { ProtectedRoute } from '@/components/shared/ProtectedRoute';
 
 type TabState = 'Upcoming' | 'Completed' | 'Cancelled';
 
@@ -61,7 +62,8 @@ export default function BookingsPage() {
   };
 
   return (
-    <main className="flex-1 max-w-7xl w-full mx-auto px-6 lg:px-12 py-8">
+    <ProtectedRoute>
+      <main className="flex-1 max-w-7xl w-full mx-auto px-6 lg:px-12 py-8">
       {/* Breadcrumbs */}
       <nav className="flex items-center gap-2 text-body-sm font-body-sm text-outline mb-4">
         <Link href="/" className="hover:text-primary transition-colors">Home</Link>
@@ -394,5 +396,6 @@ export default function BookingsPage() {
         </aside>
       </div>
     </main>
+    </ProtectedRoute>
   );
 }
