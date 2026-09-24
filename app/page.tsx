@@ -446,7 +446,7 @@ export default function Home() {
               <button onClick={() => handleRoleSelect('OWNER', '/owner')} className="w-full py-1.5 bg-surface text-on-surface border border-outline-variant rounded hover:bg-surface-container">Enter as Vikram (Owner)</button>
               <button onClick={() => handleRoleSelect('ADMIN', '/admin')} className="w-full py-1.5 bg-surface text-on-surface border border-outline-variant rounded hover:bg-surface-container">Enter as Super Admin</button>
               <div className="border-t border-outline-variant my-1"></div>
-              <button onClick={() => { localStorage.removeItem('quickcourt_demo_final_v1'); window.location.reload(); }} className="w-full py-1.5 bg-red-50 text-red-600 border border-red-200 rounded hover:bg-red-100 font-semibold text-xs">Reset Demo State</button>
+              <button onClick={() => { localStorage.removeItem('quickcourt_demo_final_v2'); window.location.reload(); }} className="w-full py-1.5 bg-red-50 text-red-600 border border-red-200 rounded hover:bg-red-100 font-semibold text-xs">Reset Demo State</button>
             </div>
           </div>
         )}

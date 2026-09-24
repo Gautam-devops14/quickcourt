@@ -4,7 +4,7 @@ import React, { createContext, useContext, useState, useEffect, useRef } from 'r
 import { Facility, Court, TimeSlot, Booking, User, FacilityStatus } from '@/types';
 import { demoUsers, demoFacilities, demoCourts, demoSlots, demoBookings } from '@/data/demoData';
 
-const STORAGE_KEY = 'quickcourt_demo_final_v1';
+const STORAGE_KEY = 'quickcourt_demo_final_v2';
 
 
 const extendedFacilities: Facility[] = demoFacilities;
